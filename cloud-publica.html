@@ -41,15 +41,35 @@
     <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/80 backdrop-blur-md px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="index.html" class="text-2xl font-extrabold tracking-tighter flex items-center gap-2 group">
-                <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center group-hover:rotate-0 transition-transform rotate-12"><i class="fas fa-arrow-left text-black text-xs"></i></div>
+                <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center group-hover:rotate-0 transition-transform rotate-12">
+                    <i class="fas fa-arrow-left text-black text-xs"></i>
+                </div>
                 GENERA<span class="text-cyan-400">CTIVE</span>
             </a>
-            <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-                <a href="#vantagens" class="hover:text-cyan-400 transition">Vantagens</a>
-                <a href="#metodologia" class="hover:text-cyan-400 transition">Metodologia</a>
-                <a href="#faq" class="hover:text-cyan-400 transition">Dúvidas</a>
+            
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+                    <a href="#vantagens" class="hover:text-cyan-400 transition" data-pt="Vantagens" data-en="Advantages" data-es="Ventajas">Vantagens</a>
+                    <a href="#metodologia" class="hover:text-cyan-400 transition" data-pt="Metodologia" data-en="Methodology" data-es="Metodología">Metodologia</a>
+                    <a href="#faq" class="hover:text-cyan-400 transition" data-pt="Dúvidas" data-en="FAQ" data-es="Dudas">Dúvidas</a>
+                </div>
+
+                <div class="relative group">
+                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                        <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
+                    </button>
+                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">PORTUGUÊS</button>
+                        <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">ENGLISH</button>
+                        <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">ESPAÑOL</button>
+                    </div>
+                </div>
+
+                <button class="bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-xs hover:bg-white transition shadow-lg shadow-cyan-500/20 uppercase"
+                        data-pt="CONSULTORIA GRÁTIS" data-en="FREE CONSULTING" data-es="CONSULTORÍA GRATIS">
+                    CONSULTORIA GRÁTIS
+                </button>
             </div>
-            <button class="bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-xs hover:bg-white transition shadow-lg shadow-cyan-500/20">CONSULTORIA GRÁTIS</button>
         </div>
     </nav>
 
@@ -57,23 +77,43 @@
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right">
                 <span class="text-cyan-400 font-bold tracking-[0.3em] text-xs uppercase mb-4 block">SaaS • PaaS • IaaS</span>
-                <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">Cloud <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Pública</span></h1>
-                <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed">Elasticidade, performance e eficiência em escala. A base da inovação digital moderna suportada por AWS, Azure e Google Cloud.</p>
+                <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                    Cloud <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600" data-pt="Pública" data-en="Public" data-es="Pública">Pública</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed"
+                   data-pt="Elasticidade, performance e eficiência em escala. A base da inovação digital moderna suportada por AWS, Azure e Google Cloud."
+                   data-en="Elasticity, performance and efficiency at scale. The foundation of modern digital innovation supported by AWS, Azure and Google Cloud."
+                   data-es="Elasticidad, rendimiento y eficiencia a escala. La base de la innovación digital moderna respaldada por AWS, Azure y Google Cloud.">
+                    Elasticidade, performance e eficiência em escala. A base da inovação digital moderna suportada por AWS, Azure e Google Cloud.
+                </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#especialistas" class="bg-white text-black font-black px-8 py-4 rounded-xl hover:bg-cyan-400 transition">Falar com Especialistas</a>
+                    <a href="#especialistas" class="bg-white text-black font-black px-8 py-4 rounded-xl hover:bg-cyan-400 transition"
+                       data-pt="Falar com Especialistas" data-en="Talk to Specialists" data-es="Hablar con Especialistas">
+                        Falar com Especialistas
+                    </a>
                 </div>
             </div>
+            
             <div class="relative flex justify-center" data-aos="zoom-in">
                 <div class="absolute inset-0 bg-cyan-500/20 blur-[120px] rounded-full"></div>
-                <div class="float-anim relative z-10 glass-panel p-8 rounded-[3rem] border-white/10 w-full max-w-md">
+                <div class="float-anim relative z-10 glass-panel p-8 rounded-[3rem] border-white/10 w-full max-w-md bg-gray-900/40 backdrop-blur-md">
                     <div class="flex justify-between items-center mb-10 font-mono text-[10px] text-cyan-500">
                         <span>NODE_STATUS: ONLINE</span>
                         <div class="flex gap-1"><div class="w-1 h-3 bg-cyan-500 animate-pulse"></div><div class="w-1 h-5 bg-cyan-500/50"></div></div>
                     </div>
                     <div class="space-y-6">
-                        <div class="flex items-center gap-4"><i class="fas fa-expand-arrows-alt text-cyan-400"></i><span class="text-sm font-bold">Escalabilidade Imediata</span></div>
-                        <div class="flex items-center gap-4"><i class="fas fa-hand-holding-usd text-cyan-400"></i><span class="text-sm font-bold">Pague apenas o que usar</span></div>
-                        <div class="flex items-center gap-4"><i class="fas fa-shield-virus text-cyan-400"></i><span class="text-sm font-bold">Segurança Corporativa</span></div>
+                        <div class="flex items-center gap-4 text-white">
+                            <i class="fas fa-expand-arrows-alt text-cyan-400"></i>
+                            <span class="text-sm font-bold" data-pt="Escalabilidade Imediata" data-en="Immediate Scalability" data-es="Escalabilidad Inmediata">Escalabilidade Imediata</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-white">
+                            <i class="fas fa-hand-holding-usd text-cyan-400"></i>
+                            <span class="text-sm font-bold" data-pt="Pague apenas o que usar" data-en="Pay-as-you-go" data-es="Pago por uso">Pague apenas o que usar</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-white">
+                            <i class="fas fa-shield-virus text-cyan-400"></i>
+                            <span class="text-sm font-bold" data-pt="Segurança Corporativa" data-en="Enterprise Security" data-es="Seguridad Corporativa">Segurança Corporativa</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -84,13 +124,26 @@
         <div class="max-w-5xl mx-auto">
             <div class="grid md:grid-cols-3 gap-12 items-center">
                 <div class="md:col-span-2" data-aos="fade-up">
-                    <h2 class="text-3xl font-bold mb-6 italic">O que é Cloud Pública e como funciona?</h2>
-                    <p class="text-gray-400 leading-relaxed">Modelo de infraestrutura compartilhada, fornecida por provedores globais e acessada sob demanda via internet. Recursos entregues virtualmente, reduzindo custos de capital (CAPEX) e aumentando a agilidade.</p>
+                    <h2 class="text-3xl font-bold mb-6 italic" 
+                        data-pt="O que é Cloud Pública e como funciona?" 
+                        data-en="What is Public Cloud and how does it work?" 
+                        data-es="¿Qué es la Nube Pública y cómo funciona?">
+                        O que é Cloud Pública e como funciona?
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed"
+                       data-pt="Modelo de infraestrutura compartilhada, fornecida por provedores globais e acessada sob demanda via internet. Recursos entregues virtualmente, reduzindo custos de capital (CAPEX) e aumentando a agilidade."
+                       data-en="Shared infrastructure model, provided by global providers and accessed on demand via the internet. Resources delivered virtually, reducing capital costs (CAPEX) and increasing agility."
+                       data-es="Modelo de infraestructura compartida, proporcionado por proveedores globales y con acceso bajo demanda a través de Internet. Recursos entregados virtualmente, reduciendo costes de capital (CAPEX) y aumentando la agilidad.">
+                        Modelo de infraestrutura compartilhada, fornecida por provedores globais e acessada sob demanda via internet. Recursos entregues virtualmente, reduzindo custos de capital (CAPEX) e aumentando a agilidade.
+                    </p>
                 </div>
-                <div class="glass-panel p-6 rounded-2xl text-center" data-aos="fade-left">
-                    <p class="text-xs text-gray-500 uppercase font-black mb-2">Alternativa</p>
-                    <p class="text-sm font-bold mb-4">Precisa de ambientes 100% dedicados?</p>
-                    <a href="cloud-privada.html" class="text-cyan-400 text-xs font-black hover:underline tracking-widest uppercase">Ver Cloud Privada →</a>
+                <div class="glass-panel p-6 rounded-2xl text-center border border-white/10" data-aos="fade-left">
+                    <p class="text-xs text-gray-500 uppercase font-black mb-2" data-pt="Alternativa" data-en="Alternative" data-es="Alternativa">Alternativa</p>
+                    <p class="text-sm font-bold mb-4 text-white" data-pt="Precisa de ambientes 100% dedicados?" data-en="Need 100% dedicated environments?" data-es="¿Necesita entornos 100% dedicados?">Precisa de ambientes 100% dedicados?</p>
+                    <a href="cloud-privada.html" class="text-cyan-400 text-xs font-black hover:underline tracking-widest uppercase"
+                       data-pt="Ver Cloud Privada →" data-en="View Private Cloud →" data-es="Ver Nube Privada →">
+                        Ver Cloud Privada →
+                    </a>
                 </div>
             </div>
         </div>
@@ -99,10 +152,18 @@
     <section id="vantagens" class="py-32 px-6 relative z-10">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-20" data-aos="fade-up">
-                <h2 class="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tighter">
+                <h2 class="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tighter"
+                    data-pt="Principais Vantagens e Benefícios"
+                    data-en="Key Advantages and Benefits"
+                    data-es="Principales Ventajas y Beneficios">
                     Principais <span class="text-cyan-400">Vantagens e Benefícios</span>
                 </h2>
-                <p class="text-gray-500 max-w-2xl mx-auto">A Cloud Pública da Generactive entrega o poder computacional necessário para transformar sua infraestrutura em um motor de inovação.</p>
+                <p class="text-gray-500 max-w-2xl mx-auto"
+                   data-pt="A Cloud Pública da Generactive entrega o poder computacional necessário para transformar sua infraestrutura em um motor de inovação."
+                   data-en="Generactive's Public Cloud delivers the computing power needed to transform your infrastructure into an innovation engine."
+                   data-es="La Nube Pública de Generactive ofrece el poder de cómputo necesario para transformar su infraestructura en un motor de innovación.">
+                    A Cloud Pública da Generactive entrega o poder computacional necessário para transformar sua infraestrutura em um motor de inovação.
+                </p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -111,48 +172,78 @@
                     <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
                         <i class="fas fa-expand-arrows-alt text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Escalabilidade Instantânea</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Aumente ou reduza recursos computacionais em tempo real conforme a demanda sazonal, garantindo agilidade extrema para acompanhar o crescimento do seu negócio sem gargalos técnicos.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Escalabilidade Instantânea" data-en="Instant Scalability" data-es="Escalabilidad Instantánea">Escalabilidade Instantânea</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed"
+                       data-pt="Aumente ou reduza recursos computacionais em tempo real conforme a demanda sazonal, garantindo agilidade extrema."
+                       data-en="Scale computing resources up or down in real-time according to seasonal demand, ensuring extreme agility."
+                       data-es="Aumente o reduzca los recursos informáticos en tiempo real según la demanda estacional, garantizando una agilidad extrema.">
+                        Aumente ou reduza recursos computacionais em tempo real conforme a demanda sazonal, garantindo agilidade extrema para acompanhar o crescimento do seu negócio sem gargalos técnicos.
+                    </p>
                 </div>
 
                 <div class="glass-panel p-10 rounded-3xl group" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
                         <i class="fas fa-layer-group text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Alta Disponibilidade</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Arquitetura redundante e distribuída globalmente em múltiplas zonas de disponibilidade (AZs), assegurando continuidade operacional e resiliência contra falhas críticas de hardware.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Alta Disponibilidade" data-en="High Availability" data-es="Alta Disponibilidad">Alta Disponibilidade</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed"
+                       data-pt="Arquitetura redundante e distribuída globalmente em múltiplas zonas, assegurando continuidade operacional."
+                       data-en="Redundant and globally distributed architecture across multiple zones, ensuring operational continuity."
+                       data-es="Arquitectura redundante y distribuida globalmente en múltiples zonas, asegurando la continuidad operativa.">
+                        Arquitetura redundante e distribuída globalmente em múltiplas zonas de disponibilidade (AZs), assegurando continuidade operacional e resiliência contra falhas críticas de hardware.
+                    </p>
                 </div>
 
                 <div class="glass-panel p-10 rounded-3xl group" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
                         <i class="fas fa-hand-holding-usd text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Eficiência Financeira</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Modelo <strong>pay-as-you-go</strong> (pagamento por uso) aliado a estratégias de FinOps, eliminando desperdícios de subutilização e otimizando investimentos em infraestrutura sem CAPEX inicial.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Eficiência Financeira" data-en="Financial Efficiency" data-es="Eficiencia Financiera">Eficiência Financeira</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed"
+                       data-pt="Modelo pay-as-you-go aliado a estratégias de FinOps, eliminando desperdícios de subutilização."
+                       data-en="Pay-as-you-go model combined with FinOps strategies, eliminating underutilization waste."
+                       data-es="Modelo de pago por uso combinado con estrategias de FinOps, eliminando el desperdicio por subutilización.">
+                        Modelo <strong>pay-as-you-go</strong> (pagamento por uso) aliado a estratégias de FinOps, eliminando desperdícios de subutilização e otimizando investimentos em infraestrutura sem CAPEX inicial.
+                    </p>
                 </div>
 
                 <div class="glass-panel p-10 rounded-3xl group" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
                         <i class="fas fa-brain text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Inovação com IA e ML</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Acesso imediato a serviços avançados de Inteligência Artificial, Machine Learning, Big Data e automação serverless, impulsionando a transformação digital acelerada.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Inovação com IA e ML" data-en="Innovation with AI and ML" data-es="Innovación con IA y ML">Inovação com IA e ML</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed"
+                       data-pt="Acesso imediato a serviços avançados de IA, Machine Learning e Big Data para transformação digital."
+                       data-en="Immediate access to advanced AI, Machine Learning, and Big Data services for digital transformation."
+                       data-es="Acceso inmediato a servicios avanzados de IA, Machine Learning y Big Data para la transformación digital.">
+                        Acesso imediato a serviços avançados de Inteligência Artificial, Machine Learning, Big Data e automação serverless, impulsionando a transformação digital acelerada.
+                    </p>
                 </div>
 
                 <div class="glass-panel p-10 rounded-3xl group" data-aos="fade-up" data-aos-delay="400">
                     <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
                         <i class="fas fa-fingerprint text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Governança & Compliance</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Controle granular de identidades (IAM), permissões e trilhas de auditoria automatizadas, garantindo que sua empresa atenda às normas rigorosas de segurança e conformidade de dados.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Governança & Compliance" data-en="Governance & Compliance" data-es="Gobernanza y Cumplimiento">Governança & Compliance</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed"
+                       data-pt="Controle granular de identidades (IAM) e trilhas de auditoria, atendendo às normas de segurança."
+                       data-en="Granular identity control (IAM) and audit trails, meeting strict security standards."
+                       data-es="Control de identidad granular (IAM) y pistas de auditoría, cumpliendo con estrictos estándares de seguridad.">
+                        Controle granular de identidades (IAM), permissões e trilhas de auditoria automatizadas, garantindo que sua empresa atenda às normas rigorosas de segurança e conformidade de dados.
+                    </p>
                 </div>
 
                 <div class="glass-panel p-10 rounded-3xl group" data-aos="fade-up" data-aos-delay="500">
                     <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500 shadow-[0_0_15px_rgba(6,182,212,0.1)]">
                         <i class="fas fa-shipping-fast text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4 text-white">Agilidade Operacional</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Redução drástica do time-to-market. Provisione ambientes completos de produção em minutos via código (IaC), permitindo que sua equipe foque no que realmente importa: o core business.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Agilidade Operacional" data-en="Operational Agility" data-es="Agilidad Operativa">Agilidade Operacional</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed"
+                       data-pt="Redução do time-to-market. Provisione ambientes em minutos via código (IaC)."
+                       data-en="Reduction of time-to-market. Provision environments in minutes via code (IaC)."
+                       data-es="Reducción del tiempo de comercialización. Proporcione entornos en minutos mediante código (IaC).">
+                        Redução drástica do time-to-market. Provisione ambientes completos de produção em minutos via código (IaC), permitindo que sua equipe foque no que realmente importa: o core business.
+                    </p>
                 </div>
 
             </div>
@@ -164,11 +255,15 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
                 <div data-aos="fade-right">
                     <h2 class="text-4xl md:text-6xl font-black tracking-tighter uppercase italic">
-                        Casos de Uso <br><span class="text-cyan-400 underline decoration-2 underline-offset-8">Ideais</span>
+                        <span data-pt="Casos de Uso" data-en="Use Cases" data-es="Casos de Uso">Casos de Uso</span> <br>
+                        <span class="text-cyan-400 underline decoration-2 underline-offset-8" data-pt="Ideais" data-en="Ideals" data-es="Ideales">Ideais</span>
                     </h2>
                 </div>
                 <div class="max-w-md" data-aos="fade-left">
-                    <p class="text-gray-500 text-sm leading-relaxed border-l-2 border-cyan-500 pl-6">
+                    <p class="text-gray-500 text-sm leading-relaxed border-l-2 border-cyan-500 pl-6"
+                       data-pt="Descubra como a Cloud Pública impulsiona cenários de Dev/Test, SaaS, Big Data e IA com segurança e alta performance extrema."
+                       data-en="Discover how Public Cloud powers Dev/Test, SaaS, Big Data, and AI scenarios with extreme security and high performance."
+                       data-es="Descubra cómo la Nube Pública impulsa escenarios de Dev/Test, SaaS, Big Data e IA con seguridad y alto rendimiento extremo.">
                         Descubra como a Cloud Pública impulsiona cenários de Dev/Test, SaaS, Big Data e IA com segurança e alta performance extrema.
                     </p>
                 </div>
@@ -182,8 +277,13 @@
                         <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center mb-8 shadow-[0_0_20px_rgba(6,182,212,0.3)]">
                             <i class="fas fa-code text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-tight">Ambientes de Dev / Test</h3>
-                        <p class="text-gray-400 leading-relaxed mb-6">Acelere ciclos de desenvolvimento com provisionamento imediato de recursos sob demanda, permitindo testes ágeis sem custos de infraestrutura ociosa.</p>
+                        <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-tight" data-pt="Ambientes de Dev / Test" data-en="Dev / Test Environments" data-es="Entornos de Dev / Test">Ambientes de Dev / Test</h3>
+                        <p class="text-gray-400 leading-relaxed mb-6"
+                           data-pt="Acelere ciclos de desenvolvimento com provisionamento imediato de recursos sob demanda, permitindo testes ágeis sem custos de infraestrutura ociosa."
+                           data-en="Accelerate development cycles with immediate on-demand resource provisioning, enabling agile testing without idle infrastructure costs."
+                           data-es="Acelere los ciclos de desarrollo con el aprovisionamiento inmediato de recursos bajo demanda, lo que permite realizar pruebas ágiles sin costes de infraestructura inactiva.">
+                            Acelere ciclos de desenvolvimento com provisionamento imediato de recursos sob demanda, permitindo testes ágeis sem custos de infraestrutura ociosa.
+                        </p>
                         <div class="flex items-center gap-2 text-cyan-400 text-xs font-black tracking-widest">
                             <span class="w-8 h-[1px] bg-cyan-400"></span> CI / CD OPTIMIZED
                         </div>
@@ -196,8 +296,13 @@
                         <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-8 shadow-[0_0_20px_rgba(59,130,246,0.3)]">
                             <i class="fas fa-shopping-cart text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-tight">SaaS & E-commerce</h3>
-                        <p class="text-gray-400 leading-relaxed mb-6">Garanta alta disponibilidade e escalabilidade infinita para suportar picos sazonais de tráfego, mantendo a experiência do usuário fluida e rápida.</p>
+                        <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-tight" data-pt="SaaS & E-commerce" data-en="SaaS & E-commerce" data-es="SaaS y E-commerce">SaaS & E-commerce</h3>
+                        <p class="text-gray-400 leading-relaxed mb-6"
+                           data-pt="Garanta alta disponibilidade e escalabilidade infinita para suportar picos sazonais de tráfego, mantendo a experiência do usuário fluida."
+                           data-en="Ensure high availability and infinite scalability to support seasonal traffic peaks, keeping the user experience fluid and fast."
+                           data-es="Garantice una alta disponibilidad y una escalabilidad infinita para soportar picos de tráfico estacionales, manteniendo la experiencia del usuario fluida.">
+                            Garanta alta disponibilidade e escalabilidade infinita para suportar picos sazonais de tráfego, mantendo a experiência do usuário fluida e rápida.
+                        </p>
                         <div class="flex items-center gap-2 text-blue-400 text-xs font-black tracking-widest">
                             <span class="w-8 h-[1px] bg-blue-400"></span> ZERO LATENCY GOAL
                         </div>
@@ -210,8 +315,13 @@
                         <div class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-8 shadow-[0_0_20px_rgba(99,102,241,0.3)]">
                             <i class="fas fa-brain text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-tight">Big Data, IA & ML</h3>
-                        <p class="text-gray-400 leading-relaxed mb-6">Utilize um poder computacional massivo para processamento de dados e inteligência artificial, transformando volumes brutos de informação em decisões estratégicas.</p>
+                        <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-tight" data-pt="Big Data, IA & ML" data-en="Big Data, AI & ML" data-es="Big Data, IA y ML">Big Data, IA & ML</h3>
+                        <p class="text-gray-400 leading-relaxed mb-6"
+                           data-pt="Utilize um poder computacional massivo para processamento de dados e inteligência artificial, transformando informação em decisões estratégicas."
+                           data-en="Use massive computing power for data processing and artificial intelligence, turning information into strategic decisions."
+                           data-es="Utilice un poder de cómputo masivo para el procesamiento de datos e inteligencia artificial, transformando la información en decisiones estratégicas.">
+                            Utilize um poder computacional massivo para processamento de dados e inteligência artificial, transformando volumes brutos de informação em decisões estratégicas.
+                        </p>
                         <div class="flex items-center gap-2 text-indigo-400 text-xs font-black tracking-widest">
                             <span class="w-8 h-[1px] bg-indigo-400"></span> DATA-DRIVEN POWER
                         </div>
@@ -224,8 +334,13 @@
                         <div class="w-16 h-16 bg-gradient-to-br from-slate-600 to-black rounded-2xl flex items-center justify-center mb-8 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
                             <i class="fas fa-network-wired text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-tight">Integração Multicloud</h3>
-                        <p class="text-gray-400 leading-relaxed mb-6">Conecte ambientes privados e públicos para equilibrar workloads específicos, mantendo o controle total sobre a segurança e otimizando os custos operacionais.</p>
+                        <h3 class="text-2xl font-bold mb-4 text-white uppercase tracking-tight" data-pt="Integração Multicloud" data-en="Multicloud Integration" data-es="Integración Multicloud">Integração Multicloud</h3>
+                        <p class="text-gray-400 leading-relaxed mb-6"
+                           data-pt="Conecte ambientes privados e públicos para equilibrar workloads, mantendo controle sobre a segurança e otimizando custos."
+                           data-en="Connect private and public environments to balance workloads, maintaining security control and optimizing costs."
+                           data-es="Conecte entornos privados y públicos para equilibrar las cargas de trabajo, manteniendo el control de la seguridad y optimizando los costes.">
+                            Conecte ambientes privados e públicos para equilibrar workloads específicos, mantendo o controle total sobre a segurança e otimizando os custos operacionais.
+                        </p>
                         <div class="flex items-center gap-2 text-gray-400 text-xs font-black tracking-widest">
                             <span class="w-8 h-[1px] bg-gray-400"></span> HYBRID CONNECTIVITY
                         </div>
@@ -239,11 +354,17 @@
                     <div class="w-12 h-12 rounded-full bg-cyan-500 flex items-center justify-center animate-pulse">
                         <i class="fas fa-shield-alt text-black"></i>
                     </div>
-                    <p class="text-gray-300 text-sm max-w-xl">
+                    <p class="text-gray-300 text-sm max-w-xl"
+                       data-pt="Em qualquer cenário, é fundamental garantir proteção e continuidade operacional. Garanta a resiliência com o nosso Cloud Backup."
+                       data-en="In any scenario, it is essential to ensure protection and operational continuity. Ensure resilience with our Cloud Backup."
+                       data-es="En cualquier escenario, es fundamental garantizar la protección y la continuidad operativa. Garantice la resiliencia con nuestro Cloud Backup.">
                         Em qualquer cenário, é fundamental garantir proteção e continuidade operacional. Garanta a resiliência do seu projeto com o nosso <span class="text-cyan-400 font-bold">Cloud Backup</span>.
                     </p>
                 </div>
-                <button class="text-xs font-black uppercase tracking-[0.2em] px-8 py-4 border border-cyan-500 text-cyan-400 rounded-xl hover:bg-cyan-500 hover:text-black transition-all">Ativar Proteção</button>
+                <button class="text-xs font-black uppercase tracking-[0.2em] px-8 py-4 border border-cyan-500 text-cyan-400 rounded-xl hover:bg-cyan-500 hover:text-black transition-all"
+                        data-pt="Ativar Proteção" data-en="Activate Protection" data-es="Activar Protección">
+                    Ativar Proteção
+                </button>
             </div>
         </div>
     </section>
@@ -252,9 +373,13 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-24" data-aos="fade-up">
                 <h2 class="text-4xl md:text-6xl font-black mb-6 tracking-tighter uppercase italic">
-                    Metodologia <span class="text-cyan-400">Generactive</span>
+                    <span data-pt="Metodologia" data-en="Methodology" data-es="Metodología">Metodologia</span> 
+                    <span class="text-cyan-400">Generactive</span>
                 </h2>
-                <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                <p class="text-gray-400 max-w-2xl mx-auto leading-relaxed"
+                   data-pt="Nossa abordagem garante segurança, eficiência e zero downtime em todo o processo de migração e implantação de ambientes em nuvem."
+                   data-en="Our approach ensures security, efficiency, and zero downtime throughout the migration and deployment process of cloud environments."
+                   data-es="Nuestro enfoque garantiza seguridad, eficiencia y cero tiempo de inactividad en todo el proceso de migración e implementación de entornos en la nube.">
                     Nossa abordagem garante segurança, eficiência e <strong>zero downtime</strong> em todo o processo de migração e implantação de ambientes em nuvem.
                 </p>
             </div>
@@ -266,48 +391,77 @@
                     <div class="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:border-cyan-500 transition-all">
                         <span class="text-cyan-400 font-black text-sm">01</span>
                     </div>
-                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Assessment</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed">Análise completa de workloads, custos e requisitos técnicos detalhados.</p>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest" data-pt="Assessment" data-en="Assessment" data-es="Evaluación">Assessment</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed"
+                       data-pt="Análise completa de workloads, custos e requisitos técnicos detalhados."
+                       data-en="Full analysis of workloads, costs, and detailed technical requirements."
+                       data-es="Análisis completo de cargas de trabajo, costes y requisitos técnicos detallados.">
+                        Análise completa de workloads, custos e requisitos técnicos detalhados.
+                    </p>
                 </div>
 
                 <div class="glass-panel p-8 rounded-[2.5rem] text-center group hover:bg-cyan-500/5 transition-all" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:border-cyan-500 transition-all">
                         <span class="text-cyan-400 font-black text-sm">02</span>
                     </div>
-                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Design</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed">Definição estratégica de rede, IAM, VPC e políticas de segurança.</p>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest" data-pt="Design" data-en="Design" data-es="Diseño">Design</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed"
+                       data-pt="Definição estratégica de rede, IAM, VPC e políticas de segurança."
+                       data-en="Strategic definition of network, IAM, VPC, and security policies."
+                       data-es="Definición estratégica de red, IAM, VPC y políticas de seguridad.">
+                        Definição estratégica de rede, IAM, VPC e políticas de segurança.
+                    </p>
                 </div>
 
                 <div class="glass-panel p-8 rounded-[2rem] text-center group hover:bg-cyan-500/5 transition-all border-cyan-500/20" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-12 h-12 bg-cyan-500 border border-cyan-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-[0_0_15px_rgba(6,182,212,0.5)]">
                         <i class="fas fa-code text-black text-xs"></i>
                     </div>
-                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">IaC Deploy</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed">Automação via Infrastructure as Code para agilidade e padronização.</p>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest" data-pt="IaC Deploy" data-en="IaC Deploy" data-es="Despliegue IaC">IaC Deploy</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed"
+                       data-pt="Automação via Infrastructure as Code para agilidade e padronização."
+                       data-en="Automation via Infrastructure as Code for agility and standardization."
+                       data-es="Automatización mediante Infrastructure as Code para agilidad y estandarización.">
+                        Automação via Infrastructure as Code para agilidade e padronização.
+                    </p>
                 </div>
 
                 <div class="glass-panel p-8 rounded-[2.5rem] text-center group hover:bg-cyan-500/5 transition-all" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:border-cyan-500 transition-all">
                         <span class="text-cyan-400 font-black text-sm">04</span>
                     </div>
-                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Validação</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed">Testes rigorosos de carga, resiliência e performance extrema.</p>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest" data-pt="Validação" data-en="Validation" data-es="Validación">Validação</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed"
+                       data-pt="Testes rigorosos de carga, resiliência e performance extrema."
+                       data-en="Rigorous load, resilience, and extreme performance testing."
+                       data-es="Pruebas rigurosas de carga, resiliencia y rendimiento extremo.">
+                        Testes rigorosos de carga, resiliência e performance extrema.
+                    </p>
                 </div>
 
                 <div class="glass-panel p-8 rounded-[2rem] text-center group hover:bg-cyan-500/5 transition-all" data-aos="fade-up" data-aos-delay="400">
                     <div class="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:border-cyan-500 transition-all">
                         <span class="text-cyan-400 font-black text-sm">05</span>
                     </div>
-                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Ops 24/7</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed">Monitoramento contínuo, otimização de recursos e relatórios de SRE.</p>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest" data-pt="Ops 24/7" data-en="Ops 24/7" data-es="Ops 24/7">Ops 24/7</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed"
+                       data-pt="Monitoramento contínuo, otimização de recursos e relatórios de SRE."
+                       data-en="Continuous monitoring, resource optimization, and SRE reports."
+                       data-es="Monitoreo continuo, optimización de recursos e informes de SRE.">
+                        Monitoramento contínuo, otimização de recursos e relatórios de SRE.
+                    </p>
                 </div>
             </div>
 
             <div class="mt-20 p-10 mag-card rounded-[3rem] text-center border-white/5 bg-gradient-to-b from-transparent to-cyan-500/5" data-aos="zoom-in">
-                <p class="text-gray-400 text-sm italic mb-8">
+                <p class="text-gray-400 text-sm italic mb-8"
+                   data-pt='"Garantimos uma transição segura e sem interrupções, assegurando a continuidade operacional e segurança total dos seus dados."'
+                   data-en='"We guarantee a safe and seamless transition, ensuring operational continuity and total data security."'
+                   data-es='"Garantizamos una transición segura y sin interrupciones, asegurando la continuidad operativa y la seguridad total de sus datos."'>
                     "Garantimos uma transição segura e sem interrupções, assegurando a continuidade operacional e segurança total dos seus dados."
                 </p>
-                <button class="bg-cyan-500 text-black font-black px-10 py-5 rounded-2xl hover:scale-105 hover:bg-white transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)]">
+                <button class="bg-cyan-500 text-black font-black px-10 py-5 rounded-2xl hover:scale-105 hover:bg-white transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] uppercase text-xs tracking-widest"
+                        data-pt="MIGRAR COM SEGURANÇA" data-en="MIGRATE SAFELY" data-es="MIGRAR CON SEGURIDAD">
                     MIGRAR COM SEGURANÇA <i class="fas fa-arrow-right ml-2"></i>
                 </button>
             </div>
@@ -318,30 +472,61 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="w-full md:w-1/3" data-aos="fade-right">
-                    <h2 class="text-4xl font-black mb-6 uppercase tracking-tight">Por que escolher a <br><span class="text-cyan-400">Generactive?</span></h2>
-                    <p class="text-gray-500 text-sm mb-8 leading-relaxed">
+                    <h2 class="text-4xl font-black mb-6 uppercase tracking-tight"
+                        data-pt="Por que escolher a Generactive?"
+                        data-en="Why choose Generactive?"
+                        data-es="¿Por qué elegir Generactive?">
+                        Por que escolher a <br><span class="text-cyan-400">Generactive?</span>
+                    </h2>
+                    <p class="text-gray-500 text-sm mb-8 leading-relaxed"
+                       data-pt="Unimos inovação tecnológica com as melhores práticas de mercado para entregar uma nuvem que não apenas funciona, mas impulsiona seu ROI."
+                       data-en="We combine technological innovation with market best practices to deliver a cloud that not only works but drives your ROI."
+                       data-es="Combinamos la innovación tecnológica con las mejores prácticas del mercado para ofrecer una nube que no solo funciona, sino que impulsa su ROI.">
                         Unimos inovação tecnológica com as melhores práticas de mercado para entregar uma nuvem que não apenas funciona, mas impulsiona seu ROI.
                     </p>
-                    <a href="#" class="text-xs font-bold text-cyan-400 tracking-[0.2em] border-b border-cyan-400 pb-1 hover:text-white hover:border-white transition">EXPLORAR GERENCIAMENTO</a>
+                    <a href="#" class="text-xs font-bold text-cyan-400 tracking-[0.2em] border-b border-cyan-400 pb-1 hover:text-white hover:border-white transition"
+                       data-pt="EXPLORAR GERENCIAMENTO" data-en="EXPLORE MANAGEMENT" data-es="EXPLORAR GESTIÓN">
+                        EXPLORAR GERENCIAMENTO
+                    </a>
                 </div>
 
                 <div class="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div class="glass-panel p-8 rounded-3xl border-l-4 border-cyan-500" data-aos="fade-up">
-                        <h4 class="text-white font-bold mb-2">Secure by Design</h4>
-                        <p class="text-gray-500 text-xs">Princípios de Zero Trust e Least Privilege aplicados nativamente em cada arquitetura.</p>
+                        <h4 class="text-white font-bold mb-2" data-pt="Secure by Design" data-en="Secure by Design" data-es="Seguro por Diseño">Secure by Design</h4>
+                        <p class="text-gray-500 text-xs"
+                           data-pt="Princípios de Zero Trust e Least Privilege aplicados nativamente em cada arquitetura."
+                           data-en="Zero Trust and Least Privilege principles applied natively in every architecture."
+                           data-es="Principios de Zero Trust y Least Privilege aplicados nativamente en cada arquitectura.">
+                            Princípios de Zero Trust e Least Privilege aplicados nativamente em cada arquitetura.
+                        </p>
                     </div>
                     <div class="glass-panel p-8 rounded-3xl border-l-4 border-blue-500" data-aos="fade-up" data-aos-delay="100">
-                        <h4 class="text-white font-bold mb-2">SRE & FinOps</h4>
-                        <p class="text-gray-500 text-xs">Equilíbrio perfeito entre performance máxima e controle rigoroso de custos mensais.</p>
+                        <h4 class="text-white font-bold mb-2" data-pt="SRE & FinOps" data-en="SRE & FinOps" data-es="SRE y FinOps">SRE & FinOps</h4>
+                        <p class="text-gray-500 text-xs"
+                           data-pt="Equilíbrio perfeito entre performance máxima e controle rigoroso de custos mensais."
+                           data-en="Perfect balance between maximum performance and rigorous monthly cost control."
+                           data-es="Equilibrio perfecto entre el máximo rendimiento y un estricto control de los costes mensuales.">
+                            Equilíbrio perfeito entre performance máxima e controle rigoroso de custos mensais.
+                        </p>
                     </div>
                     <div class="glass-panel p-8 rounded-3xl border-l-4 border-indigo-500" data-aos="fade-up" data-aos-delay="200">
-                        <h4 class="text-white font-bold mb-2">DNA Multicloud</h4>
+                        <h4 class="text-white font-bold mb-2" data-pt="DNA Multicloud" data-en="Multicloud DNA" data-es="ADN Multicloud">DNA Multicloud</h4>
                         <p class="text-gray-400 text-xs font-semibold mb-2">AWS • AZURE • GCP</p>
-                        <p class="text-gray-500 text-xs">Integração nativa com os provedores líderes globais sem lock-in de fornecedor.</p>
+                        <p class="text-gray-500 text-xs"
+                           data-pt="Integração nativa com os provedores líderes globais sem lock-in de fornecedor."
+                           data-en="Native integration with leading global providers without vendor lock-in."
+                           data-es="Integración nativa con los principales proveedores globales sin dependencia de un solo proveedor.">
+                            Integração nativa com os provedores líderes globais sem lock-in de fornecedor.
+                        </p>
                     </div>
                     <div class="glass-panel p-8 rounded-3xl border-l-4 border-cyan-400" data-aos="fade-up" data-aos-delay="300">
-                        <h4 class="text-white font-bold mb-2">Operação 24/7</h4>
-                        <p class="text-gray-500 text-xs">Monitoramento proativo e SLAs de alta disponibilidade para aplicações de missão crítica.</p>
+                        <h4 class="text-white font-bold mb-2" data-pt="Operação 24/7" data-en="24/7 Operation" data-es="Operación 24/7">Operação 24/7</h4>
+                        <p class="text-gray-500 text-xs"
+                           data-pt="Monitoramento proativo e SLAs de alta disponibilidade para aplicações de missão crítica."
+                           data-en="Proactive monitoring and high availability SLAs for mission-critical applications."
+                           data-es="Monitoreo proactivo y SLAs de alta disponibilidad para aplicaciones de misión crítica.">
+                            Monitoramento proativo e SLAs de alta disponibilidade para aplicações de missão crítica.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -351,13 +536,20 @@
     <section class="py-32 px-6 relative z-10 overflow-hidden text-center">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-4xl md:text-6xl font-black mb-8 leading-tight" data-aos="zoom-in">
-                Sua empresa no próximo <br><span class="text-cyan-400 animate-pulse">nível de eficiência</span>
+                <span data-pt="Sua empresa no próximo" data-en="Your company at the next" data-es="Su empresa al siguiente">Sua empresa no próximo</span> <br>
+                <span class="text-cyan-400 animate-pulse" data-pt="nível de eficiência" data-en="level of efficiency" data-es="nivel de eficiencia">nível de eficiência</span>
             </h2>
-            <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto" data-aos="fade-up">
+            <p class="text-gray-400 text-lg mb-12 max-w-2xl mx-auto" data-aos="fade-up"
+               data-pt="Descubra como a arquitetura de Cloud ideal pode reduzir seus custos e acelerar sua inovação com segurança total."
+               data-en="Discover how the ideal Cloud architecture can reduce your costs and accelerate your innovation with total security."
+               data-es="Descubra cómo la arquitectura Cloud ideal puede reducir sus costes y acelerar su innovación con total seguridad.">
                 Descubra como a arquitetura de Cloud ideal pode reduzir seus custos e acelerar sua inovação com segurança total.
             </p>
             <div class="flex flex-col md:flex-row gap-6 justify-center items-center" data-aos="fade-up" data-aos-delay="200">
-                <button class="bg-cyan-500 text-black font-black px-12 py-5 rounded-full hover:bg-white hover:scale-105 transition-all shadow-[0_0_30px_rgba(6,182,212,0.3)]">
+                <button class="bg-cyan-500 text-black font-black px-12 py-5 rounded-full hover:bg-white hover:scale-105 transition-all shadow-[0_0_30px_rgba(6,182,212,0.3)] uppercase text-xs tracking-widest"
+                        data-pt="SOLICITAR CONSULTORIA GRATUITA"
+                        data-en="REQUEST FREE CONSULTING"
+                        data-es="SOLICITAR CONSULTORÍA GRATUITA">
                     SOLICITAR CONSULTORIA GRATUITA
                 </button>
             </div>
@@ -367,45 +559,78 @@
     <section id="faq" class="py-32 px-6 relative z-10 bg-black/40">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-black mb-12 uppercase italic tracking-tighter" data-aos="fade-right">
-                FAQ – <span class="text-cyan-400">Dúvidas Frequentes</span>
+                <span data-pt="FAQ – Dúvidas Frequentes" data-en="FAQ – Frequently Asked Questions" data-es="FAQ – Preguntas Frecuentes">FAQ – Dúvidas Frequentes</span>
             </h2>
             <div class="space-y-4">
+                
                 <div class="faq-item glass-panel rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
                     <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-sm md:text-base group-hover:text-cyan-400 transition">1. Cloud Pública é segura para dados corporativos?</h4>
+                        <h4 class="font-bold text-sm md:text-base group-hover:text-cyan-400 transition"
+                            data-pt="1. Cloud Pública é segura para dados corporativos?"
+                            data-en="1. Is Public Cloud secure for corporate data?"
+                            data-es="1. ¿Es la Nube Pública segura para datos corporativos?">
+                            1. Cloud Pública é segura para dados corporativos?
+                        </h4>
                         <i class="fas fa-chevron-down transition-transform"></i>
                     </div>
-                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed">
+                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Sim. Com criptografia avançada, autenticação multifator e segmentação de rede, oferece níveis de segurança equivalentes ou superiores à infraestrutura local."
+                       data-en="Yes. With advanced encryption, multi-factor authentication, and network segmentation, it offers security levels equivalent or superior to local infrastructure."
+                       data-es="Sí. Con cifrado avanzado, autenticación multifactor y segmentación de red, ofrece niveles de seguridad equivalentes o superiores a la infraestructura local.">
                         Sim. Com criptografia avançada, autenticação multifator e segmentação de rede, oferece níveis de segurança equivalentes ou superiores à infraestrutura local, seguindo padrões globais de compliance.
                     </p>
                 </div>
 
                 <div class="faq-item glass-panel rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
                     <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-sm md:text-base group-hover:text-cyan-400 transition">2. Posso integrar com o ambiente atual (on-premises)?</h4>
+                        <h4 class="font-bold text-sm md:text-base group-hover:text-cyan-400 transition"
+                            data-pt="2. Posso integrar com o ambiente atual (on-premises)?"
+                            data-en="2. Can I integrate with the current environment (on-premises)?"
+                            data-es="2. ¿Puedo integrarlo con el entorno actual (on-premises)?">
+                            2. Posso integrar com o ambiente atual (on-premises)?
+                        </h4>
                         <i class="fas fa-chevron-down transition-transform"></i>
                     </div>
-                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed">
+                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Sim. É possível conectar data centers locais via VPN ou Direct Connect, criando um ecossistema híbrido e controlado."
+                       data-en="Yes. It is possible to connect local data centers via VPN or Direct Connect, creating a hybrid and controlled ecosystem."
+                       data-es="Sí. Es posible conectar centros de datos locales mediante VPN o Direct Connect, creando un ecosistema híbrido y controlado.">
                         Sim. É possível conectar data centers locais via VPN ou Direct Connect, criando um ecossistema híbrido e controlado.
                     </p>
                 </div>
 
                 <div class="faq-item glass-panel rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
                     <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-sm md:text-base group-hover:text-cyan-400 transition">3. Como a Generactive garante controle de custos?</h4>
+                        <h4 class="font-bold text-sm md:text-base group-hover:text-cyan-400 transition"
+                            data-pt="3. Como a Generactive garante controle de custos?"
+                            data-en="3. How does Generactive guarantee cost control?"
+                            data-es="3. ¿Cómo garantiza Generactive el control de costos?">
+                            3. Como a Generactive garante controle de custos?
+                        </h4>
                         <i class="fas fa-chevron-down transition-transform"></i>
                     </div>
-                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed">
+                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Aplicamos práticas de FinOps para otimizar consumo, identificar desperdícios e manter o uso sob controle com alertas automatizados."
+                       data-en="We apply FinOps practices to optimize consumption, identify waste, and keep usage under control with automated alerts."
+                       data-es="Aplicamos prácticas de FinOps para optimizar el consumo, identificar desperdicios y mantener el uso bajo control con alertas automatizadas.">
                         Aplicamos práticas de FinOps para otimizar consumo, identificar desperdícios e manter o uso sob controle com alertas automatizados para previsibilidade financeira.
                     </p>
                 </div>
 
                 <div class="faq-item glass-panel rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
                     <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-sm md:text-base group-hover:text-cyan-400 transition">4. A Cloud Pública oferece alta disponibilidade?</h4>
+                        <h4 class="font-bold text-sm md:text-base group-hover:text-cyan-400 transition"
+                            data-pt="4. A Cloud Pública oferece alta disponibilidade?"
+                            data-en="4. Does Public Cloud offer high availability?"
+                            data-es="4. ¿Ofrece la Nube Pública alta disponibilidad?">
+                            4. A Cloud Pública oferece alta disponibilidade?
+                        </h4>
                         <i class="fas fa-chevron-down transition-transform"></i>
                     </div>
-                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed">
+                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Sim. Utilizamos arquiteturas distribuídas em múltiplas zonas e regiões, garantindo redundância e continuidade operacional."
+                       data-en="Yes. We use architectures distributed across multiple zones and regions, ensuring redundancy and operational continuity."
+                       data-es="Sí. Utilizamos arquitecturas distribuidas en múltiples zonas y regiones, garantizando la redundancia y la continuidad operativa.">
                         Sim. Utilizamos arquiteturas distribuídas em múltiplas zonas e regiões, garantindo redundância e continuidade operacional, mesmo em cenários de falha.
                     </p>
                 </div>
@@ -414,12 +639,22 @@
     </section>
 
     <section id="especialistas" class="py-24 text-center relative z-10">
-        <h2 class="text-3xl font-black mb-8" data-aos="zoom-in">Pronto para acelerar sua transformação?</h2>
-        <button class="bg-white text-black font-black px-12 py-5 rounded-full hover:bg-cyan-400 transition transform hover:scale-105 shadow-xl">SOLICITAR CONSULTORIA</button>
+        <h2 class="text-3xl font-black mb-8" data-aos="zoom-in"
+            data-pt="Pronto para acelerar sua transformação?"
+            data-en="Ready to accelerate your transformation?"
+            data-es="¿Listo para acelerar su transformación?">
+            Pronto para acelerar sua transformação?
+        </h2>
+        <button class="bg-white text-black font-black px-12 py-5 rounded-full hover:bg-cyan-400 transition transform hover:scale-105 shadow-xl uppercase text-xs tracking-widest"
+                data-pt="SOLICITAR CONSULTORIA"
+                data-en="REQUEST CONSULTING"
+                data-es="SOLICITAR CONSULTORÍA">
+            SOLICITAR CONSULTORIA
+        </button>
     </section>
 
     <footer class="py-10 text-center text-[10px] text-gray-700 font-bold uppercase tracking-widest border-t border-white/5 relative z-10">
-        GENERACTIVE CLOUD • 2026
+        <span data-pt="GENERACTIVE CLOUD • 2026" data-en="GENERACTIVE CLOUD • 2026" data-es="GENERACTIVE CLOUD • 2026">GENERACTIVE CLOUD • 2026</span>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -430,5 +665,21 @@
             glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
         });
     </script>
+<script>
+function changeLanguage(lang) {
+    document.getElementById('lang-label').innerText = lang.toUpperCase();
+    const elements = document.querySelectorAll('[data-pt]');
+    elements.forEach(el => {
+        const text = el.getAttribute(`data-${lang}`);
+        if (text) el.innerText = text;
+    });
+    localStorage.setItem('generactive_lang', lang);
+}
+
+window.onload = () => {
+    const savedLang = localStorage.getItem('generactive_lang') || 'pt';
+    changeLanguage(savedLang);
+};
+</script>
 </body>
 </html>
