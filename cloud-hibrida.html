@@ -34,32 +34,73 @@
 
     <div class="glow-cursor" id="glow"></div>
 
-    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/80 backdrop-blur-md px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-extrabold tracking-tighter flex items-center gap-2 group">
-                <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center rotate-12 group-hover:rotate-0 transition-all">
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-1">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
+            
+            <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1">
+                <div class="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center rotate-12 group-hover:rotate-0 transition-all shadow-lg shadow-cyan-500/20 flex-shrink-0">
                     <i class="fas fa-arrow-left text-black text-xs"></i>
                 </div>
-                GENERA<span class="text-cyan-400">CTIVE</span>
+                
+                <img src="LogoGeneractive.png" 
+                     alt="Generactive Innovate" 
+                     class="h-12 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_0_15px_rgba(6,182,212,0.2)]">
             </a>
-            <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-                <a href="#beneficios" class="hover:text-cyan-400 transition">Benefícios</a>
-                <a href="#metodologia" class="hover:text-cyan-400 transition">Metodologia</a>
-                <a href="#faq" class="hover:text-cyan-400 transition">FAQ</a>
+            
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+                    <a href="#beneficios" class="hover:text-cyan-400 transition" data-pt="Benefícios" data-en="Benefits" data-es="Beneficios">Benefícios</a>
+                    <a href="#metodologia" class="hover:text-cyan-400 transition" data-pt="Metodologia" data-en="Methodology" data-es="Metodología">Metodologia</a>
+                    <a href="#faq" class="hover:text-cyan-400 transition" data-pt="FAQ" data-en="FAQ" data-es="FAQ">FAQ</a>
+                </div>
+
+                <div class="relative group">
+                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                        <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
+                    </button>
+                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">PORTUGUÊS</button>
+                        <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">ENGLISH</button>
+                        <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">ESPAÑOL</button>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5519995000067?text=Olá! Gostaria de uma consultoria sobre as soluções de Cloud Híbrida da Generactive." 
+   target="_blank" 
+   class="bg-white text-black px-5 py-2 rounded-full font-bold text-[10px] hover:bg-cyan-400 transition uppercase tracking-widest shadow-lg shadow-white/5 inline-block text-center"
+   data-pt="CONSULTORIA" 
+   data-en="CONSULTING" 
+   data-es="CONSULTORÍA">
+    CONSULTORIA
+</a>
             </div>
-            <button class="bg-white text-black px-6 py-2 rounded-full font-bold text-xs hover:bg-cyan-400 transition uppercase tracking-widest">Falar com Especialistas</button>
         </div>
     </nav>
 
     <header class="relative pt-48 pb-32 px-6 z-10 text-center overflow-hidden">
         <div class="max-w-5xl mx-auto" data-aos="zoom-in">
-            <div class="inline-block px-4 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-[10px] font-black tracking-widest text-cyan-400 mb-6 uppercase">
+            <div class="inline-block px-4 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/5 text-[10px] font-black tracking-widest text-cyan-400 mb-6 uppercase"
+                 data-pt="O melhor dos dois mundos" data-en="The best of both worlds" data-es="Lo mejor de ambos mundos">
                 O melhor dos dois mundos
             </div>
-            <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight">Cloud <span class="animate-flow">Híbrida</span></h1>
-            <p class="text-gray-400 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed">Flexibilidade, integração e controle inteligente. Orquestre seus workloads entre ambientes públicos e privados com máxima eficiência.</p>
+            <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight">
+                Cloud <span class="animate-flow" data-pt="Híbrida" data-en="Hybrid" data-es="Híbrida">Híbrida</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed"
+               data-pt="Flexibilidade, integração e controle inteligente. Orquestre seus workloads entre ambientes públicos e privados com máxima eficiência."
+               data-en="Flexibility, integration, and intelligent control. Orchestrate your workloads across public and private environments with maximum efficiency."
+               data-es="Flexibilidad, integración y control inteligente. Orqueste sus cargas de trabajo entre entornos públicos y privados con la máxima eficiencia.">
+                Flexibilidade, integração e controle inteligente. Orquestre seus workloads entre ambientes públicos e privados com máxima eficiência.
+            </p>
             <div class="flex flex-wrap justify-center gap-6">
-                <button class="bg-cyan-500 text-black font-black px-12 py-5 rounded-2xl hover:bg-white transition-all shadow-xl shadow-cyan-500/20">SOLICITAR CONSULTORIA</button>
+                <a href="https://wa.me/5519995000067?text=Olá! Gostaria de solicitar uma consultoria sobre as soluções de Cloud Híbrida da Generactive." 
+   target="_blank" 
+   class="bg-cyan-500 text-black font-black px-12 py-5 rounded-2xl hover:bg-white transition-all shadow-xl shadow-cyan-500/20 uppercase text-xs tracking-widest inline-block text-center"
+   data-pt="SOLICITAR CONSULTORIA" 
+   data-en="REQUEST CONSULTING" 
+   data-es="SOLICITAR CONSULTORÍA">
+    SOLICITAR CONSULTORIA
+</a>
             </div>
         </div>
     </header>
@@ -68,13 +109,32 @@
         <div class="max-w-5xl mx-auto">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div data-aos="fade-right">
-                    <h2 class="text-3xl font-black mb-6 uppercase italic tracking-tighter">O que é e por que <span class="text-cyan-400">adotar?</span></h2>
-                    <p class="text-gray-400 leading-relaxed mb-6">A Cloud Híbrida combina ambientes públicos e privados, permitindo que dados e aplicações sejam movidos com segurança. É o modelo ideal para empresas que precisam atender normas de compliance, mas desejam a elasticidade da nuvem pública.</p>
-                    <p class="text-sm text-gray-500 italic border-l-2 border-cyan-500 pl-6">Integramos o melhor da Cloud Pública e Privada em um ecossistema unificado.</p>
+                    <h2 class="text-3xl font-black mb-6 uppercase italic tracking-tighter">
+                        <span data-pt="O que é e por que" data-en="What it is and why" data-es="Qué es y por qué">O que é e por que</span> 
+                        <span class="text-cyan-400" data-pt="adotar?" data-en="adopt it?" data-es="¿adoptarla?">adotar?</span>
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed mb-6"
+                       data-pt="A Cloud Híbrida combina ambientes públicos e privados, permitindo que dados e aplicações sejam movidos com segurança. É ideal para empresas que precisam de compliance e elasticidade."
+                       data-en="Hybrid Cloud combines public and private environments, allowing data and applications to move securely. It is ideal for companies that need compliance and elasticity."
+                       data-es="La Nube Híbrida combina entornos públicos y privados, permitiendo que los datos y las aplicaciones se muevan de forma segura. Es ideal para empresas que necesitan cumplimiento y elasticidad.">
+                        A Cloud Híbrida combina ambientes públicos e privados, permitindo que dados e aplicações sejam movidos com segurança. É o modelo ideal para empresas que precisam atender normas de compliance, mas desejam a elasticidade da nuvem pública.
+                    </p>
+                    <p class="text-sm text-gray-500 italic border-l-2 border-cyan-500 pl-6"
+                       data-pt="Integramos o melhor da Cloud Pública e Privada em um ecossistema unificado."
+                       data-en="We integrate the best of Public and Private Cloud into a unified ecosystem."
+                       data-es="Integramos lo mejor de la Nube Pública y Privada en un ecosistema unificado.">
+                        Integramos o melhor da Cloud Pública e Privada em um ecossistema unificado.
+                    </p>
                 </div>
                 <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-                    <div class="hybrid-glass p-6 rounded-2xl text-center"><i class="fas fa-bolt text-cyan-400 mb-4 text-xl"></i><p class="text-[10px] font-black uppercase">Agilidade</p></div>
-                    <div class="hybrid-glass p-6 rounded-2xl text-center"><i class="fas fa-shield-alt text-blue-500 mb-4 text-xl"></i><p class="text-[10px] font-black uppercase">Controle</p></div>
+                    <div class="hybrid-glass p-6 rounded-2xl text-center">
+                        <i class="fas fa-bolt text-cyan-400 mb-4 text-xl"></i>
+                        <p class="text-[10px] font-black uppercase text-white" data-pt="Agilidade" data-en="Agility" data-es="Agilidad">Agilidade</p>
+                    </div>
+                    <div class="hybrid-glass p-6 rounded-2xl text-center">
+                        <i class="fas fa-shield-alt text-blue-500 mb-4 text-xl"></i>
+                        <p class="text-[10px] font-black uppercase text-white" data-pt="Controle" data-en="Control" data-es="Control">Controle</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -82,31 +142,41 @@
 
     <section id="beneficios" class="py-32 px-6 relative z-10">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-black text-center mb-20 uppercase italic tracking-tighter" data-aos="fade-up">Benefícios da <span class="text-cyan-400">Cloud Híbrida</span></h2>
+            <h2 class="text-4xl font-black text-center mb-20 uppercase italic tracking-tighter" data-aos="fade-up">
+                <span data-pt="Benefícios da" data-en="Benefits of" data-es="Beneficios de la">Benefícios da</span> 
+                <span class="text-cyan-400" data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</span>
+            </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="hybrid-glass p-10 rounded-[2.5rem]" data-aos="fade-up">
-                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Flexibilidade Operacional</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed">Mova workloads entre ambientes conforme a demanda do seu negócio.</p>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest" data-pt="Flexibilidade Operacional" data-en="Operational Flexibility" data-es="Flexibilidad Operativa">Flexibilidade Operacional</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed" data-pt="Mova workloads entre ambientes conforme a demanda do seu negócio." data-en="Move workloads between environments according to your business demand." data-es="Mueva las cargas de trabajo entre entornos según la demanda de su negocio.">Mova workloads entre ambientes conforme a demanda do seu negócio.</p>
                 </div>
                 <div class="hybrid-glass p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="100">
-                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Otimização de Custos</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed">Utilize a nuvem pública de forma elástica, pagando apenas pelo uso extra necessário.</p>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest" data-pt="Otimização de Custos" data-en="Cost Optimization" data-es="Optimización de Costes">Otimização de Custos</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed" data-pt="Utilize a nuvem pública de forma elástica, pagando apenas pelo uso extra necessário." data-en="Use the public cloud elastically, paying only for the extra usage needed." data-es="Utilice la nube pública de forma elástica, pagando solo por el uso extra necesario.">Utilize a nuvem pública de forma elástica, pagando apenas pelo uso extra necessário.</p>
                 </div>
                 <div class="hybrid-glass p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Segurança e Conformidade</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed">Mantenha seus dados sensíveis e críticos protegidos em ambiente privado.</p>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest" data-pt="Segurança e Conformidade" data-en="Security and Compliance" data-es="Seguridad y Cumplimiento">Segurança e Conformidade</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed" data-pt="Mantenha seus dados sensíveis e críticos protegidos em ambiente privado." data-en="Keep your sensitive and critical data protected in a private environment." data-es="Mantenga sus datos sensibles y críticos protegidos en un entorno privado.">Mantenha seus dados sensíveis e críticos protegidos em ambiente privado.</p>
                 </div>
                 <div class="hybrid-glass p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="300">
-                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Alta Disponibilidade</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed">Resiliência extrema: continuidade operacional mesmo em falhas regionais.</p>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest" data-pt="Alta Disponibilidade" data-en="High Availability" data-es="Alta Disponibilidad">Alta Disponibilidade</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed" data-pt="Resiliência extrema: continuidade operacional mesmo em falhas regionais." data-en="Extreme resilience: operational continuity even in regional failures." data-es="Resiliencia extrema: continuidad operativa incluso en fallos regionales.">Resiliência extrema: continuidade operacional mesmo em falhas regionais.</p>
                 </div>
                 <div class="hybrid-glass p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="400">
-                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest">Governança Centralizada</h3>
-                    <p class="text-gray-500 text-xs leading-relaxed">Políticas unificadas para todos os seus ambientes, de ponta a ponta.</p>
+                    <h3 class="text-white font-bold mb-4 uppercase text-sm tracking-widest" data-pt="Governança Centralizada" data-en="Centralized Governance" data-es="Gobernanza Centralizada">Governança Centralizada</h3>
+                    <p class="text-gray-500 text-xs leading-relaxed" data-pt="Políticas unificadas para todos os seus ambientes, de ponta a ponta." data-en="Unified policies for all your environments, from end to end." data-es="Políticas unificadas para todos sus entornos, de principio a fin.">Políticas unificadas para todos os seus ambientes, de ponta a ponta.</p>
                 </div>
                 <div class="p-10 rounded-[2.5rem] bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border border-cyan-500/20 flex flex-col justify-center items-center text-center" data-aos="zoom-in">
-                    <p class="text-sm font-bold text-white mb-6">Amplie a proteção híbrida com nosso Backup em Nuvem.</p>
-                    <button class="text-[10px] font-black text-cyan-400 uppercase tracking-widest border-b border-cyan-400">Ativar Proteção →</button>
+                    <p class="text-sm font-bold text-white mb-6" data-pt="Amplie a proteção híbrida com nosso Backup em Nuvem." data-en="Extend hybrid protection with our Cloud Backup." data-es="Amplíe la protección híbrida con nuestro Respaldo en la Nube.">Amplie a proteção híbrida com nosso Backup em Nuvem.</p>
+                    <a href="https://wa.me/5519995000067?text=Olá! Gostaria de ativar a proteção e saber mais sobre as camadas de segurança da Generactive." 
+   target="_blank" 
+   class="text-[10px] font-black text-cyan-400 uppercase tracking-widest border-b border-cyan-400 pb-1 hover:text-white hover:border-white transition-colors inline-block text-center"
+   data-pt="Ativar Proteção →" 
+   data-en="Activate Protection →" 
+   data-es="Activar Protección →">
+    Ativar Proteção →
+</a>    
                 </div>
             </div>
         </div>
@@ -114,23 +184,26 @@
 
     <section class="py-32 px-6 relative z-10 bg-white/[0.01]">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-black text-center mb-20 uppercase tracking-tighter italic">Casos de Uso <span class="text-cyan-400">Ideais</span></h2>
+            <h2 class="text-4xl font-black text-center mb-20 uppercase tracking-tighter italic">
+                <span data-pt="Casos de Uso" data-en="Use Cases" data-es="Casos de Uso">Casos de Uso</span> 
+                <span class="text-cyan-400" data-pt="Ideais" data-en="Ideals" data-es="Ideales">Ideais</span>
+            </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
                 <div class="hybrid-glass p-8 rounded-3xl" data-aos="fade-up">
-                    <p class="font-bold text-xs uppercase mb-2">Multicloud</p>
-                    <p class="text-gray-500 text-[10px]">Workloads distribuídos entre diversos provedores.</p>
+                    <p class="font-bold text-xs uppercase mb-2 text-white" data-pt="Multicloud" data-en="Multicloud" data-es="Multicloud">Multicloud</p>
+                    <p class="text-gray-500 text-[10px]" data-pt="Workloads distribuídos entre diversos provedores." data-en="Workloads distributed among different providers." data-es="Cargas de trabajo distribuidas entre diversos proveedores.">Workloads distribuídos entre diversos provedores.</p>
                 </div>
                 <div class="hybrid-glass p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
-                    <p class="font-bold text-xs uppercase mb-2">Setores Regulados</p>
-                    <p class="text-gray-500 text-[10px]">Finanças, saúde e jurídico com controle total.</p>
+                    <p class="font-bold text-xs uppercase mb-2 text-white" data-pt="Setores Regulados" data-en="Regulated Sectors" data-es="Sectores Regulados">Setores Regulados</p>
+                    <p class="text-gray-500 text-[10px]" data-pt="Finanças, saúde e jurídico com controle total." data-en="Finance, healthcare and legal with full control." data-es="Finanzas, salud y jurídico con control total.">Finanças, saúde e jurídico com controle total.</p>
                 </div>
                 <div class="hybrid-glass p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
-                    <p class="font-bold text-xs uppercase mb-2">Picos Sazonais</p>
-                    <p class="text-gray-500 text-[10px]">Grandes volumes de dados e tráfego variável.</p>
+                    <p class="font-bold text-xs uppercase mb-2 text-white" data-pt="Picos Sazonais" data-en="Seasonal Peaks" data-es="Picos Estacionales">Picos Sazonais</p>
+                    <p class="text-gray-500 text-[10px]" data-pt="Grandes volumes de dados e tráfego variável." data-en="Large volumes of data and variable traffic." data-es="Grandes volúmenes de datos y tráfico variable.">Grandes volumes de dados e tráfego variável.</p>
                 </div>
                 <div class="hybrid-glass p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
-                    <p class="font-bold text-xs uppercase mb-2">Transição</p>
-                    <p class="text-gray-500 text-[10px]">Empresas em fase de migração progressiva.</p>
+                    <p class="font-bold text-xs uppercase mb-2 text-white" data-pt="Transição" data-en="Transition" data-es="Transición">Transição</p>
+                    <p class="text-gray-500 text-[10px]" data-pt="Empresas em fase de migração progressiva." data-en="Companies in progressive migration phase." data-es="Empresas en fase de migración progresiva.">Empresas em fase de migração progressiva.</p>
                 </div>
             </div>
         </div>
@@ -138,27 +211,50 @@
 
     <section id="metodologia" class="py-32 px-6 relative z-10">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-black text-center mb-16 uppercase tracking-tighter italic">Metodologia <span class="text-cyan-400">Híbrida</span></h2>
+            <h2 class="text-3xl font-black text-center mb-16 uppercase tracking-tighter italic" data-aos="fade-up">
+                <span data-pt="Metodologia" data-en="Methodology" data-es="Metodología">Metodologia</span> 
+                <span class="text-cyan-400" data-pt="Híbrida" data-en="Hybrid" data-es="Híbrida">Híbrida</span>
+            </h2>
+            
             <div class="space-y-4">
                 <div class="flex gap-6 items-center p-6 hybrid-glass rounded-2xl" data-aos="fade-right">
                     <div class="w-10 h-10 rounded-lg bg-cyan-500 text-black flex items-center justify-center font-black">1</div>
-                    <div><p class="font-bold text-sm mb-1 uppercase">Assessment & Discovery</p><p class="text-gray-500 text-xs">Mapeamento de workloads e conectividade estratégica.</p></div>
+                    <div>
+                        <p class="font-bold text-sm mb-1 uppercase text-white" data-pt="Assessment & Discovery" data-en="Assessment & Discovery" data-es="Evaluación y Descubrimiento">Assessment & Discovery</p>
+                        <p class="text-gray-500 text-xs" data-pt="Mapeamento de workloads e conectividade estratégica." data-en="Workload mapping and strategic connectivity." data-es="Mapeo de cargas de trabajo y conectividad estratégica.">Mapeamento de workloads e conectividade estratégica.</p>
+                    </div>
                 </div>
+
                 <div class="flex gap-6 items-center p-6 hybrid-glass rounded-2xl" data-aos="fade-right" data-aos-delay="100">
                     <div class="w-10 h-10 rounded-lg bg-cyan-500 text-black flex items-center justify-center font-black">2</div>
-                    <div><p class="font-bold text-sm mb-1 uppercase">Design & Planejamento</p><p class="text-gray-500 text-xs">Definição de redes, IAM e segurança multicloud integrada.</p></div>
+                    <div>
+                        <p class="font-bold text-sm mb-1 uppercase text-white" data-pt="Design & Planejamento" data-en="Design & Planning" data-es="Diseño y Planeación">Design & Planejamento</p>
+                        <p class="text-gray-500 text-xs" data-pt="Definição de redes, IAM e segurança multicloud integrada." data-en="Network, IAM, and integrated multicloud security definition." data-es="Definición de redes, IAM y seguridad multicloud integrada.">Definição de redes, IAM e segurança multicloud integrada.</p>
+                    </div>
                 </div>
+
                 <div class="flex gap-6 items-center p-6 hybrid-glass rounded-2xl" data-aos="fade-right" data-aos-delay="200">
                     <div class="w-10 h-10 rounded-lg bg-cyan-500 text-black flex items-center justify-center font-black">3</div>
-                    <div><p class="font-bold text-sm mb-1 uppercase">Conectividade Segura</p><p class="text-gray-500 text-xs">VPN, Direct Connect e SD-WAN para rotas de alta performance.</p></div>
+                    <div>
+                        <p class="font-bold text-sm mb-1 uppercase text-white" data-pt="Conectividade Segura" data-en="Secure Connectivity" data-es="Conectividad Segura">Conectividade Segura</p>
+                        <p class="text-gray-500 text-xs" data-pt="VPN, Direct Connect e SD-WAN para rotas de alta performance." data-en="VPN, Direct Connect, and SD-WAN for high-performance routes." data-es="VPN, Direct Connect y SD-WAN para rutas de alto rendimiento.">VPN, Direct Connect e SD-WAN para rotas de alta performance.</p>
+                    </div>
                 </div>
+
                 <div class="flex gap-6 items-center p-6 hybrid-glass rounded-2xl border-cyan-500/20 shadow-[0_0_20px_rgba(6,182,212,0.1)]" data-aos="fade-right" data-aos-delay="300">
                     <div class="w-10 h-10 rounded-lg bg-cyan-500 text-black flex items-center justify-center font-black animate-pulse">4</div>
-                    <div><p class="font-bold text-sm mb-1 uppercase">Automação (IaC)</p><p class="text-gray-500 text-xs">Pipelines e provisionamento dinâmico via infraestrutura como código.</p></div>
+                    <div>
+                        <p class="font-bold text-sm mb-1 uppercase text-white" data-pt="Automação (IaC)" data-en="Automation (IaC)" data-es="Automatización (IaC)">Automação (IaC)</p>
+                        <p class="text-gray-500 text-xs" data-pt="Pipelines e provisionamento dinâmico via infraestrutura como código." data-en="Pipelines and dynamic provisioning via infrastructure as code." data-es="Pipelines y aprovisionamiento dinámico mediante infraestructura como código.">Pipelines e provisionamento dinâmico via infraestrutura como código.</p>
+                    </div>
                 </div>
+
                 <div class="flex gap-6 items-center p-6 hybrid-glass rounded-2xl" data-aos="fade-right" data-aos-delay="400">
                     <div class="w-10 h-10 rounded-lg bg-cyan-500 text-black flex items-center justify-center font-black">5</div>
-                    <div><p class="font-bold text-sm mb-1 uppercase">FinOps & Monitoramento</p><p class="text-gray-500 text-xs">Gestão de custos e performance unificada 24/7.</p></div>
+                    <div>
+                        <p class="font-bold text-sm mb-1 uppercase text-white" data-pt="FinOps & Monitoramento" data-en="FinOps & Monitoring" data-es="FinOps y Monitoreo">FinOps & Monitoramento</p>
+                        <p class="text-gray-500 text-xs" data-pt="Gestão de custos e performance unificada 24/7." data-en="24/7 unified cost and performance management." data-es="Gestión de costes y rendimiento unificada 24/7.">Gestão de custos e performance unificada 24/7.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -170,84 +266,208 @@
                 
                 <div class="lg:w-1/3" data-aos="fade-right">
                     <h2 class="text-4xl font-black mb-8 uppercase tracking-tighter italic">
-                        Por que escolher a <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Generactive?</span>
+                        <span data-pt="Por que escolher a" data-en="Why choose" data-es="¿Por qué elegir">Por que escolher a</span> <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Generactive?</span>
                     </h2>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-8">
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8"
+                       data-pt="Dominamos a complexidade de conectar mundos distintos. Nossa expertise garante que sua transição para o modelo híbrido seja estratégica, segura e otimizada."
+                       data-en="We master the complexity of connecting distinct worlds. Our expertise ensures your transition to the hybrid model is strategic, secure, and optimized."
+                       data-es="Dominamos la complejidad de conectar mundos distintos. Nuestra experiencia garantiza que su transición al modelo híbrido sea estratégica, segura y optimizada.">
                         Dominamos a complexidade de conectar mundos distintos. Nossa expertise garante que sua transição para o modelo híbrido seja estratégica, segura e otimizada.
                     </p>
                     <div class="p-6 rounded-2xl bg-cyan-500/5 border border-cyan-500/10">
-                        <p class="text-xs font-bold text-white mb-4 italic">Iniciando a jornada híbrida?</p>
-                        <p class="text-gray-500 text-[10px] leading-relaxed mb-4">Oferecemos projetos completos de Cloud Privada e Pública sob demanda para construir sua fundação digital.</p>
-                        <button class="text-[10px] font-black uppercase text-cyan-400 hover:text-white transition">Ver Portfólio →</button>
+                        <p class="text-xs font-bold text-white mb-4 italic" data-pt="Iniciando a jornada híbrida?" data-en="Starting the hybrid journey?" data-es="¿Iniciando el viaje híbrido?">Iniciando a jornada híbrida?</p>
+                        <p class="text-gray-500 text-[10px] leading-relaxed mb-4"
+                           data-pt="Oferecemos projetos completos de Cloud Privada e Pública sob demanda para construir sua fundação digital."
+                           data-en="We offer complete on-demand Private and Public Cloud projects to build your digital foundation."
+                           data-es="Ofrecemos proyectos completos de Nube Privada y Pública bajo demanda para construir su base digital.">
+                            Oferecemos projetos completos de Cloud Privada e Pública sob demanda para construir sua fundação digital.
+                        </p>
+                        <button class="text-[10px] font-black uppercase text-cyan-400 hover:text-white transition"
+                                data-pt="Ver Portfólio →" data-en="View Portfolio →" data-es="Ver Portafolio →">
+                            Ver Portfólio →
+                        </button>
                     </div>
                 </div>
 
                 <div class="lg:w-2/3 grid sm:grid-cols-2 gap-6">
                     <div class="hybrid-glass p-8 rounded-3xl border-l-4 border-cyan-500" data-aos="fade-up">
-                        <h4 class="text-white font-bold mb-3 uppercase tracking-widest text-xs">Expertise Multicloud</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed">Experiência comprovada em arquiteturas híbridas complexas integrando AWS, Azure e Google Cloud.</p>
+                        <h4 class="text-white font-bold mb-3 uppercase tracking-widest text-xs" data-pt="Expertise Multicloud" data-en="Multicloud Expertise" data-es="Experiencia Multicloud">Expertise Multicloud</h4>
+                        <p class="text-gray-500 text-xs leading-relaxed"
+                           data-pt="Experiência comprovada em arquiteturas híbridas complexas integrando AWS, Azure e Google Cloud."
+                           data-en="Proven experience in complex hybrid architectures integrating AWS, Azure, and Google Cloud."
+                           data-es="Experiencia comprobada en arquitecturas híbridas complejas integrando AWS, Azure y Google Cloud.">
+                            Experiência comprovada em arquiteturas híbridas complexas integrando AWS, Azure e Google Cloud.
+                        </p>
                     </div>
 
                     <div class="hybrid-glass p-8 rounded-3xl border-l-4 border-blue-500" data-aos="fade-up" data-aos-delay="100">
-                        <h4 class="text-white font-bold mb-3 uppercase tracking-widest text-xs">Squad Especialista</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed">Time sênior focado em Segurança, SRE, DevOps e FinOps para máxima performance e custo baixo.</p>
+                        <h4 class="text-white font-bold mb-3 uppercase tracking-widest text-xs" data-pt="Squad Especialista" data-en="Specialist Squad" data-es="Equipo Especialista">Squad Especialista</h4>
+                        <p class="text-gray-500 text-xs leading-relaxed"
+                           data-pt="Time sênior focado em Segurança, SRE, DevOps e FinOps para máxima performance e custo baixo."
+                           data-en="Senior team focused on Security, SRE, DevOps, and FinOps for maximum performance and low cost."
+                           data-es="Equipo sénior enfocado en Seguridad, SRE, DevOps y FinOps para el máximo rendimiento y bajo costo.">
+                            Time sênior focado em Segurança, SRE, DevOps e FinOps para máxima performance e custo baixo.
+                        </p>
                     </div>
 
                     <div class="hybrid-glass p-8 rounded-3xl border-l-4 border-indigo-500" data-aos="fade-up" data-aos-delay="200">
-                        <h4 class="text-white font-bold mb-3 uppercase tracking-widest text-xs">Policy as Code</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed">Governança automatizada e monitoramento unificado para conformidade total em tempo real.</p>
+                        <h4 class="text-white font-bold mb-3 uppercase tracking-widest text-xs" data-pt="Policy as Code" data-en="Policy as Code" data-es="Política como Código">Policy as Code</h4>
+                        <p class="text-gray-500 text-xs leading-relaxed"
+                           data-pt="Governança automatizada e monitoramento unificado para conformidade total em tempo real."
+                           data-en="Automated governance and unified monitoring for full real-time compliance."
+                           data-es="Gobernanza automatizada y monitoreo unificado para un cumplimiento total en tiempo real.">
+                            Governança automatizada e monitoramento unificado para conformidade total em tempo real.
+                        </p>
                     </div>
 
                     <div class="hybrid-glass p-8 rounded-3xl border-l-4 border-cyan-400" data-aos="fade-up" data-aos-delay="300">
-                        <h4 class="text-white font-bold mb-3 uppercase tracking-widest text-xs">Suporte 24/7</h4>
-                        <p class="text-gray-500 text-xs leading-relaxed">Atendimento técnico ininterrupto com dashboards executivos de desempenho em tempo real.</p>
+                        <h4 class="text-white font-bold mb-3 uppercase tracking-widest text-xs" data-pt="Suporte 24/7" data-en="24/7 Support" data-es="Soporte 24/7">Suporte 24/7</h4>
+                        <p class="text-gray-500 text-xs leading-relaxed"
+                           data-pt="Atendimento técnico ininterrupto com dashboards executivos de desempenho em tempo real."
+                           data-en="Uninterrupted technical support with real-time executive performance dashboards."
+                           data-es="Atención técnica ininterrumpida con paneles ejecutivos de rendimiento en tiempo real.">
+                            Atendimento técnico ininterrupto com dashboards executivos de desempenho em tempo real.
+                        </p>
                     </div>
                 </div>
 
             </div>
 
             <div class="mt-20 text-center" data-aos="zoom-in">
-                <button class="bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-black px-12 py-5 rounded-2xl hover:scale-105 transition-all shadow-2xl shadow-cyan-500/20">
-                    CONECTAR MINHAS NUVENS AGORA
-                </button>
-                <p class="mt-6 text-[10px] text-gray-600 uppercase tracking-widest">Eficiência e segurança em um único ecossistema</p>
+                <a href="https://wa.me/5519995000067?text=Olá! Gostaria de falar sobre como conectar minhas nuvens com a solução Híbrida da Generactive." 
+   target="_blank" 
+   class="bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-black px-12 py-5 rounded-2xl hover:scale-105 transition-all shadow-2xl shadow-cyan-500/20 uppercase text-xs tracking-widest inline-block text-center"
+   data-pt="CONECTAR MINHAS NUVENS AGORA" 
+   data-en="CONNECT MY CLOUDS NOW" 
+   data-es="CONECTAR MIS NUBES AHORA">
+    CONECTAR MINHAS NUVENS AGORA
+</a>
+                <p class="mt-6 text-[10px] text-gray-600 uppercase tracking-widest"
+                   data-pt="Eficiência e segurança em um único ecossistema"
+                   data-en="Efficiency and security in a single ecosystem"
+                   data-es="Eficiencia y seguridad en un solo ecosistema">
+                    Eficiência e segurança em um único ecossistema
+                </p>
             </div>
         </div>
     </section>
 
     <section id="faq" class="py-32 px-6 relative z-10 bg-black/40">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-black mb-16 text-center uppercase italic italic">FAQ Cloud Híbrida</h2>
+            <h2 class="text-3xl font-black mb-16 text-center uppercase italic tracking-tighter" data-aos="fade-up">
+                <span data-pt="FAQ Cloud Híbrida" data-en="Hybrid Cloud FAQ" data-es="FAQ Nube Híbrida">FAQ Cloud Híbrida</span>
+            </h2>
             <div class="space-y-4">
-                <div class="faq-item hybrid-glass rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center"><h4 class="font-bold text-sm group-hover:text-cyan-400 transition">Quando escolher Cloud Híbrida?</h4><i class="fas fa-chevron-down transition-transform"></i></div>
-                    <p class="faq-answer text-xs text-gray-500 mt-4 leading-relaxed">Ideal para o equilíbrio entre segurança e escalabilidade, alocando dados sensíveis em ambiente privado e workloads variáveis na nuvem pública.</p>
+                
+                <div class="faq-item hybrid-glass rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm group-hover:text-cyan-400 transition"
+                            data-pt="Quando escolher Cloud Híbrida?" 
+                            data-en="When to choose Hybrid Cloud?" 
+                            data-es="¿Cuándo elegir la Nube Híbrida?">
+                            Quando escolher Cloud Híbrida?
+                        </h4>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </div>
+                    <p class="faq-answer text-xs text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Ideal para o equilíbrio entre segurança e escalabilidade, alocando dados sensíveis em ambiente privado e workloads variáveis na nuvem pública."
+                       data-en="Ideal for balancing security and scalability, allocating sensitive data in a private environment and variable workloads in the public cloud."
+                       data-es="Ideal para el equilibrio entre seguridad y escalabilidad, asignando datos sensibles en un entorno privado y cargas de trabajo variables en la nube pública.">
+                        Ideal para o equilíbrio entre segurança e escalabilidade, alocando dados sensíveis em ambiente privado e workloads variáveis na nuvem pública.
+                    </p>
                 </div>
-                <div class="faq-item hybrid-glass rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center"><h4 class="font-bold text-sm group-hover:text-cyan-400 transition">Como garantem a integração?</h4><i class="fas fa-chevron-down transition-transform"></i></div>
-                    <p class="faq-answer text-xs text-gray-500 mt-4 leading-relaxed">Via VPN, Direct Connect, SD-WAN e identidade federada, além de automação de políticas e observabilidade unificada.</p>
+
+                <div class="faq-item hybrid-glass rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm group-hover:text-cyan-400 transition"
+                            data-pt="Como garantem a integração?" 
+                            data-en="How do you guarantee integration?" 
+                            data-es="¿Cómo garantizan la integración?">
+                            Como garantem a integração?
+                        </h4>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </div>
+                    <p class="faq-answer text-xs text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Via VPN, Direct Connect, SD-WAN e identidade federada, além de automação de políticas e observabilidade unificada."
+                       data-en="Via VPN, Direct Connect, SD-WAN, and federated identity, plus policy automation and unified observability."
+                       data-es="Vía VPN, Direct Connect, SD-WAN e identidad federada, además de automatización de políticas y observabilidad unificada.">
+                        Via VPN, Direct Connect, SD-WAN e identidade federada, além de automação de políticas e observabilidade unificada.
+                    </p>
                 </div>
-                <div class="faq-item hybrid-glass rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center"><h4 class="font-bold text-sm group-hover:text-cyan-400 transition">É compatível com multicloud?</h4><i class="fas fa-chevron-down transition-transform"></i></div>
-                    <p class="faq-answer text-xs text-gray-500 mt-4 leading-relaxed">Sim. Projetamos ambientes que operam de forma integrada entre AWS, Azure e Google Cloud.</p>
+
+                <div class="faq-item hybrid-glass rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm group-hover:text-cyan-400 transition"
+                            data-pt="É compatível com multicloud?" 
+                            data-en="Is it compatible with multicloud?" 
+                            data-es="¿Es compatible con multicloud?">
+                            É compatível com multicloud?
+                        </h4>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </div>
+                    <p class="faq-answer text-xs text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Sim. Projetamos ambientes que operam de forma integrada entre AWS, Azure e Google Cloud."
+                       data-en="Yes. We design environments that operate integratedly across AWS, Azure, and Google Cloud."
+                       data-es="Sí. Diseñamos entornos que operan de forma integrada entre AWS, Azure y Google Cloud.">
+                        Sim. Projetamos ambientes que operam de forma integrada entre AWS, Azure e Google Cloud.
+                    </p>
                 </div>
-                <div class="faq-item hybrid-glass rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
-                    <div class="flex justify-between items-center"><h4 class="font-bold text-sm group-hover:text-cyan-400 transition">Como monitorar custos (FinOps)?</h4><i class="fas fa-chevron-down transition-transform"></i></div>
-                    <p class="faq-answer text-xs text-gray-500 mt-4 leading-relaxed">Consolidamos métricas em um painel centralizado com alertas e recomendações automáticas para otimização contínua.</p>
+
+                <div class="faq-item hybrid-glass rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm group-hover:text-cyan-400 transition"
+                            data-pt="Como monitorar custos (FinOps)?" 
+                            data-en="How to monitor costs (FinOps)?" 
+                            data-es="¿Cómo monitorear costos (FinOps)?">
+                            Como monitorar custos (FinOps)?
+                        </h4>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </div>
+                    <p class="faq-answer text-xs text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Consolidamos métricas em um painel centralizado com alertas e recomendações automáticas para otimização contínua."
+                       data-en="We consolidate metrics into a centralized dashboard with alerts and automatic recommendations for continuous optimization."
+                       data-es="Consolidamos métricas en un panel centralizado con alertas y recomendaciones automáticas para una optimización continua.">
+                        Consolidamos métricas em um painel centralizado com alertas e recomendações automáticas para otimização contínua.
+                    </p>
                 </div>
+
             </div>
         </div>
     </section>
 
     <section class="py-32 text-center relative z-10">
         <div class="max-w-4xl mx-auto p-16 hybrid-glass rounded-[3rem] border-cyan-500/20">
-            <h2 class="text-4xl font-black mb-8 leading-tight tracking-tighter">Conecte sua empresa ao <br><span class="text-cyan-400">Futuro Híbrido</span></h2>
-            <button class="bg-white text-black font-black px-12 py-5 rounded-full hover:bg-cyan-400 hover:text-black transition-all transform hover:scale-105 shadow-2xl">SOLICITAR CONSULTORIA</button>
+            <h2 class="text-4xl font-black mb-8 leading-tight tracking-tighter">
+                <span data-pt="Conecte sua empresa ao" data-en="Connect your company to the" data-es="Conecte su empresa al">Conecte sua empresa ao</span> <br>
+                <span class="text-cyan-400" data-pt="Futuro Híbrido" data-en="Hybrid Future" data-es="Futuro Híbrido">Futuro Híbrido</span>
+            </h2>
+            <a href="https://wa.me/5519995000067?text=Olá! Gostaria de solicitar uma consultoria especializada sobre as soluções de Cloud da Generactive." 
+   target="_blank" 
+   class="bg-white text-black font-black px-12 py-5 rounded-full hover:bg-cyan-400 hover:text-black transition-all transform hover:scale-105 shadow-2xl uppercase text-xs tracking-widest inline-block text-center"
+   data-pt="SOLICITAR CONSULTORIA" 
+   data-en="REQUEST CONSULTING" 
+   data-es="SOLICITAR CONSULTORÍA">
+    SOLICITAR CONSULTORIA
+</a>
         </div>
     </section>
 
-    <footer class="py-10 text-center text-[10px] text-gray-700 font-bold uppercase tracking-[0.5em] border-t border-white/5 relative z-10">
-        GENERACTIVE HYBRID CLOUD • 2026
+    <footer class="py-6 px-6 border-t border-white/5 bg-dark/50 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-4">
+            
+            <a href="index.html" class="flex items-center group transition-transform hover:scale-105 active:scale-95">
+                <img src="LogoGen.png" 
+                     alt="Generactive Innovate" 
+                     class="h-8 md:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            </a>
+
+            <div class="flex flex-col items-center text-[8px] md:text-[9px] text-gray-700 font-bold uppercase tracking-[0.3em]">
+                <span data-pt="© 2026 Innovate at Scale" data-en="© 2026 Innovate at Scale" data-es="© 2026 Innovar a Escala">
+                    © 2026 Innovate at Scale
+                </span>
+            </div>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -258,5 +478,43 @@
             glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
         });
     </script>
+    <script>
+
+    // 3. MOTOR DE TRADUÇÃO (O coração do sistema)
+    function changeLanguage(lang) {
+        console.log("Traduzindo para:", lang);
+
+        // Atualiza o texto do botão na Navbar (ID: lang-label)
+        const langLabel = document.getElementById('lang-label');
+        if (langLabel) {
+            langLabel.innerText = lang.toUpperCase();
+        }
+
+        // Busca todos os elementos que possuem o atributo data-pt
+        const elements = document.querySelectorAll('[data-pt]');
+
+        elements.forEach(el => {
+            const translation = el.getAttribute(`data-${lang}`);
+            if (translation) {
+                // Troca o texto preservando ícones se existirem (opcional)
+                el.innerText = translation;
+            }
+        });
+
+        // Salva a preferência no navegador para persistir entre as páginas
+        localStorage.setItem('generactive_lang', lang);
+        
+        // Define o atributo lang no HTML para SEO e acessibilidade
+        document.documentElement.lang = (lang === 'pt') ? 'pt-br' : lang;
+    }
+
+    // 4. Execução ao carregar a página
+    window.addEventListener('DOMContentLoaded', () => {
+        // Verifica se o usuário já escolheu um idioma antes, senão usa PT como padrão
+        const savedLang = localStorage.getItem('generactive_lang') || 'pt';
+        changeLanguage(savedLang);
+    });
+</script>
+
 </body>
 </html>

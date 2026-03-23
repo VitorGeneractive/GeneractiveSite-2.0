@@ -37,18 +37,46 @@
     <div class="glow-cursor" id="glow"></div>
     <div class="fixed inset-0 bg-security z-0"></div>
 
-    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/80 backdrop-blur-md px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-extrabold tracking-tighter flex items-center gap-2 group">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center group-hover:bg-cyan-500 transition-all rotate-12"><i class="fas fa-arrow-left text-white text-xs"></i></div>
-                GENERA<span class="text-blue-500">CTIVE</span>
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-1">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
+            
+            <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1">
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg flex items-center justify-center rotate-12 group-hover:rotate-0 transition-all shadow-lg shadow-blue-500/20 flex-shrink-0">
+                    <i class="fas fa-arrow-left text-white text-xs"></i>
+                </div>
+                
+                <img src="LogoGeneractive.png" 
+                     alt="Generactive Innovate" 
+                     class="h-12 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_0_15px_rgba(6,182,212,0.2)]">
             </a>
-            <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-                <a href="#beneficios" class="hover:text-blue-400 transition">Benefícios</a>
-                <a href="#casos" class="hover:text-blue-400 transition">Casos de Uso</a>
-                <a href="#metodologia" class="hover:text-blue-400 transition">Metodologia</a>
+            
+            <div class="flex items-center gap-6">
+                <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
+                    <a href="#beneficios" class="hover:text-blue-400 transition" data-pt="Benefícios" data-en="Benefits" data-es="Beneficios">Benefícios</a>
+                    <a href="#casos" class="hover:text-blue-400 transition" data-pt="Casos" data-en="Cases" data-es="Casos">Casos</a>
+                    <a href="#metodologia" class="hover:text-blue-400 transition" data-pt="Metodologia" data-en="Methodology" data-es="Metodología">Metodologia</a>
+                </div>
+
+                <div class="relative group">
+                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-blue-400 transition">
+                        <i class="fas fa-globe text-blue-400"></i> <span id="lang-label">PT</span>
+                    </button>
+                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-blue-500 hover:text-white transition">PORTUGUÊS</button>
+                        <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-blue-500 hover:text-white transition">ENGLISH</button>
+                        <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-blue-500 hover:text-white transition">ESPAÑOL</button>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/5519995000067?text=Olá! Gostaria de saber mais sobre o Protocolo Seguro e as soluções de Cloud Privada da Generactive." 
+   target="_blank" 
+   class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold text-[10px] hover:bg-blue-500 transition shadow-lg shadow-blue-900/20 uppercase tracking-widest inline-block text-center"
+   data-pt="PROTOCOLO SEGURO" 
+   data-en="SECURE PROTOCOL" 
+   data-es="PROTOCOLO SEGURO">
+    PROTOCOLO SEGURO
+</a>
             </div>
-            <button class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold text-xs hover:bg-blue-500 transition shadow-lg shadow-blue-900/20 uppercase tracking-widest">Protocolo Seguro</button>
         </div>
     </nav>
 
@@ -57,12 +85,26 @@
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div data-aos="fade-right">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black uppercase tracking-widest mb-6">
-                        <i class="fas fa-lock text-[8px]"></i> AMBIENTE DEDICADO
+                        <i class="fas fa-lock text-[8px]"></i> <span data-pt="AMBIENTE DEDICADO" data-en="DEDICATED ENVIRONMENT" data-es="ENTORNO DEDICADO">AMBIENTE DEDICADO</span>
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight">Cloud <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-400 italic">Privada</span></h1>
-                    <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed">Controle, conformidade e alta performance corporativa. Projetamos ambientes Private Cloud sob medida com governança absoluta.</p>
+                    <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight">
+                        Cloud <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-400 italic" data-pt="Privada" data-en="Private" data-es="Privada">Privada</span>
+                    </h1>
+                    <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed"
+                       data-pt="Controle, conformidade e alta performance corporativa. Projetamos ambientes Private Cloud sob medida com governança absoluta."
+                       data-en="Control, compliance and high corporate performance. We design tailored Private Cloud environments with absolute governance."
+                       data-es="Control, cumplimiento y alto rendimiento corporativo. Diseñamos entornos de Private Cloud a medida con gobernanza absoluta.">
+                        Controle, conformidade e alta performance corporativa. Projetamos ambientes Private Cloud sob medida com governança absoluta.
+                    </p>
                     <div class="flex flex-wrap gap-6">
-                        <button class="bg-blue-600 text-white font-black px-10 py-5 rounded-2xl hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20">Falar com Especialistas</button>
+                        <a href="https://wa.me/5519995000067?text=Olá! Gostaria de falar com um especialista sobre as soluções de Cloud Privada e segurança da Generactive." 
+   target="_blank" 
+   class="bg-blue-600 text-white font-black px-10 py-5 rounded-2xl hover:bg-blue-500 transition-all shadow-xl shadow-blue-600/20 inline-block text-center text-xs tracking-widest uppercase"
+   data-pt="Falar com Especialistas" 
+   data-en="Talk to Specialists" 
+   data-es="Hablar con Especialistas">
+    Falar com Especialistas
+</a>
                         <div class="flex items-center gap-4 text-xs font-bold text-gray-500">
                             <span class="flex gap-1"><i class="fas fa-check text-blue-500"></i> ISO 27001</span>
                             <span class="flex gap-1"><i class="fas fa-check text-blue-500"></i> LGPD</span>
@@ -71,26 +113,29 @@
                 </div>
                 
                 <div class="relative" data-aos="zoom-in">
-                    <div class="shield-panel p-10 rounded-[3rem] border-white/10 relative overflow-hidden">
+                    <div class="shield-panel p-10 rounded-[3rem] border-white/10 relative overflow-hidden bg-gray-900/40 backdrop-blur-md">
                         <div class="scan-line"></div>
                         <div class="relative z-10">
-                            <h3 class="text-white font-bold mb-8 uppercase tracking-widest text-sm border-b border-white/10 pb-4">Principais Benefícios</h3>
+                            <h3 class="text-white font-bold mb-8 uppercase tracking-widest text-sm border-b border-white/10 pb-4"
+                                data-pt="Principais Benefícios" data-en="Key Benefits" data-es="Principales Beneficios">
+                                Principais Benefícios
+                            </h3>
                             <div class="space-y-6">
                                 <div class="flex items-center gap-4 group">
                                     <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all"><i class="fas fa-server"></i></div>
-                                    <p class="text-sm font-bold">Infraestrutura Exclusiva</p>
+                                    <p class="text-sm font-bold" data-pt="Infraestrutura Exclusiva" data-en="Exclusive Infrastructure" data-es="Infraestructura Exclusiva">Infraestrutura Exclusiva</p>
                                 </div>
                                 <div class="flex items-center gap-4 group">
                                     <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all"><i class="fas fa-user-shield"></i></div>
-                                    <p class="text-sm font-bold">Governança Personalizada</p>
+                                    <p class="text-sm font-bold" data-pt="Governança Personalizada" data-en="Personalized Governance" data-es="Gobernanza Personalizada">Governança Personalizada</p>
                                 </div>
                                 <div class="flex items-center gap-4 group">
                                     <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all"><i class="fas fa-tachometer-alt"></i></div>
-                                    <p class="text-sm font-bold">Alta Performance Estável</p>
+                                    <p class="text-sm font-bold" data-pt="Alta Performance Estável" data-en="Stable High Performance" data-es="Alto Rendimiento Estable">Alta Performance Estável</p>
                                 </div>
                                 <div class="flex items-center gap-4 group">
                                     <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all"><i class="fas fa-file-contract"></i></div>
-                                    <p class="text-sm font-bold">Compliance Garantido</p>
+                                    <p class="text-sm font-bold" data-pt="Compliance Garantido" data-en="Guaranteed Compliance" data-es="Cumplimiento Garantizado">Compliance Garantido</p>
                                 </div>
                             </div>
                         </div>
@@ -103,26 +148,53 @@
     <section id="sobre" class="py-24 px-6 relative z-10 border-y border-white/5">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-black mb-6">O que é Cloud Privada e <span class="text-blue-500">quando adotar?</span></h2>
-                <p class="text-gray-400 text-lg leading-relaxed">
+                <h2 class="text-3xl md:text-4xl font-black mb-6">
+                    <span data-pt="O que é Cloud Privada e" data-en="What is Private Cloud and" data-es="¿Qué es la Nube Privada y">O que é Cloud Privada e</span> 
+                    <span class="text-blue-500" data-pt="quando adotar?" data-en="when to adopt?" data-es="¿cuándo adoptar?">quando adotar?</span>
+                </h2>
+                <p class="text-gray-400 text-lg leading-relaxed"
+                   data-pt="Diferente da Cloud Pública, os recursos são totalmente dedicados a uma única organização. É o modelo ideal para quem exige previsibilidade de custos e personalização total."
+                   data-en="Unlike Public Cloud, resources are fully dedicated to a single organization. It is the ideal model for those who require cost predictability and total customization."
+                   data-es="A diferencia de la Nube Pública, los recursos están totalmente dedicados a una sola organización. Es el modelo ideal para quienes requieren previsibilidad de costos y personalización total.">
                     Diferente da Cloud Pública, os recursos são totalmente dedicados a uma única organização. É o modelo ideal para quem exige previsibilidade de custos, personalização total da arquitetura e adesão rigorosa a regulamentos como LGPD e GDPR.
                 </p>
             </div>
+            
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="shield-panel p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="text-blue-500 font-black text-xs uppercase mb-4 tracking-widest">Atributo 01</h4>
-                    <p class="font-bold mb-2">Previsibilidade</p>
-                    <p class="text-gray-500 text-xs">Custos e recursos sob seu controle absoluto, sem surpresas mensais.</p>
+                    <h4 class="text-blue-500 font-black text-xs uppercase mb-4 tracking-widest" 
+                        data-pt="Atributo 01" data-en="Attribute 01" data-es="Atributo 01">Atributo 01</h4>
+                    <p class="font-bold mb-2 text-white" data-pt="Previsibilidade" data-en="Predictability" data-es="Previsibilidad">Previsibilidade</p>
+                    <p class="text-gray-500 text-xs"
+                       data-pt="Custos e recursos sob seu controle absoluto, sem surpresas mensais."
+                       data-en="Costs and resources under your absolute control, without monthly surprises."
+                       data-es="Costos y recursos bajo su control absoluto, sin sorpresas mensuales.">
+                        Custos e recursos sob seu controle absoluto, sem surpresas mensais.
+                    </p>
                 </div>
+
                 <div class="shield-panel p-8 rounded-3xl border-t-2 border-blue-500" data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="text-blue-500 font-black text-xs uppercase mb-4 tracking-widest">Atributo 02</h4>
-                    <p class="font-bold mb-2">Personalização</p>
-                    <p class="text-gray-500 text-xs">Arquitetura adaptada exatamente às demandas específicas do seu core business.</p>
+                    <h4 class="text-blue-500 font-black text-xs uppercase mb-4 tracking-widest"
+                        data-pt="Atributo 02" data-en="Attribute 02" data-es="Atributo 02">Atributo 02</h4>
+                    <p class="font-bold mb-2 text-white" data-pt="Personalização" data-en="Customization" data-es="Personalización">Personalização</p>
+                    <p class="text-gray-500 text-xs"
+                       data-pt="Arquitetura adaptada exatamente às demandas específicas do seu core business."
+                       data-en="Architecture adapted exactly to the specific demands of your core business."
+                       data-es="Arquitectura adaptada exactamente a las demandas específicas de su negocio principal.">
+                        Arquitetura adaptada exatamente às demandas específicas do seu core business.
+                    </p>
                 </div>
+
                 <div class="shield-panel p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="300">
-                    <h4 class="text-blue-500 font-black text-xs uppercase mb-4 tracking-widest">Atributo 03</h4>
-                    <p class="font-bold mb-2">Compliance</p>
-                    <p class="text-gray-500 text-xs">Aderência total a auditorias rigorosas e normas internacionais de sigilo.</p>
+                    <h4 class="text-blue-500 font-black text-xs uppercase mb-4 tracking-widest"
+                        data-pt="Atributo 03" data-en="Attribute 03" data-es="Atributo 03">Atributo 03</h4>
+                    <p class="font-bold mb-2 text-white" data-pt="Compliance" data-en="Compliance" data-es="Cumplimiento">Compliance</p>
+                    <p class="text-gray-500 text-xs"
+                       data-pt="Aderência total a auditorias rigorosas e normas internacionais de sigilo."
+                       data-en="Full adherence to rigorous audits and international privacy standards."
+                       data-es="Cumplimiento total con auditorías rigurosas y estándares internacionales de privacidad.">
+                        Aderência total a auditorias rigorosas e normas internacionais de sigilo.
+                    </p>
                 </div>
             </div>
         </div>
@@ -131,7 +203,8 @@
     <section id="beneficios-detalhes" class="py-24 px-6 relative z-10 bg-blue-600/[0.02]">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl md:text-5xl font-black text-center mb-20 uppercase tracking-tighter italic" data-aos="fade-up">
-                Benefícios da <span class="text-blue-500">Cloud Privada</span>
+                <span data-pt="Benefícios da" data-en="Benefits of" data-es="Beneficios de la">Benefícios da</span> 
+                <span class="text-blue-500" data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</span>
             </h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -139,46 +212,74 @@
                     <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center text-blue-500 mb-6">
                         <i class="fas fa-fingerprint text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Isolamento Total</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Ambiente 100% exclusivo e isolado, com políticas de segurança e regras de firewall definidas integralmente pela sua empresa.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Isolamento Total" data-en="Total Isolation" data-es="Aislamiento Total">Isolamento Total</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed"
+                       data-pt="Ambiente 100% exclusivo e isolado, com políticas de segurança e regras de firewall definidas integralmente pela sua empresa."
+                       data-en="100% exclusive and isolated environment, with security policies and firewall rules fully defined by your company."
+                       data-es="Entorno 100% exclusivo y aislado, con políticas de seguridad y reglas de firewall definidas íntegramente por su empresa.">
+                        Ambiente 100% exclusivo e isolado, com políticas de segurança e regras de firewall definidas integralmente pela sua empresa.
+                    </p>
                 </div>
 
                 <div class="shield-panel p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center text-blue-500 mb-6">
                         <i class="fas fa-microchip text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Alta Performance</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Baixa latência e processamento dedicado para workloads críticos que exigem estabilidade absoluta e sem "vizinhos barulhentos".</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Alta Performance" data-en="High Performance" data-es="Alto Rendimiento">Alta Performance</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed"
+                       data-pt="Baixa latência e processamento dedicado para workloads críticos que exigem estabilidade absoluta."
+                       data-en="Low latency and dedicated processing for critical workloads that demand absolute stability."
+                       data-es="Baja latencia y procesamiento dedicado para cargas de trabajo críticas que exigen una estabilidad absoluta.">
+                        Baixa latência e processamento dedicado para workloads críticos que exigem estabilidade absoluta e sem "vizinhos barulhentos".
+                    </p>
                 </div>
 
                 <div class="shield-panel p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center text-blue-500 mb-6">
                         <i class="fas fa-clipboard-list text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Governança Avançada</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Controles personalizados, auditorias em tempo real e relatórios detalhados para uma gestão transparente e segura.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Governança Avançada" data-en="Advanced Governance" data-es="Gobernanza Avanzada">Governança Avançada</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed"
+                       data-pt="Controles personalizados, auditorias em tempo real e relatórios detalhados para uma gestão transparente."
+                       data-en="Custom controls, real-time audits, and detailed reports for transparent and secure management."
+                       data-es="Controles personalizados, auditorías en tiempo real e informes detallados para una gestión transparente y segura.">
+                        Controles personalizados, auditorias em tempo real e relatórios detalhados para uma gestão transparente e segura.
+                    </p>
                 </div>
 
                 <div class="shield-panel p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center text-blue-500 mb-6">
                         <i class="fas fa-balance-scale text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Conformidade Legal</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Aderência total a requisitos legais e regulatórios específicos do seu setor, facilitando processos de certificação.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Conformidade Legal" data-en="Legal Compliance" data-es="Cumplimiento Legal">Conformidade Legal</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed"
+                       data-pt="Aderência total a requisitos legais e regulatórios específicos do seu setor, facilitando certificações."
+                       data-en="Full adherence to legal and regulatory requirements specific to your sector, facilitating certifications."
+                       data-es="Adhesión total a los requisitos legales y reglamentarios específicos de su sector, facilitando las certificaciones.">
+                        Aderência total a requisitos legais e regulatórios específicos do seu setor, facilitando processos de certificação.
+                    </p>
                 </div>
 
                 <div class="shield-panel p-10 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="400">
                     <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center text-blue-500 mb-6">
                         <i class="fas fa-network-wired text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-4">Integração Facilitada</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed">Conexão direta e simplificada com seus ambientes legados e sistemas locais através de redes dedicadas de alta velocidade.</p>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Integração Facilitada" data-en="Easy Integration" data-es="Integración Fácil">Integração Facilitada</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed"
+                       data-pt="Conexão direta com seus ambientes legados através de redes dedicadas de alta velocidade."
+                       data-en="Direct connection with your legacy environments through dedicated high-speed networks."
+                       data-es="Conexión directa con sus entornos heredados a través de redes dedicadas de alta velocidad.">
+                        Conexão direta e simplificada com seus ambientes legados e sistemas locais através de redes dedicadas de alta velocidade.
+                    </p>
                 </div>
 
                 <div class="p-10 rounded-[2.5rem] bg-gradient-to-br from-blue-600/20 to-transparent border border-blue-500/20 flex flex-col justify-center items-center text-center" data-aos="fade-up" data-aos-delay="500">
-                    <p class="text-sm font-bold text-white mb-6 leading-relaxed">Deseja equilibrar segurança e flexibilidade?</p>
-                    <p class="text-xs text-gray-400 mb-6">A Cloud Híbrida pode ser o modelo ideal para o seu negócio.</p>
-                    <a href="cloud-hibrida.html" class="text-[10px] font-black uppercase tracking-widest text-blue-400 border-b border-blue-400 pb-1 hover:text-white hover:border-white transition-all">Explorar Modelo Híbrido →</a>
+                    <p class="text-sm font-bold text-white mb-6 leading-relaxed" data-pt="Deseja equilibrar segurança e flexibilidade?" data-en="Want to balance security and flexibility?" data-es="¿Desea equilibrar seguridad y flexibilidad?">Deseja equilibrar segurança e flexibilidade?</p>
+                    <p class="text-xs text-gray-400 mb-6" data-pt="A Cloud Híbrida pode ser o modelo ideal." data-en="Hybrid Cloud may be the ideal model." data-es="La Nube Híbrida puede ser el modelo ideal.">A Cloud Híbrida pode ser o modelo ideal para o seu negócio.</p>
+                    <a href="cloud-hibrida.html" class="text-[10px] font-black uppercase tracking-widest text-blue-400 border-b border-blue-400 pb-1 hover:text-white hover:border-white transition-all"
+                       data-pt="Explorar Modelo Híbrido →" data-en="Explore Hybrid Model →" data-es="Explorar Modelo Híbrido →">
+                        Explorar Modelo Híbrido →
+                    </a>
                 </div>
             </div>
         </div>
@@ -186,27 +287,30 @@
 
     <section id="casos" class="py-32 px-6 relative z-10">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-black text-center mb-20 uppercase italic tracking-tighter">Casos de Uso <span class="text-blue-500">Ideais</span></h2>
+            <h2 class="text-4xl font-black text-center mb-20 uppercase italic tracking-tighter">
+                <span data-pt="Casos de Uso" data-en="Use Cases" data-es="Casos de Uso">Casos de Uso</span> 
+                <span class="text-blue-500" data-pt="Ideais" data-en="Ideals" data-es="Ideales">Ideais</span>
+            </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="shield-panel p-8 rounded-2xl group" data-aos="zoom-in">
                     <i class="fas fa-university text-blue-500 mb-6 text-2xl group-hover:scale-110 transition-transform"></i>
-                    <p class="font-bold text-sm mb-2 uppercase">Sistemas Financeiros</p>
-                    <p class="text-gray-500 text-xs">Hospedagem de aplicações críticas com segurança bancária.</p>
+                    <p class="font-bold text-sm mb-2 uppercase" data-pt="Sistemas Financeiros" data-en="Financial Systems" data-es="Sistemas Financieros">Sistemas Financeiros</p>
+                    <p class="text-gray-500 text-xs" data-pt="Hospedagem de aplicações críticas com segurança bancária." data-en="Hosting critical applications with banking-grade security." data-es="Alojamiento de aplicaciones críticas con seguridad bancaria.">Hospedagem de aplicações críticas com segurança bancária.</p>
                 </div>
                 <div class="shield-panel p-8 rounded-2xl group" data-aos="zoom-in" data-aos-delay="100">
                     <i class="fas fa-vial text-blue-500 mb-6 text-2xl group-hover:scale-110 transition-transform"></i>
-                    <p class="font-bold text-sm mb-2 uppercase">Pesquisa & Dev</p>
-                    <p class="text-gray-500 text-xs">Ambientes protegidos para inovação e segredos industriais.</p>
+                    <p class="font-bold text-sm mb-2 uppercase" data-pt="Pesquisa & Dev" data-en="R & D" data-es="Investigación y Desarrollo">Pesquisa & Dev</p>
+                    <p class="text-gray-500 text-xs" data-pt="Ambientes protegidos para inovação e segredos industriais." data-en="Protected environments for innovation and industrial secrets." data-es="Entornos protegidos para la innovación y secretos industriales.">Ambientes protegidos para inovação e segredos industriais.</p>
                 </div>
                 <div class="shield-panel p-8 rounded-2xl group" data-aos="zoom-in" data-aos-delay="200">
                     <i class="fas fa-clipboard-check text-blue-500 mb-6 text-2xl group-hover:scale-110 transition-transform"></i>
-                    <p class="font-bold text-sm mb-2 uppercase">Auditorias</p>
-                    <p class="text-gray-500 text-xs">Organizações que precisam atender certificações contínuas.</p>
+                    <p class="font-bold text-sm mb-2 uppercase" data-pt="Auditorias" data-en="Audits" data-es="Auditorías">Auditorias</p>
+                    <p class="text-gray-500 text-xs" data-pt="Organizações que precisam atender certificações contínuas." data-en="Organizations that need to meet continuous certifications." data-es="Organizaciones que necesitan cumplir certificaciones continuas.">Organizações que precisam atender certificações contínuas.</p>
                 </div>
                 <div class="shield-panel p-8 rounded-2xl group" data-aos="zoom-in" data-aos-delay="300">
                     <i class="fas fa-tools text-blue-500 mb-6 text-2xl group-hover:scale-110 transition-transform"></i>
-                    <p class="font-bold text-sm mb-2 uppercase">Controle Total</p>
-                    <p class="text-gray-500 text-xs">Empresas que demandam soberania total sobre o hardware.</p>
+                    <p class="font-bold text-sm mb-2 uppercase" data-pt="Controle Total" data-en="Full Control" data-es="Control Total">Controle Total</p>
+                    <p class="text-gray-500 text-xs" data-pt="Empresas que demandam soberania total sobre o hardware." data-en="Companies demanding full sovereignty over hardware." data-es="Empresas que exigen soberanía total sobre el hardware.">Empresas que demandam soberania total sobre o hardware.</p>
                 </div>
             </div>
         </div>
@@ -214,23 +318,35 @@
 
     <section id="metodologia" class="py-32 px-6 relative z-10 bg-white/[0.01]">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-black mb-16 text-center">Metodologia de Implantação</h2>
+            <h2 class="text-3xl font-black mb-16 text-center" data-pt="Metodologia de Implantação" data-en="Deployment Methodology" data-es="Metodología de Implementación">Metodologia de Implantação</h2>
             <div class="space-y-4">
                 <div class="flex gap-6 items-start p-6 shield-panel rounded-2xl" data-aos="fade-left">
                     <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-black flex-shrink-0">1</div>
-                    <div><p class="font-bold mb-1">Assessment & Diagnóstico</p><p class="text-gray-500 text-sm">Mapeamento detalhado de requisitos, riscos e workloads.</p></div>
+                    <div>
+                        <p class="font-bold mb-1" data-pt="Assessment & Diagnóstico" data-en="Assessment & Diagnosis" data-es="Evaluación y Diagnóstico">Assessment & Diagnóstico</p>
+                        <p class="text-gray-500 text-sm" data-pt="Mapeamento detalhado de requisitos, riscos e workloads." data-en="Detailed mapping of requirements, risks, and workloads." data-es="Mapeo detallado de requisitos, riesgos y cargas de trabajo.">Mapeamento detalhado de requisitos, riscos e workloads.</p>
+                    </div>
                 </div>
                 <div class="flex gap-6 items-start p-6 shield-panel rounded-2xl" data-aos="fade-left" data-aos-delay="100">
                     <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-black flex-shrink-0">2</div>
-                    <div><p class="font-bold mb-1">Arquitetura & Design</p><p class="text-gray-500 text-sm">Definição de topologia, virtualização e políticas de acesso.</p></div>
+                    <div>
+                        <p class="font-bold mb-1" data-pt="Arquitetura & Design" data-en="Architecture & Design" data-es="Arquitectura y Diseño">Arquitetura & Design</p>
+                        <p class="text-gray-500 text-sm" data-pt="Definição de topologia, virtualização e políticas de acesso." data-en="Definition of topology, virtualization, and access policies." data-es="Definición de topología, virtualización y políticas de acceso.">Definição de topologia, virtualização e políticas de acesso.</p>
+                    </div>
                 </div>
                 <div class="flex gap-6 items-start p-6 shield-panel rounded-2xl" data-aos="fade-left" data-aos-delay="200">
                     <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-black flex-shrink-0">3</div>
-                    <div><p class="font-bold mb-1">Automação (IaC)</p><p class="text-gray-500 text-sm">Implantação via Infrastructure as Code para padronização total.</p></div>
+                    <div>
+                        <p class="font-bold mb-1" data-pt="Automação (IaC)" data-en="Automation (IaC)" data-es="Automatización (IaC)">Automação (IaC)</p>
+                        <p class="text-gray-500 text-sm" data-pt="Implantação via Infrastructure as Code para padronização total." data-en="Deployment via Infrastructure as Code for full standardization." data-es="Implementación mediante Infrastructure as Code para estandarización total.">Implantação via Infrastructure as Code para padronização total.</p>
+                    </div>
                 </div>
                 <div class="flex gap-6 items-start p-6 shield-panel rounded-2xl" data-aos="fade-left" data-aos-delay="300">
                     <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-black flex-shrink-0">4</div>
-                    <div><p class="font-bold mb-1">Operação Contínua</p><p class="text-gray-500 text-sm">Monitoramento, segurança ativa e relatórios executivos mensais.</p></div>
+                    <div>
+                        <p class="font-bold mb-1" data-pt="Operação Contínua" data-en="Continuous Operation" data-es="Operación Continua">Operação Contínua</p>
+                        <p class="text-gray-500 text-sm" data-pt="Monitoramento, segurança ativa e relatórios executivos mensais." data-en="Monitoring, active security, and monthly executive reports." data-es="Monitoreo, seguridad activa e informes ejecutivos mensuales.">Monitoramento, segurança ativa e relatórios executivos mensais.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -239,47 +355,80 @@
     <section id="faq" class="py-32 px-6 relative z-10 bg-black/40">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-3xl font-black mb-12 uppercase italic tracking-tighter text-center" data-aos="fade-up">
-                FAQ – <span class="text-blue-500">Cloud Privada</span>
+                FAQ – <span class="text-blue-500" data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</span>
             </h2>
             <div class="space-y-4">
                 
                 <div class="faq-item shield-panel rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up">
                     <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-sm md:text-base group-hover:text-blue-400 transition">1. Cloud Privada substitui totalmente meu data center?</h4>
+                        <h4 class="font-bold text-sm md:text-base group-hover:text-blue-400 transition"
+                            data-pt="1. Cloud Privada substitui totalmente meu data center?"
+                            data-en="1. Does Private Cloud fully replace my data center?"
+                            data-es="1. ¿La Nube Privada reemplaza totalmente mi centro de datos?">
+                            1. Cloud Privada substitui totalmente meu data center?
+                        </h4>
                         <i class="fas fa-chevron-down transition-transform"></i>
                     </div>
-                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed">
+                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Depende da estratégia de TI. Ela pode substituir o data center local ou coexistir, modernizando o ambiente atual com automação e segurança aprimorada."
+                       data-en="It depends on the IT strategy. It can replace the local data center or coexist, modernizing the current environment with automation and enhanced security."
+                       data-es="Depende de la estrategia de TI. Puede reemplazar el centro de datos local o coexistir, modernizando el entorno actual con automatización y seguridad mejorada.">
                         Depende da estratégia de TI. Ela pode substituir o data center local ou coexistir, modernizando o ambiente atual com automação e segurança aprimorada.
                     </p>
                 </div>
 
                 <div class="faq-item shield-panel rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-sm md:text-base group-hover:text-blue-400 transition">2. É possível integrar Cloud Privada e Pública?</h4>
+                        <h4 class="font-bold text-sm md:text-base group-hover:text-blue-400 transition"
+                            data-pt="2. É possível integrar Cloud Privada e Pública?"
+                            data-en="2. Is it possible to integrate Private and Public Cloud?"
+                            data-es="2. ¿Es posible integrar Nube Privada y Pública?">
+                            2. É possível integrar Cloud Privada e Pública?
+                        </h4>
                         <i class="fas fa-chevron-down transition-transform"></i>
                     </div>
-                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed">
+                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Sim. A Generactive desenvolve arquiteturas híbridas que integram nuvens privadas e públicas, otimizando custos e garantindo escalabilidade."
+                       data-en="Yes. Generactive develops hybrid architectures that integrate private and public clouds, optimizing costs and ensuring scalability."
+                       data-es="Sí. Generactive desarrolla arquitecturas híbridas que integran nubes privadas y públicas, optimizando costes y garantizando la escalabilidad.">
                         Sim. A Generactive desenvolve arquiteturas híbridas que integram nuvens privadas e públicas, otimizando custos e garantindo escalabilidade.
                     </p>
                 </div>
 
                 <div class="faq-item shield-panel rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-sm md:text-base group-hover:text-blue-400 transition">3. Cloud Privada é compatível com Kubernetes e containers?</h4>
+                        <h4 class="font-bold text-sm md:text-base group-hover:text-blue-400 transition"
+                            data-pt="3. Cloud Privada é compatível com Kubernetes e containers?"
+                            data-en="3. Is Private Cloud compatible with Kubernetes and containers?"
+                            data-es="3. ¿Es la Nube Privada compatible con Kubernetes y contenedores?">
+                            3. Cloud Privada é compatível com Kubernetes e containers?
+                        </h4>
                         <i class="fas fa-chevron-down transition-transform"></i>
                     </div>
                     <div class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed flex items-start gap-4">
                         <i class="fas fa-cubes text-blue-500 mt-1"></i>
-                        <span>Sim. Oferecemos ambientes totalmente compatíveis com <strong>Kubernetes, Docker e OpenShift</strong>, com suporte nativo a pipelines e automação CI/CD para desenvolvimento ágil.</span>
+                        <span data-pt="Sim. Oferecemos ambientes totalmente compatíveis com Kubernetes, Docker e OpenShift para desenvolvimento ágil."
+                              data-en="Yes. We offer environments fully compatible with Kubernetes, Docker, and OpenShift for agile development."
+                              data-es="Sí. Ofrecemos entornos totalmente compatibles con Kubernetes, Docker y OpenShift para el desarrollo ágil.">
+                            Sim. Oferecemos ambientes totalmente compatíveis com <strong>Kubernetes, Docker e OpenShift</strong>, com suporte nativo a pipelines e automação CI/CD para desenvolvimento ágil.
+                        </span>
                     </div>
                 </div>
 
                 <div class="faq-item shield-panel rounded-2xl px-8 py-6 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up" data-aos-delay="300">
                     <div class="flex justify-between items-center">
-                        <h4 class="font-bold text-sm md:text-base group-hover:text-blue-400 transition">4. Como a Generactive garante conformidade e auditoria?</h4>
+                        <h4 class="font-bold text-sm md:text-base group-hover:text-blue-400 transition"
+                            data-pt="4. Como a Generactive garante conformidade e auditoria?"
+                            data-en="4. How does Generactive guarantee compliance and auditing?"
+                            data-es="4. ¿Cómo garantiza Generactive el cumplimiento y la auditoría?">
+                            4. Como a Generactive garante conformidade e auditoria?
+                        </h4>
                         <i class="fas fa-chevron-down transition-transform"></i>
                     </div>
-                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed">
+                    <p class="faq-answer text-xs md:text-sm text-gray-500 mt-4 leading-relaxed"
+                       data-pt="Nossas soluções aplicam políticas de segurança, trilhas de auditoria, criptografia e segregação de dados conforme normas ISO e LGPD."
+                       data-en="Our solutions apply security policies, audit trails, encryption, and data segregation according to ISO and LGPD standards."
+                       data-es="Nuestras soluciones aplican políticas de seguridad, pistas de auditoría, cifrado y segregación de datos según las normas ISO y LGPD.">
                         Nossas soluções aplicam políticas de segurança, trilhas de auditoria, criptografia e segregação de dados, alinhadas às normas ISO e à LGPD.
                     </p>
                 </div>
@@ -290,13 +439,36 @@
 
     <section class="py-24 text-center relative z-10">
         <div class="max-w-4xl mx-auto p-12 shield-panel rounded-[3rem] border-blue-500/20">
-            <h2 class="text-4xl font-black mb-8 leading-tight tracking-tighter">Implemente sua Cloud Privada com <span class="text-blue-500 uppercase">Máxima Confiabilidade</span></h2>
-            <button class="bg-white text-black font-black px-12 py-5 rounded-full hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105 shadow-xl">SOLICITAR CONSULTORIA</button>
+            <h2 class="text-4xl font-black mb-8 leading-tight tracking-tighter">
+                <span data-pt="Implemente sua Cloud Privada com" data-en="Deploy your Private Cloud with" data-es="Implemente su Nube Privada con">Implemente sua Cloud Privada com</span> 
+                <span class="text-blue-500 uppercase" data-pt="Máxima Confiabilidade" data-en="Maximum Reliability" data-es="Máxima Confiabilidad">Máxima Confiabilidade</span>
+            </h2>
+            <a href="https://wa.me/5519995000067?text=Olá! Gostaria de solicitar uma consultoria especializada sobre as soluções de Cloud Privada da Generactive." 
+   target="_blank" 
+   class="bg-white text-black font-black px-12 py-5 rounded-full hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105 shadow-xl uppercase text-xs tracking-widest inline-block text-center"
+   data-pt="SOLICITAR CONSULTORIA" 
+   data-en="REQUEST CONSULTING" 
+   data-es="SOLICITAR CONSULTORÍA">
+    SOLICITAR CONSULTORIA
+</a>
         </div>
     </section>
 
-    <footer class="py-10 text-center text-[10px] text-gray-700 font-bold uppercase tracking-[0.4em] border-t border-white/5 relative z-10">
-        GENERACTIVE PRIVATE CLOUD • 2026
+    <footer class="py-6 px-6 border-t border-white/5 bg-dark/50 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-4">
+            
+            <a href="index.html" class="flex items-center group transition-transform hover:scale-105 active:scale-95">
+                <img src="LogoGen.png" 
+                     alt="Generactive Innovate" 
+                     class="h-8 md:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            </a>
+
+            <div class="flex flex-col items-center text-[8px] md:text-[9px] text-gray-700 font-bold uppercase tracking-[0.3em]">
+                <span data-pt="© 2026 Innovate at Scale" data-en="© 2026 Innovate at Scale" data-es="© 2026 Innovar a Escala">
+                    © 2026 Innovate at Scale
+                </span>
+            </div>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -307,5 +479,22 @@
             glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
         });
     </script>
+<script>
+    function changeLanguage(lang) {
+        document.getElementById('lang-label').innerText = lang.toUpperCase();
+        const elements = document.querySelectorAll('[data-pt]');
+        elements.forEach(el => {
+            const text = el.getAttribute(`data-${lang}`);
+            if (text) el.innerText = text;
+        });
+        localStorage.setItem('generactive_lang', lang);
+    }
+    
+    window.onload = () => {
+        const savedLang = localStorage.getItem('generactive_lang') || 'pt';
+        changeLanguage(savedLang);
+    };
+    </script>
+
 </body>
 </html>

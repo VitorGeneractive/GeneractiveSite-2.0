@@ -33,31 +33,38 @@
     <div class="glow-cursor" id="glow"></div>
     <div class="fixed inset-0 bg-grid z-0"></div>
 
-    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/80 backdrop-blur-md px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-extrabold tracking-tighter flex items-center gap-2">
-                <div class="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center rotate-12"><i class="fas fa-bolt text-black text-xs"></i></div>
-                GENERA<span class="text-cyan-400">CTIVE</span>
-            </div>
-    
-            <div class="flex items-center gap-8">
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-2">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
+            
+            <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1">
+                <img src="LogoGeneractive.png" alt="Generactive Innovate" class="h-12 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+            </a>
+            
+            <div class="flex items-center gap-6">
                 <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-                    <a href="#inicio" class="hover:text-cyan-400 transition" data-en="Home" data-es="Inicio" data-pt="Início">Início</a>
-                    <a href="#modelos" class="hover:text-cyan-400 transition" data-en="Models" data-es="Modelos" data-pt="Modelos">Modelos</a>
-                    <a href="#faq" class="hover:text-cyan-400 transition" data-en="FAQ" data-es="Dudas" data-pt="Dúvidas">Dúvidas</a>
+                    <a href="#vantagens" class="hover:text-cyan-400 transition" data-pt="Vantagens" data-en="Advantages" data-es="Ventajas">Vantagens</a>
+                    <a href="#metodologia" class="hover:text-cyan-400 transition" data-pt="Metodologia" data-en="Methodology" data-es="Metodología">Metodologia</a>
+                    <a href="#faq" class="hover:text-cyan-400 transition" data-pt="Dúvidas" data-en="FAQ" data-es="Dudas">Dúvidas</a>
                 </div>
     
-                <div class="relative group">
-                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-2 rounded-lg text-[10px] font-bold hover:border-cyan-400 transition">
-                        <i class="fas fa-globe text-cyan-400"></i>
-                        <span id="current-lang">PT</span>
+                <div class="relative group"> <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                        <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
                     </button>
-                    <div class="absolute right-0 mt-2 w-28 bg-gray-900 border border-white/10 rounded-xl overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 shadow-2xl">
-                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-3 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">PORTUGUÊS</button>
-                        <button onclick="changeLanguage('en')" class="w-full px-4 py-3 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">ENGLISH</button>
-                        <button onclick="changeLanguage('es')" class="w-full px-4 py-3 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">ESPAÑOL</button>
+                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">PORTUGUÊS</button>
+                        <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ENGLISH</button>
+                        <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ESPAÑOL</button>
                     </div>
                 </div>
+    
+                <a href="https://wa.me/5519995000067?text=Olá! Gostaria de falar com um especialista sobre as soluções da Generactive." 
+               target="_blank" 
+               class="bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-xs hover:bg-white transition shadow-lg shadow-cyan-500/20 uppercase inline-block text-center"
+               data-pt="Falar com Especialista" 
+               data-en="Talk to Specialist" 
+               data-es="Hablar con Especialista">
+                Falar com Especialista
+            </a>
             </div>
         </div>
     </nav>
@@ -76,12 +83,14 @@
                data-es="Innovación, escalabilidad y seguridad para su transformación digital con soluciones completas de Nube Pública, Privada e Híbrida.">
                 Inovação, escalabilidade e segurança para sua transformação digital com soluções completas em Cloud Pública, Privada e Híbrida.
             </p>
-            <button class="bg-cyan-500 text-black font-black px-12 py-5 rounded-2xl hover:bg-cyan-400 transition shadow-lg shadow-cyan-500/20"
-                    data-pt="Solicite uma avaliação gratuita"
-                    data-en="Request a free assessment"
-                    data-es="Solicite una evaluación gratuita">
-                Solicite uma avaliação gratuita
-            </button>
+            <a href="https://wa.me/5519995000067?text=Olá! Gostaria de solicitar uma avaliação gratuita das minhas necessidades de nuvem com a Generactive." 
+   target="_blank" 
+   class="bg-cyan-500 text-black font-black px-12 py-5 rounded-2xl hover:bg-cyan-400 transition shadow-lg shadow-cyan-500/20 inline-block text-center uppercase text-xs tracking-widest"
+   data-pt="Solicite uma avaliação gratuita"
+   data-en="Request a free assessment"
+   data-es="Solicite una evaluación gratuita">
+    Solicite uma avaliação gratuita
+</a>
         </div>
     </header>
 
@@ -407,7 +416,7 @@
                             data-es="1) ¿Cuál es la diferencia entre Nube Pública, Privada e Híbrida?">
                             1) Qual a diferença entre Cloud Pública, Privada e Híbrida?
                         </h3>
-                        <i class="fas fa-chevron-down transition-transform text-gray-600"></i>
+                        <i class="fas fa-chevron-up transition-transform text-gray-600"></i>
                     </div>
                     <div class="faq-answer text-gray-400 text-sm md:text-base leading-relaxed space-y-6">
                         <div class="grid md:grid-cols-3 gap-6">
@@ -447,7 +456,7 @@
                             data-es="2) ¿Cómo funciona la migración a la nube?">
                             2) Como funciona a migração para a nuvem?
                         </h3>
-                        <i class="fas fa-chevron-down transition-transform text-gray-600"></i>
+                        <i class="fas fa-chevron-up transition-transform text-gray-600"></i>
                     </div>
                     <div class="faq-answer text-gray-400 text-sm md:text-base leading-relaxed">
                         <p class="mb-4 font-semibold text-white" data-pt="Etapas conduzidas por especialistas certificados (AWS, Azure, GCP):" data-en="Stages led by certified specialists (AWS, Azure, GCP):" data-es="Etapas lideradas por especialistas certificados (AWS, Azure, GCP):">Etapas conduzidas por especialistas certificados (AWS, Azure, GCP):</p>
@@ -474,7 +483,7 @@
                             data-es="3) ¿Es seguro Cloud Services para empresas medianas?">
                             3) Cloud Services é seguro para empresas de médio porte?
                         </h3>
-                        <i class="fas fa-chevron-down transition-transform text-gray-600"></i>
+                        <i class="fas fa-chevron-up transition-transform text-gray-600"></i>
                     </div>
                     <div class="faq-answer text-gray-400 text-sm md:text-base leading-relaxed">
                         <p class="mb-4" data-pt="Sim. Aplicamos criptografia avançada, autenticação multifator (MFA) e redundância geográfica. Seguimos normas rigorosas:"
@@ -498,7 +507,7 @@
                             data-es="4) ¿Cómo reducir los costos de infraestructura usando Cloud?">
                             4) Como reduzir custos com infraestrutura usando Cloud?
                         </h3>
-                        <i class="fas fa-chevron-down transition-transform text-gray-600"></i>
+                        <i class="fas fa-chevron-up transition-transform text-gray-600"></i>
                     </div>
                     <div class="faq-answer text-gray-400 text-sm md:text-base leading-relaxed">
                         <p class="mb-4 italic" data-pt="Pague apenas pelos recursos utilizados, evitando desperdícios com hardware físico." data-en="Pay only for the resources used, avoiding waste with physical hardware." data-es="Pague solo por los recursos utilizados, evitando desperdicios con el hardware físico.">Pague apenas pelos recursos utilizados, evitando desperdícios com hardware físico.</p>
@@ -527,7 +536,7 @@
                             data-es="5) ¿Cuál es el mejor tipo de Cloud para empresas tecnológicas?">
                             5) Qual o melhor tipo de Cloud para empresas de tecnologia?
                         </h3>
-                        <i class="fas fa-chevron-down transition-transform text-gray-600"></i>
+                        <i class="fas fa-chevron-up transition-transform text-gray-600"></i>
                     </div>
                     <div class="faq-answer text-gray-400 text-sm md:text-base leading-relaxed">
                         <p data-pt="Depende das necessidades específicas:" data-en="It depends on specific needs:" data-es="Depende de las necesidades específicas:">Depende das necessidades específicas:</p>
@@ -547,7 +556,7 @@
                             data-es="6) ¿Cuánto cuesta migrar a la nube?">
                             6) Quanto custa migrar para a nuvem?
                         </h3>
-                        <i class="fas fa-chevron-down transition-transform text-gray-600"></i>
+                        <i class="fas fa-chevron-up transition-transform text-gray-600"></i>
                     </div>
                     <div class="faq-answer text-gray-400 text-sm md:text-base leading-relaxed">
                         <p data-pt="O investimento varia conforme o tamanho do ambiente, complexidade de integração e modelo escolhido. Na Generactive, oferecemos um Diagnóstico Personalizado Sem Compromisso para garantir o melhor custo-benefício."
@@ -566,20 +575,33 @@
                    data-es="¿Todavía tiene preguntas sobre cómo mejorar su infraestructura?">
                    Ainda tem dúvidas sobre como elevar sua infraestrutura?
                 </p>
-                <button class="bg-cyan-500 text-black font-black px-10 py-4 rounded-xl hover:bg-white transition-all shadow-lg shadow-cyan-500/20"
-                        data-pt="FALAR COM UM ESPECIALISTA" data-en="SPEAK WITH A SPECIALIST" data-es="HABLAR CON UN ESPECIALISTA">
-                    FALAR COM UM ESPECIALISTA
-                </button>
+                <a href="https://wa.me/5519995000067?text=Olá! Gostaria de falar com um especialista sobre as soluções da Generactive." 
+   target="_blank" 
+   class="bg-cyan-500 text-black font-black px-10 py-4 rounded-xl hover:bg-white transition-all shadow-lg shadow-cyan-500/20 inline-block text-center text-xs tracking-widest"
+   data-pt="FALAR COM UM ESPECIALISTA" 
+   data-en="SPEAK WITH A SPECIALIST" 
+   data-es="HABLAR CON UN ESPECIALISTA">
+    FALAR COM UM ESPECIALISTA
+</a>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-white/5 text-center relative z-10">
-        <div class="text-xl font-black tracking-tighter mb-4">GENERA<span class="text-cyan-400">CTIVE</span></div>
-        <p class="text-[9px] text-gray-600 font-bold uppercase tracking-[0.4em]"
-           data-pt="© 2026 Innovation at Scale" data-en="© 2026 Innovation at Scale" data-es="© 2026 Innovación a Escala">
-           © 2026 Innovation at Scale
-        </p>
+    <footer class="py-6 px-6 border-t border-white/5 bg-dark/50 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-4">
+            
+            <a href="index.html" class="flex items-center group transition-transform hover:scale-105 active:scale-95">
+                <img src="LogoGen.png" 
+                     alt="Generactive Innovate" 
+                     class="h-8 md:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            </a>
+
+            <div class="flex flex-col items-center text-[8px] md:text-[9px] text-gray-700 font-bold uppercase tracking-[0.3em]">
+                <span data-pt="© 2026 Innovate at Scale" data-en="© 2026 Innovate at Scale" data-es="© 2026 Innovar a Escala">
+                    © 2026 Innovate at Scale
+                </span>
+            </div>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -592,32 +614,31 @@
     </script>
 
 <script>
+    // Função para trocar o idioma
     function changeLanguage(lang) {
-        // Atualiza o texto do botão no topo
-        document.getElementById('current-lang').innerText = lang.toUpperCase();
+        // 1. Atualiza o selo visual no botão
+        const langLabel = document.getElementById('lang-label');
+        if (langLabel) langLabel.innerText = lang.toUpperCase();
 
-        // Busca todos os elementos que têm tradução
+        // 2. Traduz todos os elementos com o atributo data-pt
         const elements = document.querySelectorAll('[data-pt]');
-
         elements.forEach(el => {
-            if (lang === 'en' && el.getAttribute('data-en')) {
-                el.innerText = el.getAttribute('data-en');
-            } else if (lang === 'es' && el.getAttribute('data-es')) {
-                el.innerText = el.getAttribute('data-es');
-            } else {
-                el.innerText = el.getAttribute('data-pt');
+            const translation = el.getAttribute(`data-${lang}`);
+            if (translation) {
+                // Se for um link de WhatsApp, podemos manter os ícones, mas aqui traduzimos o texto
+                el.innerText = translation;
             }
         });
 
-        // Opcional: Salvar a preferência do usuário
-        localStorage.setItem('preferredLang', lang);
+        // 3. Salva a escolha para quando ele mudar de página
+        localStorage.setItem('generactive_lang', lang);
     }
 
-    // Verifica se o usuário já escolheu um idioma antes
-    window.onload = () => {
-        const savedLang = localStorage.getItem('preferredLang');
-        if (savedLang) changeLanguage(savedLang);
-    };
+    // Ao carregar a página, verifica se já existe um idioma salvo
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('generactive_lang') || 'pt';
+        changeLanguage(savedLang);
+    });
 </script>
 
 </body>
