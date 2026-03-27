@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V02327JYWK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V02327JYWK');
+    </script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-P937FVXV');
+        </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Cloud | Generactive Innovate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #010309; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+        /* --- ANIMAÇÃO RADAR NO FUNDO --- */
+        .radar-bg {
+            position: fixed; inset: 0; z-index: -1;
+            background: radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.03) 0%, transparent 70%);
+        }
+        .radar-line {
+            position: absolute; top: 50%; left: 50%; width: 100vmax; height: 100vmax;
+            background: conic-gradient(from 0deg, transparent 90%, rgba(34, 211, 238, 0.1));
+            transform: translate(-50%, -50%);
+            animation: rotate-radar 10s linear infinite;
+        }
+        @keyframes rotate-radar { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        /* --- GLASS MORPHISM COMMAND CENTER --- */
+        .glass-panel {
+            background: rgba(7, 10, 20, 0.7);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- INTERAÇÃO DE NODOS --- */
+        .node-card {
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+            border-left: 2px solid transparent;
+        }
+        .node-card:hover {
+            background: rgba(34, 211, 238, 0.05);
+            border-left: 2px solid #22d3ee;
+            transform: translateX(10px);
+        }
+
+        /* --- PULSE DE MONITORAMENTO --- */
+        .monitor-pulse {
+            width: 8px; height: 8px; background: #22d3ee; border-radius: 50%;
+            box-shadow: 0 0 10px #22d3ee; animation: pulse-data 2s infinite;
+        }
+        @keyframes pulse-data { 
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+
+        /* CORREÇÃO TOP ESPAÇAMENTO */
+        header { padding-top: 180px; }
+        
+        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.4s ease; opacity: 0; }
+        .faq-item.active .faq-answer { max-height: 300px; opacity: 1; margin-top: 1.5rem; }
+        .faq-item.active i { transform: rotate(180deg); color: #22d3ee; }
+
+        .lang-dropdown { display: none; }
+        .group:hover .lang-dropdown { display: block; }
+        .kebab-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 101;
+    }
+    .kebab-btn span {
+        width: 4px;
+        height: 4px;
+        background: #22d3ee;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+    }
+
+    .main-nav-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 1rem;
+        width: 260px;
+        background: rgba(10, 10, 12, 0.98);
+        backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        z-index: 1000;
+    }
+    .main-nav-dropdown.active { display: block; animation: fadeIn 0.3s ease; }
+
+    .nav-drop-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: #94a3b8;
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-radius: 12px;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+    .nav-drop-item:hover { background: rgba(34, 211, 238, 0.1); color: #22d3ee; }
+
+    /* SUBMENU DESKTOP (Lado a Lado) */
+    .has-submenu { position: relative; }
+    .submenu-content {
+        display: none;
+        position: absolute;
+        right: 102%; 
+        top: 0;
+        width: 220px;
+        background: rgba(15, 15, 18, 0.98);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 18px;
+        padding: 8px;
+        box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .has-submenu:hover .submenu-content { display: block; animation: slideIn 0.3s ease forwards; }
+
+    /* RESPONSIVIDADE MOBILE (Empilhado) */
+    @media (max-width: 768px) {
+        .main-nav-dropdown {
+            right: -10px; /* Ajuste para não colar na borda */
+            width: 280px;
+        }
+        .submenu-content {
+            position: static; /* Remove o flutuante */
+            width: 100%;
+            display: none; 
+            background: rgba(255, 255, 255, 0.03);
+            border: none;
+            box-shadow: none;
+            margin-top: 5px;
+            padding-left: 15px; /* Indenta os sub-itens */
+        }
+        .has-submenu:hover .submenu-content {
+            display: block; /* No mobile ele expande para baixo */
+        }
+        .nav-drop-item i.fa-chevron-left {
+            transform: rotate(-90deg); /* Aponta para baixo no mobile */
+        }
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+
+    </style>
+</head>
+<body>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P937FVXV"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="radar-bg"><div class="radar-line"></div></div>
+
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-2">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
+            
+            <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1">
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg flex items-center justify-center rotate-12 group-hover:rotate-0 transition-all shadow-lg shadow-blue-500/20 flex-shrink-0">
+                    <i class="fas fa-arrow-left text-white text-xs"></i>
+                </div>
+                <img src="LogoGeneractive.png" alt="Generactive Innovate" class="h-12 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+            </a>
+            
+            <div class="flex items-center gap-4 md:gap-6">
+                
+                <div class="relative group"> 
+                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                        <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
+                    </button>
+                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">PORTUGUÊS</button>
+                        <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ENGLISH</button>
+                        <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ESPAÑOL</button>
+                    </div>
+                </div>
+    
+                <a href="https://wa.me/5519995000067" target="_blank" 
+                   class="hidden sm:inline-block bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-[10px] hover:bg-white transition shadow-lg shadow-cyan-500/20 uppercase tracking-widest">
+                    <span data-pt="Especialista" data-en="Specialist" data-es="Especialista">Especialista</span>
+                </a>
+    
+                <div class="relative">
+                    <div class="kebab-btn" onclick="toggleMainMenu(event)">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                
+                    <div id="main-nav-dropdown" class="main-nav-dropdown">
+                        <p class="text-[8px] text-gray-600 font-black uppercase tracking-[0.3em] mb-2 px-4">Generactive</p>
+                
+                        <div class="has-submenu">
+                            <div class="nav-drop-item cursor-pointer flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-layer-group text-cyan-400"></i>
+                                    <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Servicios">Nossos Serviços</span>
+                                </div>
+                                <i class="fas fa-chevron-left text-[8px] opacity-40"></i>
+                            </div>
+                
+                            <div class="submenu-content">
+                                <a href="cloud-publica.html" class="nav-drop-item">
+                                    <i class="fas fa-cloud text-[10px]"></i> Cloud Pública
+                                </a>
+                                <a href="cloud-privada.html" class="nav-drop-item">
+                                    <i class="fas fa-lock text-[10px]"></i> Cloud Privada
+                                </a>
+                                <a href="cloud-hibrida.html" class="nav-drop-item">
+                                    <i class="fas fa-network-wired text-[10px]"></i> Cloud Híbrida
+                                </a>
+                            </div>
+                        </div>
+                
+                        <div class="has-submenu">
+                            <div class="nav-drop-item cursor-pointer flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-box-open text-cyan-400"></i>
+                                    <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Productos">Nossos Produtos</span>
+                                </div>
+                                <i class="fas fa-chevron-left text-[8px] opacity-40"></i>
+                            </div>
+                
+                            <div class="submenu-content">
+                                <a href="cloud-backup.html" class="nav-drop-item">
+                                    <i class="fas fa-shield-alt text-[10px]"></i> Cloud Backup
+                                </a>
+                                <a href="migracao-para-nuvem.html" class="nav-drop-item">
+                                    <i class="fas fa-rocket text-[10px]"></i> Cloud Migration
+                                </a>
+                                <a href="gerenciamento-cloud.html" class="nav-drop-item">
+                                    <i class="fas fa-tasks text-[10px]"></i> Cloud Management
+                                </a>
+                            </div>
+                        </div>
+                
+                        <a href="#sobre" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                            <i class="fas fa-users text-cyan-400"></i>
+                            <span data-pt="Sobre Nós" data-en="About Us" data-es="Sobre Nosotros">Sobre Nós</span>
+                        </a>
+                
+                        <div class="h-px bg-white/5 my-2"></div>
+                
+                        <a href="https://wa.me/5519995000067" target="_blank" class="nav-drop-item text-white">
+                            <i class="fas fa-comment-alt text-cyan-400"></i>
+                            <span data-pt="Entrar em Contato" data-en="Contact Us" data-es="Contacto">Entrar em Contato</span>
+                        </a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative px-6 pb-32">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="monitor-pulse"></div>
+                    <span class="text-cyan-400 text-xs font-black uppercase tracking-[0.3em]" data-pt="Cloud Management System" data-en="Cloud Management System" data-es="Sistema de Gestión Cloud">Cloud Management System</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-extrabold mb-8 italic tracking-tighter leading-none uppercase">
+                    CONTROLE <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-600" data-pt="TOTAL" data-en="TOTAL" data-es="TOTAL">TOTAL</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl mb-12 leading-relaxed max-w-lg" 
+                   data-pt="Monitoramento constante, automação e eficiência contínua em qualquer provedor — AWS, Azure ou Google Cloud."
+                   data-en="Constant monitoring, automation, and continuous efficiency across any provider — AWS, Azure, or Google Cloud."
+                   data-es="Monitoreo constante, automatización y eficiencia continua en cualquier proveedor — AWS, Azure o Google Cloud.">
+                    Gerenciar ambientes em nuvem requer monitoramento constante, automação e eficiência contínua em tempo real.
+                </p>
+                <a href="https://wa.me/5519995000067" class="inline-block bg-cyan-500 text-black font-black px-10 py-5 rounded-2xl uppercase text-xs tracking-[0.2em] shadow-2xl hover:bg-white transition-all transform hover:scale-105"
+                   data-pt="Falar com Especialistas" data-en="Speak with Specialists" data-es="Hablar con Especialistas">
+                    Fale com nossos especialistas
+                </a>
+            </div>
+
+            <div class="relative" data-aos="zoom-in">
+                <div class="glass-panel p-8 rounded-[3rem] border border-white/10 relative overflow-hidden">
+                    <div class="flex justify-between items-center mb-10">
+                        <div class="flex gap-2">
+                            <div class="w-2 h-2 rounded-full bg-red-500/40"></div>
+                            <div class="w-2 h-2 rounded-full bg-yellow-500/40"></div>
+                            <div class="w-2 h-2 rounded-full bg-cyan-500/40"></div>
+                        </div>
+                        <span class="text-[9px] font-mono text-gray-500 tracking-widest uppercase">Health: Optimal</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6 mb-10">
+                        <div class="p-6 bg-white/5 rounded-3xl border border-white/5">
+                            <p class="text-[9px] text-gray-500 uppercase mb-2">Cost Optimization</p>
+                            <p class="text-xl font-black text-cyan-400">98.4%</p>
+                        </div>
+                        <div class="p-6 bg-white/5 rounded-3xl border border-white/5">
+                            <p class="text-[9px] text-gray-500 uppercase mb-2">Uptime 24/7</p>
+                            <p class="text-xl font-black text-white italic">99.99%</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between text-[10px] uppercase font-bold text-gray-400">
+                            <span>Resource Usage</span>
+                            <span class="text-cyan-400">Scaling Active</span>
+                        </div>
+                        <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-cyan-500 to-blue-600 w-[65%] animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute -z-10 inset-0 bg-cyan-500/10 blur-[120px] rounded-full"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-24 px-6 bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-5xl font-black mb-8 italic uppercase tracking-tighter"
+                        data-pt="Visibilidade e Eficiência Essenciais" data-en="Essential Visibility and Efficiency" data-es="Visibilidad y Eficiencia Esenciales">
+                        O que é Cloud Management e por que ele é <span class="text-cyan-400">essencial</span>
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed text-lg" 
+                       data-pt="A Generactive utiliza monitoramento inteligente, automação e práticas FinOps/SRE para assegurar que cada recurso opere com máxima eficiência e custo otimizado."
+                       data-en="Generactive uses intelligent monitoring, automation, and FinOps/SRE practices to ensure each resource operates with maximum efficiency and optimized cost."
+                       data-es="Generactive utiliza monitoreo inteligente, automatización y prácticas FinOps/SRE para asegurar que cada recurso opere con la máxima eficiencia y costo optimizado.">
+                        A Generactive utiliza monitoramento inteligente, automação e práticas FinOps/SRE, assegurando que cada recurso em nuvem opere com máxima eficiência e custo otimizado.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-6" data-aos="fade-left">
+                    <div class="glass-panel p-8 rounded-3xl text-center border-l-4 border-l-cyan-500">
+                        <h4 class="text-2xl font-black text-white mb-2 uppercase italic tracking-tighter">FinOps</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest">Cost Control</p>
+                    </div>
+                    <div class="glass-panel p-8 rounded-3xl text-center border-l-4 border-l-blue-500 mt-10">
+                        <h4 class="text-2xl font-black text-white mb-2 uppercase italic tracking-tighter">SRE</h4>
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest">Reliability</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-gerenciamento" class="py-24 px-6 relative overflow-hidden bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <div class="relative order-2 lg:order-1" data-aos="fade-right">
+                    <div class="glass-panel p-8 rounded-[2.5rem] border border-white/10 relative z-10">
+                        <div class="flex items-center justify-between mb-8">
+                            <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-400">Workload_Visibility</h4>
+                            <div class="flex gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" style="animation-delay: 0.5s"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 group hover:border-cyan-500/30 transition-all">
+                                <span class="text-xs font-mono">Public_Cloud_Node</span>
+                                <span class="text-[10px] px-2 py-1 bg-green-500/20 text-green-400 rounded">ACTIVE</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 group hover:border-blue-500/30 transition-all">
+                                <span class="text-xs font-mono">Private_Data_Center</span>
+                                <span class="text-[10px] px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded">SYNCED</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 group hover:border-cyan-500/30 transition-all">
+                                <span class="text-xs font-mono">Hybrid_Gateway</span>
+                                <span class="text-[10px] px-2 py-1 bg-blue-500/20 text-blue-400 rounded">OPTIMIZED</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cyan-500/10 blur-[100px] rounded-full"></div>
+                </div>
+
+                <div class="order-1 lg:order-2" data-aos="fade-left">
+                    <h2 class="text-3xl md:text-5xl font-black mb-8 italic uppercase tracking-tighter leading-tight"
+                        data-pt="O que é Gerenciamento de Cloud e por que ele é essencial" 
+                        data-en="What is Cloud Management and why it is essential" 
+                        data-es="Qué es la Gestión de Cloud y por qué es esencial">
+                        O que é Gerenciamento de Cloud e por que ele é <span class="text-cyan-400">essencial</span>
+                    </h2>
+                    
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6"
+                       data-pt="O Gerenciamento de Cloud (Cloud Management) engloba todas as atividades que garantem a disponibilidade, segurança e eficiência de ambientes em nuvem."
+                       data-en="Cloud Management encompasses all activities that ensure the availability, security, and efficiency of cloud environments."
+                       data-es="La Gestión de Cloud (Cloud Management) engloba todas las actividades que garantizan la disponibilidad, seguridad y eficiencia de los entornos en la nube.">
+                        O Gerenciamento de Cloud (Cloud Management) engloba todas as atividades que garantem a disponibilidade, segurança e eficiência de ambientes em nuvem.
+                    </p>
+
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8"
+                       data-pt="A Generactive utiliza monitoramento inteligente, automação e práticas FinOps/SRE, assegurando que cada recurso em nuvem opere com máxima eficiência e custo otimizado."
+                       data-en="Generactive uses intelligent monitoring, automation, and FinOps/SRE practices, ensuring each cloud resource operates with maximum efficiency and optimized cost."
+                       data-es="Generactive utiliza monitoreo inteligente, automatización y prácticas FinOps/SRE, asegurando que cada recurso en la nube opere con la máxima eficiencia y costo optimizado.">
+                        A Generactive utiliza monitoramento inteligente, automação e práticas FinOps/SRE, assegurando que cada recurso em nuvem opere com máxima eficiência e custo otimizado.
+                    </p>
+
+                    <div class="p-6 bg-gradient-to-r from-cyan-500/10 to-transparent border-l-2 border-cyan-500 rounded-r-2xl font-bold text-white text-xs uppercase tracking-widest"
+                         data-pt="Nosso foco é oferecer visibilidade completa sobre workloads, automação de processos e compliance contínuo, seja em Cloud Pública, Privada ou Híbrida."
+                         data-en="Our focus is to offer complete visibility over workloads, process automation, and continuous compliance, whether in Public, Private, or Hybrid Cloud."
+                         data-es="Nuestro enfoque es ofrecer visibilidad completa sobre los workloads, automatización de procesos y cumplimiento continuo, ya sea en Cloud Pública, Privada o Híbrida.">
+                        Nosso foco é oferecer visibilidade completa sobre workloads, automação de processos e compliance contínuo, seja em Cloud Pública, Privada ou Híbrida.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="beneficios" class="py-32 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter"
+                    data-pt="Benefícios do Gerenciamento de Cloud com a Generactive" 
+                    data-en="Cloud Management Benefits with Generactive" 
+                    data-es="Beneficios de la Gestión de Cloud con Generactive">
+                    Benefícios do Gerenciamento de Cloud com a <span class="text-cyan-400">Generactive</span>
+                </h2>
+                <div class="w-20 h-1 bg-cyan-500 mx-auto mt-6 shadow-[0_0_10px_#22d3ee]"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-panel p-10 rounded-[2.5rem] border-t-2 border-cyan-500/30 hover-glow group" data-aos="fade-up">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-satellite-dish text-cyan-400 text-2xl group-hover:animate-pulse"></i>
+                        <h3 class="text-lg font-black uppercase italic" data-pt="Monitoramento 24/7" data-en="24/7 Monitoring" data-es="Monitoreo 24/7">Monitoramento 24/7</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-pt="Métricas em tempo real e alertas automatizados para garantir a saúde total da infraestrutura." data-en="Real-time metrics and automated alerts to ensure total infrastructure health." data-es="Métricas en tiempo real y alertas automatizadas para garantizar la salud total de la infraestructura.">Métricas em tempo real e alertas automatizados para garantir a saúde total da infraestrutura.</p>
+                </div>
+
+                <div class="glass-panel p-10 rounded-[2.5rem] border-t-2 border-blue-500/30 hover-glow group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-piggy-bank text-blue-400 text-2xl"></i>
+                        <h3 class="text-lg font-black uppercase italic" data-pt="Otimização FinOps" data-en="FinOps Optimization" data-es="Optimización FinOps">Otimização de Custos</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-pt="Controle rigoroso sobre uso e consumo de recursos, reduzindo desperdícios financeiros." data-en="Strict control over resource usage and consumption, reducing financial waste." data-es="Control riguroso sobre el uso y consumo de recursos, reduciendo el desperdicio financiero.">Controle rigoroso sobre uso e consumo de recursos, reduzindo desperdícios financeiros.</p>
+                </div>
+
+                <div class="glass-panel p-10 rounded-[2.5rem] border-t-2 border-cyan-500/30 hover-glow group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-cogs text-cyan-400 text-2xl"></i>
+                        <h3 class="text-lg font-black uppercase italic" data-pt="Automação" data-en="Automation" data-es="Automatización">Automação de Infra</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-pt="Provisionamento e escalabilidade inteligente para acompanhar o ritmo do seu negócio." data-en="Intelligent provisioning and scalability to keep up with your business pace." data-es="Aprovisionamiento y escalabilidad inteligente para acompañar el ritmo de su negocio.">Provisionamento e escalabilidade inteligente para acompanhar o ritmo do seu negócio.</p>
+                </div>
+
+                <div class="glass-panel p-10 rounded-[2.5rem] border-t-2 border-blue-500/30 hover-glow group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-user-shield text-blue-400 text-2xl"></i>
+                        <h3 class="text-lg font-black uppercase italic" data-pt="Compliance Contínuo" data-en="Continuous Compliance" data-es="Cumplimiento Continuo">Compliance Contínuo</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-pt="Auditoria e políticas de conformidade automatizadas para segurança regulatória total." data-en="Automated auditing and compliance policies for total regulatory security." data-es="Auditoría y políticas de cumplimiento automatizadas para la seguridad regulatoria total.">Auditoria e políticas de conformidade automatizadas para segurança regulatória total.</p>
+                </div>
+
+                <div class="glass-panel p-10 rounded-[2.5rem] border-t-2 border-cyan-500/30 hover-glow group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-headset text-cyan-400 text-2xl"></i>
+                        <h3 class="text-lg font-black uppercase italic" data-pt="Suporte SRE" data-en="SRE Support" data-es="Soporte SRE">Suporte Especializado</h3>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-pt="Equipe SRE dedicada e planos de resposta imediata para qualquer incidente." data-en="Dedicated SRE team and immediate response plans for any incident." data-es="Equipo SRE dedicado y planes de respuesta inmediata para cualquier incidente.">Equipe SRE dedicada e planos de resposta imediata para qualquer incidente.</p>
+                </div>
+
+                <div class="glass-panel p-10 rounded-[2.5rem] bg-gradient-to-br from-cyan-500/20 to-transparent border border-cyan-500/40 flex flex-col justify-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex items-center gap-4 mb-4">
+                        <i class="fas fa-link text-white text-xl animate-bounce"></i>
+                        <h3 class="text-sm font-black uppercase tracking-widest text-white">Ecossistema Cloud</h3>
+                    </div>
+                    <p class="text-gray-400 text-[11px] leading-relaxed mb-6 italic"
+                       data-pt="Combine o gerenciamento com nosso Cloud Backup e tenha proteção e controle centralizados em um só painel."
+                       data-en="Combine management with our Cloud Backup and have centralized protection and control in a single panel."
+                       data-es="Combine la gestión con nuestro Cloud Backup y tenga protección y control centralizados en un solo panel.">
+                        Combine o gerenciamento com nosso Cloud Backup e tenha proteção e controle centralizados em um só painel.
+                    </p>
+                    <a href="cloud-backup.html" class="px-6 py-3 border border-white text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all text-center">
+                        Ativar Backup Integrado
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="processo" class="py-32 px-6 bg-black/40 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-black italic uppercase tracking-tighter"
+                    data-pt="Como funciona o processo de gerenciamento contínuo" 
+                    data-en="How the continuous management process works" 
+                    data-es="Cómo funciona el proceso de gestión continua">
+                    Como funciona o processo de <span class="text-cyan-400">gerenciamento contínuo</span>
+                </h2>
+                <div class="w-16 h-1 bg-blue-500 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-4 relative">
+                <div class="hidden lg:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent -z-10"></div>
+
+                <div class="glass-panel p-8 rounded-[2rem] border border-white/5 hover:border-cyan-500/40 transition-all group" data-aos="fade-up">
+                    <span class="text-3xl font-black text-cyan-500/20 mb-4 block group-hover:text-cyan-500 transition">01</span>
+                    <h4 class="text-xs font-black uppercase mb-3 text-white tracking-widest" data-pt="Setup e Integração" data-en="Setup and Integration" data-es="Setup e Integración">Setup e Integração</h4>
+                    <p class="text-[11px] text-gray-500 leading-relaxed" data-pt="Conexão do ambiente cloud aos painéis de observabilidade." data-en="Cloud environment connection to observability dashboards." data-es="Conexión del entorno cloud a los paneles de observabilidad.">Conexão do ambiente cloud aos painéis de observabilidade.</p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-[2rem] border border-white/5 hover:border-blue-500/40 transition-all group lg:mt-12" data-aos="fade-up" data-aos-delay="100">
+                    <span class="text-3xl font-black text-blue-500/20 mb-4 block group-hover:text-blue-500 transition">02</span>
+                    <h4 class="text-xs font-black uppercase mb-3 text-white tracking-widest" data-pt="Monitoramento Ativo" data-en="Active Monitoring" data-es="Monitoreo Activo">Monitoramento Ativo</h4>
+                    <p class="text-[11px] text-gray-500 leading-relaxed" data-pt="Coleta de métricas, logs e eventos críticos em tempo real." data-en="Real-time collection of metrics, logs, and critical events." data-es="Recopilación de métricas, registros y eventos críticos en tiempo real.">Coleta de métricas, logs e eventos críticos.</p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-[2rem] border border-white/5 hover:border-cyan-500/40 transition-all group" data-aos="fade-up" data-aos-delay="200">
+                    <span class="text-3xl font-black text-cyan-500/20 mb-4 block group-hover:text-cyan-500 transition">03</span>
+                    <h4 class="text-xs font-black uppercase mb-3 text-white tracking-widest" data-pt="Análise Preditiva" data-en="Predictive Analysis" data-es="Análisis Predictivo">Análise Preditiva</h4>
+                    <p class="text-[11px] text-gray-500 leading-relaxed" data-pt="Identificação de gargalos e riscos de segurança antecipados." data-en="Early identification of bottlenecks and security risks." data-es="Identificación temprana de cuellos de botella y riesgos de seguridad.">Identificação de gargalos e riscos de segurança.</p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-[2rem] border border-white/5 hover:border-blue-500/40 transition-all group lg:mt-12" data-aos="fade-up" data-aos-delay="300">
+                    <span class="text-3xl font-black text-blue-500/20 mb-4 block group-hover:text-blue-500 transition">04</span>
+                    <h4 class="text-xs font-black uppercase mb-3 text-white tracking-widest" data-pt="Otimização Automatizada" data-en="Automated Optimization" data-es="Optimización Automatizada">Otimização Automatizada</h4>
+                    <p class="text-[11px] text-gray-500 leading-relaxed" data-pt="Ajustes de performance e custo via IA e scripts IaC." data-en="Performance and cost adjustments via AI and IaC scripts." data-es="Ajustes de rendimiento y costo mediante IA y scripts IaC.">Ajustes de performance e custo via IA e scripts IaC.</p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-[2rem] border border-white/5 hover:border-cyan-500/40 transition-all group" data-aos="fade-up" data-aos-delay="400">
+                    <span class="text-3xl font-black text-cyan-500/20 mb-4 block group-hover:text-cyan-500 transition">05</span>
+                    <h4 class="text-xs font-black uppercase mb-3 text-white tracking-widest" data-pt="Relatórios Executivos" data-en="Executive Reports" data-es="Informes Ejecutivos">Relatórios Executivos</h4>
+                    <p class="text-[11px] text-gray-500 leading-relaxed" data-pt="Dashboards mensais com indicadores e recomendações." data-en="Monthly dashboards with indicators and recommendations." data-es="Dashboards mensuales con indicadores y recomendaciones.">Dashboards mensais com indicadores e recomendações.</p>
+                </div>
+            </div>
+
+            <div class="mt-20 p-8 glass-panel rounded-[2.5rem] border-l-4 border-blue-500 bg-gradient-to-r from-blue-500/5 to-transparent flex items-center gap-8" data-aos="zoom-in">
+                <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 text-xl shrink-0">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <p class="text-xs text-gray-400 italic leading-relaxed"
+                   data-pt="Durante a operação, o gerenciamento se estende às soluções de Cloud Híbrida e Migração para Nuvem, garantindo continuidade e alta disponibilidade."
+                   data-en="During operation, management extends to Hybrid Cloud and Cloud Migration solutions, ensuring continuity and high availability."
+                   data-es="Durante la operación, la gestión se extiende a las soluciones de Nube Híbrida y Migración Cloud, garantizando continuidad y alta disponibilidad.">
+                    "Durante a operação, o gerenciamento se estende às soluções de <span class="text-white font-bold">Cloud Híbrida</span> e <span class="text-white font-bold">Migração para Nuvem</span>, garantindo continuidade e alta disponibilidade."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="casos-uso" class="py-32 px-6 bg-white/[0.01] relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#1e293b 1px, transparent 1px), linear-gradient(90deg, #1e293b 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+        <div class="max-w-7xl mx-auto relative z-10">
+            <h2 class="text-3xl md:text-5xl font-black mb-24 italic uppercase tracking-tighter text-center"
+                data-pt="Cenários de Aplicação Ideal" data-en="Ideal Application Scenarios" data-es="Escenarios de Aplicación Ideal">
+                Cenários de Aplicação <span class="text-cyan-400">Ideal</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="glass-panel p-8 rounded-full border border-white/5 hover:border-cyan-500/40 transition-all duration-500 group flex flex-col items-center text-center tilt-card" data-aos="zoom-in">
+                    <div class="w-16 h-16 rounded-full bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20 mb-6 group-hover:bg-cyan-500 group-hover:text-black transition-all">
+                        <i class="fas fa-network-wired text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-xs uppercase mb-2 text-white" data-pt="Multicloud Distribuído" data-en="Distributed Multicloud" data-es="Multicloud Distribuido">Multicloud Distribuído</h4>
+                    <p class="text-[10px] text-gray-500 leading-relaxed max-w-[150px]" data-pt="Gestão unificada de recursos em múltiplos provedores." data-en="Unified management of resources across multiple providers." data-es="Gestión unificada de recursos en múltiples proveedores.">Gestão unificada de recursos em múltiplos provedores.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-full border border-white/5 hover:border-blue-500/40 transition-all duration-500 group flex flex-col items-center text-center tilt-card lg:mt-16" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20 mb-6 group-hover:bg-blue-500 group-hover:text-black transition-all">
+                        <i class="fas fa-file-contract text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-xs uppercase mb-2 text-white" data-pt="Compliance & LGPD" data-en="Compliance & GDPR" data-es="Cumplimiento y LGPD">Compliance & LGPD</h4>
+                    <p class="text-[10px] text-gray-500 leading-relaxed max-w-[150px]" data-pt="Empresas com necessidade de ISO 27001 e normas regulatórias." data-en="Companies needing ISO 27001 and regulatory standards." data-es="Empresas con necesidad de ISO 27001 y normas regulatorias.">Empresas com necessidade de ISO 27001 e normas regulatórias.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-full border border-white/5 hover:border-cyan-500/40 transition-all duration-500 group flex flex-col items-center text-center tilt-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="w-16 h-16 rounded-full bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20 mb-6 group-hover:bg-cyan-500 group-hover:text-black transition-all">
+                        <i class="fas fa-chart-pie text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-xs uppercase mb-2 text-white" data-pt="Monitoramento Ativo" data-en="Active Monitoring" data-es="Monitoreo Activo">Monitoramento Ativo</h4>
+                    <p class="text-[10px] text-gray-500 leading-relaxed max-w-[150px]" data-pt="Organizações que exigem relatórios e alertas em tempo real." data-en="Organizations requiring real-time reports and alerts." data-es="Organizaciones que requieren informes y alertas en tiempo real.">Organizações que exigem relatórios e alertas em tempo real.</p>
+                </div>
+                <div class="glass-panel p-8 rounded-full border border-white/5 hover:border-blue-500/40 transition-all duration-500 group flex flex-col items-center text-center tilt-card lg:mt-16" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20 mb-6 group-hover:bg-blue-500 group-hover:text-black transition-all">
+                        <i class="fas fa-rocket text-xl"></i>
+                    </div>
+                    <h4 class="font-bold text-xs uppercase mb-2 text-white" data-pt="Expansão Digital" data-en="Digital Expansion" data-es="Expansión Digital">Expansão Digital</h4>
+                    <p class="text-[10px] text-gray-500 leading-relaxed max-w-[150px]" data-pt="Startups e corporações em ritmo de crescimento acelerado." data-en="Startups and corporations in a fast-paced growth rhythm." data-es="Startups y corporaciones en ritmo de crecimiento acelerado.">Startups e corporações em ritmo de crescimento acelerado.</p>
+                </div>
+            </div>
+
+            <div class="mt-24 text-center max-w-4xl mx-auto p-6 bg-black/50 rounded-2xl border border-white/5 font-mono text-[10px] text-gray-500" data-aos="fade-up">
+                <p data-pt="[SYS_LOG]: O Gerenciamento de Cloud é o elo entre infraestrutura, automação e segurança — garantindo que cada serviço em nuvem opere com eficiência máxima e custo otimizado."
+                   data-en="[SYS_LOG]: Cloud Management is the link between infrastructure, automation, and security — ensuring each cloud service operates with maximum efficiency and optimized cost."
+                   data-es="[SYS_LOG]: Cloud Management es el vínculo entre infraestructura, automatización y seguridad, garantizando que cada servicio en la nube opere con la máxima eficiencia y costo optimizado.">
+                    [SYS_LOG]: O Gerenciamento de Cloud é o elo entre infraestrutura, automação e segurança — garantindo que cada serviço em nuvem opere com eficiência máxima e custo otimizado.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 bg-black relative overflow-hidden">
+        <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-950/30 blur-[150px] rounded-full"></div>
+
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-5 gap-12 items-center">
+                
+                <div class="lg:col-span-3 space-y-12" data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl font-black mb-16 uppercase italic tracking-tighter"
+                        data-pt="Por que escolher a Generactive" data-en="Why choose Generactive" data-es="Por qué elegir Generactive">
+                        Por que escolher a <span class="text-cyan-400">Generactive</span>
+                    </h2>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="flex items-center gap-4 p-5 glass-panel rounded-2xl border-l-2 border-cyan-500 hover:bg-cyan-500/5 transition">
+                            <i class="fas fa-user-shield text-cyan-400 text-lg"></i>
+                            <span class="text-gray-300 font-bold text-xs uppercase tracking-widest" data-pt="SRE & FinOps Integrados" data-en="Integrated SRE & FinOps" data-es="SRE y FinOps Integrados">SRE & FinOps Integrados</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-5 glass-panel rounded-2xl border-l-2 border-blue-500 hover:bg-blue-500/5 transition">
+                            <i class="fas fa-brain text-blue-400 text-lg"></i>
+                            <span class="text-gray-300 font-bold text-xs uppercase tracking-widest" data-pt="Monitoramento via IA" data-en="AI-based Monitoring" data-es="Monitoreo vía IA">Monitoramento via IA</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-5 glass-panel rounded-2xl border-l-2 border-cyan-500 hover:bg-cyan-500/5 transition">
+                            <i class="fas fa-globe text-cyan-400 text-lg"></i>
+                            <span class="text-gray-300 font-bold text-xs uppercase tracking-widest" data-pt="Governança Unificada" data-en="Unified Governance" data-es="Gobernanza Unificada">Governança Unificada</span>
+                        </div>
+                        <div class="flex items-center gap-4 p-5 glass-panel rounded-2xl border-l-2 border-blue-500 hover:bg-blue-500/5 transition">
+                            <i class="fas fa-headset text-blue-400 text-lg"></i>
+                            <span class="text-gray-300 font-bold text-xs uppercase tracking-widest" data-pt="Atendimento Técnico 24/7" data-en="24/7 Technical Support" data-es="Soporte Técnico 24/7">Atendimento Técnico 24/7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 relative" data-aos="fade-left">
+                    <div class="glass-panel p-12 rounded-[3rem] text-center border-t-4 border-cyan-500 bg-gradient-to-b from-cyan-950/20 to-transparent shadow-2xl relative overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-t from-cyan-500/20 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-1000"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 bg-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-cyan-500/30">
+                                <i class="fas fa-desktop text-black text-2xl animate-pulse"></i>
+                            </div>
+                            <h3 class="text-2xl font-black mb-6 italic uppercase text-white" data-pt="Visualize seu Sucesso" data-en="Visualize your Success" data-es="Visualice su Éxito">Veja a Nuvem em Ação</h3>
+                            <p class="text-gray-500 text-sm mb-12 leading-relaxed" 
+                               data-pt="Solicite uma demonstração e veja como otimizar custos e aumentar a eficiência operacional da sua infraestrutura em nuvem."
+                               data-en="Request a demo and see how to optimize costs and increase the operational efficiency of your cloud infrastructure."
+                               data-es="Solicite una demostración y vea cómo optimizar costos y aumentar la eficiencia operativa de su infraestructura en la nube.">
+                                Solicite uma demonstração e veja como otimizar custos e aumentar a eficiência operacional da sua infraestrutura em nuvem.
+                            </p>
+                            <a href="https://wa.me/5519995000067?text=Olá! Gostaria de agendar uma demonstração do Gerenciamento de Cloud." 
+                               target="_blank" 
+                               class="inline-block w-full bg-cyan-500 text-black font-black px-10 py-5 rounded-2xl uppercase text-xs tracking-[0.2em] shadow-xl hover:bg-white transition-all transform hover:scale-105"
+                               data-pt="SOLICITAR DEMONSTRAÇÃO AGORA" data-en="REQUEST DEMO NOW" data-es="SOLICITAR DEMO AHORA">
+                                SOLICITAR DEMONSTRAÇÃO AGORA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-32 px-6 bg-black/40 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-black italic uppercase tracking-tighter"
+                    data-pt="FAQ – Gerenciamento de Cloud" data-en="FAQ – Cloud Management" data-es="FAQ – Gestión Cloud">
+                    FAQ – <span class="text-cyan-400">Cloud Management</span>
+                </h2>
+                <div class="flex items-center justify-center gap-2 mt-4">
+                    <span class="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></span>
+                    <p class="text-[9px] font-black text-gray-600 uppercase tracking-[0.4em]">Knowledge Base v.2026</p>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="faq-item glass-panel p-6 md:p-10 rounded-[2.5rem] cursor-pointer group hover:border-cyan-500/30 transition-all duration-500" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <span class="text-[10px] font-mono text-cyan-500/50 group-hover:text-cyan-400 transition italic">0x01</span>
+                            <h4 class="font-bold text-sm md:text-base uppercase tracking-wider text-white group-hover:text-cyan-400 transition"
+                                data-pt="Qual a diferença entre gerenciamento e monitoramento de Cloud?"
+                                data-en="What is the difference between Cloud management and monitoring?"
+                                data-es="¿Cuál es la diferencia entre gestión y monitoreo de Cloud?">
+                                Qual a diferença entre gerenciamento e monitoramento de Cloud?
+                            </h4>
+                        </div>
+                        <i class="fas fa-plus text-xs text-gray-600 group-hover:rotate-45 transition-transform duration-500"></i>
+                    </div>
+                    <div class="faq-answer border-t border-white/5 mt-6 pt-6">
+                        <p class="text-gray-500 text-sm leading-relaxed italic"
+                           data-pt="O monitoramento coleta métricas; o gerenciamento atua sobre elas, aplicando automação, segurança e otimização de custos de forma proativa."
+                           data-en="Monitoring collects metrics; management acts on them, applying automation, security, and cost optimization proactively."
+                           data-es="El monitoreo recopila métricas; la gestión actúa sobre ellas, aplicando automatización, seguridad y optimización de costos de forma proactiva.">
+                            O monitoramento coleta métricas; o gerenciamento atua sobre elas, aplicando automação, segurança e otimização de custos de forma proativa.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel p-6 md:p-10 rounded-[2.5rem] cursor-pointer group hover:border-blue-500/30 transition-all duration-500" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <span class="text-[10px] font-mono text-blue-500/50 group-hover:text-blue-400 transition italic">0x02</span>
+                            <h4 class="font-bold text-sm md:text-base uppercase tracking-wider text-white group-hover:text-blue-400 transition"
+                                data-pt="Posso centralizar o gerenciamento de ambientes multicloud?"
+                                data-en="Can I centralize multicloud environment management?"
+                                data-es="¿Puedo centralizar la gestión de entornos multicloud?">
+                                Posso centralizar o gerenciamento de ambientes multicloud?
+                            </h4>
+                        </div>
+                        <i class="fas fa-plus text-xs text-gray-600 group-hover:rotate-45 transition-transform duration-500"></i>
+                    </div>
+                    <div class="faq-answer border-t border-white/5 mt-6 pt-6">
+                        <p class="text-gray-500 text-sm leading-relaxed italic"
+                           data-pt="Sim. A Generactive oferece painéis unificados para monitorar e gerenciar recursos em AWS, Azure e Google Cloud de forma totalmente integrada."
+                           data-en="Yes. Generactive offers unified dashboards to monitor and manage AWS, Azure, and Google Cloud resources in a fully integrated way."
+                           data-es="Sí. Generactive ofrece paneles unificados para monitorear y gestionar recursos en AWS, Azure y Google Cloud de forma totalmente integrada.">
+                            Sim. A Generactive oferece painéis unificados para monitorar e gerenciar recursos em AWS, Azure e Google Cloud de forma totalmente integrada.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel p-6 md:p-10 rounded-[2.5rem] cursor-pointer group hover:border-cyan-500/30 transition-all duration-500" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <span class="text-[10px] font-mono text-cyan-500/50 group-hover:text-cyan-400 transition italic">0x03</span>
+                            <h4 class="font-bold text-sm md:text-base uppercase tracking-wider text-white group-hover:text-cyan-400 transition"
+                                data-pt="O Gerenciamento de Cloud ajuda na redução de custos?"
+                                data-en="Does Cloud Management help in cost reduction?"
+                                data-es="¿Ayuda la Gestión Cloud en la reducción de costes?">
+                                O Gerenciamento de Cloud ajuda na redução de custos?
+                            </h4>
+                        </div>
+                        <i class="fas fa-plus text-xs text-gray-600 group-hover:rotate-45 transition-transform duration-500"></i>
+                    </div>
+                    <div class="faq-answer border-t border-white/5 mt-6 pt-6">
+                        <p class="text-gray-500 text-sm leading-relaxed italic"
+                           data-pt="Sim. Aplicamos FinOps e automação inteligente para eliminar desperdícios de infraestrutura e otimizar recursos conforme a demanda real do negócio."
+                           data-en="Yes. We apply FinOps and intelligent automation to eliminate infrastructure waste and optimize resources according to real business demand."
+                           data-es="Sí. Aplicamos FinOps y automatización inteligente para eliminar el desperdicio de infraestructura y optimizar los recursos según la demanda real del negocio.">
+                            Sim. Aplicamos FinOps e automação inteligente para eliminar desperdícios de infraestrutura e otimizar recursos conforme a demanda real do negócio.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item glass-panel p-6 md:p-10 rounded-[2.5rem] cursor-pointer group hover:border-blue-500/30 transition-all duration-500" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-4">
+                            <span class="text-[10px] font-mono text-blue-500/50 group-hover:text-blue-400 transition italic">0x04</span>
+                            <h4 class="font-bold text-sm md:text-base uppercase tracking-wider text-white group-hover:text-blue-400 transition"
+                                data-pt="É possível integrar o Gerenciamento com sistemas internos?"
+                                data-en="Is it possible to integrate Management with internal systems?"
+                                data-es="¿Es posible integrar la Gestión con sistemas internos?">
+                                É possível integrar o Gerenciamento com sistemas internos?
+                            </h4>
+                        </div>
+                        <i class="fas fa-plus text-xs text-gray-600 group-hover:rotate-45 transition-transform duration-500"></i>
+                    </div>
+                    <div class="faq-answer border-t border-white/5 mt-6 pt-6">
+                        <p class="text-gray-500 text-sm leading-relaxed italic"
+                           data-pt="Sim. As APIs abertas permitem integração com ERPs, CRMs e ferramentas de DevOps, garantindo automação total e visibilidade corporativa unificada."
+                           data-en="Yes. Open APIs allow integration with ERPs, CRMs, and DevOps tools, ensuring total automation and unified corporate visibility."
+                           data-es="Sí. Las APIs abiertas permiten la integración con ERPs, CRMs y herramientas de DevOps, garantizando la automatización total y la visibilidad corporativa unificada.">
+                            Sim. As APIs abertas permitem integração com ERPs, CRMs e ferramentas de DevOps, garantindo automação total e visibilidade corporativa unificada.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-6 px-6 border-t border-white/5 bg-dark/50 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-4">
+            
+            <a href="index.html" class="flex items-center group transition-transform hover:scale-105 active:scale-95">
+                <img src="LogoGen.png" 
+                     alt="Generactive Innovate" 
+                     class="h-8 md:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            </a>
+
+            <div class="flex flex-col items-center text-[8px] md:text-[9px] text-gray-700 font-bold uppercase tracking-[0.3em]">
+                <span data-pt="© 2026 Innovate at Scale" data-en="© 2026 Innovate at Scale" data-es="© 2026 Innovar a Escala">
+                    © 2026 Innovate at Scale
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMainMenu(event) {
+            if(event) event.stopPropagation();
+            const dropdown = document.getElementById('main-nav-dropdown');
+            dropdown.classList.toggle('active');
+        }
+        
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('main-nav-dropdown');
+            const kebab = document.querySelector('.kebab-btn');
+            if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        function changeLanguage(lang) {
+            document.getElementById('lang-label').innerText = lang.toUpperCase();
+            const elements = document.querySelectorAll('[data-pt]');
+            elements.forEach(el => {
+                const translation = el.getAttribute(`data-${lang}`);
+                if (translation) el.innerText = translation;
+            });
+            localStorage.setItem('generactive_lang', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('generactive_lang') || 'pt';
+            changeLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

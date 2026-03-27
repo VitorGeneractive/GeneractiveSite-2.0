@@ -42,6 +42,99 @@
         /* Efeito para os logos dos parceiros */
         .partner-logo { filter: grayscale(100%) opacity(0.5); transition: all 0.4s ease; }
         .partner-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.1); }
+
+        .kebab-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 101;
+    }
+    .kebab-btn span {
+        width: 4px;
+        height: 4px;
+        background: #22d3ee;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+    }
+
+    .main-nav-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 1rem;
+        width: 260px;
+        background: rgba(10, 10, 12, 0.98);
+        backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        z-index: 1000;
+    }
+    .main-nav-dropdown.active { display: block; animation: fadeIn 0.3s ease; }
+
+    .nav-drop-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: #94a3b8;
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-radius: 12px;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+    .nav-drop-item:hover { background: rgba(34, 211, 238, 0.1); color: #22d3ee; }
+
+    /* SUBMENU DESKTOP (Lado a Lado) */
+    .has-submenu { position: relative; }
+    .submenu-content {
+        display: none;
+        position: absolute;
+        right: 102%; 
+        top: 0;
+        width: 220px;
+        background: rgba(15, 15, 18, 0.98);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 18px;
+        padding: 8px;
+        box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .has-submenu:hover .submenu-content { display: block; animation: slideIn 0.3s ease forwards; }
+
+    /* RESPONSIVIDADE MOBILE (Empilhado) */
+    @media (max-width: 768px) {
+        .main-nav-dropdown {
+            right: -10px; /* Ajuste para não colar na borda */
+            width: 280px;
+        }
+        .submenu-content {
+            position: static; /* Remove o flutuante */
+            width: 100%;
+            display: none; 
+            background: rgba(255, 255, 255, 0.03);
+            border: none;
+            box-shadow: none;
+            margin-top: 5px;
+            padding-left: 15px; /* Indenta os sub-itens */
+        }
+        .has-submenu:hover .submenu-content {
+            display: block; /* No mobile ele expande para baixo */
+        }
+        .nav-drop-item i.fa-chevron-left {
+            transform: rotate(-90deg); /* Aponta para baixo no mobile */
+        }
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
     </style>
 </head>
 <body>
@@ -59,14 +152,10 @@
                 <img src="LogoGeneractive.png" alt="Generactive Innovate" class="h-12 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_0_15px_rgba(6,182,212,0.2)]">
             </a>
             
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-gray-500">
-                    <a href="#vantagens" class="hover:text-cyan-400 transition" data-pt="Vantagens" data-en="Advantages" data-es="Ventajas">Vantagens</a>
-                    <a href="#metodologia" class="hover:text-cyan-400 transition" data-pt="Metodologia" data-en="Methodology" data-es="Metodología">Metodologia</a>
-                    <a href="#faq" class="hover:text-cyan-400 transition" data-pt="Dúvidas" data-en="FAQ" data-es="Dudas">Dúvidas</a>
-                </div>
-    
-                <div class="relative group"> <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+            <div class="flex items-center gap-4 md:gap-6">
+                
+                <div class="relative group"> 
+                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
                         <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
                     </button>
                     <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
@@ -76,14 +165,89 @@
                     </div>
                 </div>
     
-                <a href="https://wa.me/5519995000067?text=Olá! Gostaria de falar com um especialista sobre as soluções da Generactive." 
-               target="_blank" 
-               class="bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-xs hover:bg-white transition shadow-lg shadow-cyan-500/20 uppercase inline-block text-center"
-               data-pt="Falar com Especialista" 
-               data-en="Talk to Specialist" 
-               data-es="Hablar con Especialista">
-                Falar com Especialista
-            </a>
+                <a href="https://wa.me/5519995000067" target="_blank" 
+                   class="hidden sm:inline-block bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-[10px] hover:bg-white transition shadow-lg shadow-cyan-500/20 uppercase tracking-widest">
+                    <span data-pt="Especialista" data-en="Specialist" data-es="Especialista">Especialista</span>
+                </a>
+    
+                <div class="relative">
+                    <div class="kebab-btn" onclick="toggleMainMenu(event)">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                
+                    <div id="main-nav-dropdown" class="main-nav-dropdown">
+                        <p class="text-[8px] text-gray-600 font-black uppercase tracking-[0.3em] mb-2 px-4">Generactive</p>
+                
+                        <div class="has-submenu">
+                            <div class="nav-drop-item cursor-pointer flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-layer-group text-cyan-400"></i>
+                                    <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Servicios">Nossos Serviços</span>
+                                </div>
+                                <i class="fas fa-chevron-left text-[8px] opacity-40"></i>
+                            </div>
+                
+                            <div class="submenu-content">
+                                <a href="cloud-publica.html" class="nav-drop-item">
+                                    <i class="fas fa-cloud text-[10px]"></i> Cloud Pública
+                                </a>
+                                <a href="cloud-privada.html" class="nav-drop-item">
+                                    <i class="fas fa-lock text-[10px]"></i> Cloud Privada
+                                </a>
+                                <a href="cloud-hibrida.html" class="nav-drop-item">
+                                    <i class="fas fa-network-wired text-[10px]"></i> Cloud Híbrida
+                                </a>
+                            </div>
+                        </div>
+                
+                        <div class="has-submenu">
+                            <div class="nav-drop-item cursor-pointer flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-box-open text-cyan-400"></i>
+                                    <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Productos">Nossos Produtos</span>
+                                </div>
+                                <i class="fas fa-chevron-left text-[8px] opacity-40"></i>
+                            </div>
+                
+                            <div class="submenu-content">
+                                <a href="cloud-backup.html" class="nav-drop-item">
+                                    <i class="fas fa-shield-alt text-[10px]"></i> Cloud Backup
+                                </a>
+                                <a href="migracao-para-nuvem.html" class="nav-drop-item">
+                                    <i class="fas fa-rocket text-[10px]"></i> Cloud Migration
+                                </a>
+                                <a href="gerenciamento-cloud.html" class="nav-drop-item">
+                                    <i class="fas fa-tasks text-[10px]"></i> Cloud Management
+                                </a>
+                            </div>
+                        </div>
+                
+                        <a href="#sobre" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                            <i class="fas fa-users text-cyan-400"></i>
+                            <span data-pt="Sobre Nós" data-en="About Us" data-es="Sobre Nosotros">Sobre Nós</span>
+                        </a>
+
+                        <a href="politica-privacidade.html" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                            <i class="fas fa-user-shield text-cyan-400"></i>
+                            <span data-pt="Políticas de Privacidade" data-en="Privacy Policy" data-es="Política de Privacidad">Políticas de Privacidade</span>
+                        </a>
+                        
+                        <a href="termos-uso.html" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                            <i class="fas fa-file-contract text-cyan-400"></i>
+                            <span data-pt="Termos de Uso" data-en="Terms of Use" data-es="Términos de Uso">Termos de Uso</span>
+                        </a>
+
+                        <div class="h-px bg-white/5 my-2"></div>
+                
+                        <a href="contato.html" target="_blank" class="nav-drop-item text-white">
+                            <i class="fas fa-comment-alt text-cyan-400"></i>
+                            <span data-pt="Entrar em Contato" data-en="Contact Us" data-es="Contacto">Entrar em Contato</span>
+                        </a>
+                    </div>
+                </div>
+    
             </div>
         </div>
     </nav>
@@ -230,38 +394,81 @@
 
     <section id="solucoes" class="py-24 px-6 relative z-10 bg-white/[0.01]">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-20"
+            <h2 class="text-4xl font-black text-center mb-20 uppercase italic tracking-tighter"
                 data-pt="Backup, Migração e Gestão Inteligente"
                 data-en="Backup, Migration and Smart Management"
                 data-es="Respaldo, Migración y Gestión Inteligente">
-                Backup, Migração e Gestão Inteligente
+                Backup, Migração e <span class="text-cyan-400">Gestão Inteligente</span>
             </h2>
-            <div class="grid lg:grid-cols-2 gap-12">
-                <div class="mag-card p-10 rounded-3xl" data-aos="fade-right">
-                    <h3 class="text-2xl font-bold mb-4 text-cyan-400" data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Respaldo en la Nube">Cloud Backup</h3>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed"
-                       data-pt="Proteção avançada em múltiplos data centers com redundância geográfica e recuperação rápida em minutos."
-                       data-en="Advanced protection across multiple data centers with geographic redundancy and fast recovery in minutes."
-                       data-es="Protección avanzada en múltiples centros de datos con redundancia geográfica y recuperación rápida en minutos.">
-                        Proteção avançada em múltiplos data centers com redundância geográfica e recuperação rápida em minutos.
-                    </p>
-                    <ul class="text-xs space-y-3 text-gray-300">
-                        <li><i class="fas fa-check text-cyan-400 mr-2"></i> <span data-pt="Redundância Geográfica" data-en="Geographic Redundancy" data-es="Redundancia Geográfica">Redundância Geográfica</span></li>
-                        <li><i class="fas fa-check text-cyan-400 mr-2"></i> <span data-pt="Conformidade ISO/LGPD" data-en="ISO/LGPD Compliance" data-es="Cumplimiento ISO/LGPD">Conformidade ISO/LGPD</span></li>
-                    </ul>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="mag-card p-10 rounded-3xl border border-white/5 flex flex-col justify-between" data-aos="fade-up">
+                    <div>
+                        <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6 text-cyan-400 text-2xl">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white" data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Respaldo en la Nube">Cloud Backup</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed"
+                           data-pt="Proteção avançada em múltiplos data centers com redundância geográfica e recuperação rápida em minutos."
+                           data-en="Advanced protection across multiple data centers with geographic redundancy and fast recovery in minutes."
+                           data-es="Protección avanzada en múltiples centros de datos con redundancia geográfica y recuperación rápida en minutos.">
+                            Proteção avançada em múltiplos data centers com redundância geográfica e recuperação rápida em minutos.
+                        </p>
+                        <ul class="text-[11px] space-y-3 text-gray-300 mb-8">
+                            <li><i class="fas fa-check text-cyan-400 mr-2"></i> <span data-pt="Redundância Geográfica" data-en="Geographic Redundancy" data-es="Redundancia Geográfica">Redundância Geográfica</span></li>
+                            <li><i class="fas fa-check text-cyan-400 mr-2"></i> <span data-pt="Conformidade ISO/LGPD" data-en="ISO/LGPD Compliance" data-es="Cumplimiento ISO/LGPD">Conformidade ISO/LGPD</span></li>
+                        </ul>
+                    </div>
+                    <a href="cloud-backup.html" class="text-xs font-black uppercase tracking-widest text-cyan-400 hover:text-white transition-all flex items-center gap-2 group">
+                        <span data-pt="Ver Detalhes" data-en="View Details" data-es="Ver Detalles">Ver Detalhes</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </a>
                 </div>
-                <div class="mag-card p-10 rounded-3xl" data-aos="fade-left">
-                    <h3 class="text-2xl font-bold mb-4 text-cyan-400" data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración a la Nube">Cloud Migration</h3>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed"
-                       data-pt="Transição segura com zero downtime. Especialistas certificados em AWS, Azure e Google Cloud."
-                       data-en="Safe transition with zero downtime. Certified specialists in AWS, Azure and Google Cloud."
-                       data-es="Transición segura con cero tiempo de inactividad. Especialistas certificados en AWS, Azure y Google Cloud.">
-                        Transição segura com zero downtime. Especialistas certificados em AWS, Azure e Google Cloud.
-                    </p>
-                    <ul class="text-xs space-y-3 text-gray-300">
-                        <li><i class="fas fa-check text-cyan-400 mr-2"></i> <span data-pt="Zero Downtime Garantido" data-en="Zero Downtime Guaranteed" data-es="Tiempo de Inactividad Cero Garantizado">Zero Downtime Garantido</span></li>
-                        <li><i class="fas fa-check text-cyan-400 mr-2"></i> <span data-pt="Planejamento Estratégico" data-en="Strategic Planning" data-es="Planeamiento Estratégico">Planejamento Estratégico</span></li>
-                    </ul>
+
+                <div class="mag-card p-10 rounded-3xl border border-white/5 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 text-blue-400 text-2xl">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white" data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración a la Nube">Cloud Migration</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed"
+                           data-pt="Transição segura com zero downtime. Especialistas certificados em AWS, Azure e Google Cloud."
+                           data-en="Safe transition with zero downtime. Certified specialists in AWS, Azure and Google Cloud."
+                           data-es="Transición segura con cero tiempo de inactividad. Especialistas certificados en AWS, Azure y Google Cloud.">
+                            Transição segura com zero downtime. Especialistas certificados em AWS, Azure e Google Cloud.
+                        </p>
+                        <ul class="text-[11px] space-y-3 text-gray-300 mb-8">
+                            <li><i class="fas fa-check text-blue-400 mr-2"></i> <span data-pt="Zero Downtime Garantido" data-en="Zero Downtime Guaranteed" data-es="Tiempo de Inactividad Cero Garantizado">Zero Downtime Garantido</span></li>
+                            <li><i class="fas fa-check text-blue-400 mr-2"></i> <span data-pt="Estratégia DevOps/IaC" data-en="DevOps/IaC Strategy" data-es="Estrategia DevOps/IaC">Estratégia DevOps/IaC</span></li>
+                        </ul>
+                    </div>
+                    <a href="migracao-nuvem.html" class="text-xs font-black uppercase tracking-widest text-blue-400 hover:text-white transition-all flex items-center gap-2 group">
+                        <span data-pt="Ver Detalhes" data-en="View Details" data-es="Ver Detalles">Ver Detalhes</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div class="mag-card p-10 rounded-3xl border border-white/5 flex flex-col justify-between shadow-[0_0_30px_rgba(34,211,238,0.05)]" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center mb-6 text-cyan-400 text-2xl">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4 text-white" data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</h3>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed"
+                           data-pt="Gestão unificada, monitoramento 24/7 e otimização contínua de custos (FinOps)."
+                           data-en="Unified management, 24/7 monitoring and continuous cost optimization (FinOps)."
+                           data-es="Gestión unificada, monitoreo 24/7 y optimización continua de costos (FinOps).">
+                            Gestão unificada, monitoramento 24/7 e otimização contínua de custos (FinOps).
+                        </p>
+                        <ul class="text-[11px] space-y-3 text-gray-300 mb-8">
+                            <li><i class="fas fa-check text-cyan-400 mr-2"></i> <span data-pt="Monitoramento Proativo" data-en="Proactive Monitoring" data-es="Monitoreo Proactivo">Monitoramento Proativo</span></li>
+                            <li><i class="fas fa-check text-cyan-400 mr-2"></i> <span data-pt="Redução de Custos (FinOps)" data-en="Cost Reduction (FinOps)" data-es="Reducción de Costos (FinOps)">Redução de Custos (FinOps)</span></li>
+                        </ul>
+                    </div>
+                    <a href="gerenciamento-cloud.html" class="text-xs font-black uppercase tracking-widest text-cyan-400 hover:text-white transition-all flex items-center gap-2 group">
+                        <span data-pt="Ver Detalhes" data-en="View Details" data-es="Ver Detalles">Ver Detalhes</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -622,6 +829,23 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    function toggleMainMenu(event) {
+        if(event) event.stopPropagation();
+        const dropdown = document.getElementById('main-nav-dropdown');
+        dropdown.classList.toggle('active');
+    }
+    
+    // Fecha o menu ao clicar fora dele
+    document.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('main-nav-dropdown');
+        const kebab = document.querySelector('.kebab-btn');
+        if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+</script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

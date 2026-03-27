@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | Generactive Innovate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #02040a; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+        /* --- BACKGROUND DINÂMICO --- */
+        .contact-bg {
+            position: fixed; inset: 0; z-index: -1;
+            background: radial-gradient(circle at 10% 10%, rgba(34, 211, 238, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+        }
+
+        /* --- GLASS PANEL --- */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.3);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* --- CORREÇÃO DE ESPAÇAMENTO TOP --- */
+        nav { height: 80px; }
+        main { padding-top: 100px; } 
+
+        /* --- INPUTS ESTILIZADOS --- */
+        .tech-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.85rem 1.25rem;
+            border-radius: 1rem;
+            color: white;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        .tech-input:focus {
+            outline: none;
+            border-color: #22d3ee;
+            background: rgba(34, 211, 238, 0.05);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+        }
+
+        /* --- BOTÃO GLOW --- */
+        .btn-send {
+            background: #22d3ee;
+            color: #000;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            padding: 1rem;
+            border-radius: 1rem;
+            width: 100%;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
+            font-size: 0.75rem;
+        }
+        .btn-send:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(34, 211, 238, 0.4);
+            background: #fff;
+        }
+
+        .lang-dropdown { display: none; }
+        .group:hover .lang-dropdown { display: block; }
+
+        @media (max-width: 768px) {
+            main { padding-top: 80px; }
+        }
+        <style>
+    /* Estilização do Select e Opções */
+    .tech-input {
+        width: 100%;
+        background-color: #02040a; /* Cor de fundo idêntica ao site */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0.85rem 1.25rem;
+        border-radius: 1rem;
+        color: white;
+        font-size: 0.8rem;
+        transition: all 0.3s;
+        appearance: none; /* Remove a seta padrão para customização futura */
+    }
+
+    /* Garante que a lista que abre (dropdown) também seja escura */
+    .tech-input option {
+        background-color: #02040a; 
+        color: white;
+    }
+
+    .tech-input:focus {
+        outline: none;
+        border-color: #22d3ee;
+        background-color: #050a14; /* Um leve realce no foco */
+        box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+    }
+</style>
+
+    </style>
+</head>
+<body>
+
+    <div class="contact-bg"></div>
+
+    <nav class="fixed w-full z-50 bg-black/40 backdrop-blur-3xl border-b border-white/5 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-full">
+            <a href="index.html" class="flex items-center gap-4 transition-transform hover:scale-105">
+                <img src="LogoGeneractive.png" alt="Generactive" class="h-10 md:h-14">
+            </a>
+            
+            <div class="flex items-center gap-6">
+                <div class="relative group">
+                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                        <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
+                    </button>
+                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-zinc-950 border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50">
+                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">PORTUGUÊS</button>
+                        <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">ENGLISH</button>
+                        <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">ESPAÑOL</button>
+                    </div>
+                </div>
+                <a href="index.html" class="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-cyan-400 transition" 
+                   data-pt="Voltar" data-en="Back" data-es="Volver">Voltar</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 pb-20">
+        <div class="grid lg:grid-cols-2 gap-10 md:gap-20 items-start">
+            
+            <div data-aos="fade-right" class="lg:pt-4">
+                <h1 class="text-6xl md:text-8xl font-extrabold italic uppercase tracking-tighter leading-none mb-8"
+                    data-pt="CONECTE-SE" data-en="CONNECT" data-es="CONÉCTATE">
+                    CONECTE-<span class="text-cyan-400">SE</span>
+                </h1>
+                <p class="text-gray-400 text-lg mb-12 max-w-md leading-relaxed"
+                   data-pt="Pronto para o próximo salto tecnológico? Nossa equipe de especialistas está a um clique de distância."
+                   data-en="Ready for the next technological leap? Our expert team is just a click away."
+                   data-es="¿Listo para el próximo salto tecnológico? Nuestro equipo de expertos está a un clic de distancia.">
+                    Pronto para o próximo salto tecnológico? Nossa equipe de especialistas está a um clique de distância.
+                </p>
+
+                <div class="space-y-4">
+                    <a href="https://wa.me/5519995000067" class="glass-panel p-5 rounded-2xl flex items-center gap-5 hover:border-cyan-500/50 group transition-all">
+                        <div class="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 text-lg group-hover:bg-cyan-500 group-hover:text-black transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <p class="text-[9px] text-gray-500 uppercase font-black tracking-widest">WhatsApp Fast Track</p>
+                            <p class="text-sm font-bold text-white">+55 (19) 99500-0067</p>
+                        </div>
+                    </a>
+
+                    <a href="mailto:contato@generactive.com.br" class="glass-panel p-5 rounded-2xl flex items-center gap-5 hover:border-blue-500/50 group transition-all">
+                        <div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400 text-lg group-hover:bg-blue-500 group-hover:text-black transition-all">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-[9px] text-gray-500 uppercase font-black tracking-widest">Email Corporativo</p>
+                            <p class="text-sm font-bold text-white">contato@generactive.com.br</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div data-aos="fade-left">
+                <div class="glass-panel p-8 md:p-10 rounded-[2.5rem] border-t-4 border-cyan-500 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 font-mono text-[8px] tracking-widest uppercase">Contact_Module_v2.0</div>
+                    
+                    <form action="https://formspree.io/f/contato@generactive.com.br" method="POST" class="space-y-5">
+                        <div class="grid md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
+                                       data-pt="Nome" data-en="Name" data-es="Nombre">Nome</label>
+                                <input type="text" class="tech-input" 
+                                       data-pt="Seu nome completo" data-en="Your full name" data-es="Tu nombre completo" placeholder="Seu nome completo">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
+                                       data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</label>
+                                <input type="text" class="tech-input" 
+                                       data-pt="Nome da empresa" data-en="Company name" data-es="Nombre de la empresa" placeholder="Nome da empresa">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
+                                   data-pt="E-mail Corporativo" data-en="Work Email" data-es="Email Corporativo">E-mail Corporativo</label>
+                            <input type="email" class="tech-input" placeholder="email@suaempresa.com.br">
+                        </div>
+
+                        <div>
+                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
+                                   data-pt="Assunto" data-en="Subject" data-es="Asunto">Assunto</label>
+                            <select class="tech-input cursor-pointer">
+                                <option data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</option>
+                                <option data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</option>
+                                <option data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</option>
+                                <option data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Respaldo Cloud">Cloud Backup</option>
+                                <option data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</option>
+                                <option data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</option>
+                                <option data-pt="Outros / Parcerias" data-en="Others / Partnerships" data-es="Otros / Asociaciones">Outros / Parcerias</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
+                                   data-pt="Mensagem" data-en="Message" data-es="Mensaje">Mensagem</label>
+                            <textarea class="tech-input h-28 resize-none" 
+                                      data-pt="Como podemos ajudar?" data-en="How can we help?" data-es="¿Cómo podemos ayudar?" placeholder="Como podemos ajudar?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-send" data-pt="Enviar Mensagem" data-en="Send Message" data-es="Enviar Mensaje">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-6 px-6 border-t border-white/5 bg-dark/50 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-4">
+            
+            <a href="index.html" class="flex items-center group transition-transform hover:scale-105 active:scale-95">
+                <img src="LogoGen.png" 
+                     alt="Generactive Innovate" 
+                     class="h-8 md:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            </a>
+
+            <div class="flex flex-col items-center text-[8px] md:text-[9px] text-gray-700 font-bold uppercase tracking-[0.3em]">
+                <span data-pt="© 2026 Innovate at Scale" data-en="© 2026 Innovate at Scale" data-es="© 2026 Innovar a Escala">
+                    © 2026 Innovate at Scale
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        function changeLanguage(lang) {
+            document.getElementById('lang-label').innerText = lang.toUpperCase();
+            const elements = document.querySelectorAll('[data-pt]');
+            elements.forEach(el => {
+                const translation = el.getAttribute(`data-${lang}`);
+                if (translation) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translation;
+                    } else if (el.tagName === 'OPTION') {
+                        el.text = translation;
+                    } else {
+                        el.innerText = translation;
+                    }
+                }
+            });
+            localStorage.setItem('generactive_lang', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('generactive_lang') || 'pt';
+            changeLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>

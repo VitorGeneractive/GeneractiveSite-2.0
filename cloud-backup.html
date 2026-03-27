@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V02327JYWK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V02327JYWK');
+    </script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-P937FVXV');
+        </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Backup | Generactive Innovate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .mag-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(6, 182, 212, 0.1); }
+        .mag-card:hover { transform: translateY(-10px); border-color: rgba(6, 182, 212, 0.5); background: rgba(6, 182, 212, 0.05); }
+        .float-anim { animation: floating 6s ease-in-out infinite; }
+        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .lang-dropdown { display: none; }
+        .group:hover .lang-dropdown { display: block; }
+        .faq-item .faq-answer { max-height: 0; overflow: hidden; transition: all 0.5s ease-out; opacity: 0; }
+        .faq-item.active .faq-answer { max-height: 600px; opacity: 1; padding-bottom: 2rem; }
+        .faq-item.active i.fa-chevron-down { transform: rotate(180deg); color: #22d3ee; }
+
+        .kebab-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 101;
+    }
+    .kebab-btn span {
+        width: 4px;
+        height: 4px;
+        background: #22d3ee;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+    }
+
+    .main-nav-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 1rem;
+        width: 260px;
+        background: rgba(10, 10, 12, 0.98);
+        backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        z-index: 1000;
+    }
+    .main-nav-dropdown.active { display: block; animation: fadeIn 0.3s ease; }
+
+    .nav-drop-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: #94a3b8;
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-radius: 12px;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+    .nav-drop-item:hover { background: rgba(34, 211, 238, 0.1); color: #22d3ee; }
+
+    /* SUBMENU DESKTOP (Lado a Lado) */
+    .has-submenu { position: relative; }
+    .submenu-content {
+        display: none;
+        position: absolute;
+        right: 102%; 
+        top: 0;
+        width: 220px;
+        background: rgba(15, 15, 18, 0.98);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 18px;
+        padding: 8px;
+        box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .has-submenu:hover .submenu-content { display: block; animation: slideIn 0.3s ease forwards; }
+
+    /* RESPONSIVIDADE MOBILE (Empilhado) */
+    @media (max-width: 768px) {
+        .main-nav-dropdown {
+            right: -10px; /* Ajuste para não colar na borda */
+            width: 280px;
+        }
+        .submenu-content {
+            position: static; /* Remove o flutuante */
+            width: 100%;
+            display: none; 
+            background: rgba(255, 255, 255, 0.03);
+            border: none;
+            box-shadow: none;
+            margin-top: 5px;
+            padding-left: 15px; /* Indenta os sub-itens */
+        }
+        .has-submenu:hover .submenu-content {
+            display: block; /* No mobile ele expande para baixo */
+        }
+        .nav-drop-item i.fa-chevron-left {
+            transform: rotate(-90deg); /* Aponta para baixo no mobile */
+        }
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+
+    </style>
+</head>
+<body>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P937FVXV"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+        <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-2">
+            <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
+                
+                <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg flex items-center justify-center rotate-12 group-hover:rotate-0 transition-all shadow-lg shadow-blue-500/20 flex-shrink-0">
+                        <i class="fas fa-arrow-left text-white text-xs"></i>
+                    </div>
+                    <img src="LogoGeneractive.png" alt="Generactive Innovate" class="h-12 md:h-16 lg:h-20 w-auto object-contain drop-shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+                </a>
+                
+                <div class="flex items-center gap-4 md:gap-6">
+                    
+                    <div class="relative group"> 
+                        <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                            <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
+                        </button>
+                        <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                            <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">PORTUGUÊS</button>
+                            <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ENGLISH</button>
+                            <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ESPAÑOL</button>
+                        </div>
+                    </div>
+        
+                    <a href="https://wa.me/5519995000067" target="_blank" 
+                       class="hidden sm:inline-block bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-[10px] hover:bg-white transition shadow-lg shadow-cyan-500/20 uppercase tracking-widest">
+                        <span data-pt="Especialista" data-en="Specialist" data-es="Especialista">Especialista</span>
+                    </a>
+        
+                    <div class="relative">
+                        <div class="kebab-btn" onclick="toggleMainMenu(event)">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    
+                        <div id="main-nav-dropdown" class="main-nav-dropdown">
+                            <p class="text-[8px] text-gray-600 font-black uppercase tracking-[0.3em] mb-2 px-4">Generactive</p>
+                    
+                            <div class="has-submenu">
+                                <div class="nav-drop-item cursor-pointer flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-layer-group text-cyan-400"></i>
+                                        <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Servicios">Nossos Serviços</span>
+                                    </div>
+                                    <i class="fas fa-chevron-left text-[8px] opacity-40"></i>
+                                </div>
+                    
+                                <div class="submenu-content">
+                                    <a href="cloud-publica.html" class="nav-drop-item">
+                                        <i class="fas fa-cloud text-[10px]"></i> Cloud Pública
+                                    </a>
+                                    <a href="cloud-privada.html" class="nav-drop-item">
+                                        <i class="fas fa-lock text-[10px]"></i> Cloud Privada
+                                    </a>
+                                    <a href="cloud-hibrida.html" class="nav-drop-item">
+                                        <i class="fas fa-network-wired text-[10px]"></i> Cloud Híbrida
+                                    </a>
+                                </div>
+                            </div>
+                    
+                            <div class="has-submenu">
+                                <div class="nav-drop-item cursor-pointer flex justify-between items-center">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-box-open text-cyan-400"></i>
+                                        <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Productos">Nossos Produtos</span>
+                                    </div>
+                                    <i class="fas fa-chevron-left text-[8px] opacity-40"></i>
+                                </div>
+                    
+                                <div class="submenu-content">
+                                    <a href="cloud-backup.html" class="nav-drop-item">
+                                        <i class="fas fa-shield-alt text-[10px]"></i> Cloud Backup
+                                    </a>
+                                    <a href="migracao-nuvem.html" class="nav-drop-item">
+                                        <i class="fas fa-rocket text-[10px]"></i> Cloud Migration
+                                    </a>
+                                    <a href="gerenciamento-cloud.html" class="nav-drop-item">
+                                        <i class="fas fa-tasks text-[10px]"></i> Cloud Management
+                                    </a>
+                                </div>
+                            </div>
+                    
+                            <a href="#sobre" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                                <i class="fas fa-users text-cyan-400"></i>
+                                <span data-pt="Sobre Nós" data-en="About Us" data-es="Sobre Nosotros">Sobre Nós</span>
+                            </a>
+                    
+                            <div class="h-px bg-white/5 my-2"></div>
+                    
+                            <a href="https://wa.me/5519995000067" target="_blank" class="nav-drop-item text-white">
+                                <i class="fas fa-comment-alt text-cyan-400"></i>
+                                <span data-pt="Entrar em Contato" data-en="Contact Us" data-es="Contacto">Entrar em Contato</span>
+                            </a>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </nav>
+
+    <header class="relative pt-32 md:pt-48 pb-24 px-6 z-10 overflow-hidden text-center lg:text-left">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <span class="text-cyan-400 font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Resiliência • Continuidade • Proteção</span>
+                <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                    Cloud <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">Backup</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-xl mb-10 leading-relaxed" 
+                   data-pt="Proteção contínua e recuperação garantida. Garanta proteção automatizada, recuperação imediata e conformidade total."
+                   data-en="Continuous protection and guaranteed recovery. Ensure automated protection, immediate recovery and full compliance."
+                   data-es="Protección continua y recuperación garantizada. Garantice protección automatizada, recuperación inmediata y cumplimiento total.">
+                    Proteção contínua e recuperação garantida. Garanta proteção automatizada, recuperação imediata e conformidade total.
+                </p>
+                <a href="https://wa.me/5519995000067" target="_blank" class="bg-white text-black font-black px-8 py-4 rounded-xl hover:bg-cyan-400 transition inline-block uppercase text-xs tracking-widest"
+                   data-pt="Falar com Especialistas" data-en="Talk to Specialists" data-es="Hablar con Especialistas">
+                    Fale com Especialistas
+                </a>
+            </div>
+            <div class="relative flex justify-center" data-aos="zoom-in">
+                <div class="absolute inset-0 bg-blue-600/20 blur-[120px] rounded-full"></div>
+                <div class="float-anim relative z-10 glass-panel p-8 rounded-[3rem] border-white/10 w-full max-w-md bg-gray-900/40">
+                    <div class="flex justify-between items-center mb-10 font-mono text-[10px] text-cyan-500">
+                        <span data-pt="BACKUP_STATUS: PROTEGIDO" data-en="BACKUP_STATUS: PROTECTED" data-es="ESTADO_BACKUP: PROTEGIDO">BACKUP_STATUS: PROTEGIDO</span>
+                        <div class="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-cyan-500 w-[99.9%]"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-[10px] font-bold text-gray-500">
+                            <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-center">RTO: <span class="text-white">IMMEDIATE</span></div>
+                            <div class="p-3 bg-white/5 rounded-lg border border-white/5 text-center">INTEGRITY: <span class="text-white">100%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="beneficios" class="py-32 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic"
+                    data-pt="Benefícios do Cloud Backup" data-en="Cloud Backup Benefits" data-es="Beneficios de Cloud Backup">
+                    Benefícios do <span class="text-cyan-400">Cloud Backup</span>
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="mag-card glass-panel p-8 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-cyan-400/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-sync-alt text-cyan-400 text-2xl animate-spin-slow"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Backup Automatizado" data-en="Automated Backup" data-es="Backup Automatizado">Backup Automatizado</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" 
+                       data-pt="Políticas configuráveis por aplicação, garantindo que nenhum dado crítico seja esquecido."
+                       data-en="Configurable policies per application, ensuring no critical data is missed."
+                       data-es="Políticas configurables por aplicación, garantizando que no se olvide ningún dato crítico.">
+                        Políticas configuráveis por aplicação, garantindo que nenhum dado crítico seja esquecido.
+                    </p>
+                </div>
+
+                <div class="mag-card glass-panel p-8 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Recuperação Rápida" data-en="Fast Recovery" data-es="Recuperación Rápida">Recuperação Rápida</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" 
+                       data-pt="RTO e RPO definidos para diferentes níveis de criticidade, minimizando o downtime."
+                       data-en="RTO and RPO defined for different levels of criticality, minimizing downtime."
+                       data-es="RTO y RPO definidos para diferentes niveles de criticidad, minimizando el tiempo de inactividade.">
+                        RTO e RPO definidos para diferentes níveis de criticidade, minimizando o downtime.
+                    </p>
+                </div>
+
+                <div class="mag-card glass-panel p-8 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-cyan-400/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-user-shield text-cyan-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Criptografia Total" data-en="Total Encryption" data-es="Cifrado Total">Criptografia Total</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" 
+                       data-pt="Segurança máxima com criptografia ponta a ponta, tanto em repouso quanto em trânsito."
+                       data-en="Maximum security with end-to-end encryption, both at rest and in transit."
+                       data-es="Máxima seguridad con cifrado de extremo a extremo, tanto en reposo como en tránsito.">
+                        Segurança máxima com criptografia ponta a ponta, tanto em repouso quanto em trânsito.
+                    </p>
+                </div>
+
+                <div class="mag-card glass-panel p-8 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 bg-blue-600/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-biohazard text-blue-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Backups Imutáveis" data-en="Immutable Backups" data-es="Backups Inmutables">Backups Imutáveis</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" 
+                       data-pt="Resistência total a Ransomware e exclusões indevidas. Seus dados não podem ser alterados."
+                       data-en="Total resistance to Ransomware and improper deletions. Your data cannot be altered."
+                       data-es="Resistencia total a Ransomware y eliminaciones indebidas. Sus datos no pueden ser alterados.">
+                        Resistência total a Ransomware e exclusões indevidas. Seus dados não podem ser alterados.
+                    </p>
+                </div>
+
+                <div class="mag-card glass-panel p-8 rounded-[2.5rem]" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-12 h-12 bg-cyan-400/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-file-contract text-cyan-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white" data-pt="Conformidade & Normas" data-en="Compliance & Standards" data-es="Cumplimiento y Normas">Conformidade & Normas</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed" 
+                       data-pt="Total aderência à LGPD, GDPR e normas ISO/IEC 27001 para governança de dados."
+                       data-en="Full adherence to LGPD, GDPR and ISO/IEC 27001 standards for data governance."
+                       data-es="Adherencia total a LGPD, GDPR y normas ISO/IEC 27001 para la gobernanza de datos.">
+                        Total aderência à LGPD, GDPR e normas ISO/IEC 27001 para governança de dados.
+                    </p>
+                </div>
+
+                <div class="mag-card bg-gradient-to-br from-cyan-500/10 to-blue-600/10 p-8 rounded-[2.5rem] border border-cyan-500/30 flex flex-col justify-center text-center" data-aos="fade-up" data-aos-delay="600">
+                    <h3 class="text-lg font-black mb-4 text-cyan-400 uppercase tracking-widest" data-pt="Ecossistema Unificado" data-en="Unified Ecosystem" data-es="Ecosistema Unificado">Ecossistema Unificado</h3>
+                    <p class="text-white text-xs font-bold leading-relaxed" 
+                       data-pt="Combine o Cloud Backup com nosso Gerenciamento de Cloud e tenha visibilidade total do ciclo de vida dos seus dados."
+                       data-en="Combine Cloud Backup with our Cloud Management and get full visibility of your data lifecycle."
+                       data-es="Combine el Cloud Backup con nuestro Cloud Management y obtenga visibilidad total del ciclo de vida de sus datos.">
+                        Combine o Cloud Backup com nosso Gerenciamento de Cloud e tenha visibilidade total do ciclo de vida dos seus dados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="casos" class="py-24 px-6 bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-black mb-16 text-center italic uppercase tracking-tighter"
+                data-pt="Casos de Uso do Cloud Backup" data-en="Cloud Backup Use Cases" data-es="Casos de Uso de Cloud Backup">
+                Casos de Uso do <span class="text-cyan-400">Cloud Backup</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-panel p-6 rounded-2xl" data-aos="fade-up">
+                    <i class="fas fa-network-wired text-cyan-400 text-2xl mb-4"></i>
+                    <h4 class="font-bold mb-3 text-sm" data-pt="Ambientes Híbridos" data-en="Hybrid Environments" data-es="Entornos Híbridos">Ambientes Híbridos</h4>
+                    <p class="text-xs text-gray-500" data-pt="Multicloud com múltiplas origens de dados integradas." data-en="Multicloud with multiple integrated data sources." data-es="Multicloud con múltiples fuentes de datos integradas.">Multicloud com múltiplas origens de dados integradas.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-hospital-symbol text-blue-400 text-2xl mb-4"></i>
+                    <h4 class="font-bold mb-3 text-sm" data-pt="Sistemas Críticos" data-en="Critical Systems" data-es="Sistemas Críticos">Sistemas Críticos</h4>
+                    <p class="text-xs text-gray-500" data-pt="Finanças, saúde, jurídico e manufatura de alta precisão." data-en="Finance, health, legal and high-precision manufacturing." data-es="Finanzas, salud, legal y manufactura de alta precisión.">Finanças, saúde, jurídico e manufatura de alta precisão.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-server text-cyan-400 text-2xl mb-4"></i>
+                    <h4 class="font-bold mb-3 text-sm" data-pt="Aplicações SaaS" data-en="SaaS Applications" data-es="Aplicaciones SaaS">Aplicações SaaS</h4>
+                    <p class="text-xs text-gray-500" data-pt="Backup para servidores virtuais, bancos de dados e apps." data-en="Backup for virtual servers, databases and apps." data-es="Backup para servidores virtuales, bases de datos y apps.">Backup para servidores virtuais, bancos de dados e apps.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-database text-blue-400 text-2xl mb-4"></i>
+                    <h4 class="font-bold mb-3 text-sm" data-pt="On-Premises" data-en="On-Premises" data-es="On-Premises">On-Premises</h4>
+                    <p class="text-xs text-gray-500" data-pt="Ambientes locais com integração direta à nuvem segura." data-en="On-premises environments with direct secure cloud integration." data-es="Entornos locales con integración directa a la nube segura.">Ambientes locais com integração direta à nuvem segura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="metodologia" class="py-32 px-6 bg-black/60 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-24" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic"
+                    data-pt="Metodologia de Implementação" data-en="Implementation Methodology" data-es="Metodología de Implementación">
+                    Metodologia de <span class="text-cyan-400">Implementação</span>
+                </h2>
+                <p class="text-gray-500 text-sm tracking-widest uppercase" data-pt="Processo Generactive de Alta Performance" data-en="Generactive High-Performance Process" data-es="Proceso Generactive de Alto Rendimiento">Processo Generactive de Alta Performance</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-x-16 gap-y-12 relative">
+                <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/0 via-cyan-500/20 to-cyan-500/0"></div>
+
+                <div class="flex gap-6 items-start" data-aos="fade-right">
+                    <span class="text-5xl font-black text-cyan-500/20 italic">01</span>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2" data-pt="Assessment e Diagnóstico" data-en="Assessment and Diagnosis" data-es="Assessment y Diagnóstico">Assessment e Diagnóstico</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed" data-pt="Análise profunda dos dados, workloads e prioridades estratégicas do seu negócio." data-en="Deep analysis of data, workloads, and strategic business priorities." data-es="Análisis profundo de datos, workloads y prioridades estratégicas de su negocio.">Análise profunda dos dados, workloads e prioridades estratégicas do seu negócio.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 items-start" data-aos="fade-left">
+                    <span class="text-5xl font-black text-blue-500/20 italic">02</span>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2" data-pt="Planejamento e Arquitetura" data-en="Planning and Architecture" data-es="Planificación y Arquitectura">Planejamento e Arquitetura</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed" data-pt="Definição rigorosa de políticas de retenção, replicação e redundância geográfica." data-en="Strict definition of retention, replication, and geographic redundancy policies." data-es="Definición rigurosa de políticas de retención, replicación y redundancia geográfica.">Definição rigorosa de políticas de retenção, replicação e redundância geográfica.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 items-start" data-aos="fade-right">
+                    <span class="text-5xl font-black text-cyan-500/20 italic">03</span>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2" data-pt="Implantação e Automação" data-en="Deployment and Automation" data-es="Implementación y Automatización">Implantação e Automação</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed" data-pt="Configuração técnica dos agentes de backup e integração com storage em nuvem." data-en="Technical configuration of backup agents and cloud storage integration." data-es="Configuración técnica de agentes de backup e integración con almacenamiento en la nube.">Configuração técnica dos agentes de backup e integração com storage em nuvem.</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 items-start" data-aos="fade-left">
+                    <span class="text-5xl font-black text-blue-500/20 italic">04</span>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2" data-pt="Testes de Restauração" data-en="Restoration Tests" data-es="Pruebas de Restauración">Testes de Restauração</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed" data-pt="Simulações reais e validação rigorosa dos processos de recuperação (Restore)." data-en="Real simulations and rigorous validation of recovery processes (Restore)." data-es="Simulaciones reales y validación rigurosa de los procesos de recuperación (Restore).">Simulações reais e validação rigorosa dos processos de recuperação (Restore).</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-6 items-start" data-aos="fade-right">
+                    <span class="text-5xl font-black text-cyan-500/20 italic">05</span>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2" data-pt="Monitoramento Contínuo" data-en="Continuous Monitoring" data-es="Monitoreo Continuo">Monitoramento Contínuo</h4>
+                        <p class="text-gray-500 text-sm leading-relaxed" data-pt="Relatórios detalhados, auditoria e alertas automáticos 24/7 para integridade total." data-en="Detailed reports, auditing, and 24/7 automatic alerts for total integrity." data-es="Informes detallados, auditoría y alertas automáticas 24/7 para integridad total.">Relatórios detalhados, auditoria e alertas automáticos 24/7 para integridade total.</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl border-l-4 border-cyan-500 bg-gradient-to-r from-cyan-500/5 to-transparent" data-aos="zoom-in">
+                    <div class="flex items-center gap-4 mb-3">
+                        <i class="fas fa-rocket text-cyan-400"></i>
+                        <h5 class="text-xs font-black uppercase tracking-widest text-white" data-pt="Proteção Complementar" data-en="Complementary Protection" data-es="Protección Complementaria">Proteção Complementar</h5>
+                    </div>
+                    <p class="text-[11px] text-gray-400 italic" 
+                       data-pt="Integramos nossa solução de Migração para Nuvem, garantindo que os dados sejam transferidos de forma segura e compatível."
+                       data-en="We integrate our Cloud Migration solution, ensuring data is transferred safely and compliantly."
+                       data-es="Integramos nuestra solución de Migración a la Nube, garantizando que los datos se transfieran de forma segura y compatible.">
+                        Integramos nossa solução de Migração para Nuvem, garantindo que os dados sejam transferidos de forma segura e compatível.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 bg-gradient-to-b from-black to-gray-900/20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 uppercase tracking-tighter italic"
+                        data-pt="Por que escolher a Generactive" 
+                        data-en="Why Choose Generactive" 
+                        data-es="Por qué elegir Generactive">
+                        Por que escolher a <span class="text-cyan-400">Generactive</span>
+                    </h2>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-center gap-4 group" data-aos="fade-up" data-aos-delay="100">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
+                                <i class="fas fa-check text-cyan-400 group-hover:text-black"></i>
+                            </div>
+                            <span class="text-gray-300 font-bold" data-pt="Infraestrutura multicloud (AWS, Azure, Google Cloud)." data-en="Multicloud infrastructure (AWS, Azure, Google Cloud)." data-es="Infraestructura multicloud (AWS, Azure, Google Cloud).">Infraestrutura multicloud (AWS, Azure, Google Cloud).</span>
+                        </li>
+                        <li class="flex items-center gap-4 group" data-aos="fade-up" data-aos-delay="200">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
+                                <i class="fas fa-check text-cyan-400 group-hover:text-black"></i>
+                            </div>
+                            <span class="text-gray-300 font-bold" data-pt="Armazenamento em data centers Tier III e IV." data-en="Storage in Tier III and IV data centers." data-es="Almacenamiento en centros de datos Tier III y IV.">Armazenamento em data centers Tier III e IV.</span>
+                        </li>
+                        <li class="flex items-center gap-4 group" data-aos="fade-up" data-aos-delay="300">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
+                                <i class="fas fa-check text-cyan-400 group-hover:text-black"></i>
+                            </div>
+                            <span class="text-gray-300 font-bold" data-pt="Políticas de retention e compliance configuráveis." data-en="Configurable retention and compliance policies." data-es="Políticas de retención y cumplimiento configurables.">Políticas de retention e compliance configuráveis.</span>
+                        </li>
+                        <li class="flex items-center gap-4 group" data-aos="fade-up" data-aos-delay="400">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
+                                <i class="fas fa-check text-cyan-400 group-hover:text-black"></i>
+                            </div>
+                            <span class="text-gray-300 font-bold" data-pt="Monitoramento ativo 24/7 com alertas proativos." data-en="24/7 active monitoring with proactive alerts." data-es="Monitoreo activo 24/7 con alertas proactivas.">Monitoramento ativo 24/7 com alertas proativos.</span>
+                        </li>
+                        <li class="flex items-center gap-4 group" data-aos="fade-up" data-aos-delay="500">
+                            <div class="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500 transition-colors">
+                                <i class="fas fa-check text-cyan-400 group-hover:text-black"></i>
+                            </div>
+                            <span class="text-gray-300 font-bold" data-pt="Planos de disaster recovery e restore testado." data-en="Disaster recovery plans and tested restore." data-es="Planes de desastre y restauración probada.">Planos de disaster recovery e restore testado.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative" data-aos="fade-left">
+                    <div class="glass-panel p-10 rounded-[3rem] border-cyan-500/30 bg-gradient-to-br from-cyan-500/10 to-blue-600/10">
+                        <i class="fas fa-shield-virus text-5xl text-cyan-400 mb-6"></i>
+                        <p class="text-white text-lg leading-relaxed italic mb-8"
+                           data-pt="Para empresas que buscam alta resiliência e continuidade operacional, a Generactive combina o Cloud Backup com Cloud Híbrida e Gerenciamento Inteligente, garantindo cobertura total do ambiente corporativo."
+                           data-en="For companies seeking high resilience and operational continuity, Generactive combines Cloud Backup with Hybrid Cloud and Intelligent Management, ensuring full coverage."
+                           data-es="Para empresas que buscan alta resiliencia y continuidad operativa, Generactive combina Cloud Backup con Cloud Híbrida y Gestión Inteligente.">
+                            "Para empresas que buscam alta resiliência e continuidade operacional, a Generactive combina o Cloud Backup com Cloud Híbrida e Gerenciamento Inteligente, garantindo cobertura total do ambiente corporativo."
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <p class="text-[10px] text-gray-500 font-black uppercase tracking-[0.3em]" data-pt="Proteção de Elite" data-en="Elite Protection" data-es="Protección de Elite">Proteção de Elite</p>
+                            <a href="https://wa.me/5519995000067?text=Olá! Gostaria de uma consultoria sobre Cloud Backup corporativo." 
+                               target="_blank" 
+                               class="bg-white text-black font-black px-10 py-5 rounded-2xl hover:bg-cyan-400 transition-all transform hover:scale-105 shadow-xl uppercase text-xs tracking-widest inline-block w-full text-center"
+                               data-pt="SOLICITE UMA CONSULTORIA PERSONALIZADA"
+                               data-en="REQUEST PERSONALIZED CONSULTING"
+                               data-es="SOLICITE CONSULTORÍA PERSONALIZADA">
+                                SOLICITE UMA CONSULTORIA PERSONALIZADA
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-32 px-6 relative z-10 bg-black/40">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-black mb-4 uppercase tracking-tighter italic"
+                    data-pt="FAQ – Cloud Backup" data-en="FAQ – Cloud Backup" data-es="FAQ – Cloud Backup">
+                    FAQ – <span class="text-cyan-400">Cloud Backup</span>
+                </h2>
+                <p class="text-gray-500 uppercase text-[10px] tracking-[0.3em]" 
+                   data-pt="Perguntas Frequentes sobre Proteção de Dados" 
+                   data-en="Frequently Asked Questions about Data Protection" 
+                   data-es="Preguntas Frecuentes sobre Protección de Datos">
+                    Perguntas Frequentes sobre Proteção de Dados
+                </p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="faq-item mag-card rounded-[2rem] px-8 pt-8 cursor-pointer group transition-all border border-white/5 bg-white/[0.02]" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="font-bold text-lg md:text-xl pr-4 text-white group-hover:text-cyan-400 transition"
+                            data-pt="1) O que diferencia o Cloud Backup corporativo do backup local tradicional?"
+                            data-en="1) What differentiates corporate Cloud Backup from traditional local backup?"
+                            data-es="1) ¿Qué diferencia al Cloud Backup corporativo del backup local tradicional?">
+                            1) O que diferencia o Cloud Backup corporativo do backup local tradicional?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform text-gray-600"></i>
+                    </div>
+                    <div class="faq-answer text-gray-400 text-sm md:text-base leading-relaxed">
+                        <p data-pt="O Cloud Backup oferece redundância geográfica, automação e segurança criptografada, enquanto o backup local depende de infraestrutura física e está sujeito a falhas humanas ou desastres."
+                           data-en="Cloud Backup offers geographic redundancy, automation, and encrypted security, while local backup depends on physical infrastructure and is subject to human error or disasters."
+                           data-es="Cloud Backup ofrece redundancia geográfica, automatización y seguridad cifrada, mientras que el backup local depende de la infraestructura física y está sujeto a fallas humanas o desastres.">
+                            O Cloud Backup oferece redundância geográfica, automação e segurança criptografada, enquanto o backup local depende de infraestrutura física e está sujeito a falhas humanas ou desastres.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item mag-card rounded-[2rem] px-8 pt-8 cursor-pointer group transition-all border border-white/5 bg-white/[0.02]" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="font-bold text-lg md:text-xl pr-4 text-white group-hover:text-cyan-400 transition"
+                            data-pt="2) Como garantir que os dados estão realmente protegidos?"
+                            data-en="2) How to ensure that data is truly protected?"
+                            data-es="2) ¿Cómo garantizar que los datos estén realmente protegidos?">
+                            2) Como garantir que os dados estão realmente protegidos?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform text-gray-600"></i>
+                    </div>
+                    <div class="faq-answer text-gray-400 text-sm md:text-base leading-relaxed">
+                        <p data-pt="A Generactive utiliza criptografia de 256 bits, backups imutáveis e auditorias automáticas, além de monitoramento contínuo para garantir a integridade das cópias."
+                           data-en="Generactive uses 256-bit encryption, immutable backups, and automatic audits, plus continuous monitoring to ensure copy integrity."
+                           data-es="Generactive utiliza cifrado de 256 bits, backups inmutables y auditorías automáticas, además de monitoreo continuo para garantizar la integridad de las copias.">
+                            A Generactive utiliza criptografia de 256 bits, backups imutáveis e auditorias automáticas, além de monitoramento contínuo para garantir a integridade das cópias.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item mag-card rounded-[2rem] px-8 pt-8 cursor-pointer group transition-all border border-white/5 bg-white/[0.02]" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="font-bold text-lg md:text-xl pr-4 text-white group-hover:text-cyan-400 transition"
+                            data-pt="3) É possível restaurar apenas um arquivo específico?"
+                            data-en="3) Is it possible to restore just one specific file?"
+                            data-es="3) ¿Es posible restaurar solo un archivo específico?">
+                            3) É possível restaurar apenas um arquivo específico?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform text-gray-600"></i>
+                    </div>
+                    <div class="faq-answer text-gray-400 text-sm md:text-base leading-relaxed">
+                        <p data-pt="Sim. O Cloud Backup permite recuperação granular de arquivos, versões e bancos de dados individuais, sem necessidade de restaurar o volume completo."
+                           data-en="Yes. Cloud Backup allows granular recovery of files, versions, and individual databases, without needing to restore the entire volume."
+                           data-es="Sí. Cloud Backup permite la recuperación granular de archivos, versiones y bases de datos individuales, sin necesidad de restaurar el volumen completo.">
+                            Sim. O Cloud Backup permite recuperação granular de arquivos, versões e bancos de dados individuais, sem necessidade de restaurar o volume completo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item mag-card rounded-[2rem] px-8 pt-8 cursor-pointer group transition-all border border-white/5 bg-white/[0.02]" onclick="this.classList.toggle('active')">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="font-bold text-lg md:text-xl pr-4 text-white group-hover:text-cyan-400 transition"
+                            data-pt="4) O serviço está em conformidade com a LGPD?"
+                            data-en="4) Is the service compliant with LGPD?"
+                            data-es="4) ¿El servicio cumple con la LGPD?">
+                            4) O serviço está em conformidade com a LGPD?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform text-gray-600"></i>
+                    </div>
+                    <div class="faq-answer text-gray-400 text-sm md:text-base leading-relaxed">
+                        <p data-pt="Sim. Aplicamos controles de acesso, registro de logs e armazenamento seguro em data centers compatíveis com LGPD e GDPR."
+                           data-en="Yes. We apply access controls, log recording, and secure storage in LGPD and GDPR compliant data centers."
+                           data-es="Sí. Aplicamos controles de acceso, registro de logs y almacenamiento seguro en centros de datos compatibles con LGPD y GDPR.">
+                            Sim. Aplicamos controles de acesso, registro de logs e armazenamento seguro em data centers compatíveis com LGPD e GDPR.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 text-center" data-aos="fade-up">
+                <a href="https://wa.me/5519995000067?text=Olá! Gostaria de implementar o Cloud Backup corporativo com segurança." 
+                   target="_blank" 
+                   class="bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-black px-12 py-5 rounded-2xl hover:scale-105 transition-all shadow-2xl shadow-cyan-500/20 uppercase text-xs tracking-widest inline-block"
+                   data-pt="IMPLEMENTAR CLOUD BACKUP AGORA" 
+                   data-en="IMPLEMENT CLOUD BACKUP NOW" 
+                   data-es="IMPLEMENTAR CLOUD BACKUP AHORA">
+                    IMPLEMENTAR CLOUD BACKUP AGORA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-6 px-6 border-t border-white/5 bg-dark/50 relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col items-center gap-4">
+            
+            <a href="index.html" class="flex items-center group transition-transform hover:scale-105 active:scale-95">
+                <img src="LogoGen.png" 
+                     alt="Generactive Innovate" 
+                     class="h-8 md:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
+            </a>
+
+            <div class="flex flex-col items-center text-[8px] md:text-[9px] text-gray-700 font-bold uppercase tracking-[0.3em]">
+                <span data-pt="© 2026 Innovate at Scale" data-en="© 2026 Innovate at Scale" data-es="© 2026 Innovar a Escala">
+                    © 2026 Innovate at Scale
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMainMenu(event) {
+            if(event) event.stopPropagation();
+            const dropdown = document.getElementById('main-nav-dropdown');
+            dropdown.classList.toggle('active');
+        }
+        
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('main-nav-dropdown');
+            const kebab = document.querySelector('.kebab-btn');
+            if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        function changeLanguage(lang) {
+            const langLabel = document.getElementById('lang-label');
+            if(langLabel) langLabel.innerText = lang.toUpperCase();
+
+            const elements = document.querySelectorAll('[data-pt]');
+            elements.forEach(el => {
+                const translation = el.getAttribute(`data-${lang}`);
+                if (translation) el.innerText = translation;
+            });
+            localStorage.setItem('generactive_lang', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('generactive_lang') || 'pt';
+            changeLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
