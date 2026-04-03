@@ -18,115 +18,219 @@
         </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Backup | Generactive Innovate</title>
+    <link rel="icon" type="image/png" href="LogoGuiaGen.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
-        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .mag-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(6, 182, 212, 0.1); }
-        .mag-card:hover { transform: translateY(-10px); border-color: rgba(6, 182, 212, 0.5); background: rgba(6, 182, 212, 0.05); }
-        .float-anim { animation: floating 6s ease-in-out infinite; }
-        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        /* Importação da Fonte Principal */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+    
+        :root { 
+            --brand-cyan: #00f2ff; 
+            --brand-blue: #0066ff; 
+            --bg-dark: #020617; 
+        }
+    
+        /* Reset e Estilo Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-dark); 
+            color: #f3f4f6; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+    
+        /* Efeitos de Fundo */
+        .bg-dots { 
+            background-image: radial-gradient(circle, rgba(0, 242, 255, 0.1) 1px, transparent 1px); 
+            background-size: 30px 30px; 
+        }
+        
+        .glow-cursor { 
+            position: fixed; width: 400px; height: 400px; 
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.05) 0%, transparent 70%); 
+            border-radius: 50%; pointer-events: none; z-index: 0; 
+            transform: translate(-50%, -50%); 
+        }
+    
+        /* Painéis de Vidro (Glassmorphism) */
+        .glass-panel { 
+            background: rgba(255, 255, 255, 0.02); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .glass-panel:hover { 
+            border-color: var(--brand-cyan); 
+            background: rgba(255, 255, 255, 0.04); 
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.05);
+        }
+    
+        /* Cards Magnéticos */
+        .mag-card { 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            border: 1px solid rgba(6, 182, 212, 0.1); 
+        }
+        .mag-card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--brand-cyan); 
+            background: rgba(6, 182, 212, 0.05); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+    
+        /* Animações */
+        @keyframes float { 
+            0%, 100% { transform: translateY(0px); } 
+            50% { transform: translateY(-15px); } 
+        }
+        .float-anim { animation: float 6s ease-in-out infinite; }
+    
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(-10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        
+        @keyframes slideIn { 
+            from { opacity: 0; transform: translateX(10px); } 
+            to { opacity: 1; transform: translateX(0); } 
+        }
+    
+        /* FAQ Logic */
+        .faq-answer { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+            opacity: 0; 
+        }
+        .faq-item.active .faq-answer { 
+            max-height: 600px; 
+            opacity: 1; 
+            padding-bottom: 2rem; 
+        }
+        .faq-item.active i { 
+            transform: rotate(180deg); 
+            color: var(--brand-cyan); 
+        }
+    
+        /* Kebab Menu e Navigation Dropdown */
+        .kebab-btn {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 101;
+        }
+        .kebab-btn span {
+            width: 4px;
+            height: 4px;
+            background: var(--brand-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(0, 242, 255, 0.4);
+        }
+    
+        .main-nav-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 1rem;
+            width: 260px;
+            background: rgba(10, 10, 12, 0.98);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+            z-index: 1000;
+        }
+        .main-nav-dropdown.active { display: block; animation: fadeIn 0.3s ease; }
+    
+        .nav-drop-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: #94a3b8;
+            font-size: 11px; /* Leve aumento para leitura na Jakarta Sans */
+            font-weight: 700; /* Peso ajustado para a nova fonte */
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            border-radius: 12px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .nav-drop-item:hover { 
+            background: rgba(0, 242, 255, 0.1); 
+            color: var(--brand-cyan); 
+        }
+    
+        /* Submenus */
+        .has-submenu { position: relative; }
+        .submenu-content {
+            display: none;
+            position: absolute;
+            right: 102%; 
+            top: 0;
+            width: 220px;
+            background: rgba(15, 15, 18, 0.98);
+            border: 1px solid rgba(0, 242, 255, 0.2);
+            border-radius: 18px;
+            padding: 8px;
+            box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+        }
+        .has-submenu:hover .submenu-content { 
+            display: block; 
+            animation: slideIn 0.3s ease forwards; 
+        }
+    
+        /* Dropdown de Idioma */
         .lang-dropdown { display: none; }
         .group:hover .lang-dropdown { display: block; }
-        .faq-item .faq-answer { max-height: 0; overflow: hidden; transition: all 0.5s ease-out; opacity: 0; }
-        .faq-item.active .faq-answer { max-height: 600px; opacity: 1; padding-bottom: 2rem; }
-        .faq-item.active i.fa-chevron-down { transform: rotate(180deg); color: #22d3ee; }
-
-        .kebab-btn {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        cursor: pointer;
-        padding: 8px;
-        z-index: 101;
-    }
-    .kebab-btn span {
-        width: 4px;
-        height: 4px;
-        background: #22d3ee;
-        border-radius: 50%;
-        box-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
-    }
-
-    .main-nav-dropdown {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        margin-top: 1rem;
-        width: 260px;
-        background: rgba(10, 10, 12, 0.98);
-        backdrop-filter: blur(25px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 20px;
-        padding: 10px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
-        z-index: 1000;
-    }
-    .main-nav-dropdown.active { display: block; animation: fadeIn 0.3s ease; }
-
-    .nav-drop-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px 16px;
-        color: #94a3b8;
-        font-size: 10px;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        border-radius: 12px;
-        transition: all 0.3s;
-        text-decoration: none;
-    }
-    .nav-drop-item:hover { background: rgba(34, 211, 238, 0.1); color: #22d3ee; }
-
-    /* SUBMENU DESKTOP (Lado a Lado) */
-    .has-submenu { position: relative; }
-    .submenu-content {
-        display: none;
-        position: absolute;
-        right: 102%; 
-        top: 0;
-        width: 220px;
-        background: rgba(15, 15, 18, 0.98);
-        border: 1px solid rgba(34, 211, 238, 0.2);
-        border-radius: 18px;
-        padding: 8px;
-        box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .has-submenu:hover .submenu-content { display: block; animation: slideIn 0.3s ease forwards; }
-
-    /* RESPONSIVIDADE MOBILE (Empilhado) */
-    @media (max-width: 768px) {
-        .main-nav-dropdown {
-            right: -10px; /* Ajuste para não colar na borda */
-            width: 280px;
+    
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .main-nav-dropdown {
+                right: -10px;
+                width: 280px;
+            }
+            .submenu-content {
+                position: static;
+                width: 100%;
+                display: none; 
+                background: rgba(255, 255, 255, 0.03);
+                border: none;
+                box-shadow: none;
+                margin-top: 5px;
+                padding-left: 15px;
+            }
+            .has-submenu:hover .submenu-content { display: block; }
+            .nav-drop-item i.fa-chevron-left { transform: rotate(-90deg); }
         }
-        .submenu-content {
-            position: static; /* Remove o flutuante */
-            width: 100%;
-            display: none; 
-            background: rgba(255, 255, 255, 0.03);
-            border: none;
-            box-shadow: none;
-            margin-top: 5px;
-            padding-left: 15px; /* Indenta os sub-itens */
-        }
-        .has-submenu:hover .submenu-content {
-            display: block; /* No mobile ele expande para baixo */
-        }
-        .nav-drop-item i.fa-chevron-left {
-            transform: rotate(-90deg); /* Aponta para baixo no mobile */
-        }
-    }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
-
+        /* Controle de Expansão do Footer */
+.footer-menu-item { cursor: pointer; transition: all 0.3s; }
+.footer-submenu { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: all 0.4s cubic-bezier(0, 1, 0, 1); 
+    opacity: 0;
+    padding-left: 10px;
+    border-left: 1px solid rgba(0, 242, 255, 0.2);
+    margin-left: 5px;
+}
+.footer-menu-group.active .footer-submenu { 
+    max-height: 500px; 
+    opacity: 1; 
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.footer-menu-group.active i.fa-chevron-down { transform: rotate(180deg); color: #00f2ff; }
     </style>
 </head>
 <body>
@@ -220,10 +324,20 @@
                                 <i class="fas fa-users text-cyan-400"></i>
                                 <span data-pt="Sobre Nós" data-en="About Us" data-es="Sobre Nosotros">Sobre Nós</span>
                             </a>
-                    
+    
+                            <a href="politica-privacidade.html" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                                <i class="fas fa-user-shield text-cyan-400"></i>
+                                <span data-pt="Políticas de Privacidade" data-en="Privacy Policy" data-es="Política de Privacidad">Políticas de Privacidade</span>
+                            </a>
+                            
+                            <a href="termos-uso.html" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                                <i class="fas fa-file-contract text-cyan-400"></i>
+                                <span data-pt="Termos de Uso" data-en="Terms of Use" data-es="Términos de Uso">Termos de Uso</span>
+                            </a>
+    
                             <div class="h-px bg-white/5 my-2"></div>
                     
-                            <a href="https://wa.me/5519995000067" target="_blank" class="nav-drop-item text-white">
+                            <a href="contato.html" target="_blank" class="nav-drop-item text-white">
                                 <i class="fas fa-comment-alt text-cyan-400"></i>
                                 <span data-pt="Entrar em Contato" data-en="Contact Us" data-es="Contacto">Entrar em Contato</span>
                             </a>
@@ -642,22 +756,117 @@
         </div>
     </section>
 
-    <footer class="py-6 px-6 border-t border-white/5 bg-dark/50 relative z-10">
-        <div class="max-w-7xl mx-auto flex flex-col items-center gap-4">
+    <footer class="py-12 px-6 border-t border-white/5 bg-[#050505] relative z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             
-            <a href="index.html" class="flex items-center group transition-transform hover:scale-105 active:scale-95">
-                <img src="LogoGen.png" 
-                     alt="Generactive Innovate" 
-                     class="h-8 md:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
-            </a>
-
-            <div class="flex flex-col items-center text-[8px] md:text-[9px] text-gray-700 font-bold uppercase tracking-[0.3em]">
-                <span data-pt="© 2026 Innovate at Scale" data-en="© 2026 Innovate at Scale" data-es="© 2026 Innovar a Escala">
-                    © 2026 Innovate at Scale
-                </span>
+            <div class="flex flex-col items-start gap-6">
+                <a href="index.html" class="transition-transform hover:scale-105">
+                    <img src="LogoGen.png" alt="Generactive Innovate" class="h-10 w-auto object-contain">
+                </a>
+                <p class="text-white font-bold text-lg leading-tight max-w-[280px]" 
+                   data-pt="Simplificamos a Cloud para transformar negócios." 
+                   data-en="We simplify the Cloud to transform businesses." 
+                   data-es="Simplificamos la Cloud para transformar negocios.">
+                    Simplificamos a Cloud para transformar negócios.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.facebook.com/share/14ctzUPM4QC/?mibextid=wwXIfr" class="text-[#3b5998] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.linkedin.com/company/generactiveinnovate" class="text-[#0077b5] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/generactive.innovate?igsh=YXNxanZ0MHB6N3Vl" class="text-[#e1306c] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+    
+            <div class="flex flex-col gap-5 text-gray-400 text-sm">
+                <p class="font-bold text-white text-base"
+       data-pt="R. Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP"
+       data-en="36 Gustavo Ambrust St — Nova Campinas, Campinas/SP - Brazil"
+       data-es="Calle Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP">
+        R. Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP, 13092-106
+    </p>
+                <div class="flex flex-col gap-1 font-medium">
+                    <p>+55 (19) 9 9500-0067</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-envelope text-white text-lg"></i>
+                    <a href="mailto:contato@generactive.com.br" class="hover:text-cyan-400 transition-colors font-medium">contato@generactive.com.br</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-clock text-white text-lg"></i>
+                    <span class="font-medium" 
+                          data-pt="Seg. a Sex. das 8:00 às 18:00" 
+                          data-en="Mon. to Fri. from 8:00 AM to 6:00 PM" 
+                          data-es="Lun. a Vie. de 8:00 a 18:00">
+                        Seg. a Sex. das 8:00 às 18:00
+                    </span>
+                </div>
+            </div>
+    
+            <div class="flex flex-col items-start md:items-end gap-2 text-gray-400 text-[13px] font-medium">
+                <a href="sobre.html" class="hover:text-white transition-colors" 
+                   data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a>
+                
+                <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-servicos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Nuestros Servicios">Nossos Serviços</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-servicos"></i>
+                    </button>
+                    <div id="footer-servicos" class="footer-submenu flex flex-col items-start md:items-end gap-1 overflow-hidden max-h-0 transition-all duration-500 opacity-0">
+                        <a href="cloud-publica.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</a>
+                        <a href="cloud-privada.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</a>
+                        <a href="cloud-hibrida.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</a>
+                    </div>
+                </div>
+    
+                <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-produtos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Nuestros Productos">Nossos Produtos</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-produtos"></i>
+                    </button>
+                    <div id="footer-produtos" class="footer-submenu flex flex-col items-start md:items-end gap-1 overflow-hidden max-h-0 transition-all duration-500 opacity-0">
+                        <a href="cloud-backup.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Respaldo Cloud">Cloud Backup</a>
+                        <a href="migracao-nuvem.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</a>
+                        <a href="gerenciamento-cloud.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</a>
+                    </div>
+                </div>
+    
+                <a href="politica-privacidade.html" class="hover:text-white transition-colors" data-pt="Políticas de Privacidade" data-en="Privacy Policy" data-es="Política de Privacidad">Políticas de Privacidade</a>
+                <a href="termos-uso.html" class="hover:text-white transition-colors" data-pt="Termos de Uso" data-en="Terms of Use" data-es="Términos de Uso">Termos de Uso</a>
+                <a href="contato.html" class="hover:text-white transition-colors" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a>
+                <a href="#faq" class="hover:text-white transition-colors" data-pt="FAQ" data-en="FAQ" data-es="FAQ">FAQ</a>
             </div>
         </div>
+    
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 text-center">
+            <p class="text-[9px] text-gray-700 font-black uppercase tracking-[0.4em]"
+               data-pt="© 2026 Generactive Innovate • Innovate at Scale"
+               data-en="© 2026 Generactive Innovate • Innovate at Scale"
+               data-es="© 2026 Generactive Innovate • Innovar a Escala">
+                © 2026 Generactive Innovate • Innovate at Scale
+            </p>
+        </div>
     </footer>
+
+    <script>
+        function toggleFooterMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            const icon = document.getElementById('icon-' + menuId);
+            
+            // Se o menu já estiver aberto, fecha. Se não, abre.
+            if (menu.style.maxHeight === "0px" || menu.style.maxHeight === "") {
+                menu.style.maxHeight = "150px"; // Altura suficiente para os links
+                menu.style.opacity = "1";
+                menu.style.marginTop = "5px";
+                menu.style.marginBottom = "10px";
+                icon.style.transform = "rotate(180deg)";
+            } else {
+                menu.style.maxHeight = "0px";
+                menu.style.opacity = "0";
+                menu.style.marginTop = "0px";
+                menu.style.marginBottom = "0px";
+                icon.style.transform = "rotate(0deg)";
+            }
+        }
+        </script>
 
     <script>
         function toggleMainMenu(event) {

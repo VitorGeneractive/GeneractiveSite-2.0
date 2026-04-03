@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato | Generactive Innovate</title>
+    <link rel="icon" type="image/png" href="LogoGuiaGen.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -77,7 +78,7 @@
         @media (max-width: 768px) {
             main { padding-top: 80px; }
         }
-        <style>
+        
     /* Estilização do Select e Opções */
     .tech-input {
         width: 100%;
@@ -103,7 +104,26 @@
         background-color: #050a14; /* Um leve realce no foco */
         box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
     }
-</style>
+
+    /* Controle de Expansão do Footer */
+.footer-menu-item { cursor: pointer; transition: all 0.3s; }
+.footer-submenu { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: all 0.4s cubic-bezier(0, 1, 0, 1); 
+    opacity: 0;
+    padding-left: 10px;
+    border-left: 1px solid rgba(0, 242, 255, 0.2);
+    margin-left: 5px;
+}
+.footer-menu-group.active .footer-submenu { 
+    max-height: 500px; 
+    opacity: 1; 
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.footer-menu-group.active i.fa-chevron-down { transform: rotate(180deg); color: #00f2ff; }
 
     </style>
 </head>
@@ -177,49 +197,55 @@
                     <div class="absolute top-0 right-0 p-4 opacity-10 font-mono text-[8px] tracking-widest uppercase">Contact_Module_v2.0</div>
                     
                     <form action="https://formspree.io/f/contato@generactive.com.br" method="POST" class="space-y-5">
-                        <div class="grid md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                       data-pt="Nome" data-en="Name" data-es="Nombre">Nome</label>
-                                <input type="text" class="tech-input" 
-                                       data-pt="Seu nome completo" data-en="Your full name" data-es="Tu nombre completo" placeholder="Seu nome completo">
-                            </div>
+    
+                        <div>
+                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
+                                   data-pt="Nome Completo" data-en="Full Name" data-es="Nombre Completo">Nome Completo</label>
+                            <input type="text" name="nome" required class="tech-input" 
+                                   data-pt="Ex: João Silva" data-en="Ex: John Doe" data-es="Ej: Juan Silva" placeholder="Ex: João Silva">
+                        </div>
+                    
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
                                 <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
                                        data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</label>
-                                <input type="text" class="tech-input" 
-                                       data-pt="Nome da empresa" data-en="Company name" data-es="Nombre de la empresa" placeholder="Nome da empresa">
+                                <input type="text" name="empresa" class="tech-input" 
+                                       data-pt="Nome da sua empresa" data-en="Your company name" data-es="Nombre de su empresa" placeholder="Nome da sua empresa">
+                            </div>
+                            <div>
+                                <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
+                                       data-pt="E-mail Corporativo" data-en="Business Email" data-es="Email Corporativo">E-mail Corporativo</label>
+                                <input type="email" name="email" required class="tech-input" 
+                                       placeholder="contato@empresa.com">
                             </div>
                         </div>
-
-                        <div>
-                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                   data-pt="E-mail Corporativo" data-en="Work Email" data-es="Email Corporativo">E-mail Corporativo</label>
-                            <input type="email" class="tech-input" placeholder="email@suaempresa.com.br">
-                        </div>
-
+                    
                         <div>
                             <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
                                    data-pt="Assunto" data-en="Subject" data-es="Asunto">Assunto</label>
-                            <select class="tech-input cursor-pointer">
+                            <select name="assunto" class="tech-input cursor-pointer bg-[#02040a]">
                                 <option data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</option>
                                 <option data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</option>
                                 <option data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</option>
                                 <option data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Respaldo Cloud">Cloud Backup</option>
                                 <option data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</option>
                                 <option data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</option>
-                                <option data-pt="Outros / Parcerias" data-en="Others / Partnerships" data-es="Otros / Asociaciones">Outros / Parcerias</option>
+                                <option data-pt="Outros Assuntos" data-en="Other Matters" data-es="Otros Asuntos">Outros Assuntos</option>
                             </select>
                         </div>
-
+                    
                         <div>
                             <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
                                    data-pt="Mensagem" data-en="Message" data-es="Mensaje">Mensagem</label>
-                            <textarea class="tech-input h-28 resize-none" 
-                                      data-pt="Como podemos ajudar?" data-en="How can we help?" data-es="¿Cómo podemos ayudar?" placeholder="Como podemos ajudar?"></textarea>
+                            <textarea name="mensagem" required class="tech-input h-32 resize-none" 
+                                      data-pt="Como podemos ajudar o seu negócio?" 
+                                      data-en="How can we help your business?" 
+                                      data-es="¿Cómo podemos ayudar a su negocio?" 
+                                      placeholder="Como podemos ajudar o seu negócio?"></textarea>
                         </div>
-
-                        <button type="submit" class="btn-send" data-pt="Enviar Mensagem" data-en="Send Message" data-es="Enviar Mensaje">
+                    
+                        <button type="submit" class="btn-send w-full py-4 bg-cyan-500 text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-xl hover:bg-white transition-all shadow-lg shadow-cyan-500/20"
+                                data-pt="Enviar Mensagem" data-en="Send Message" data-es="Enviar Mensaje">
                             Enviar Mensagem
                         </button>
                     </form>
@@ -229,44 +255,138 @@
         </div>
     </main>
 
-    <footer class="py-6 px-6 border-t border-white/5 bg-dark/50 relative z-10">
-        <div class="max-w-7xl mx-auto flex flex-col items-center gap-4">
+    <footer class="py-12 px-6 border-t border-white/5 bg-[#050505] relative z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             
-            <a href="index.html" class="flex items-center group transition-transform hover:scale-105 active:scale-95">
-                <img src="LogoGen.png" 
-                     alt="Generactive Innovate" 
-                     class="h-8 md:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity">
-            </a>
-
-            <div class="flex flex-col items-center text-[8px] md:text-[9px] text-gray-700 font-bold uppercase tracking-[0.3em]">
-                <span data-pt="© 2026 Innovate at Scale" data-en="© 2026 Innovate at Scale" data-es="© 2026 Innovar a Escala">
-                    © 2026 Innovate at Scale
-                </span>
+            <div class="flex flex-col items-start gap-6">
+                <a href="index.html" class="transition-transform hover:scale-105">
+                    <img src="LogoGen.png" alt="Generactive Innovate" class="h-10 w-auto object-contain">
+                </a>
+                <p class="text-white font-bold text-lg leading-tight max-w-[280px]" 
+                   data-pt="Simplificamos a Cloud para transformar negócios." 
+                   data-en="We simplify the Cloud to transform businesses." 
+                   data-es="Simplificamos la Cloud para transformar negocios.">
+                    Simplificamos a Cloud para transformar negócios.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.facebook.com/share/14ctzUPM4QC/?mibextid=wwXIfr" class="text-[#3b5998] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.linkedin.com/company/generactiveinnovate" class="text-[#0077b5] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/generactive.innovate?igsh=YXNxanZ0MHB6N3Vl" class="text-[#e1306c] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+    
+            <div class="flex flex-col gap-5 text-gray-400 text-sm">
+                <p class="font-bold text-white text-base"
+       data-pt="R. Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP"
+       data-en="36 Gustavo Ambrust St — Nova Campinas, Campinas/SP - Brazil"
+       data-es="Calle Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP">
+        R. Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP, 13092-106
+    </p>
+                <div class="flex flex-col gap-1 font-medium">
+                    <p>+55 (19) 9 9500-0067</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-envelope text-white text-lg"></i>
+                    <a href="mailto:contato@generactive.com.br" class="hover:text-cyan-400 transition-colors font-medium">contato@generactive.com.br</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-clock text-white text-lg"></i>
+                    <span class="font-medium" 
+                          data-pt="Seg. a Sex. das 8:00 às 18:00" 
+                          data-en="Mon. to Fri. from 8:00 AM to 6:00 PM" 
+                          data-es="Lun. a Vie. de 8:00 a 18:00">
+                        Seg. a Sex. das 8:00 às 18:00
+                    </span>
+                </div>
+            </div>
+    
+            <div class="flex flex-col items-start md:items-end gap-2 text-gray-400 text-[13px] font-medium">
+                <a href="sobre.html" class="hover:text-white transition-colors" 
+                   data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a>
+                
+                <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-servicos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Nuestros Servicios">Nossos Serviços</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-servicos"></i>
+                    </button>
+                    <div id="footer-servicos" class="footer-submenu flex flex-col items-start md:items-end gap-1 overflow-hidden max-h-0 transition-all duration-500 opacity-0">
+                        <a href="cloud-publica.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</a>
+                        <a href="cloud-privada.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</a>
+                        <a href="cloud-hibrida.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</a>
+                    </div>
+                </div>
+    
+                <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-produtos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Nuestros Productos">Nossos Produtos</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-produtos"></i>
+                    </button>
+                    <div id="footer-produtos" class="footer-submenu flex flex-col items-start md:items-end gap-1 overflow-hidden max-h-0 transition-all duration-500 opacity-0">
+                        <a href="cloud-backup.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Respaldo Cloud">Cloud Backup</a>
+                        <a href="migracao-nuvem.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</a>
+                        <a href="gerenciamento-cloud.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</a>
+                    </div>
+                </div>
+    
+                <a href="politica-privacidade.html" class="hover:text-white transition-colors" data-pt="Políticas de Privacidade" data-en="Privacy Policy" data-es="Política de Privacidad">Políticas de Privacidade</a>
+                <a href="termos-uso.html" class="hover:text-white transition-colors" data-pt="Termos de Uso" data-en="Terms of Use" data-es="Términos de Uso">Termos de Uso</a>
+                <a href="contato.html" class="hover:text-white transition-colors" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a>
+                <a href="#faq" class="hover:text-white transition-colors" data-pt="FAQ" data-en="FAQ" data-es="FAQ">FAQ</a>
             </div>
         </div>
+    
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 text-center">
+            <p class="text-[9px] text-gray-700 font-black uppercase tracking-[0.4em]"
+               data-pt="© 2026 Generactive Innovate • Innovate at Scale"
+               data-en="© 2026 Generactive Innovate • Innovate at Scale"
+               data-es="© 2026 Generactive Innovate • Innovar a Escala">
+                © 2026 Generactive Innovate • Innovate at Scale
+            </p>
+        </div>
     </footer>
+
+    <script>
+        function toggleFooterMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            const icon = document.getElementById('icon-' + menuId);
+            
+            // Se o menu já estiver aberto, fecha. Se não, abre.
+            if (menu.style.maxHeight === "0px" || menu.style.maxHeight === "") {
+                menu.style.maxHeight = "150px"; // Altura suficiente para os links
+                menu.style.opacity = "1";
+                menu.style.marginTop = "5px";
+                menu.style.marginBottom = "10px";
+                icon.style.transform = "rotate(180deg)";
+            } else {
+                menu.style.maxHeight = "0px";
+                menu.style.opacity = "0";
+                menu.style.marginTop = "0px";
+                menu.style.marginBottom = "0px";
+                icon.style.transform = "rotate(0deg)";
+            }
+        }
+        </script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
 
         function changeLanguage(lang) {
-            document.getElementById('lang-label').innerText = lang.toUpperCase();
-            const elements = document.querySelectorAll('[data-pt]');
-            elements.forEach(el => {
-                const translation = el.getAttribute(`data-${lang}`);
-                if (translation) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = translation;
-                    } else if (el.tagName === 'OPTION') {
-                        el.text = translation;
-                    } else {
-                        el.innerText = translation;
-                    }
-                }
-            });
-            localStorage.setItem('generactive_lang', lang);
+    document.getElementById('lang-label').innerText = lang.toUpperCase();
+    const elements = document.querySelectorAll('[data-pt]');
+    elements.forEach(el => {
+        const translation = el.getAttribute(`data-${lang}`);
+        if (translation) {
+            // Se for um input ou textarea, muda o placeholder
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.placeholder = translation;
+            } else {
+                el.innerText = translation;
+            }
         }
+    });
+    localStorage.setItem('generactive_lang', lang);
+}
 
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('generactive_lang') || 'pt';
