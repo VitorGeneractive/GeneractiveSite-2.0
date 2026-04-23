@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V02327JYWK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V02327JYWK');
+    </script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-P937FVXV');
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentes Inteligentes | Generactive Innovate</title>
+    <link rel="icon" type="image/png" href="LogoGuiaGen.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;700;800&family=Space+Grotesk:wght@300;500;700&display=swap');
+        
+        :root { --cyan: #00f2ff; --blue: #0066ff; --dark: #020617; }
+        
+        body { 
+            background-color: var(--dark); 
+            color: #ffffff; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND ORB (DYNAMIC) --- */
+        .orb {
+            position: absolute; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.08) 0%, transparent 70%);
+            filter: blur(80px); z-index: -1; animation: float 20s infinite alternate;
+        }
+
+        @keyframes float { 
+            0% { transform: translate(-10%, -10%) scale(1); }
+            100% { transform: translate(20%, 30%) scale(1.2); }
+        }
+
+        /* --- MODERN GLASSMORPHISM --- */
+        .glass {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--cyan);
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.1);
+        }
+
+        /* --- BORDER BEAM EFFECT --- */
+        .border-beam {
+            position: relative; overflow: hidden;
+        }
+        .border-beam::after {
+            content: ""; position: absolute; inset: 0;
+            background: conic-gradient(from 0deg, transparent, var(--cyan), transparent 30%);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude; padding: 1px;
+            animation: rotate 6s linear infinite;
+        }
+
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
+
+        .text-glow { text-shadow: 0 0 20px rgba(0, 242, 255, 0.5); }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .lang-dropdown { display: none; }
+        .group:hover .lang-dropdown { display: block; }
+
+        .kebab-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 101;
+    }
+    .kebab-btn span {
+        width: 4px;
+        height: 4px;
+        background: #22d3ee;
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+    }
+
+    .main-nav-dropdown {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 1rem;
+        width: 260px;
+        background: rgba(10, 10, 12, 0.98);
+        backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        z-index: 1000;
+    }
+    .main-nav-dropdown.active { display: block; animation: fadeIn 0.3s ease; }
+
+    .nav-drop-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        color: #94a3b8;
+        font-size: 10px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-radius: 12px;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+    .nav-drop-item:hover { background: rgba(34, 211, 238, 0.1); color: #22d3ee; }
+
+    /* SUBMENU DESKTOP (Lado a Lado) */
+    .has-submenu { position: relative; }
+    .submenu-content {
+        display: none;
+        position: absolute;
+        right: 102%; 
+        top: 0;
+        width: 220px;
+        background: rgba(15, 15, 18, 0.98);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+        border-radius: 18px;
+        padding: 8px;
+        box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .has-submenu:hover .submenu-content { display: block; animation: slideIn 0.3s ease forwards; }
+
+    /* RESPONSIVIDADE MOBILE (Empilhado) */
+    @media (max-width: 768px) {
+        .main-nav-dropdown {
+            right: -10px; /* Ajuste para não colar na borda */
+            width: 280px;
+        }
+        .submenu-content {
+            position: static; /* Remove o flutuante */
+            width: 100%;
+            display: none; 
+            background: rgba(255, 255, 255, 0.03);
+            border: none;
+            box-shadow: none;
+            margin-top: 5px;
+            padding-left: 15px; /* Indenta os sub-itens */
+        }
+        .has-submenu:hover .submenu-content {
+            display: block; /* No mobile ele expande para baixo */
+        }
+        .nav-drop-item i.fa-chevron-left {
+            transform: rotate(-90deg); /* Aponta para baixo no mobile */
+        }
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+
+/* Controle de Expansão do Footer */
+.footer-menu-item { cursor: pointer; transition: all 0.3s; }
+.footer-submenu { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: all 0.4s cubic-bezier(0, 1, 0, 1); 
+    opacity: 0;
+    padding-left: 10px;
+    border-left: 1px solid rgba(0, 242, 255, 0.2);
+    margin-left: 5px;
+}
+.footer-menu-group.active .footer-submenu { 
+    max-height: 500px; 
+    opacity: 1; 
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.footer-menu-group.active i.fa-chevron-down { transform: rotate(180deg); color: #00f2ff; }
+
+    </style>
+</head>
+<body class="selection:bg-cyan-500/30">
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P937FVXV"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="orb top-0 left-0"></div>
+    <div class="orb bottom-0 right-0" style="animation-delay: -5s; background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);"></div>
+
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-3 active">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
+            
+            <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1 relative z-50">
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg flex items-center justify-center rotate-12 group-hover:rotate-0 transition-all shadow-lg shadow-blue-500/20 flex-shrink-0">
+                    <i class="fas fa-arrow-left text-white text-xs"></i>
+                </div>
+            
+                <img src="LogoGeneractive.png" 
+                     alt="Generactive Innovate" 
+                     class="h-24 md:h-24 lg:h-28 w-auto object-contain drop-shadow-[0_0_18px_rgba(6,182,212,0.28)] my-[-32px] md:my-[-35px] lg:my-[-40px]">
+            </a>
+            
+            <div class="flex items-center gap-4 md:gap-6">
+                
+                <div class="relative group"> 
+                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                        <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
+                    </button>
+                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">PORTUGUÊS</button>
+                        <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ENGLISH</button>
+                        <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ESPAÑOL</button>
+                    </div>
+                </div>
+    
+                <a href="https://wa.me/5519995000067" target="_blank" 
+                   class="hidden sm:inline-block bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-[10px] hover:bg-white transition shadow-lg shadow-cyan-500/20 uppercase tracking-widest">
+                    <span data-pt="Especialista" data-en="Specialist" data-es="Especialista">Especialista</span>
+                </a>
+    
+                <div class="relative">
+                    <div class="kebab-btn" onclick="toggleMainMenu(event)">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                
+                    <div id="main-nav-dropdown" class="main-nav-dropdown">
+                        <p class="text-[8px] text-gray-600 font-black uppercase tracking-[0.3em] mb-2 px-4">Generactive</p>
+                    
+                        <div class="has-submenu">
+                            <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-layer-group text-cyan-400"></i>
+                                    <span data-pt="Soluções Cloud" data-en="Cloud Solutions" data-es="Soluciones Cloud">Soluções Cloud</span>                                </div>
+                                <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                            </div>
+                    
+                            <div class="submenu-content hidden">
+                                
+                                <a href="cloud-publica.html" class="nav-drop-item">
+                                    <i class="fas fa-cloud text-[10px]"></i>
+                                    <span data-pt="Cloud Pública" data-en="Public Cloud" data-es="Cloud Pública">Cloud Pública</span>
+                                </a>
+                                <a href="cloud-privada.html" class="nav-drop-item">
+                                    <i class="fas fa-lock text-[10px]"></i>
+                                    <span data-pt="Cloud Privada" data-en="Private Cloud" data-es="Cloud Privada">Cloud Privada</span>
+                                </a>
+                                <a href="cloud-hibrida.html" class="nav-drop-item">
+                                    <i class="fas fa-network-wired text-[10px]"></i>
+                                    <span data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Cloud Híbrida">Cloud Híbrida</span>
+                                </a>
+                                <a href="cloud-backup.html" class="nav-drop-item">
+                                    <i class="fas fa-shield-alt text-[10px]"></i>
+                                    <span data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Cloud Backup">Cloud Backup</span>
+                                </a>
+                                <a href="migracao-nuvem.html" class="nav-drop-item">
+                                    <i class="fas fa-rocket text-[10px]"></i>
+                                    <span data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Cloud Migration">Cloud Migration</span>
+                                </a>
+                                <a href="gerenciamento-cloud.html" class="nav-drop-item">
+                                    <i class="fas fa-tasks text-[10px]"></i>
+                                    <span data-pt="Cloud Management" data-en="Cloud Management" data-es="Cloud Management">Cloud Management</span>
+                                </a>
+                            </div>
+                        </div>
+                    
+                        <div class="has-submenu">
+                            <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-handshake text-cyan-400"></i>
+                                    <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Nuestros Servicios">Nossos Serviços</span>
+                                </div>
+                                <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                            </div>
+                        
+                            <div class="submenu-content hidden">
+                                <a href="seguranca-e-governanca-de-ti.html" class="nav-drop-item">
+                                    <i class="fas fa-shield-alt text-[10px]"></i> 
+                                    <span data-pt="Segurança e Governança" data-en="Security & Governance" data-es="Seguridad y Gobernanza">Segurança e Governança</span>
+                                </a>
+
+                                <a href="cibersegurança-corporativa.html" class="nav-drop-item">
+                                    <i class="fas fa-user-shield text-[10px]"></i> 
+                                    <span data-pt="Cibersegurança" data-en="Cybersecurity" data-es="Ciberseguridad">Cibersegurança</span>
+                                </a>
+                                
+                                <a href="gestao-de-risco-em-ti.html" class="nav-drop-item">
+                                    <i class="fas fa-exclamation-triangle text-[10px]"></i> 
+                                    <span data-pt="Gestão de Riscos" data-en="Risk Management" data-es="Gestión de Riesgos">Gestão de Riscos</span>
+                                </a>
+                                
+                                <a href="compliance-e-governanca-ti.html" class="nav-drop-item">
+                                    <i class="fas fa-file-contract text-[10px]"></i> 
+                                    <span data-pt="Compliance e Governança" data-en="Compliance & Gov" data-es="Cumplimiento y Gob">Compliance e Governança</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="has-submenu">
+                            <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-box-open text-cyan-400"></i>
+                                    <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Productos">Nossos Produtos</span>
+                                </div>
+                                <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                            </div>
+                    
+                            <div class="submenu-content hidden">
+                                <a href="automacao-inteligente-com-ia.html" class="nav-drop-item">
+                                    <i class="fas fa-cogs text-[10px]"></i> 
+                                    <span data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</span>
+                                </a>
+
+                                <a href="agentes-inteligentes.html" class="nav-drop-item">
+                                    <i class="fas fa-robot text-[10px]"></i> 
+                                    <span data-pt="Agentes Inteligentes" data-en="AI Agents" data-es="Agentes Inteligentes">Agentes Inteligentes</span>
+                                </a>
+                                
+                                <a href="machine-learning.html" class="nav-drop-item">
+                                    <i class="fas fa-brain text-[10px]"></i> 
+                                    <span data-pt="Machine Learning" data-en="Machine Learning" data-es="Aprendizaje Automático">Machine Learning</span>
+                                </a>
+                                
+                                <a href="integracao-de-dispositivo-com-iot.html" class="nav-drop-item">
+                                    <i class="fas fa-network-wired text-[10px]"></i> 
+                                    <span data-pt="Integração IoT" data-en="IoT Integration" data-es="Integración IoT">Integração IoT</span>
+                                </a>
+                            </div>
+                        </div>
+                    
+                        <a href="sobre-nos.html" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                            <i class="fas fa-users text-cyan-400"></i>
+                            <span data-pt="Sobre Nós">Sobre Nós</span>
+                        </a>
+                        <a href="politica-privacidade.html" class="nav-drop-item">
+                            <i class="fas fa-user-shield text-cyan-400"></i>
+                            <span data-pt="Políticas de Privacidade">Políticas de Privacidade</span>
+                        </a>
+                        <a href="termos-uso.html" class="nav-drop-item">
+                            <i class="fas fa-file-contract text-cyan-400"></i>
+                            <span data-pt="Termos de Uso">Termos de Uso</span>
+                        </a>
+                    
+                        <div class="h-px bg-white/5 my-2"></div>
+                    
+                        <a href="contato.html" target="_blank" class="nav-drop-item text-white">
+                            <i class="fas fa-comment-alt text-cyan-400"></i>
+                            <span data-pt="Entrar em Contato">Entrar em Contato</span>
+                        </a>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-40 pb-32 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="text-cyan-400 font-black uppercase tracking-[0.4em] text-[10px] mb-6 block" data-pt="Próxima Geração" data-en="Next Gen" data-es="Próxima Generación">Próxima Geração</span>
+                <h1 class="text-7xl md:text-9xl font-extrabold tracking-tighter leading-none mb-8">
+                    AGENTE<br><span class="text-cyan-400 italic font-light">CORE</span>
+                </h1>
+                <p class="text-gray-400 text-xl md:text-2xl font-light leading-relaxed max-w-lg"
+                   data-pt="Sistemas autônomos que interpretam, aprendem e executam tarefas críticas 24/7."
+                   data-en="Autonomous systems that interpret, learn, and execute critical tasks 24/7."
+                   data-es="Sistemas autónomos que interpretan, aprenden y ejecutan tareas críticas 24/7.">
+                   Sistemas autônomos que interpretam, aprendem e executam tarefas críticas 24/7.
+                </p>
+            </div>
+            
+            <div class="relative" data-aos="zoom-in">
+                <div class="glass p-12 rounded-[4rem] border-beam">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <p class="font-mono text-cyan-400/80 text-sm leading-loose mb-6">
+                        > Initializing Neural_Link... <br>
+                        > Loading Business_Rules... <br>
+                        > Agent Status: <span class="text-white font-bold">ACTIVE_24/7</span>
+                    </p>
+                    <p class="text-gray-300 text-lg md:text-xl font-light leading-relaxed" 
+                       data-pt="Na Generactive, desenvolvemos agentes sob medida treinados para sua rotina e adaptáveis às suas regras de negócio."
+                       data-en="At Generactive, we develop custom agents trained for your routine and adaptable to your business rules."
+                       data-es="En Generactive, desarrollamos agentes a medida entrenados para su rutina y adaptables a sus reglas de negocio.">
+                       Na Generactive, desenvolvemos agentes sob medida treinados para sua rotina e adaptáveis às suas regras de negócio.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass p-10 rounded-[3rem] group" data-aos="fade-up">
+                    <div class="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-clock text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" data-pt="Escala Infinita" data-en="Infinite Scale" data-es="Escala Infinita">Escala Infinita</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-pt="Aumente sua produtividade operacional sem a necessidade de aumentar o quadro de funcionários." data-en="Increase your operational productivity without needing to increase headcount." data-es="Aumente su productividad operativa sin necesidad de aumentar la plantilla.">Aumente sua produtividade operacional sem a necessidade de aumentar o quadro de funcionários.</p>
+                </div>
+                <div class="glass p-10 rounded-[3rem] group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-brain text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" data-pt="Decisão em Tempo Real" data-en="Real-Time Decision" data-es="Decisión en Tiempo Real">Decisão em Tempo Real</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-pt="Agentes treinados para tomar decisões complexas baseadas em dados atualizados instantaneamente." data-en="Agents trained to make complex decisions based on instantly updated data." data-es="Agentes entrenados para tomar decisiones complejas basadas en datos actualizados al instante.">Agentes treinados para tomar decisões complexas baseadas em dados atualizados instantaneamente.</p>
+                </div>
+                <div class="glass p-10 rounded-[3rem] group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-400 mb-8 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-sync text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4" data-pt="Fluxos 24/7" data-en="24/7 Flows" data-es="Flujos 24/7">Fluxos 24/7</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" data-pt="Sua empresa nunca para. Atendimento e suporte sempre ativos, sem interrupções ou feriados." data-en="Your business never stops. Customer service and support always active, no breaks or holidays." data-es="Su negocio nunca se detiene. Atención y soporte siempre activos, sin interrupciones ni festivos.">Sua empresa nunca para. Atendimento e suporte sempre ativos, sem interrupções ou feriados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 bg-white/[0.01]">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-6xl font-black italic uppercase text-glow mb-4" 
+                    data-pt="Aplicações Práticas" data-en="Practical Apps" data-es="Aplicaciones Prácticas">
+                    Aplicações Práticas
+                </h2>
+                <div class="w-24 h-1 bg-cyan-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-4">
+                <div class="glass p-8 rounded-3xl flex flex-col md:flex-row justify-between items-center group hover:bg-white/[0.03] transition-all cursor-default" data-aos="fade-up">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 border border-cyan-500/20">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold group-hover:text-cyan-400 transition" 
+                                data-pt="Bots de Atendimento com Linguagem Natural" 
+                                data-en="Natural Language Customer Bots" 
+                                data-es="Bots de Atención con Lenguaje Natural">
+                                Bots de Atendimento com Linguagem Natural
+                            </h4>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-600 mt-4 md:mt-0">Customer Experience</span>
+                </div>
+
+                <div class="glass p-8 rounded-3xl flex flex-col md:flex-row justify-between items-center group hover:bg-white/[0.03] transition-all cursor-default" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400 border border-blue-500/20">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold group-hover:text-blue-400 transition" 
+                                data-pt="Assistentes Internos e FAQs Inteligentes" 
+                                data-en="Internal Assistants & Smart FAQs" 
+                                data-es="Asistentes Internos y FAQs Inteligentes">
+                                Assistentes Internos e FAQs Inteligentes
+                            </h4>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-600 mt-4 md:mt-0">Operations Support</span>
+                </div>
+
+                <div class="glass p-8 rounded-3xl flex flex-col md:flex-row justify-between items-center group hover:bg-white/[0.03] transition-all cursor-default" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 border border-purple-500/20">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold group-hover:text-purple-400 transition" 
+                                data-pt="Aprovação Automática de Pedidos" 
+                                data-en="Automatic Order Approval" 
+                                data-es="Aprobación Automática de Pedidos">
+                                Aprovação Automática de Pedidos
+                            </h4>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-600 mt-4 md:mt-0">Business Logic</span>
+                </div>
+
+                <div class="glass p-8 rounded-3xl flex flex-col md:flex-row justify-between items-center group hover:bg-white/[0.03] transition-all cursor-default" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold group-hover:text-emerald-400 transition" 
+                                data-pt="Triagem e Encaminhamento Inteligente" 
+                                data-en="AI Screening & Smart Routing" 
+                                data-es="Triaje y Direccionamiento Inteligente">
+                                Triagem e Encaminhamento Inteligente
+                            </h4>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-gray-600 mt-4 md:mt-0">AI Orchestration</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="processo" class="py-32 px-6 relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-20" data-aos="fade-right">
+                <h2 class="text-4xl md:text-6xl font-black italic uppercase text-glow" 
+                    data-pt="O Ciclo de Inteligência" data-en="Intelligence Cycle" data-es="El Ciclo de Inteligencia">
+                    O Ciclo de Inteligência
+                </h2>
+                <p class="text-gray-500 mt-4 uppercase tracking-widest text-xs font-bold"
+                   data-pt="Do mapeamento à evolução contínua" data-en="From mapping to continuous evolution" data-es="Del mapeo a la evolución continua">
+                    Do mapeamento à evolução contínua
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <div class="relative group" data-aos="fade-up">
+                    <div class="glass p-8 rounded-[2.5rem] h-full hover:border-cyan-500/50 transition-all">
+                        <span class="text-5xl font-black text-white/5 absolute top-4 right-8 group-hover:text-cyan-500/10 transition">01</span>
+                        <div class="w-12 h-12 bg-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-400 mb-6">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-4" 
+                            data-pt="Mapeamento Estratégico" data-en="Strategic Mapping" data-es="Mapeo Estratégico">
+                            Mapeamento de Processos
+                        </h4>
+                        <p class="text-gray-500 text-sm leading-relaxed"
+                           data-pt="Identificamos cada oportunidade de automação dentro da sua operação atual."
+                           data-en="We identify every automation opportunity within your current operation."
+                           data-es="Identificamos cada oportunidad de automatización dentro de su operación actual.">
+                           Mapeamos os processos que podem ser automatizados.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass p-8 rounded-[2.5rem] h-full hover:border-blue-500/50 transition-all">
+                        <span class="text-5xl font-black text-white/5 absolute top-4 right-8 group-hover:text-blue-500/10 transition">02</span>
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center text-blue-400 mb-6">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-4" 
+                            data-pt="Treinamento Core" data-en="Core Training" data-es="Entrenamiento Core">
+                            Criação e Treinamento
+                        </h4>
+                        <p class="text-gray-500 text-sm leading-relaxed"
+                           data-pt="Criamos e treinamos o agente com base nas regras e cultura da sua empresa."
+                           data-en="We create and train the agent based on your company's rules and culture."
+                           data-es="Creamos y entrenamos al agente según las reglas y cultura de su empresa.">
+                           Criamos e treinamos o agente com base nas regras da empresa.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass p-8 rounded-[2.5rem] h-full hover:border-purple-500/50 transition-all">
+                        <span class="text-5xl font-black text-white/5 absolute top-4 right-8 group-hover:text-purple-500/10 transition">03</span>
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center text-purple-400 mb-6">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-4" 
+                            data-pt="Integração Neural" data-en="Neural Integration" data-es="Integración Neural">
+                            Sistemas e Canais
+                        </h4>
+                        <p class="text-gray-500 text-sm leading-relaxed"
+                           data-pt="Conectamos o agente aos seus sistemas e canais de atendimento existentes."
+                           data-en="We connect the agent to your existing systems and service channels."
+                           data-es="Conectamos el agente a sus sistemas y canales de atención existentes.">
+                           Integramos aos seus sistemas e canais de atendimento.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="glass p-8 rounded-[2.5rem] h-full hover:border-emerald-500/50 transition-all">
+                        <span class="text-5xl font-black text-white/5 absolute top-4 right-8 group-hover:text-emerald-500/10 transition">04</span>
+                        <div class="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center text-emerald-400 mb-6">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-4" 
+                            data-pt="Otimização Evolutiva" data-en="Evolutionary Optimization" data-es="Optimización Evolutiva">
+                            Monitoramento e Ajuste
+                        </h4>
+                        <p class="text-gray-400 text-sm leading-relaxed"
+                           data-pt="Monitoramos e ajustamos o agente continuamente com base na performance real."
+                           data-en="We continuously monitor and adjust the agent based on real performance."
+                           data-es="Monitoreamos y ajustamos el agente continuamente según el rendimiento real.">
+                           Monitoramos e ajustamos conforme a performance.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-48 px-6 text-center">
+        <a href="https://wa.me/5519995000067" target="_blank" class="max-w-4xl mx-auto glass p-10 md:p-20 rounded-[3rem] md:rounded-[4rem] border-beam relative block group cursor-pointer transition-all hover:bg-white/5 shadow-[0_0_50px_rgba(0,242,255,0.05)]">
+            
+            <div class="relative z-10">
+                <span class="text-cyan-400 font-black uppercase tracking-[0.3em] text-[10px] mb-4 block opacity-70 group-hover:opacity-100 transition-opacity" data-pt="Clique para iniciar" data-en="Click to start" data-es="Clic para iniciar">
+                    Clique para iniciar
+                </span>
+                
+                <h2 class="text-5xl md:text-7xl font-extrabold mb-10 tracking-tighter leading-none text-white group-hover:text-cyan-400 transition-colors" 
+                    data-pt="Contrate seu Primeiro Agente" 
+                    data-en="Hire your First Agent" 
+                    data-es="Contrate su Primer Agente">
+                    Contrate seu Primeiro Agente
+                </h2>
+
+                <div class="inline-flex bg-cyan-500 text-black px-12 py-6 rounded-2xl font-black uppercase text-xs tracking-widest group-hover:bg-white transition-all transform group-hover:scale-105 shadow-[0_0_30px_rgba(6,182,212,0.4)]"
+                     data-pt="Solicitar Diagnóstico" 
+                     data-en="Request Diagnostic" 
+                     data-es="Solicitar Diagnóstico">
+                    Solicitar Diagnóstico
+                </div>
+            </div>
+
+            <div class="absolute inset-0 bg-cyan-500/0 group-hover:bg-cyan-500/5 transition-all duration-700 rounded-[3rem] md:rounded-[4rem]"></div>
+        </a>
+    </section>
+
+    <section id="faq" class="py-32 px-6 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-6xl font-black italic uppercase text-glow mb-4" 
+                    data-pt="FAQ – Agentes Inteligentes" data-en="FAQ – Intelligent Agents" data-es="FAQ – Agentes Inteligentes">
+                    FAQ – Agentes Inteligentes
+                </h2>
+                <div class="w-24 h-1 bg-cyan-500 mx-auto rounded-full shadow-[0_0_15px_rgba(0,242,255,0.5)]"></div>
+            </div>
+
+            <div class="space-y-4">
+                <div class="glass rounded-3xl overflow-hidden" data-aos="fade-up">
+                    <details class="group">
+                        <summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+                            <span class="text-lg font-bold group-open:text-cyan-400 transition-colors" data-pt="1. O que são agentes inteligentes?" data-en="1. What are intelligent agents?" data-es="1. ¿Qué son los agentes inteligentes?">1. O que são agentes inteligentes?</span>
+                            <span class="transition group-open:rotate-180 text-cyan-500"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="px-8 pb-8 text-gray-400 leading-relaxed border-t border-white/5 pt-6">
+                            <p data-pt="Agentes inteligentes são sistemas automatizados que tomam decisões com base em regras de negócio, dados em tempo real e aprendizado contínuo. Eles executam tarefas sem depender de ação humana, funcionando 24/7." 
+                               data-en="Intelligent agents are automated systems that make decisions based on business rules, real-time data, and continuous learning. They perform tasks without human intervention, operating 24/7." 
+                               data-es="Los agentes inteligentes son sistemas automatizados que toman decisiones basadas en reglas de negocio, datos en tiempo real y aprendizaje continuo. Realizan tareas sin depender de la acción humana, funcionando 24/7.">
+                               Agentes inteligentes são sistemas automatizados que tomam decisões com base em regras de negócio, dados em tempo real e aprendizado contínuo. Eles executam tarefas sem depender de ação humana, funcionando 24/7.
+                            </p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="glass rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <details class="group">
+                        <summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+                            <span class="text-lg font-bold group-open:text-cyan-400 transition-colors" data-pt="2. Onde podem ser aplicados na prática?" data-en="2. Where can they be applied in practice?" data-es="2. ¿Dónde se pueden aplicar en la práctica?">2. Onde podem ser aplicados na prática?</span>
+                            <span class="transition group-open:rotate-180 text-cyan-500"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="px-8 pb-8 text-gray-400 leading-relaxed border-t border-white/5 pt-6">
+                            <ul class="space-y-2" data-pt="Atendimento ao cliente, Suporte interno (FAQs), Processos operacionais (triagem e aprovações) e Workflows internos." data-en="Customer service, Internal support (FAQs), Operational processes (screening and approvals), and Internal workflows." data-es="Atención al cliente, Soporte interno (FAQs), Procesos operativos (triaje y aprobaciones) y Workflows internos.">
+                                <li>• Atendimento ao cliente (bots com linguagem natural)</li>
+                                <li>• Suporte interno (FAQ automatizada, abertura de chamados)</li>
+                                <li>• Processos operacionais (triagem e aprovações automáticas)</li>
+                                <li>• Workflows internos (notificações e análises)</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="glass rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <details class="group">
+                        <summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+                            <span class="text-lg font-bold group-open:text-cyan-400 transition-colors" data-pt="3. Chatbots ou Agentes: qual a diferença?" data-en="3. Chatbots or Agents: what's the difference?" data-es="3. ¿Chatbots o Agentes: cuál es la diferencia?">3. Chatbots ou Agentes: qual a diferença?</span>
+                            <span class="transition group-open:rotate-180 text-cyan-500"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="px-8 pb-8 text-gray-400 leading-relaxed border-t border-white/5 pt-6">
+                            <p data-pt="Chatbots são um tipo de agente, mas os agentes vão além: eles integram sistemas e tomam decisões. Um chatbot pode apenas responder, enquanto um agente executa ações." 
+                               data-en="Chatbots are a type of agent, but agents go further: they integrate systems and make decisions. A chatbot might only reply, while an agent executes actions." 
+                               data-es="Los chatbots son un tipo de agente, pero los agentes van más allá: integran sistemas y toman decisiones. Un chatbot puede solo responder, mientras que un agente ejecuta acciones.">
+                               Chatbots são um tipo de agente, mas os agentes vão além: eles integram sistemas e tomam decisões. Um chatbot pode apenas responder, enquanto um agente executa ações.
+                            </p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="glass rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <details class="group">
+                        <summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+                            <span class="text-lg font-bold group-open:text-cyan-400 transition-colors" data-pt="4. Preciso de uma estrutura de TI avançada?" data-en="4. Do I need an advanced IT structure?" data-es="4. ¿Necesito una estructura de TI avanzada?">4. Preciso de uma estrutura de TI avançada?</span>
+                            <span class="transition group-open:rotate-180 text-cyan-500"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="px-8 pb-8 text-gray-400 leading-relaxed border-t border-white/5 pt-6">
+                            <p data-pt="Não. Desenvolvemos soluções compatíveis com sua realidade atual. Mesmo empresas com infraestrutura básica podem implantar agentes inteligentes." 
+                               data-en="No. We develop solutions compatible with your current reality. Even companies with basic infrastructure can implement intelligent agents." 
+                               data-es="No. Desarrollamos soluciones compatibles con su realidad actual. Incluso empresas con infraestructura básica pueden implementar agentes inteligentes.">
+                               Não. Desenvolvemos soluções compatíveis com sua realidade atual. Mesmo empresas com infraestrutura básica podem implantar agentes inteligentes.
+                            </p>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="glass rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                    <details class="group">
+                        <summary class="flex justify-between items-center p-8 cursor-pointer list-none">
+                            <span class="text-lg font-bold group-open:text-cyan-400 transition-colors" data-pt="5. Esses agentes substituem pessoas?" data-en="5. Do these agents replace people?" data-es="5. ¿Estos agentes reemplazan personas?">5. Esses agentes substituem pessoas?</span>
+                            <span class="transition group-open:rotate-180 text-cyan-500"><i class="fas fa-chevron-down"></i></span>
+                        </summary>
+                        <div class="px-8 pb-8 text-gray-400 leading-relaxed border-t border-white/5 pt-6">
+                            <p data-pt="Eles complementam. Os agentes assumem tarefas repetitivas, liberando os times humanos para focarem em atividades estratégicas e criativas." 
+                               data-en="They complement. Agents take over repetitive tasks, freeing human teams to focus on strategic and creative activities." 
+                               data-es="Ellos complementan. Los agentes asumen tareas repetitivas, liberando a los equipos humanos para enfocarse en actividades estratégicas y creativas.">
+                               Eles complementam. Os agentes assumem tarefas repetitivas, liberando os times humanos para focarem em atividades estratégicas e criativas.
+                            </p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 border-t border-white/5 bg-[#050505] relative z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+            
+            <div class="flex flex-col items-start gap-6">
+                <a href="index.html" class="transition-transform hover:scale-105">
+                    <img src="LogoGen.png" alt="Generactive Innovate" class="h-10 w-auto object-contain">
+                </a>
+                <p class="text-white font-bold text-lg leading-tight max-w-[280px]" 
+                   data-pt="Simplificamos a Cloud para transformar negócios." 
+                   data-en="We simplify the Cloud to transform businesses." 
+                   data-es="Simplificamos la Cloud para transformar negocios.">
+                    Simplificamos a Cloud para transformar negócios.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.facebook.com/share/14ctzUPM4QC/?mibextid=wwXIfr" class="text-[#3b5998] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.linkedin.com/company/generactiveinnovate" class="text-[#0077b5] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/generactive.innovate?igsh=YXNxanZ0MHB6N3Vl" class="text-[#e1306c] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+    
+            <div class="flex flex-col gap-5 text-gray-400 text-sm">
+                <p class="font-bold text-white text-base"
+       data-pt="R. Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP"
+       data-en="36 Gustavo Ambrust St — Nova Campinas, Campinas/SP - Brazil"
+       data-es="Calle Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP">
+        R. Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP, 13092-106
+    </p>
+                <div class="flex flex-col gap-1 font-medium">
+                    <p>+55 (19) 9 9500-0067</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-envelope text-white text-lg"></i>
+                    <a href="mailto:contato@generactive.com.br" class="hover:text-cyan-400 transition-colors font-medium">contato@generactive.com.br</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-clock text-white text-lg"></i>
+                    <span class="font-medium" 
+                          data-pt="Seg. a Sex. das 9:00 às 18:00" 
+                          data-en="Mon. to Fri. from 9:00 AM to 6:00 PM" 
+                          data-es="Lun. a Vie. de 9:00 a 18:00">
+                        Seg. a Sex. das 9:00 às 18:00
+                    </span>
+                </div>
+            </div>
+    
+            <div class="flex flex-col items-start md:items-end gap-2 text-gray-400 text-[13px] font-medium">
+                <a href="sobre-nos.html" class="hover:text-white transition-colors" 
+                   data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a>
+                
+                   <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-servicos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Soluções Cloud" data-en="Cloud Solutions" data-es="Soluciones Cloud">Soluções Cloud</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-servicos"></i>
+                    </button>
+                    
+                    <div id="footer-servicos" class="footer-submenu flex flex-col items-start md:items-end overflow-hidden max-h-0 transition-all duration-500 opacity-0 w-full">
+                        <div class="flex flex-col items-start md:items-end py-1 gap-1">
+                            <a href="cloud-publica.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</a>
+                            <a href="cloud-privada.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</a>
+                            <a href="cloud-hibrida.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</a>
+                            <a href="cloud-backup.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Cloud Backup">Cloud Backup</a>
+                            <a href="migracao-nuvem.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</a>
+                            <a href="gerenciamento-cloud.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-nossos-servicos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Nuestros Servicios">Nossos Serviços</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-nossos-servicos"></i>
+                    </button>
+                    
+                    <div id="footer-nossos-servicos" class="footer-submenu flex flex-col items-start md:items-end overflow-hidden max-h-0 transition-all duration-500 opacity-0 w-full">
+                        <div class="flex flex-col items-start md:items-end py-1 gap-1">
+                            <a href="seguranca-e-governanca-de-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap">
+                                <span data-pt="Segurança e Governança" data-en="Security & Governance" data-es="Seguridad y Gobernanza">Segurança e Governança</span>
+                            </a>
+
+                            <a href="ciberseguranca-corporativa.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                               data-pt="Cibersegurança" data-en="Cybersecurity" data-es="Ciberseguridad">
+                               Cibersegurança
+                            </a>
+                            
+                            <a href="gestao-de-riscos-em-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                               data-pt="Gestão de Riscos" data-en="Risk Management" data-es="Gestión de Riesgos">
+                               Gestão de Riscos
+                            </a>
+                            
+                            <a href="compliance-e-governanca-de-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                               data-pt="Compliance e Governança" data-en="Compliance & Gov" data-es="Cumplimiento y Gob">
+                               Compliance e Governança
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-produtos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Nuestros Productos">Nossos Produtos</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-produtos"></i>
+                    </button>
+                    <div id="footer-produtos" class="footer-submenu flex flex-col items-start md:items-end gap-1 overflow-hidden max-h-0 transition-all duration-500 opacity-0">
+                        <a href="automacao-inteligente-com-ia.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</a>
+                        <a href="agentes-inteligentes.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Agentes Inteligentes" data-en="AI Agents" data-es="Agentes Inteligentes">Agentes Inteligentes</a>
+                        <a href="machine-learning.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Machine Learning" data-en="Machine Learning" data-es="Machine Learning">Machine Learning</a>
+                        <a href="integracao-de-dispositivo-com-iot.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Integração IoT" data-en="IoT Integration" data-es="Integración IoT">Integração IoT</a>
+                    </div>
+                </div>
+    
+                <a href="politica-privacidade.html" class="hover:text-white transition-colors" data-pt="Políticas de Privacidade" data-en="Privacy Policy" data-es="Política de Privacidad">Políticas de Privacidade</a>
+                <a href="termos-uso.html" class="hover:text-white transition-colors" data-pt="Termos de Uso" data-en="Terms of Use" data-es="Términos de Uso">Termos de Uso</a>
+                <a href="contato.html" class="hover:text-white transition-colors" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a>
+                <a href="#faq" class="hover:text-white transition-colors" data-pt="FAQ" data-en="FAQ" data-es="FAQ">FAQ</a>
+            </div>
+        </div>
+    
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 text-center">
+            <p class="text-[9px] text-gray-700 font-black uppercase tracking-[0.4em]"
+               data-pt="© 2026 Generactive Innovate • Innovate at Scale"
+               data-en="© 2026 Generactive Innovate • Innovate at Scale"
+               data-es="© 2026 Generactive Innovate • Innovar a Escala">
+                © 2026 Generactive Innovate • Innovate at Scale
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFooterMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            const icon = document.getElementById('icon-' + menuId);
+            
+            // Se o menu já estiver aberto, fecha. Se não, abre.
+            if (menu.style.maxHeight === "0px" || menu.style.maxHeight === "") {
+                menu.style.maxHeight = "200px"; // Altura suficiente para os links
+                menu.style.opacity = "1";
+                menu.style.marginTop = "5px";
+                menu.style.marginBottom = "10px";
+                icon.style.transform = "rotate(180deg)";
+            } else {
+                menu.style.maxHeight = "0px";
+                menu.style.opacity = "0";
+                menu.style.marginTop = "0px";
+                menu.style.marginBottom = "0px";
+                icon.style.transform = "rotate(0deg)";
+            }
+        }
+        </script>
+
+    <script>
+        function toggleMainMenu(event) {
+            if(event) event.stopPropagation();
+            const dropdown = document.getElementById('main-nav-dropdown');
+            dropdown.classList.toggle('active');
+        }
+        
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('main-nav-dropdown');
+            const kebab = document.querySelector('.kebab-btn');
+            if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+
+    <script>
+        AOS.init({ duration: 800 });
+        const glow = document.getElementById('glow');
+        window.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
+        });
+    </script>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        function changeLanguage(lang) {
+            document.getElementById('lang-label').innerText = lang.toUpperCase();
+            document.querySelectorAll('[data-pt]').forEach(el => {
+                const translation = el.getAttribute(`data-${lang}`);
+                if (translation) el.innerText = translation;
+            });
+            localStorage.setItem('generactive_lang', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            changeLanguage(localStorage.getItem('generactive_lang') || 'pt');
+        });
+    </script>
+</body>
+</html>

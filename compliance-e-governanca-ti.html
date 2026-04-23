@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V02327JYWK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V02327JYWK');
+    </script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-P937FVXV');
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliance e Governança de TI | Generactive Innovate</title>
+    <link rel="icon" type="image/png" href="LogoGuiaGen.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        
+        :root { --c-neon: #00f2ff; --bg: #05070a; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: #f3f4f6; overflow-x: hidden; }
+
+        /* Transação Inédita: Geometria de Vidro */
+        .glass-pillar {
+            background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            border-left: 2px solid rgba(0, 242, 255, 0.2);
+            backdrop-filter: blur(15px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glass-pillar:hover {
+            border-left-color: var(--c-neon);
+            background: rgba(255,255,255,0.05);
+            transform: scale(1.02);
+        }
+
+        /* Efeito de Grade Arquitetônica */
+        .arch-grid {
+            background-image: 
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 100px 100px;
+        }
+
+        /* Botão Premium Glow */
+        .btn-premium-glow {
+            background: #00f2ff;
+            color: #000 !important;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .btn-premium-glow:hover {
+            background: #fff;
+            box-shadow: 0 0 35px rgba(0, 242, 255, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* FAQ Transparente */
+        .faq-item.active .faq-content { max-height: 500px; opacity: 1; padding-top: 20px; }
+        .faq-item.active i { transform: rotate(180deg); color: var(--c-neon); }
+        .faq-content { max-height: 0; overflow: hidden; transition: all 0.4s ease; opacity: 0; }
+
+        .kebab-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 101;
+}
+.kebab-btn span {
+    width: 4px;
+    height: 4px;
+    background: #22d3ee;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+}
+
+.main-nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 1rem;
+    width: 260px;
+    background: rgba(10, 10, 12, 0.98);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+    z-index: 1000;
+}
+.main-nav-dropdown.active { display: block; animation: fadeIn 0.3s ease; }
+
+.nav-drop-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 12px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+.nav-drop-item:hover { background: rgba(34, 211, 238, 0.1); color: #22d3ee; }
+
+/* SUBMENU DESKTOP (Lado a Lado) */
+.has-submenu { position: relative; }
+.submenu-content {
+    display: none;
+    position: absolute;
+    right: 102%; 
+    top: 0;
+    width: 220px;
+    background: rgba(15, 15, 18, 0.98);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    border-radius: 18px;
+    padding: 8px;
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+}
+
+.has-submenu:hover .submenu-content { display: block; animation: slideIn 0.3s ease forwards; }
+
+/* RESPONSIVIDADE MOBILE (Empilhado) */
+@media (max-width: 768px) {
+    .main-nav-dropdown {
+        right: -10px; /* Ajuste para não colar na borda */
+        width: 280px;
+    }
+    .submenu-content {
+        position: static; /* Remove o flutuante */
+        width: 100%;
+        display: none; 
+        background: rgba(255, 255, 255, 0.03);
+        border: none;
+        box-shadow: none;
+        margin-top: 5px;
+        padding-left: 15px; /* Indenta os sub-itens */
+    }
+    .has-submenu:hover .submenu-content {
+        display: block; /* No mobile ele expande para baixo */
+    }
+    .nav-drop-item i.fa-chevron-left {
+        transform: rotate(-90deg); /* Aponta para baixo no mobile */
+    }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+
+/* Controle de Expansão do Footer */
+.footer-menu-item { cursor: pointer; transition: all 0.3s; }
+.footer-submenu { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: all 0.4s cubic-bezier(0, 1, 0, 1); 
+    opacity: 0;
+    padding-left: 10px;
+    border-left: 1px solid rgba(0, 242, 255, 0.2);
+    margin-left: 5px;
+}
+.footer-menu-group.active .footer-submenu { 
+    max-height: 500px; 
+    opacity: 1; 
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.footer-menu-group.active i.fa-chevron-down { transform: rotate(180deg); color: #00f2ff; }
+    </style>
+</head>
+<body class="arch-grid">
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P937FVXV"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+        <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-3 active">
+            <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
+                
+                <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1 relative z-50">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg flex items-center justify-center rotate-12 group-hover:rotate-0 transition-all shadow-lg shadow-blue-500/20 flex-shrink-0">
+                        <i class="fas fa-arrow-left text-white text-xs"></i>
+                    </div>
+                
+                    <img src="LogoGeneractive.png" 
+                         alt="Generactive Innovate" 
+                         class="h-24 md:h-24 lg:h-28 w-auto object-contain drop-shadow-[0_0_18px_rgba(6,182,212,0.28)] my-[-32px] md:my-[-35px] lg:my-[-40px]">
+                </a>
+                
+                <div class="flex items-center gap-4 md:gap-6">
+                    
+                    <div class="relative group"> 
+                        <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                            <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
+                        </button>
+                        <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                            <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">PORTUGUÊS</button>
+                            <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ENGLISH</button>
+                            <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ESPAÑOL</button>
+                        </div>
+                    </div>
+        
+                    <a href="https://wa.me/5519995000067" target="_blank" 
+                       class="hidden sm:inline-block bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-[10px] hover:bg-white transition shadow-lg shadow-cyan-500/20 uppercase tracking-widest">
+                        <span data-pt="Especialista" data-en="Specialist" data-es="Especialista">Especialista</span>
+                    </a>
+        
+                    <div class="relative">
+                        <div class="kebab-btn" onclick="toggleMainMenu(event)">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    
+                        <div id="main-nav-dropdown" class="main-nav-dropdown">
+                            <p class="text-[8px] text-gray-600 font-black uppercase tracking-[0.3em] mb-2 px-4">Generactive</p>
+                        
+                            <div class="has-submenu">
+                                <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-layer-group text-cyan-400"></i>
+                                        <span data-pt="Soluções Cloud" data-en="Cloud Solutions" data-es="Soluciones Cloud">Soluções Cloud</span>                                </div>
+                                    <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                                </div>
+                        
+                                <div class="submenu-content hidden">
+                                    
+                                    <a href="cloud-publica.html" class="nav-drop-item">
+                                        <i class="fas fa-cloud text-[10px]"></i>
+                                        <span data-pt="Cloud Pública" data-en="Public Cloud" data-es="Cloud Pública">Cloud Pública</span>
+                                    </a>
+                                    <a href="cloud-privada.html" class="nav-drop-item">
+                                        <i class="fas fa-lock text-[10px]"></i>
+                                        <span data-pt="Cloud Privada" data-en="Private Cloud" data-es="Cloud Privada">Cloud Privada</span>
+                                    </a>
+                                    <a href="cloud-hibrida.html" class="nav-drop-item">
+                                        <i class="fas fa-network-wired text-[10px]"></i>
+                                        <span data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Cloud Híbrida">Cloud Híbrida</span>
+                                    </a>
+                                    <a href="cloud-backup.html" class="nav-drop-item">
+                                        <i class="fas fa-shield-alt text-[10px]"></i>
+                                        <span data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Cloud Backup">Cloud Backup</span>
+                                    </a>
+                                    <a href="migracao-nuvem.html" class="nav-drop-item">
+                                        <i class="fas fa-rocket text-[10px]"></i>
+                                        <span data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Cloud Migration">Cloud Migration</span>
+                                    </a>
+                                    <a href="gerenciamento-cloud.html" class="nav-drop-item">
+                                        <i class="fas fa-tasks text-[10px]"></i>
+                                        <span data-pt="Cloud Management" data-en="Cloud Management" data-es="Cloud Management">Cloud Management</span>
+                                    </a>
+                                </div>
+                            </div>
+                        
+                            <div class="has-submenu">
+                                <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-handshake text-cyan-400"></i>
+                                        <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Nuestros Servicios">Nossos Serviços</span>
+                                    </div>
+                                    <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                                </div>
+                            
+                                <div class="submenu-content hidden">
+                                    <a href="seguranca-e-governanca-de-ti.html" class="nav-drop-item">
+                                        <i class="fas fa-shield-alt text-[10px]"></i> 
+                                        <span data-pt="Segurança e Governança" data-en="Security & Governance" data-es="Seguridad y Gobernanza">Segurança e Governança</span>
+                                    </a>
+    
+                                    <a href="cibersegurança-corporativa.html" class="nav-drop-item">
+                                        <i class="fas fa-user-shield text-[10px]"></i> 
+                                        <span data-pt="Cibersegurança" data-en="Cybersecurity" data-es="Ciberseguridad">Cibersegurança</span>
+                                    </a>
+                                    
+                                    <a href="gestao-de-risco-em-ti.html" class="nav-drop-item">
+                                        <i class="fas fa-exclamation-triangle text-[10px]"></i> 
+                                        <span data-pt="Gestão de Riscos" data-en="Risk Management" data-es="Gestión de Riesgos">Gestão de Riscos</span>
+                                    </a>
+                                    
+                                    <a href="compliance-e-governanca-ti.html" class="nav-drop-item">
+                                        <i class="fas fa-file-contract text-[10px]"></i> 
+                                        <span data-pt="Compliance e Governança" data-en="Compliance & Gov" data-es="Cumplimiento y Gob">Compliance e Governança</span>
+                                    </a>
+                                </div>
+                            </div>
+    
+                            <div class="has-submenu">
+                                <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-box-open text-cyan-400"></i>
+                                        <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Productos">Nossos Produtos</span>
+                                    </div>
+                                    <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                                </div>
+                        
+                                <div class="submenu-content hidden">
+                                    <a href="automacao-inteligente-com-ia.html" class="nav-drop-item">
+                                        <i class="fas fa-cogs text-[10px]"></i> 
+                                        <span data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</span>
+                                    </a>
+
+                                    <a href="agentes-inteligentes.html" class="nav-drop-item">
+                                        <i class="fas fa-robot text-[10px]"></i> 
+                                        <span data-pt="Agentes Inteligentes" data-en="AI Agents" data-es="Agentes Inteligentes">Agentes Inteligentes</span>
+                                    </a>
+                                    
+                                    <a href="machine-learning.html" class="nav-drop-item">
+                                        <i class="fas fa-brain text-[10px]"></i> 
+                                        <span data-pt="Machine Learning" data-en="Machine Learning" data-es="Aprendizaje Automático">Machine Learning</span>
+                                    </a>
+                                    
+                                    <a href="integracao-de-dispositivo-com-iot.html" class="nav-drop-item">
+                                        <i class="fas fa-network-wired text-[10px]"></i> 
+                                        <span data-pt="Integração IoT" data-en="IoT Integration" data-es="Integración IoT">Integração IoT</span>
+                                    </a>
+                                </div>
+                            </div>
+                        
+                            <a href="sobre-nos.html" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                                <i class="fas fa-users text-cyan-400"></i>
+                                <span data-pt="Sobre Nós">Sobre Nós</span>
+                            </a>
+                            <a href="politica-privacidade.html" class="nav-drop-item">
+                                <i class="fas fa-user-shield text-cyan-400"></i>
+                                <span data-pt="Políticas de Privacidade">Políticas de Privacidade</span>
+                            </a>
+                            <a href="termos-uso.html" class="nav-drop-item">
+                                <i class="fas fa-file-contract text-cyan-400"></i>
+                                <span data-pt="Termos de Uso">Termos de Uso</span>
+                            </a>
+                        
+                            <div class="h-px bg-white/5 my-2"></div>
+                        
+                            <a href="contato.html" target="_blank" class="nav-drop-item text-white">
+                                <i class="fas fa-comment-alt text-cyan-400"></i>
+                                <span data-pt="Entrar em Contato">Entrar em Contato</span>
+                            </a>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </nav>
+
+    <header class="relative pt-48 pb-32 px-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+            <div class="w-20 h-20 border-2 border-cyan-500/30 rounded-full mb-12 flex items-center justify-center animate-spin-slow">
+                <i class="fas fa-gavel text-cyan-400 text-3xl"></i>
+            </div>
+            
+            <h1 class="text-5xl md:text-8xl font-black mb-8 leading-none tracking-tighter uppercase italic text-white" 
+                data-aos="fade-up" data-pt="Compliance e Governança" data-en="Compliance & Governance" data-es="Cumplimiento y Gobernanza">
+                Compliance e Governança
+            </h1>
+            
+            <p class="text-gray-400 text-lg md:text-2xl max-w-3xl mx-auto mb-12 font-light leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+                <span data-pt="Construa uma TI confiável, auditável e integrada ao planejamento estratégico da empresa." 
+                      data-en="Build a reliable, auditable IT integrated with the company's strategic planning."
+                      data-es="Construya una TI confiable, auditable e integrada al planeamiento estratégico de la empresa.">
+                    Construa uma TI confiável, auditável e integrada ao planejamento estratégico da empresa.
+                </span>
+            </p>
+
+            <a href="https://wa.me/5519995000067" class="btn-premium-glow text-black font-black px-12 py-5 rounded-full inline-block uppercase text-xs tracking-widest" data-aos="fade-up" data-aos-delay="200">
+                <span data-pt="Solicitar Consultoria" data-en="Request Consulting" data-es="Solicitar Consultoría">Solicitar Consultoria</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="py-24 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
+            <div class="glass-pillar p-12" data-aos="fade-right">
+                <h2 class="text-3xl font-black uppercase mb-6 text-white" 
+                    data-pt="O Elo entre Tecnologia e Negócio" 
+                    data-en="The Link Between Tech and Business"
+                    data-es="El Vínculo entre Tecnología y Negocio">
+                    O Elo entre Tecnologia e Negócio
+                </h2>
+                <p class="text-gray-400 leading-relaxed italic" 
+                    data-pt="A Governança de TI é o elo entre a tecnologia e os objetivos do negócio. Já o compliance garante que tudo seja feito dentro das normas, leis e boas práticas. Na Generactive, entregamos estruturas de governança de alto nível."
+                    data-en="IT Governance is the link between technology and business objectives. Compliance ensures everything is done within regulations, laws, and best practices. At Generactive, we deliver high-level governance structures."
+                    data-es="La Gobernanza de TI es el vínculo entre la tecnología y los objetivos del negocio. El cumplimiento garantiza que todo se realice dentro de las normas, leyes y buenas prácticas. En Generactive, entregamos estructuras de gobernanza de alto nivel.">
+                    A Governança de TI é o elo entre a tecnologia e os objetivos do negócio. Já o compliance garante que tudo seja feito dentro das normas, leis e boas práticas. Na Generactive, entregamos estruturas de governança de alto nível.
+                </p>
+            </div>
+    
+            <div class="flex flex-col justify-center" data-aos="fade-left">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 bg-white/5 p-4 border-r-2 border-cyan-500 hover:bg-white/10 transition-all">
+                        <span class="text-cyan-400 font-black">01</span>
+                        <p class="text-xs font-bold uppercase tracking-widest text-white" 
+                           data-pt="Modelos de Responsabilidade" 
+                           data-en="Responsibility Models"
+                           data-es="Modelos de Responsabilidad">
+                           Modelos de Responsabilidade
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 bg-white/5 p-4 border-r-2 border-cyan-500/50 hover:bg-white/10 transition-all">
+                        <span class="text-cyan-400 font-black">02</span>
+                        <p class="text-xs font-bold uppercase tracking-widest text-white" 
+                           data-pt="Controle e Performance" 
+                           data-en="Control and Performance"
+                           data-es="Control y Desempeño">
+                           Controle e Performance
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 bg-white/5 p-4 border-r-2 border-cyan-500/20 hover:bg-white/10 transition-all">
+                        <span class="text-cyan-400 font-black">03</span>
+                        <p class="text-xs font-bold uppercase tracking-widest text-white" 
+                           data-pt="Adequação LGPD/GDPR" 
+                           data-en="LGPD/GDPR Compliance"
+                           data-es="Cumplimiento LGPD/GDPR">
+                           Adequação LGPD/GDPR
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white/[0.02] border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-4xl font-black mb-20 uppercase tracking-tighter italic text-white" 
+                data-pt="Pilares do Compliance" 
+                data-en="Compliance Pillars"
+                data-es="Pilares del Cumplimiento">
+                Pilares do Compliance
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-px bg-white/10 border border-white/10">
+                
+                <div class="bg-[#05070a] p-8 hover:bg-cyan-500/5 transition-all group">
+                    <h4 class="text-cyan-400 font-black text-xs mb-4 uppercase tracking-tighter" 
+                        data-pt="Políticas" data-en="Policies" data-es="Políticas">
+                        Políticas
+                    </h4>
+                    <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-300 transition-colors" 
+                       data-pt="Estruturação de políticas e processos de TI."
+                       data-en="Structuring of IT policies and processes."
+                       data-es="Estructuración de políticas y procesos de TI.">
+                        Estruturação de políticas e processos de TI.
+                    </p>
+                </div>
+    
+                <div class="bg-[#05070a] p-8 hover:bg-cyan-500/5 transition-all group">
+                    <h4 class="text-cyan-400 font-black text-xs mb-4 uppercase tracking-tighter" 
+                        data-pt="Frameworks" data-en="Frameworks" data-es="Frameworks">
+                        Frameworks
+                    </h4>
+                    <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-300 transition-colors" 
+                       data-pt="Modelos de gestão (COBIT, ITIL, ISO 27001)."
+                       data-en="Management models (COBIT, ITIL, ISO 27001)."
+                       data-es="Modelos de gestión (COBIT, ITIL, ISO 27001).">
+                        Modelos de gestão (COBIT, ITIL, ISO 27001).
+                    </p>
+                </div>
+    
+                <div class="bg-[#05070a] p-8 hover:bg-cyan-500/5 transition-all group">
+                    <h4 class="text-cyan-400 font-black text-xs mb-4 uppercase tracking-tighter" 
+                        data-pt="Relatórios" data-en="Reports" data-es="Reportes">
+                        Relatórios
+                    </h4>
+                    <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-300 transition-colors" 
+                       data-pt="Relatórios de conformidade e auditoria."
+                       data-en="Compliance and audit reports."
+                       data-es="Reportes de cumplimiento y auditoría.">
+                        Relatórios de conformidade e auditoria.
+                    </p>
+                </div>
+    
+                <div class="bg-[#05070a] p-8 hover:bg-cyan-500/5 transition-all group">
+                    <h4 class="text-cyan-400 font-black text-xs mb-4 uppercase tracking-tighter" 
+                        data-pt="Capacidade" data-en="Capacity" data-es="Capacidad">
+                        Capacidade
+                    </h4>
+                    <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-300 transition-colors" 
+                       data-pt="Planejamento de capacidade, custos e segurança."
+                       data-en="Capacity, cost, and security planning."
+                       data-es="Planificación de capacidad, costos y seguridad.">
+                        Planejamento de capacidade, custos e segurança.
+                    </p>
+                </div>
+    
+                <div class="bg-[#05070a] p-8 hover:bg-cyan-500/5 transition-all group">
+                    <h4 class="text-cyan-400 font-black text-xs mb-4 uppercase tracking-tighter" 
+                        data-pt="Legal" data-en="Legal" data-es="Legal">
+                        Legal
+                    </h4>
+                    <p class="text-gray-500 text-xs leading-relaxed group-hover:text-gray-300 transition-colors" 
+                       data-pt="Suporte na adequação à LGPD, GDPR e leis locais."
+                       data-en="Support in compliance with LGPD, GDPR, and local laws."
+                       data-es="Soporte en la adecuación a LGPD, GDPR y leyes locales.">
+                        Suporte na adequação à LGPD, GDPR e leis locais.
+                    </p>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 relative overflow-hidden bg-[#05070a]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                
+                <div data-aos="fade-right">
+                    <div class="inline-block px-4 py-1 rounded-sm bg-cyan-500/10 text-cyan-400 text-[10px] font-black uppercase tracking-[0.4em] mb-6 border-l-2 border-cyan-500">
+                        Operation Framework
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-black uppercase italic tracking-tighter text-white mb-12"
+                        data-pt="Aplicações Práticas" 
+                        data-en="Practical Applications" 
+                        data-es="Aplicaciones Prácticas">
+                        Aplicações Práticas
+                    </h2>
+                    
+                    <div class="space-y-0 border-l border-white/10">
+                        
+                        <div class="group relative pl-8 pb-10 border-l border-transparent hover:border-cyan-500 transition-all duration-500">
+                            <div class="absolute -left-[5px] top-0 w-2 h-2 bg-white group-hover:bg-cyan-500 rounded-full transition-colors shadow-[0_0_10px_rgba(255,255,255,0.5)]"></div>
+                            <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-3 group-hover:text-cyan-400" 
+                                data-pt="Mapeamento de Responsabilidades" 
+                                data-en="Responsibility Mapping"
+                                data-es="Mapeo de Responsabilidades">
+                                Mapeamento de Responsabilidades
+                            </h4>
+                            <p class="text-gray-500 text-sm leading-relaxed" 
+                               data-pt="Definição rigorosa de papéis e responsabilidades em toda a vertical de tecnologia da empresa."
+                               data-en="Rigorous definition of roles and responsibilities across the entire company's technology vertical."
+                               data-es="Definición rigurosa de roles y responsabilidades en toda la vertical tecnológica de la empresa.">
+                                Definição rigorosa de papéis e responsabilidades em toda a vertical de tecnologia da empresa.
+                            </p>
+                        </div>
+    
+                        <div class="group relative pl-8 pb-10 border-l border-transparent hover:border-cyan-500 transition-all duration-500">
+                            <div class="absolute -left-[5px] top-0 w-2 h-2 bg-white group-hover:bg-cyan-500 rounded-full transition-colors"></div>
+                            <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-3 group-hover:text-cyan-400"
+                                data-pt="Implantação de Planos" 
+                                data-en="Plan Implementation"
+                                data-es="Implementación de Planes">
+                                Implantação de Planos
+                            </h4>
+                            <p class="text-gray-500 text-sm leading-relaxed"
+                               data-pt="Execução estratégica de planos de governança e conformidade com normas vigentes."
+                               data-en="Strategic execution of governance plans and compliance with current regulations."
+                               data-es="Ejecución estratégica de planes de gobernanza y cumplimiento de las normativas vigentes.">
+                                Execução estratégica de planos de governança e conformidade com normas vigentes.
+                            </p>
+                        </div>
+    
+                        <div class="group relative pl-8 pb-10 border-l border-transparent hover:border-cyan-500 transition-all duration-500">
+                            <div class="absolute -left-[5px] top-0 w-2 h-2 bg-white group-hover:bg-cyan-500 rounded-full transition-colors"></div>
+                            <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-3 group-hover:text-cyan-400"
+                                data-pt="KPIs e Métricas" 
+                                data-en="KPIs & Metrics"
+                                data-es="KPIs y Métricas">
+                                KPIs e Métricas
+                            </h4>
+                            <p class="text-gray-500 text-sm leading-relaxed"
+                               data-pt="Definição de indicadores chave para o controle absoluto da performance de TI."
+                               data-en="Definition of key indicators for absolute control of IT performance."
+                               data-es="Definición de indicadores clave para el control absoluto del desempeño de TI.">
+                                Definição de indicadores chave para o controle absoluto da performance de TI.
+                            </p>
+                        </div>
+    
+                        <div class="group relative pl-8 border-l border-transparent hover:border-cyan-500 transition-all duration-500">
+                            <div class="absolute -left-[5px] top-0 w-2 h-2 bg-white group-hover:bg-cyan-500 rounded-full transition-colors"></div>
+                            <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-3 group-hover:text-cyan-400"
+                                data-pt="Suporte em Auditorias" 
+                                data-en="Audit Support"
+                                data-es="Soporte en Auditorías">
+                                Suporte em Auditorias
+                            </h4>
+                            <p class="text-gray-500 text-sm leading-relaxed"
+                               data-pt="Acompanhamento técnico e estratégico em auditorias internas e externas."
+                               data-en="Technical and strategic support in internal and external audits."
+                               data-es="Acompañamiento técnico y estratégico en auditorías internas y externas.">
+                                Acompanhamento técnico e estratégico em auditorias internas e externas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="relative" data-aos="fade-left">
+                    <div class="absolute -inset-4 bg-cyan-500/5 blur-3xl rounded-full"></div>
+                    <div class="relative border border-white/10 bg-[#080a0e] p-4 rounded-xl shadow-2xl">
+                        <div class="absolute top-0 right-0 p-4 opacity-20">
+                            <i class="fas fa-drafting-compass text-6xl text-cyan-500"></i>
+                        </div>
+                        <img src="https://images.pexels.com/photos/3183151/pexels-photo-3183151.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                             alt="IT Governance Blueprint" 
+                             class="w-full h-[500px] object-cover opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-1000 rounded-lg">
+                        
+                        <div class="absolute bottom-10 left-10 font-mono text-[9px] text-cyan-500/60 space-y-1 select-none bg-black/40 p-3 backdrop-blur-sm border-l border-cyan-500">
+                            <p>COORD_DATA: [45.92 - 12.04]</p>
+                            <p>MODULE: GOV_AUDIT_VERIFIED</p>
+                            <p>ENCRYPTION: AES_256_ACTIVE</p>
+                            <p>COMPLIANCE: ISO_27001 / LGPD</p>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 text-center border-t border-white/5 bg-cyan-500/[0.02]">
+        <div class="max-w-4xl mx-auto" data-aos="zoom-in">
+            <h2 class="text-4xl md:text-7xl font-black uppercase mb-10 italic text-white tracking-tighter"
+                data-pt="Sua TI está alinhada ao negócio?" data-en="Is your IT aligned with business?">
+                Sua TI está alinhada ao negócio?
+            </h2>
+            <a href="https://wa.me/5519995000067" class="btn-premium-glow text-black font-black px-12 py-5 rounded-full inline-block uppercase text-[10px] tracking-widest">
+                <span data-pt="Consultoria Técnica" data-en="Technical Consulting" data-es="Consultoría Técnica">Consultoria Técnica</span>
+            </a>
+        </div>
+    </section>
+
+    <section id="faq-governanca" class="py-32 px-6 bg-[#05070a] border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-black uppercase italic tracking-tighter text-white"
+                    data-pt="FAQ – Compliance e Governança" 
+                    data-en="FAQ – Compliance & Governance"
+                    data-es="FAQ – Cumplimiento y Gobernanza">
+                    FAQ – Compliance e Governança
+                </h2>
+                <div class="w-16 h-1 bg-cyan-500 mx-auto mt-6 shadow-[0_0_15px_rgba(0,242,255,0.5)]"></div>
+            </div>
+    
+            <div class="space-y-6">
+                <div class="faq-item glass-pillar p-8 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm md:text-base uppercase tracking-widest text-white group-hover:text-cyan-400 transition-colors"
+                            data-pt="1. O que é Governança de TI?"
+                            data-en="1. What is IT Governance?"
+                            data-es="1. ¿Qué es la Gobernanza de TI?">
+                            1. O que é Governança de TI?
+                        </h4>
+                        <i class="fas fa-chevron-down text-xs text-gray-500 transition-all duration-300"></i>
+                    </div>
+                    <div class="faq-content text-gray-400 text-sm md:text-base leading-relaxed border-t border-white/5 mt-4 overflow-hidden max-h-0 transition-all">
+                        <p class="pt-6" data-pt="É a prática de alinhamento entre a tecnologia e os objetivos estratégicos da empresa. Define papéis, processos e indicadores para garantir que a TI gere valor e opere com segurança."
+                           data-en="It is the practice of aligning technology with the company's strategic objectives. It defines roles, processes, and indicators to ensure IT generates value and operates securely."
+                           data-es="Es la práctica de alinear la tecnología con los objetivos estratégicos de la empresa. Define roles, procesos e indicadores para garantizar que la TI genere valor y opere de forma segura.">
+                            Governança de TI é a prática de alinhamento entre a tecnologia e os objetivos estratégicos da empresa. Ela define papéis, responsabilidades, processos e indicadores para garantir que a TI gere valor, opere com segurança e esteja preparada para crescer de forma estruturada.
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="faq-item glass-pillar p-8 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm md:text-base uppercase tracking-widest text-white group-hover:text-cyan-400 transition-colors"
+                            data-pt="2. Qual é a diferença entre Governança e Compliance?"
+                            data-en="2. What is the difference between Governance and Compliance?"
+                            data-es="2. ¿Cuál es la diferencia entre Gobernanza y Cumplimiento?">
+                            2. Qual é a diferença entre Governança e Compliance?
+                        </h4>
+                        <i class="fas fa-chevron-down text-xs text-gray-500 transition-all duration-300"></i>
+                    </div>
+                    <div class="faq-content text-gray-400 text-sm md:text-base leading-relaxed border-t border-white/5 mt-4 overflow-hidden max-h-0 transition-all">
+                        <p class="pt-6" data-pt="Governança foca na estratégia e geração de valor. Compliance garante que as operações sigam leis e normas (como LGPD e ISO 27001)."
+                           data-en="Governance focuses on strategy and value generation. Compliance ensures operations follow laws and standards (such as LGPD and ISO 27001)."
+                           data-es="La gobernanza se centra en la estrategia y la generación de valor. El cumplimiento garantiza que las operaciones sigan las leyes y normas (como LGPD e ISO 27001).">
+                            Governança foca em como a TI contribui estrategicamente com o negócio. Compliance garante que todas as operações de TI estejam em conformidade com leis, normas e políticas internas, como a LGPD, ISO 27001, COBIT e ITIL.
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="faq-item glass-pillar p-8 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm md:text-base uppercase tracking-widest text-white group-hover:text-cyan-400 transition-colors"
+                            data-pt="3. Minha empresa precisa disso mesmo sendo pequena?"
+                            data-en="3. Does my company need this even if it's small?"
+                            data-es="3. ¿Mi empresa necesita esto incluso si es pequeña?">
+                            3. Minha empresa precisa disso mesmo sendo pequena?
+                        </h4>
+                        <i class="fas fa-chevron-down text-xs text-gray-500 transition-all duration-300"></i>
+                    </div>
+                    <div class="faq-content text-gray-400 text-sm md:text-base leading-relaxed border-t border-white/5 mt-4 overflow-hidden max-h-0 transition-all">
+                        <p class="pt-6" data-pt="Sim. Todas estão sujeitas a leis e riscos de dados. Implementar boas práticas cedo evita problemas jurídicos e cria uma base para o crescimento sustentável."
+                           data-en="Yes. All are subject to laws and data risks. Implementing best practices early avoids legal issues and creates a foundation for sustainable growth."
+                           data-es="Sí. Todas están sujetas a leyes y riesgos de datos. Implementar buenas prácticas temprano evita problemas legales y crea una base para el crecimiento sostenible.">
+                            Sim. Empresas de todos os portes estão sujeitas a exigências legais e riscos de dados. Implementar boas práticas desde o início evita riscos futuros e cria uma base sólida para o crescimento seguro da operação.
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="faq-item glass-pillar p-8 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm md:text-base uppercase tracking-widest text-white group-hover:text-cyan-400 transition-colors"
+                            data-pt="4. A Generactive ajuda na estruturação de políticas?"
+                            data-en="4. Does Generactive help in structuring policies?"
+                            data-es="4. ¿Generactive ayuda en la estructuración de políticas?">
+                            4. A Generactive ajuda na estruturação de políticas?
+                        </h4>
+                        <i class="fas fa-chevron-down text-xs text-gray-500 transition-all duration-300"></i>
+                    </div>
+                    <div class="faq-content text-gray-400 text-sm md:text-base leading-relaxed border-t border-white/5 mt-4 overflow-hidden max-h-0 transition-all">
+                        <p class="pt-6" data-pt="Sim. Criamos políticas internas, processos padronizados e KPIs alinhados aos frameworks globais mais relevantes do mercado."
+                           data-en="Yes. We create internal policies, standardized processes, and KPIs aligned with the most relevant global frameworks in the market."
+                           data-es="Sí. Creamos políticas internas, procesos estandarizados y KPIs alineados con los marcos globales más relevantes del mercado.">
+                            Sim. Ajudamos na criação de políticas internas, processos padronizados, definição de indicadores de performance (KPIs) e estrutura de responsabilidades, tudo alinhado aos frameworks COBIT, ITIL e ISO.
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="faq-item glass-pillar p-8 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm md:text-base uppercase tracking-widest text-white group-hover:text-cyan-400 transition-colors"
+                            data-pt="5. Como funciona a adequação à LGPD?"
+                            data-en="5. How does LGPD compliance work?"
+                            data-es="5. ¿Cómo funciona la adecuación a la LGPD?">
+                            5. Como funciona a adequação à LGPD?
+                        </h4>
+                        <i class="fas fa-chevron-down text-xs text-gray-500 transition-all duration-300"></i>
+                    </div>
+                    <div class="faq-content text-gray-400 text-sm md:text-base leading-relaxed border-t border-white/5 mt-4 overflow-hidden max-h-0 transition-all">
+                        <p class="pt-6" data-pt="Fazemos um diagnóstico técnico, mapeamento de dados e entregamos um plano de ação para controle de acessos e relatórios de conformidade."
+                           data-en="We perform a technical diagnosis, data mapping, and deliver an action plan for access control and compliance reports."
+                           data-es="Realizamos un diagnóstico técnico, mapeo de datos y entregamos un plan de acción para el control de acceso y reportes de cumplimiento.">
+                            Fazemos um diagnóstico completo, identificamos pontos críticos e entregamos um plano de ação que inclui mapeamento de dados, controle de acessos, políticas de segurança e relatórios de conformidade.
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="faq-item glass-pillar p-8 cursor-pointer group" onclick="this.classList.toggle('active')" data-aos="fade-up">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-sm md:text-base uppercase tracking-widest text-white group-hover:text-cyan-400 transition-colors"
+                            data-pt="6. Essa estrutura ajuda em auditorias?"
+                            data-en="6. Does this structure help in audits?"
+                            data-es="6. ¿Ayuda esta estructura en las auditorías?">
+                            6. Essa estrutura ajuda em auditorias?
+                        </h4>
+                        <i class="fas fa-chevron-down text-xs text-gray-500 transition-all duration-300"></i>
+                    </div>
+                    <div class="faq-content text-gray-400 text-sm md:text-base leading-relaxed border-t border-white/5 mt-4 overflow-hidden max-h-0 transition-all">
+                        <p class="pt-6" data-pt="Com certeza. Governança e compliance sólidos facilitam auditorias, certificações e reduzem riscos jurídicos significativamente."
+                           data-en="Certainly. Solid governance and compliance facilitate audits, certifications, and significantly reduce legal risks."
+                           data-es="Ciertamente. Una gobernanza y un cumplimiento sólidos facilitan las auditorías, las certificaciones y reducen significativamente los riesgos legales.">
+                            Com certeza. Governança bem implantada e compliance atualizado são pontos essenciais em auditorias, processos de certificação e avaliações de investidores, além de reduzir riscos jurídicos.
+                        </p>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6 border-t border-white/5 bg-[#050505] relative z-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+            
+            <div class="flex flex-col items-start gap-6">
+                <a href="index.html" class="transition-transform hover:scale-105">
+                    <img src="LogoGen.png" alt="Generactive Innovate" class="h-10 w-auto object-contain">
+                </a>
+                <p class="text-white font-bold text-lg leading-tight max-w-[280px]" 
+                   data-pt="Simplificamos a Cloud para transformar negócios." 
+                   data-en="We simplify the Cloud to transform businesses." 
+                   data-es="Simplificamos la Cloud para transformar negocios.">
+                    Simplificamos a Cloud para transformar negócios.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://www.facebook.com/share/14ctzUPM4QC/?mibextid=wwXIfr" class="text-[#3b5998] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-facebook-square"></i></a>
+                    <a href="https://www.linkedin.com/company/generactiveinnovate" class="text-[#0077b5] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/generactive.innovate?igsh=YXNxanZ0MHB6N3Vl" class="text-[#e1306c] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+    
+            <div class="flex flex-col gap-5 text-gray-400 text-sm">
+                <p class="font-bold text-white text-base"
+       data-pt="R. Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP"
+       data-en="36 Gustavo Ambrust St — Nova Campinas, Campinas/SP - Brazil"
+       data-es="Calle Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP">
+        R. Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP, 13092-106
+    </p>
+                <div class="flex flex-col gap-1 font-medium">
+                    <p>+55 (19) 9 9500-0067</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-envelope text-white text-lg"></i>
+                    <a href="mailto:contato@generactive.com.br" class="hover:text-cyan-400 transition-colors font-medium">contato@generactive.com.br</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-clock text-white text-lg"></i>
+                    <span class="font-medium" 
+                          data-pt="Seg. a Sex. das 9:00 às 18:00" 
+                          data-en="Mon. to Fri. from 9:00 AM to 6:00 PM" 
+                          data-es="Lun. a Vie. de 9:00 a 18:00">
+                        Seg. a Sex. das 9:00 às 18:00
+                    </span>
+                </div>
+            </div>
+    
+            <div class="flex flex-col items-start md:items-end gap-2 text-gray-400 text-[13px] font-medium">
+                <a href="sobre-nos.html" class="hover:text-white transition-colors" 
+                   data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a>
+                
+                   <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-servicos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Soluções Cloud" data-en="Cloud Solutions" data-es="Soluciones Cloud">Soluções Cloud</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-servicos"></i>
+                    </button>
+                    
+                    <div id="footer-servicos" class="footer-submenu flex flex-col items-start md:items-end overflow-hidden max-h-0 transition-all duration-500 opacity-0 w-full">
+                        <div class="flex flex-col items-start md:items-end py-1 gap-1">
+                            <a href="cloud-publica.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</a>
+                            <a href="cloud-privada.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</a>
+                            <a href="cloud-hibrida.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</a>
+                            <a href="cloud-backup.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Cloud Backup">Cloud Backup</a>
+                            <a href="migracao-nuvem.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</a>
+                            <a href="gerenciamento-cloud.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</a>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-nossos-servicos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Nuestros Servicios">Nossos Serviços</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-nossos-servicos"></i>
+                    </button>
+                    
+                    <div id="footer-nossos-servicos" class="footer-submenu flex flex-col items-start md:items-end overflow-hidden max-h-0 transition-all duration-500 opacity-0 w-full">
+                        <div class="flex flex-col items-start md:items-end py-1 gap-1">
+                            <a href="seguranca-e-governanca-de-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap">
+                                <span data-pt="Segurança e Governança" data-en="Security & Governance" data-es="Seguridad y Gobernanza">Segurança e Governança</span>
+                            </a>
+
+                            <a href="ciberseguranca-corporativa.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                               data-pt="Cibersegurança" data-en="Cybersecurity" data-es="Ciberseguridad">
+                               Cibersegurança
+                            </a>
+                            
+                            <a href="gestao-de-riscos-em-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                               data-pt="Gestão de Riscos" data-en="Risk Management" data-es="Gestión de Riesgos">
+                               Gestão de Riscos
+                            </a>
+                            
+                            <a href="compliance-e-governanca-de-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                               data-pt="Compliance e Governança" data-en="Compliance & Gov" data-es="Cumplimiento y Gob">
+                               Compliance e Governança
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-produtos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Nuestros Productos">Nossos Produtos</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-produtos"></i>
+                    </button>
+                    <div id="footer-produtos" class="footer-submenu flex flex-col items-start md:items-end gap-1 overflow-hidden max-h-0 transition-all duration-500 opacity-0">
+                        <a href="automacao-inteligente-com-ia.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</a>
+                        <a href="agentes-inteligentes.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Agentes Inteligentes" data-en="AI Agents" data-es="Agentes Inteligentes">Agentes Inteligentes</a>
+                        <a href="machine-learning.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Machine Learning" data-en="Machine Learning" data-es="Machine Learning">Machine Learning</a>
+                        <a href="integracao-de-dispositivo-com-iot.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Integração IoT" data-en="IoT Integration" data-es="Integración IoT">Integração IoT</a>
+                    </div>
+                </div>
+    
+                <a href="politica-privacidade.html" class="hover:text-white transition-colors" data-pt="Políticas de Privacidade" data-en="Privacy Policy" data-es="Política de Privacidad">Políticas de Privacidade</a>
+                <a href="termos-uso.html" class="hover:text-white transition-colors" data-pt="Termos de Uso" data-en="Terms of Use" data-es="Términos de Uso">Termos de Uso</a>
+                <a href="contato.html" class="hover:text-white transition-colors" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a>
+                <a href="#faq" class="hover:text-white transition-colors" data-pt="FAQ" data-en="FAQ" data-es="FAQ">FAQ</a>
+            </div>
+        </div>
+    
+        <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 text-center">
+            <p class="text-[9px] text-gray-700 font-black uppercase tracking-[0.4em]"
+               data-pt="© 2026 Generactive Innovate • Innovate at Scale"
+               data-en="© 2026 Generactive Innovate • Innovate at Scale"
+               data-es="© 2026 Generactive Innovate • Innovar a Escala">
+                © 2026 Generactive Innovate • Innovate at Scale
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFooterMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            const icon = document.getElementById('icon-' + menuId);
+            
+            // Se o menu já estiver aberto, fecha. Se não, abre.
+            if (menu.style.maxHeight === "0px" || menu.style.maxHeight === "") {
+                menu.style.maxHeight = "200px"; // Altura suficiente para os links
+                menu.style.opacity = "1";
+                menu.style.marginTop = "5px";
+                menu.style.marginBottom = "10px";
+                icon.style.transform = "rotate(180deg)";
+            } else {
+                menu.style.maxHeight = "0px";
+                menu.style.opacity = "0";
+                menu.style.marginTop = "0px";
+                menu.style.marginBottom = "0px";
+                icon.style.transform = "rotate(0deg)";
+            }
+        }
+        </script>
+    
+    <script>
+    function toggleMainMenu(event) {
+        if(event) event.stopPropagation();
+        const dropdown = document.getElementById('main-nav-dropdown');
+        dropdown.classList.toggle('active');
+    }
+    
+    // Fecha o menu ao clicar fora dele
+    document.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('main-nav-dropdown');
+        const kebab = document.querySelector('.kebab-btn');
+        if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+    </script>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: false });
+        const glow = document.getElementById('glow');
+        window.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
+        });
+    </script>
+    
+    <script>
+    // Função para trocar o idioma
+    function changeLanguage(lang) {
+        // 1. Atualiza o selo visual no botão
+        const langLabel = document.getElementById('lang-label');
+        if (langLabel) langLabel.innerText = lang.toUpperCase();
+    
+        // 2. Traduz todos os elementos com o atributo data-pt
+        const elements = document.querySelectorAll('[data-pt]');
+        elements.forEach(el => {
+            const translation = el.getAttribute(`data-${lang}`);
+            if (translation) {
+                // Se for um link de WhatsApp, podemos manter os ícones, mas aqui traduzimos o texto
+                el.innerText = translation;
+            }
+        });
+    
+        // 3. Salva a escolha para quando ele mudar de página
+        localStorage.setItem('generactive_lang', lang);
+    }
+    
+    // Ao carregar a página, verifica se já existe um idioma salvo
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('generactive_lang') || 'pt';
+        changeLanguage(savedLang);
+    });
+    </script>
+</body>
+</html>

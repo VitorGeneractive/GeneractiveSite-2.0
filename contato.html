@@ -105,7 +105,100 @@
         box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
     }
 
-    /* Controle de Expansão do Footer */
+    .kebab-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 101;
+}
+.kebab-btn span {
+    width: 4px;
+    height: 4px;
+    background: #22d3ee;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+}
+
+.main-nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 1rem;
+    width: 260px;
+    background: rgba(10, 10, 12, 0.98);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+    z-index: 1000;
+}
+.main-nav-dropdown.active { display: block; animation: fadeIn 0.3s ease; }
+
+.nav-drop-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 12px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+.nav-drop-item:hover { background: rgba(34, 211, 238, 0.1); color: #22d3ee; }
+
+/* SUBMENU DESKTOP (Lado a Lado) */
+.has-submenu { position: relative; }
+.submenu-content {
+    display: none;
+    position: absolute;
+    right: 102%; 
+    top: 0;
+    width: 220px;
+    background: rgba(15, 15, 18, 0.98);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    border-radius: 18px;
+    padding: 8px;
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+}
+
+.has-submenu:hover .submenu-content { display: block; animation: slideIn 0.3s ease forwards; }
+
+/* RESPONSIVIDADE MOBILE (Empilhado) */
+@media (max-width: 768px) {
+    .main-nav-dropdown {
+        right: -10px; /* Ajuste para não colar na borda */
+        width: 280px;
+    }
+    .submenu-content {
+        position: static; /* Remove o flutuante */
+        width: 100%;
+        display: none; 
+        background: rgba(255, 255, 255, 0.03);
+        border: none;
+        box-shadow: none;
+        margin-top: 5px;
+        padding-left: 15px; /* Indenta os sub-itens */
+    }
+    .has-submenu:hover .submenu-content {
+        display: block; /* No mobile ele expande para baixo */
+    }
+    .nav-drop-item i.fa-chevron-left {
+        transform: rotate(-90deg); /* Aponta para baixo no mobile */
+    }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+
+/* Controle de Expansão do Footer */
 .footer-menu-item { cursor: pointer; transition: all 0.3s; }
 .footer-submenu { 
     max-height: 0; 
@@ -131,8 +224,9 @@
 
     <div class="contact-bg"></div>
 
-    <nav class="fixed w-full z-50 bg-black/40 backdrop-blur-3xl border-b border-white/5 px-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center h-full">
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-3 active">
+        <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
+            
             <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1 relative z-50">
                 <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg flex items-center justify-center rotate-12 group-hover:rotate-0 transition-all shadow-lg shadow-blue-500/20 flex-shrink-0">
                     <i class="fas fa-arrow-left text-white text-xs"></i>
@@ -143,19 +237,157 @@
                      class="h-24 md:h-24 lg:h-28 w-auto object-contain drop-shadow-[0_0_18px_rgba(6,182,212,0.28)] my-[-32px] md:my-[-35px] lg:my-[-40px]">
             </a>
             
-            <div class="flex items-center gap-6">
-                <div class="relative group">
-                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+            <div class="flex items-center gap-4 md:gap-6">
+                
+                <div class="relative group"> 
+                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
                         <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
                     </button>
-                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-zinc-950 border border-white/10 rounded-xl shadow-2xl overflow-hidden z-50">
-                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">PORTUGUÊS</button>
-                        <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">ENGLISH</button>
-                        <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition">ESPAÑOL</button>
+                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                        <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">PORTUGUÊS</button>
+                        <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ENGLISH</button>
+                        <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ESPAÑOL</button>
                     </div>
                 </div>
-                <a href="index.html" class="text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-cyan-400 transition" 
-                   data-pt="Voltar" data-en="Back" data-es="Volver">Voltar</a>
+    
+                <a href="https://wa.me/5519995000067" target="_blank" 
+                   class="hidden sm:inline-block bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-[10px] hover:bg-white transition shadow-lg shadow-cyan-500/20 uppercase tracking-widest">
+                    <span data-pt="Especialista" data-en="Specialist" data-es="Especialista">Especialista</span>
+                </a>
+    
+                <div class="relative">
+                    <div class="kebab-btn" onclick="toggleMainMenu(event)">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                
+                    <div id="main-nav-dropdown" class="main-nav-dropdown">
+                        <p class="text-[8px] text-gray-600 font-black uppercase tracking-[0.3em] mb-2 px-4">Generactive</p>
+                    
+                        <div class="has-submenu">
+                            <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-layer-group text-cyan-400"></i>
+                                    <span data-pt="Soluções Cloud" data-en="Cloud Solutions" data-es="Soluciones Cloud">Soluções Cloud</span>                                </div>
+                                <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                            </div>
+                    
+                            <div class="submenu-content hidden">
+                                
+                                <a href="cloud-publica.html" class="nav-drop-item">
+                                    <i class="fas fa-cloud text-[10px]"></i>
+                                    <span data-pt="Cloud Pública" data-en="Public Cloud" data-es="Cloud Pública">Cloud Pública</span>
+                                </a>
+                                <a href="cloud-privada.html" class="nav-drop-item">
+                                    <i class="fas fa-lock text-[10px]"></i>
+                                    <span data-pt="Cloud Privada" data-en="Private Cloud" data-es="Cloud Privada">Cloud Privada</span>
+                                </a>
+                                <a href="cloud-hibrida.html" class="nav-drop-item">
+                                    <i class="fas fa-network-wired text-[10px]"></i>
+                                    <span data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Cloud Híbrida">Cloud Híbrida</span>
+                                </a>
+                                <a href="cloud-backup.html" class="nav-drop-item">
+                                    <i class="fas fa-shield-alt text-[10px]"></i>
+                                    <span data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Cloud Backup">Cloud Backup</span>
+                                </a>
+                                <a href="migracao-nuvem.html" class="nav-drop-item">
+                                    <i class="fas fa-rocket text-[10px]"></i>
+                                    <span data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Cloud Migration">Cloud Migration</span>
+                                </a>
+                                <a href="gerenciamento-cloud.html" class="nav-drop-item">
+                                    <i class="fas fa-tasks text-[10px]"></i>
+                                    <span data-pt="Cloud Management" data-en="Cloud Management" data-es="Cloud Management">Cloud Management</span>
+                                </a>
+                            </div>
+                        </div>
+                    
+                        <div class="has-submenu">
+                            <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-handshake text-cyan-400"></i>
+                                    <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Nuestros Servicios">Nossos Serviços</span>
+                                </div>
+                                <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                            </div>
+                        
+                            <div class="submenu-content hidden">
+                                <a href="seguranca-e-governanca-de-ti.html" class="nav-drop-item">
+                                    <i class="fas fa-shield-alt text-[10px]"></i> 
+                                    <span data-pt="Segurança e Governança" data-en="Security & Governance" data-es="Seguridad y Gobernanza">Segurança e Governança</span>
+                                </a>
+
+                                <a href="cibersegurança-corporativa.html" class="nav-drop-item">
+                                    <i class="fas fa-user-shield text-[10px]"></i> 
+                                    <span data-pt="Cibersegurança" data-en="Cybersecurity" data-es="Ciberseguridad">Cibersegurança</span>
+                                </a>
+                                
+                                <a href="gestao-de-risco-em-ti.html" class="nav-drop-item">
+                                    <i class="fas fa-exclamation-triangle text-[10px]"></i> 
+                                    <span data-pt="Gestão de Riscos" data-en="Risk Management" data-es="Gestión de Riesgos">Gestão de Riscos</span>
+                                </a>
+                                
+                                <a href="compliance-e-governanca-ti.html" class="nav-drop-item">
+                                    <i class="fas fa-file-contract text-[10px]"></i> 
+                                    <span data-pt="Compliance e Governança" data-en="Compliance & Gov" data-es="Cumplimiento y Gob">Compliance e Governança</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="has-submenu">
+                            <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-box-open text-cyan-400"></i>
+                                    <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Productos">Nossos Produtos</span>
+                                </div>
+                                <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                            </div>
+                    
+                            <div class="submenu-content hidden">
+                                <a href="automacao-inteligente-com-ia.html" class="nav-drop-item">
+                                    <i class="fas fa-cogs text-[10px]"></i> 
+                                    <span data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</span>
+                                </a>
+                                
+                                <a href="agentes-inteligentes.html" class="nav-drop-item">
+                                    <i class="fas fa-robot text-[10px]"></i> 
+                                    <span data-pt="Agentes Inteligentes" data-en="AI Agents" data-es="Agentes Inteligentes">Agentes Inteligentes</span>
+                                </a>
+                                
+                                <a href="machine-learning.html" class="nav-drop-item">
+                                    <i class="fas fa-brain text-[10px]"></i> 
+                                    <span data-pt="Machine Learning" data-en="Machine Learning" data-es="Aprendizaje Automático">Machine Learning</span>
+                                </a>
+                                
+                                <a href="integracao-de-dispositivo-com-iot.html" class="nav-drop-item">
+                                    <i class="fas fa-network-wired text-[10px]"></i> 
+                                    <span data-pt="Integração IoT" data-en="IoT Integration" data-es="Integración IoT">Integração IoT</span>
+                                </a>
+                            </div>
+                        </div>
+                    
+                        <a href="sobre-nos.html" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                            <i class="fas fa-users text-cyan-400"></i>
+                            <span data-pt="Sobre Nós">Sobre Nós</span>
+                        </a>
+                        <a href="politica-privacidade.html" class="nav-drop-item">
+                            <i class="fas fa-user-shield text-cyan-400"></i>
+                            <span data-pt="Políticas de Privacidade">Políticas de Privacidade</span>
+                        </a>
+                        <a href="termos-uso.html" class="nav-drop-item">
+                            <i class="fas fa-file-contract text-cyan-400"></i>
+                            <span data-pt="Termos de Uso">Termos de Uso</span>
+                        </a>
+                    
+                        <div class="h-px bg-white/5 my-2"></div>
+                    
+                        <a href="contato.html" target="_blank" class="nav-drop-item text-white">
+                            <i class="fas fa-comment-alt text-cyan-400"></i>
+                            <span data-pt="Entrar em Contato">Entrar em Contato</span>
+                        </a>
+                    </div>
+                </div>
+    
             </div>
         </div>
     </nav>
@@ -298,39 +530,76 @@
                 <div class="flex items-center gap-3">
                     <i class="fas fa-clock text-white text-lg"></i>
                     <span class="font-medium" 
-                          data-pt="Seg. a Sex. das 8:00 às 18:00" 
-                          data-en="Mon. to Fri. from 8:00 AM to 6:00 PM" 
-                          data-es="Lun. a Vie. de 8:00 a 18:00">
-                        Seg. a Sex. das 8:00 às 18:00
+                          data-pt="Seg. a Sex. das 9:00 às 18:00" 
+                          data-en="Mon. to Fri. from 9:00 AM to 6:00 PM" 
+                          data-es="Lun. a Vie. de 9:00 a 18:00">
+                        Seg. a Sex. das 9:00 às 18:00
                     </span>
                 </div>
             </div>
     
             <div class="flex flex-col items-start md:items-end gap-2 text-gray-400 text-[13px] font-medium">
-                <a href="sobre.html" class="hover:text-white transition-colors" 
+                <a href="sobre-nos.html" class="hover:text-white transition-colors" 
                    data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a>
                 
-                <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                   <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
                     <button onclick="toggleFooterMenu('footer-servicos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
-                        <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Nuestros Servicios">Nossos Serviços</span>
+                        <span data-pt="Soluções Cloud" data-en="Cloud Solutions" data-es="Soluciones Cloud">Soluções Cloud</span>
                         <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-servicos"></i>
                     </button>
-                    <div id="footer-servicos" class="footer-submenu flex flex-col items-start md:items-end gap-1 overflow-hidden max-h-0 transition-all duration-500 opacity-0">
-                        <a href="cloud-publica.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</a>
-                        <a href="cloud-privada.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</a>
-                        <a href="cloud-hibrida.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</a>
+                    
+                    <div id="footer-servicos" class="footer-submenu flex flex-col items-start md:items-end overflow-hidden max-h-0 transition-all duration-500 opacity-0 w-full">
+                        <div class="flex flex-col items-start md:items-end py-1 gap-1">
+                            <a href="cloud-publica.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</a>
+                            <a href="cloud-privada.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</a>
+                            <a href="cloud-hibrida.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</a>
+                            <a href="cloud-backup.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Cloud Backup">Cloud Backup</a>
+                            <a href="migracao-nuvem.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</a>
+                            <a href="gerenciamento-cloud.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</a>
+                        </div>
                     </div>
                 </div>
     
+                <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                    <button onclick="toggleFooterMenu('footer-nossos-servicos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                        <span data-pt="Nossos Serviços" data-en="Our Services" data-es="Nuestros Servicios">Nossos Serviços</span>
+                        <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-nossos-servicos"></i>
+                    </button>
+                    
+                    <div id="footer-nossos-servicos" class="footer-submenu flex flex-col items-start md:items-end overflow-hidden max-h-0 transition-all duration-500 opacity-0 w-full">
+                        <div class="flex flex-col items-start md:items-end py-1 gap-1">
+                            <a href="seguranca-e-governanca-de-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap">
+                                <span data-pt="Segurança e Governança" data-en="Security & Governance" data-es="Seguridad y Gobernanza">Segurança e Governança</span>
+                            </a>
+
+                            <a href="ciberseguranca-corporativa.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                               data-pt="Cibersegurança" data-en="Cybersecurity" data-es="Ciberseguridad">
+                               Cibersegurança
+                            </a>
+                            
+                            <a href="gestao-de-riscos-em-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                               data-pt="Gestão de Riscos" data-en="Risk Management" data-es="Gestión de Riesgos">
+                               Gestão de Riscos
+                            </a>
+                            
+                            <a href="compliance-e-governanca-de-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                               data-pt="Compliance e Governança" data-en="Compliance & Gov" data-es="Cumplimiento y Gob">
+                               Compliance e Governança
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
                     <button onclick="toggleFooterMenu('footer-produtos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
                         <span data-pt="Nossos Produtos" data-en="Our Products" data-es="Nuestros Productos">Nossos Produtos</span>
                         <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-produtos"></i>
                     </button>
                     <div id="footer-produtos" class="footer-submenu flex flex-col items-start md:items-end gap-1 overflow-hidden max-h-0 transition-all duration-500 opacity-0">
-                        <a href="cloud-backup.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Respaldo Cloud">Cloud Backup</a>
-                        <a href="migracao-nuvem.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</a>
-                        <a href="gerenciamento-cloud.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</a>
+                        <a href="automacao-inteligente-com-ia.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</a>
+                        <a href="agentes-inteligentes.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Agentes Inteligentes" data-en="AI Agents" data-es="Agentes Inteligentes">Agentes Inteligentes</a>
+                        <a href="machine-learning.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Machine Learning" data-en="Machine Learning" data-es="Machine Learning">Machine Learning</a>
+                        <a href="integracao-de-dispositivo-com-iot.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Integração IoT" data-en="IoT Integration" data-es="Integración IoT">Integração IoT</a>
                     </div>
                 </div>
     
@@ -358,7 +627,7 @@
             
             // Se o menu já estiver aberto, fecha. Se não, abre.
             if (menu.style.maxHeight === "0px" || menu.style.maxHeight === "") {
-                menu.style.maxHeight = "150px"; // Altura suficiente para os links
+                menu.style.maxHeight = "200px"; // Altura suficiente para os links
                 menu.style.opacity = "1";
                 menu.style.marginTop = "5px";
                 menu.style.marginBottom = "10px";
@@ -372,6 +641,63 @@
             }
         }
         </script>
+
+<script>
+    function toggleMainMenu(event) {
+        if(event) event.stopPropagation();
+        const dropdown = document.getElementById('main-nav-dropdown');
+        dropdown.classList.toggle('active');
+    }
+    
+    // Fecha o menu ao clicar fora dele
+    document.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('main-nav-dropdown');
+        const kebab = document.querySelector('.kebab-btn');
+        if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script>
+    function toggleFooterMenu(menuId) {
+        const menu = document.getElementById(menuId);
+        const icon = document.getElementById('icon-' + menuId);
+        
+        // Se o menu já estiver aberto, fecha. Se não, abre.
+        if (menu.style.maxHeight === "0px" || menu.style.maxHeight === "") {
+            menu.style.maxHeight = "200px"; // Altura suficiente para os links
+            menu.style.opacity = "1";
+            menu.style.marginTop = "5px";
+            menu.style.marginBottom = "10px";
+            icon.style.transform = "rotate(180deg)";
+        } else {
+            menu.style.maxHeight = "0px";
+            menu.style.opacity = "0";
+            menu.style.marginTop = "0px";
+            menu.style.marginBottom = "0px";
+            icon.style.transform = "rotate(0deg)";
+        }
+    }
+    </script>
+
+<script>
+function toggleMainMenu(event) {
+    if(event) event.stopPropagation();
+    const dropdown = document.getElementById('main-nav-dropdown');
+    dropdown.classList.toggle('active');
+}
+
+// Fecha o menu ao clicar fora dele
+document.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('main-nav-dropdown');
+    const kebab = document.querySelector('.kebab-btn');
+    if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('active');
+    }
+});
+</script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
@@ -393,11 +719,6 @@
     });
     localStorage.setItem('generactive_lang', lang);
 }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('generactive_lang') || 'pt';
-            changeLanguage(savedLang);
-        });
-    </script>
+</script>
 </body>
 </html>
