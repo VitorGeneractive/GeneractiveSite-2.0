@@ -200,11 +200,12 @@
             
             <div class="flex items-center gap-4 md:gap-6">
                 
-                <div class="relative group"> 
-                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                <div class="relative group" id="lang-selector"> 
+                    <button onclick="toggleLangMenu()" class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
                         <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
                     </button>
-                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                    <!-- Removido o group-hover:block do HTML para controlar via JS/CSS melhorado -->
+                    <div id="lang-dropdown" class="absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden">
                         <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">PORTUGUÊS</button>
                         <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ENGLISH</button>
                         <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ESPAÑOL</button>
@@ -448,9 +449,12 @@
                         <span data-pt="Sua presença digital" data-en="Your digital presence" data-es="Su presencia digital">Sua presença digital</span> <br>
                         <span class="text-cyan-500" data-pt="merece o melhor" data-en="deserves the best" data-es="merece lo mejor">merece o melhor</span>
                     </h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-6" data-pt="Sua presença digital merece mais do que um site padrão. Desenvolvemos plataformas personalizadas, como portais corporativos, marketplaces, intranets e lojas virtuais, com foco em conversão, segurança, escalabilidade e SEO.">
-                        Sua presença digital merece mais do que um site padrão. Desenvolvemos plataformas personalizadas, como portais corporativos, marketplaces, intranets e lojas virtuais, com foco em conversão, segurança, escalabilidade e SEO.
-                    </p>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6" 
+   data-pt="Sua presença digital merece mais do que um site padrão. Desenvolvemos plataformas personalizadas, como portais corporativos, marketplaces, intranets e lojas virtuais, com foco em conversão, segurança, escalabilidade e SEO." 
+   data-en="Your digital presence deserves more than a standard website. We develop customized platforms, such as corporate portals, marketplaces, intranets, and virtual stores, focusing on conversion, security, scalability, and SEO." 
+   data-es="Su presencia digital merece más que un sitio estándar. Desarrollamos plataformas personalizadas, como portais corporativos, marketplaces, intranets y tiendas virtuales, con enfoque en conversión, seguridad, escalabilidad y SEO.">
+    Sua presença digital merece mais do que um site padrão. Desenvolvemos plataformas personalizadas, como portais corporativos, marketplaces, intranets e lojas virtuais, com foco em conversão, segurança, escalabilidade e SEO.
+</p>
                 </div>
                 <div class="relative" data-aos="fade-left">
                     <div class="glass-panel p-10 rounded-[3rem] border-l-4 border-l-cyan-500">
@@ -592,9 +596,12 @@
                 <span data-pt="Como" data-en="How it" data-es="Cómo">Como</span> <span class="text-cyan-500" data-pt="Funciona" data-en="Works" data-es="Funciona">Funciona</span>
             </h2>
             <div class="glass-panel p-12 rounded-[3rem] text-left" data-aos="fade-up">
-                <p class="text-gray-400 text-xl font-light leading-relaxed mb-8" data-pt="Começamos com briefing detalhado, definimos as funcionalidades com você, prototipamos a interface e seguimos com desenvolvimento iterativo. Entregamos uma plataforma pronta para evoluir com seu negócio.">
-                    Começamos com briefing detalhado, definimos as funcionalidades com você, prototipamos a interface e seguimos com desenvolvimento iterativo. Entregamos uma plataforma pronta para evoluir com seu negócio.
-                </p>
+                <p class="text-gray-400 text-xl font-light leading-relaxed mb-8" 
+   data-pt="Começamos com briefing detalhado, definimos as funcionalidades com você, prototipamos a interface e seguimos com desenvolvimento iterativo. Entregamos uma plataforma pronta para evoluir com seu negócio." 
+   data-en="We start with a detailed briefing, define functionalities with you, prototype the interface, and follow through with iterative development. We deliver a platform ready to evolve with your business." 
+   data-es="Comenzamos con un briefing detallado, definimos las funcionalidades con usted, prototipamos la interfaz y seguimos con un desarrollo iterativo. Entregamos una plataforma lista para evolucionar con su negocio.">
+    Começamos com briefing detalhado, definimos as funcionalidades com você, prototipamos a interface e seguimos com desenvolvimento iterativo. Entregamos uma plataforma pronta para evoluir com seu negócio.
+</p>
                 <div class="h-px bg-white/10 w-full mb-8"></div>
                 <div class="flex items-center gap-4 text-cyan-400 font-bold uppercase tracking-widest text-xs">
                     <span class="w-10 h-px bg-cyan-400"></span>
@@ -919,14 +926,41 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        function changeLanguage(lang) {
-            const langLabel = document.getElementById('lang-label');
-        if (langLabel) langLabel.innerText = lang.toUpperCase();
-            document.querySelectorAll('[data-pt]').forEach(el => {
-                const text = el.getAttribute(`data-${lang}`);
-                if (text) el.innerText = text;
-            });
+        function toggleLangMenu() {
+    const dropdown = document.getElementById('lang-dropdown');
+    dropdown.classList.toggle('hidden');
+}
+
+// Fecha o menu se o usuário clicar fora dele
+window.onclick = function(event) {
+    if (!event.target.closest('#lang-selector')) {
+        const dropdown = document.getElementById('lang-dropdown');
+        if (!dropdown.classList.contains('hidden')) {
+            dropdown.classList.add('hidden');
         }
+    }
+}
+
+// Atualize sua função de mudar idioma para atualizar o label e fechar o menu
+function changeLanguage(lang) {
+    // Sua lógica de tradução atual (que já configuramos nos atributos data-pt, etc)
+    console.log("Mudando para:", lang);
+    
+    // Atualiza o texto do botão principal
+    document.getElementById('lang-label').innerText = lang.toUpperCase();
+    
+    // Salva a preferência
+    localStorage.setItem('generactive_lang', lang);
+    document.documentElement.lang = lang;
+
+    // Executa a tradução dos elementos
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.innerText = el.getAttribute('data-' + lang);
+    });
+
+    // Fecha o menu após a escolha
+    document.getElementById('lang-dropdown').classList.add('hidden');
+}
     </script>
 
 <script>
