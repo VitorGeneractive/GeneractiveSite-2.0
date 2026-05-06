@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V02327JYWK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V02327JYWK');
+    </script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-P937FVXV');
+        </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alocação de Profissionais | Generactive Innovate</title>
+    <link rel="icon" type="image/png" href="LogoGuiaGen.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #000; 
+            color: #f3f4f6; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* Identidade Generactive: Vidro e Neon */
+        .gen-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gen-card:hover {
+            border-color: #00f2ff;
+            background: rgba(0, 242, 255, 0.03);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 242, 255, 0.1);
+        }
+
+        .text-neon {
+            color: #00f2ff;
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+        }
+
+        /* Tipografia de Impacto */
+        .italic-black {
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+
+        /* Botão Estilo Cloud */
+        .btn-gen {
+            background: #00f2ff;
+            color: #000;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+
+        .btn-gen:hover {
+            background: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        }
+
+        details summary::-webkit-details-marker { display: none; }
+
+        .kebab-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 101;
+}
+.kebab-btn span {
+    width: 4px;
+    height: 4px;
+    background: #22d3ee;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+}
+
+.main-nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 1rem;
+    width: 260px;
+    background: rgba(10, 10, 12, 0.98);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+    z-index: 1000;
+}
+.main-nav-dropdown.active { display: block; animation: fadeIn 0.3s ease; }
+
+.nav-drop-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 12px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+.nav-drop-item:hover { background: rgba(34, 211, 238, 0.1); color: #22d3ee; }
+
+/* SUBMENU DESKTOP (Lado a Lado) */
+.has-submenu { position: relative; }
+.submenu-content {
+    display: none;
+    position: absolute;
+    right: 102%; 
+    top: 0;
+    width: 220px;
+    background: rgba(15, 15, 18, 0.98);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    border-radius: 18px;
+    padding: 8px;
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.5);
+}
+
+.has-submenu:hover .submenu-content { display: block; animation: slideIn 0.3s ease forwards; }
+
+/* RESPONSIVIDADE MOBILE (Empilhado) */
+@media (max-width: 768px) {
+    .main-nav-dropdown {
+        right: -10px; /* Ajuste para não colar na borda */
+        width: 280px;
+    }
+    .submenu-content {
+        position: static; /* Remove o flutuante */
+        width: 100%;
+        display: none; 
+        background: rgba(255, 255, 255, 0.03);
+        border: none;
+        box-shadow: none;
+        margin-top: 5px;
+        padding-left: 15px; /* Indenta os sub-itens */
+    }
+    .has-submenu:hover .submenu-content {
+        display: block; /* No mobile ele expande para baixo */
+    }
+    .nav-drop-item i.fa-chevron-left {
+        transform: rotate(-90deg); /* Aponta para baixo no mobile */
+    }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
+
+/* Controle de Expansão do Footer */
+.footer-menu-item { cursor: pointer; transition: all 0.3s; }
+.footer-submenu { 
+    max-height: 0; 
+    overflow: hidden; 
+    transition: all 0.4s cubic-bezier(0, 1, 0, 1); 
+    opacity: 0;
+    padding-left: 10px;
+    border-left: 1px solid rgba(0, 242, 255, 0.2);
+    margin-left: 5px;
+}
+.footer-menu-group.active .footer-submenu { 
+    max-height: 500px; 
+    opacity: 1; 
+    transition: all 0.4s ease-in-out;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.footer-menu-group.active i.fa-chevron-down { transform: rotate(180deg); color: #00f2ff; }
+    </style>
+</head>
+<body>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P937FVXV"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+        <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-3 active">
+            <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
+                
+                <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1 relative z-50">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-lg flex items-center justify-center rotate-12 group-hover:rotate-0 transition-all shadow-lg shadow-blue-500/20 flex-shrink-0">
+                        <i class="fas fa-arrow-left text-white text-xs"></i>
+                    </div>
+                
+                    <img src="LogoGeneractive.png" 
+                         alt="Generactive Innovate" 
+                         class="h-24 md:h-24 lg:h-28 w-auto object-contain drop-shadow-[0_0_18px_rgba(6,182,212,0.28)] my-[-32px] md:my-[-35px] lg:my-[-40px]">
+                </a>
+                
+                <div class="flex items-center gap-4 md:gap-6">
+                    
+                    <div class="relative group"> 
+                        <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                            <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
+                        </button>
+                        <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                            <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">PORTUGUÊS</button>
+                            <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ENGLISH</button>
+                            <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ESPAÑOL</button>
+                        </div>
+                    </div>
+        
+                    <a href="https://wa.me/5519995000067" target="_blank" 
+                       class="hidden sm:inline-block bg-cyan-500 text-black px-6 py-2 rounded-full font-bold text-[10px] hover:bg-white transition shadow-lg shadow-cyan-500/20 uppercase tracking-widest">
+                        <span data-pt="Especialista" data-en="Specialist" data-es="Especialista">Especialista</span>
+                    </a>
+        
+                    <div class="relative">
+                        <div class="kebab-btn" onclick="toggleMainMenu(event)">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    
+                        <div id="main-nav-dropdown" class="main-nav-dropdown">
+                            <p class="text-[8px] text-gray-600 font-black uppercase tracking-[0.3em] mb-2 px-4">Nossos Produtos</p>
+                        
+                            <div class="has-submenu">
+                                <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-layer-group text-cyan-400"></i>
+                                        <span data-pt="Soluções Cloud" data-en="Cloud Solutions" data-es="Soluciones Cloud">Soluções Cloud</span>                                </div>
+                                    <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                                </div>
+                        
+                                <div class="submenu-content hidden">
+                                    
+                                    <a href="cloud-publica.html" class="nav-drop-item">
+                                        <i class="fas fa-cloud text-[10px]"></i>
+                                        <span data-pt="Cloud Pública" data-en="Public Cloud" data-es="Cloud Pública">Cloud Pública</span>
+                                    </a>
+                                    <a href="cloud-privada.html" class="nav-drop-item">
+                                        <i class="fas fa-lock text-[10px]"></i>
+                                        <span data-pt="Cloud Privada" data-en="Private Cloud" data-es="Cloud Privada">Cloud Privada</span>
+                                    </a>
+                                    <a href="cloud-hibrida.html" class="nav-drop-item">
+                                        <i class="fas fa-network-wired text-[10px]"></i>
+                                        <span data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Cloud Híbrida">Cloud Híbrida</span>
+                                    </a>
+                                    <a href="cloud-backup.html" class="nav-drop-item">
+                                        <i class="fas fa-shield-alt text-[10px]"></i>
+                                        <span data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Cloud Backup">Cloud Backup</span>
+                                    </a>
+                                    <a href="migracao-nuvem.html" class="nav-drop-item">
+                                        <i class="fas fa-rocket text-[10px]"></i>
+                                        <span data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Cloud Migration">Cloud Migration</span>
+                                    </a>
+                                    <a href="gerenciamento-cloud.html" class="nav-drop-item">
+                                        <i class="fas fa-tasks text-[10px]"></i>
+                                        <span data-pt="Cloud Management" data-en="Cloud Management" data-es="Cloud Management">Cloud Management</span>
+                                    </a>
+                                </div>
+                            </div>
+                        
+                            <div class="has-submenu">
+                                <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-handshake text-cyan-400"></i>
+                                        <span data-pt="Segurança e Governança" data-en="Security & Governance" data-es="Seguridad y Gobernanza">Segurança e Governança</span>
+                                    </div>
+                                    <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                                </div>
+                            
+                                <div class="submenu-content hidden">
+                                    <a href="seguranca-e-governanca-de-ti.html" class="nav-drop-item">
+                                        <i class="fas fa-shield-alt text-[10px]"></i> 
+                                        <span data-pt="Segurança e Governança" data-en="Security & Governance" data-es="Seguridad y Gobernanza">Segurança e Governança</span>
+                                    </a>
+    
+                                    <a href="cibersegurança-corporativa.html" class="nav-drop-item">
+                                        <i class="fas fa-user-shield text-[10px]"></i> 
+                                        <span data-pt="Cibersegurança" data-en="Cybersecurity" data-es="Ciberseguridad">Cibersegurança</span>
+                                    </a>
+                                    
+                                    <a href="gestao-de-risco-em-ti.html" class="nav-drop-item">
+                                        <i class="fas fa-exclamation-triangle text-[10px]"></i> 
+                                        <span data-pt="Gestão de Riscos" data-en="Risk Management" data-es="Gestión de Riesgos">Gestão de Riscos</span>
+                                    </a>
+                                    
+                                    <a href="compliance-e-governanca-ti.html" class="nav-drop-item">
+                                        <i class="fas fa-file-contract text-[10px]"></i> 
+                                        <span data-pt="Compliance e Governança" data-en="Compliance & Gov" data-es="Cumplimiento y Gob">Compliance e Governança</span>
+                                    </a>
+                                </div>
+                            </div>
+    
+                            <div class="has-submenu">
+                                <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-box-open text-cyan-400"></i>
+                                        <span data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</span>
+                                    </div>
+                                    <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                                </div>
+                        
+                                <div class="submenu-content hidden">
+                                    <a href="automacao-inteligente-com-ia.html" class="nav-drop-item">
+                                        <i class="fas fa-cogs text-[10px]"></i> 
+                                        <span data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</span>
+                                    </a>
+    
+                                    <a href="agentes-inteligentes.html" class="nav-drop-item">
+                                        <i class="fas fa-robot text-[10px]"></i> 
+                                        <span data-pt="Agentes Inteligentes" data-en="AI Agents" data-es="Agentes Inteligentes">Agentes Inteligentes</span>
+                                    </a>
+                                    
+                                    <a href="machine-learning.html" class="nav-drop-item">
+                                        <i class="fas fa-brain text-[10px]"></i> 
+                                        <span data-pt="Machine Learning" data-en="Machine Learning" data-es="Aprendizaje Automático">Machine Learning</span>
+                                    </a>
+                                    
+                                    <a href="integracao-de-dispositivo-com-iot.html" class="nav-drop-item">
+                                        <i class="fas fa-network-wired text-[10px]"></i> 
+                                        <span data-pt="Integração IoT" data-en="IoT Integration" data-es="Integración IoT">Integração IoT</span>
+                                    </a>
+                                </div>
+                            </div>
+    
+                            <div class="has-submenu">
+                                <div class="nav-drop-item cursor-pointer flex justify-between items-center" onclick="toggleSubmenu(this, event)">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-handshake text-cyan-400"></i>
+                                        <span data-pt="Soluções Customizadas" data-en="Custom Solutions" data-es="Soluciones Personalizadas">Soluções Customizadas</span>
+                                    </div>
+                                    <i class="fas fa-chevron-left text-[8px] transition-transform duration-300 opacity-40"></i>
+                                </div>
+                            
+                                <div class="submenu-content hidden">
+                                    <div class="nav-drop-container">
+                                        <a href="solucoes-customizadas.html" class="nav-drop-item">
+                                            <i class="fas fa-cubes text-[10px] text-cyan-400"></i> 
+                                            <span data-pt="Soluções Customizadas" 
+                                                  data-en="Custom Solutions" 
+                                                  data-es="Soluciones Personalizadas">
+                                                  Soluções Customizadas
+                                            </span>
+                                        </a>
+    
+                                        <a href="sistemas-personalizados.html" class="nav-drop-item">
+                                            <i class="fas fa-code text-[10px] text-cyan-400"></i> 
+                                            <span data-pt="Sistemas Personalizados" 
+                                                  data-en="Custom Systems" 
+                                                  data-es="Sistemas Personalizados">
+                                                  Sistemas Personalizados
+                                            </span>
+                                        </a>
+                                    
+                                        <a href="plataforma-sob-demanda.html" class="nav-drop-item">
+                                            <i class="fas fa-layer-group text-[10px] text-cyan-400"></i> 
+                                            <span data-pt="Plataformas Sob Medida" 
+                                                  data-en="Tailored Platforms" 
+                                                  data-es="Plataformas a Medida">
+                                                  Plataformas Sob Medida
+                                            </span>
+                                        </a>
+                                    
+                                        <a href="consultora-ti.html" class="nav-drop-item">
+                                            <i class="fas fa-brain text-[10px] text-cyan-400"></i> 
+                                            <span data-pt="Consultoria em TI" 
+                                                  data-en="IT Consultancy" 
+                                                  data-es="Consultoría de TI">
+                                                  Consultoria em TI
+                                            </span>
+                                        </a>
+                                    
+                                        <a href="profissionais-ti.html" class="nav-drop-item">
+                                            <i class="fas fa-users-cog text-[10px] text-cyan-400"></i> 
+                                            <span data-pt="Alocação de Talentos" 
+                                                  data-en="Staff Augmentation" 
+                                                  data-es="Asignación de Talentos">
+                                                  Alocação de Talentos
+                                            </span>
+                                        </a>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <a href="sobre-nos.html" class="nav-drop-item" onclick="toggleMainMenu(event)">
+                                <i class="fas fa-users text-cyan-400"></i>
+                                <span data-pt="Sobre Nós" data-en="About Us" data-es="Sobre Nosotros">Sobre Nós</span>
+                            </a>
+                            
+                            <a href="politica-privacidade.html" class="nav-drop-item">
+                                <i class="fas fa-user-shield text-cyan-400"></i>
+                                <span data-pt="Políticas de Privacidade" data-en="Privacy Policy" data-es="Política de Privacidad">Políticas de Privacidade</span>
+                            </a>
+                            
+                            <a href="termos-uso.html" class="nav-drop-item">
+                                <i class="fas fa-file-contract text-cyan-400"></i>
+                                <span data-pt="Termos de Uso" data-en="Terms of Use" data-es="Términos de Uso">Termos de Uso</span>
+                            </a>
+                            
+                            <div class="h-px bg-white/5 my-2"></div>
+                            
+                            <a href="contato.html" target="_blank" class="nav-drop-item text-white">
+                                <i class="fas fa-comment-alt text-cyan-400"></i>
+                                <span data-pt="Entrar em Contato" data-en="Contact Us" data-es="Contacto">Entrar em Contato</span>
+                            </a>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </nav>
+
+    <header class="relative min-h-[90vh] flex items-center pt-32 pb-20 px-6 overflow-hidden">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10 w-full">
+            <div class="max-w-4xl">
+                <div class="flex items-center gap-4 mb-6" data-aos="fade-right">
+                    <span class="w-10 h-[2px] bg-cyan-500"></span>
+                    <p class="text-cyan-500 font-mono text-xs tracking-[0.4em] uppercase">Scale with Intelligence</p>
+                </div>
+                <h1 class="text-5xl md:text-8xl italic-black leading-[0.85] mb-10" data-aos="fade-up">
+                    <span data-pt="Alocação de" data-en="IT Talent" data-es="Alocación de">Alocação de</span> <br>
+                    <span class="text-neon" data-pt="Profissionais" data-en="Allocation" data-es="Profesionales">Profissionais</span>
+                </h1>
+                <p class="text-gray-400 text-lg md:text-2xl font-light leading-relaxed mb-12 max-w-2xl" data-aos="fade-up" data-aos-delay="200"
+                   data-pt="Monte seu time com agilidade e especialistas sob medida para sua operação. Acelere projetos ou preencha lacunas técnicas com facilidade."
+                   data-en="Build your team with agility and tailor-made specialists for your operation. Accelerate projects or fill technical gaps with ease."
+                   data-es="Arme su equipo con agilidad y especialistas a medida para su operación. Acelere proyectos o cubra brechas técnicas con facilidad.">
+                   Monte seu time com agilidade e especialistas sob medida para sua operação. Acelere projetos ou preencha lacunas técnicas com facilidade.
+                </p>
+                <a href="https://wa.me/5519995000067" class="btn-gen px-12 py-6 rounded-2xl inline-block text-xs" data-aos="fade-up" data-aos-delay="400">
+                    <span data-pt="Montar meu Time" data-en="Build my Team" data-es="Armar mi Equipo">Montar meu Time</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-32 px-6 relative overflow-hidden bg-black" id="squad-benefits">
+    
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none opacity-20">
+            <div class="absolute top-0 right-0 w-[400px] h-[400px] bg-cyan-500/10 blur-[120px] rounded-full"></div>
+            <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-600/10 blur-[100px] rounded-full"></div>
+        </div>
+    
+        <div class="max-w-7xl mx-auto relative z-10">
+            
+            <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+                <div data-aos="fade-right">
+                    <p class="text-cyan-500 font-mono text-[10px] tracking-[0.5em] uppercase mb-4">/ Efficiency_Modules</p>
+                    <h2 class="text-5xl md:text-8xl font-black italic uppercase tracking-tighter leading-[0.85]">
+                        <span class="text-white" data-pt="Vantagens" data-en="Core" data-es="Ventajas">Vantagens</span><br>
+                        <span class="text-transparent" style="-webkit-text-stroke: 1px #00f2ff" data-pt="Estratégicas" data-en="Advantages" data-es="Estratégicas">Estratégicas</span>
+                    </h2>
+                </div>
+                <div class="max-w-xs text-right hidden md:block" data-aos="fade-left">
+                    <p class="text-gray-500 text-sm italic" 
+                        data-pt='"Acelerando o desenvolvimento de produtos através da alocação inteligente de talentos de elite."' 
+                        data-en='"Accelerating product development through the intelligent allocation of elite talent."' 
+                        data-es='"Acelerando el desarrollo de productos a través de la alocación inteligente de talentos de élite."'>
+                        "Acelerando o desenvolvimento de produtos através da alocação inteligente de talentos de elite."
+                    </p>
+                </div>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+                
+                <!-- 01: Agilidade na Formação -->
+                <div class="md:col-span-7 group relative overflow-hidden rounded-[3rem] bg-white/[0.02] border border-white/5 p-12 transition-all duration-700 hover:border-cyan-500/50" data-aos="fade-up">
+                    <div class="absolute top-0 right-0 p-12 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity">
+                        <i class="fas fa-bolt text-[120px]"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <span class="text-cyan-500 font-mono text-xs mb-6 block" data-pt="01 // AGILIDADE" data-en="01 // SPEED" data-es="01 // AGILIDAD">01 // AGILIDADE</span>
+                        <h3 class="text-3xl font-bold uppercase italic mb-6 text-white" data-pt="Agilidade na Formação" data-en="Rapid Formation" data-es="Agilidad en Formación">Agilidade na Formação</h3>
+                        <p class="text-gray-500 text-lg leading-relaxed max-w-md group-hover:text-gray-300 transition-colors"
+                           data-pt="Monte seu time técnico em tempo recorde. Eliminamos a burocracia para que sua operação não pare de crescer."
+                           data-en="Build your technical team in record time. We eliminate bureaucracy so your operation never stops growing."
+                           data-es="Arme su equipo técnico en tiempo récord. Eliminamos la burocracia para que su operación no deje de crecer.">
+                           Monte seu time técnico em tempo recorde. Eliminamos a burocracia para que sua operação não pare de crescer.
+                        </p>
+                    </div>
+                </div>
+            
+                <!-- 02: Talentos Elite -->
+                <div class="md:col-span-5 group relative overflow-hidden rounded-[3rem] bg-zinc-950 border border-white/5 p-10 transition-all duration-700 hover:border-cyan-500/50" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-8 border border-cyan-500/20">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold uppercase italic mb-4" data-pt="Talentos Elite" data-en="Elite Talent" data-es="Talentos Élite">Talentos Elite</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed" 
+                           data-pt="Perfis técnicos validados e experientes para entregar código de alta qualidade."
+                           data-en="Validated and experienced technical profiles to deliver high-quality code."
+                           data-es="Perfiles técnicos validados y experimentados para entregar código de alta calidad.">
+                           Perfis técnicos validados e experientes para entregar código de alta qualidade.
+                        </p>
+                    </div>
+                </div>
+            
+                <!-- 03: Otimização de ROI -->
+                <div class="md:col-span-5 group relative overflow-hidden rounded-[3rem] bg-cyan-500 text-black p-10 transition-all duration-700 hover:scale-[1.02]" data-aos="fade-up">
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-black uppercase italic mb-4" data-pt="Otimização de ROI" data-en="ROI Optimization" data-es="Optimización de ROI">Otimização de ROI</h3>
+                            <p class="font-bold text-sm leading-relaxed opacity-80" 
+                               data-pt="Redução de custos com folha e recrutamento através de um modelo sob demanda inteligente."
+                               data-en="Reduction in payroll and recruitment costs through a smart on-demand model."
+                               data-es="Reducción de costes de nómina y contratación mediante un modelo inteligente bajo demanda.">
+                               Redução de custos com folha e recrutamento através de um modelo sob demanda inteligente.
+                            </p>
+                        </div>
+                        <i class="fas fa-chart-pie text-4xl mt-12 self-end"></i>
+                    </div>
+                </div>
+            
+                <!-- 04: Flexibilidade e Gestão -->
+                <div class="md:col-span-7 group relative overflow-hidden rounded-[3rem] bg-white/[0.02] border border-white/5 p-12 transition-all duration-700 hover:border-cyan-500/50" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div>
+                            <h3 class="text-xl font-bold uppercase italic mb-4 text-cyan-400" data-pt="Flexibilidade" data-en="Flexibility" data-es="Flexibilidad">Flexibilidade</h3>
+                            <p class="text-gray-500 text-xs leading-relaxed" 
+                               data-pt="Escalabilidade total para demandas pontuais ou contínuas conforme sua necessidade."
+                               data-en="Full scalability for one-off or continuous demands according to your needs."
+                               data-es="Escalabilidad total para demandas puntuales o continuas según sus necesidades.">
+                               Escalabilidade total para demandas pontuais ou contínuas conforme sua necessidade.
+                            </p>
+                        </div>
+                        <div class="border-l border-white/10 pl-8">
+                            <h3 class="text-xl font-bold uppercase italic mb-4 text-white" data-pt="Gestão" data-en="Management" data-es="Gestión">Gestão</h3>
+                            <p class="text-gray-500 text-xs leading-relaxed" 
+                               data-pt="Gestão compartilhada com apoio da Generactive para máxima produtividade."
+                               data-en="Shared management with Generactive support for maximum productivity."
+                               data-es="Gestión compartida con el apoyo de Generactive para una máxima productividad.">
+                               Gestão compartilhada com apoio da Generactive para máxima produtividade.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        /* Transição suave de foco no hover */
+        #squad-benefits .group {
+            transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), border-color 0.4s, background-color 0.4s;
+        }
+        
+        #squad-benefits .group:hover {
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.05);
+        }
+    
+        /* Ícones Flutuantes */
+        .fa-bolt {
+            animation: float 6s ease-in-out infinite;
+        }
+    
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+
+    <section class="py-32 px-6 bg-black">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl italic-black mb-16 tracking-tighter" data-aos="fade-up">
+                <span data-pt="Fluxo de" data-en="Allocation" data-es="Flujo de">Fluxo de</span> <span class="text-neon" data-pt="Trabalho" data-en="Flow" data-es="Trabajo">Trabalho</span>
+            </h2>
+            <div class="gen-card p-12 md:p-20 rounded-[3rem]" data-aos="zoom-in">
+                <p class="text-xl md:text-3xl font-light text-gray-300 leading-relaxed" 
+                   data-pt="Você define a demanda, nós buscamos o perfil ideal. A contratação é ágil, com possibilidade de integração com seus times internos."
+                   data-en="You define the demand, we find the ideal profile. Hiring is agile, with the possibility of integration with your internal teams."
+                   data-es="Usted define la demanda, nosotros buscamos el perfil ideal. La contratación es ágil, con posibilidad de integración con sus equipos internos.">
+                    Você define a demanda, nós buscamos o perfil ideal. A contratação é ágil, com possibilidade de integração com seus times internos ou squads da Generactive.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative py-32 md:py-48 px-6 overflow-hidden bg-black border-t border-white/5">
+    
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-cyan-500/10 blur-[100px] md:blur-[150px] rounded-full animate-pulse pointer-events-none"></div>
+    
+        <div class="max-w-7xl mx-auto relative z-10 text-center">
+            
+            <div class="gen-glass p-12 md:p-24 rounded-[3rem] md:rounded-[5rem] border border-white/10">
+                
+                <div class="mb-8" data-aos="fade-down">
+                    <span class="text-cyan-500 font-mono text-[10px] tracking-[0.6em] uppercase">/ Next Step</span>
+                </div>
+    
+                <h2 class="text-4xl md:text-8xl italic-black mb-12 leading-tight" data-aos="fade-up">
+                    <span data-pt="Time pronto para" data-en="Team ready to" data-es="Equipo listo para">Time pronto para</span> <br>
+                    <span class="text-neon" data-pt="Escalar Agora" data-en="Scale Now" data-es="Escalar Ahora">Escalar Agora</span>
+                </h2>
+    
+                <div data-aos="zoom-in" data-aos-delay="200">
+                    <a href="https://wa.me/5519995000067" class="btn-gen px-12 md:px-20 py-6 md:py-8 rounded-full inline-block text-xs md:text-sm shadow-2xl shadow-cyan-500/20">
+                        <span data-pt="Falar com Especialistas" data-en="Talk to Specialists" data-es="Hablar con Especialistas">Falar com Especialistas</span>
+                    </a>
+                </div>
+    
+                <div class="mt-12 opacity-30 font-mono text-[9px] uppercase tracking-widest" data-aos="fade-up" data-aos-delay="400">
+                    Accelerating Digital Transformation // Generactive Innovate
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        /* Garantindo a consistência das classes da Generactive */
+        .italic-black {
+            font-weight: 900;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+    
+        .text-neon {
+            color: #00f2ff;
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+        }
+    
+        .btn-gen {
+            background: #00f2ff;
+            color: #000;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    
+        .btn-gen:hover {
+            background: #fff;
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.3);
+        }
+    
+        .gen-glass {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+
+<section class="py-32 px-6 bg-[#020202] relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10">
+        
+        <div class="text-center mb-24" data-aos="fade-up">
+            <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-6">
+                <span data-pt="Dúvidas Frequentes" data-en="Common Questions" data-es="Dudas Frecuentes">Dúvidas Frequentes</span>
+            </h2>
+            <div class="flex items-center justify-center gap-4">
+                <span class="h-[1px] w-12 bg-cyan-500/30"></span>
+                <p class="text-cyan-500 font-mono text-[10px] tracking-[0.5em] uppercase">/ FAQ_TALENT_SQUAD</p>
+                <span class="h-[1px] w-12 bg-cyan-500/30"></span>
+            </div>
+        </div>
+
+        <div class="space-y-6">
+            <details class="gen-glass group rounded-[2.5rem] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                    <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                          data-pt="1. O que é alocação de profissionais de TI?" 
+                          data-en="1. What is IT talent allocation?" 
+                          data-es="1. ¿Qué es la alocación de profesionales de TI?">
+                        1. O que é alocação de profissionais de TI?
+                    </span>
+                    <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                        <i class="fas fa-plus text-[12px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                    </div>
+                </summary>
+                <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                    <p data-pt="É um modelo de serviço em que a Generactive disponibiliza profissionais de tecnologia para atuar na sua empresa, de forma dedicada ou compartilhada, conforme a demanda do projeto. Você contrata especialistas sem precisar passar por todo o processo seletivo ou gestão de folha."
+                       data-en="It is a service model where Generactive provides technology professionals to work in your company, either dedicated or shared, depending on the project demand. You hire specialists without going through the entire recruitment process or payroll management."
+                       data-es="Es un modelo de servicio en el que Generactive pone a disposición profesionales de tecnología para actuar en su empresa, de forma dedicada o compartida, según la demanda del proyecto. Usted contrata especialistas sin tener que pasar por todo el proceso de selección o gestión de nómina.">
+                        É um modelo de serviço em que a Generactive disponibiliza profissionais de tecnologia para atuar na sua empresa, de forma dedicada ou compartilhada, conforme a demanda do projeto. Você contrata especialistas sem precisar passar por todo o processo seletivo ou gestão de folha.
+                    </p>
+                </div>
+            </details>
+
+            <details class="gen-glass group rounded-[2.5rem] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                    <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                          data-pt="2. Quais perfis podem ser alocados?" 
+                          data-en="2. Which profiles can be allocated?" 
+                          data-es="2. ¿Qué perfiles pueden ser alocados?">
+                        2. Quais perfis podem ser alocados?
+                    </span>
+                    <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                        <i class="fas fa-plus text-[12px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                    </div>
+                </summary>
+                <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                    <p data-pt="Trabalhamos com um banco completo de talentos: desenvolvedores, analistas de sistemas, DevOps, especialistas em cloud, segurança da informação, ciência de dados, inteligência artificial, entre outros. Montamos squads ou profissionais individuais conforme a necessidade."
+                       data-en="We work with a full talent pool: developers, systems analysts, DevOps, cloud specialists, information security, data science, artificial intelligence, among others. We assemble squads or individual professionals according to your needs."
+                       data-es="Trabajamos con un banco de talentos completo: desarrolladores, analistas de sistemas, DevOps, especialistas en la nube, seguridad de la información, ciencia de datos, inteligencia artificial, entre otros. Formamos squads o profesionales individuales según la necesidad.">
+                        Trabalhamos com um banco completo de talentos: desenvolvedores, analistas de sistemas, DevOps, especialistas em cloud, segurança da informação, ciência de dados, inteligência artificial, entre outros. Montamos squads ou profissionais individuais conforme a necessidade.
+                    </p>
+                </div>
+            </details>
+
+            <details class="gen-glass group rounded-[2.5rem] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                    <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                          data-pt="3. Qual a diferença para contratação comum?" 
+                          data-en="3. Difference from regular hiring?" 
+                          data-es="3. ¿Cuál es la diferencia con la contratación común?">
+                        3. Qual a diferença entre contratar um funcionário e alocar um profissional?
+                    </span>
+                    <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                        <i class="fas fa-plus text-[12px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                    </div>
+                </summary>
+                <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                    <p data-pt="Na alocação, você não assume encargos trabalhistas nem precisa realizar recrutamento interno. A contratação é flexível, rápida e sob medida, com acompanhamento técnico da Generactive durante toda a prestação do serviço."
+                       data-en="In allocation, you do not take on labor charges or need to carry out internal recruitment. Hiring is flexible, fast, and tailored, with technical monitoring from Generactive throughout the entire service provision."
+                       data-es="En la alocación, usted no asume cargos laborales ni necesita realizar un reclutamiento interno. La contratación es flexible, rápida y a medida, con seguimiento técnico de Generactive durante toda la prestación del servicio.">
+                        Na alocação, você não assume encargos trabalhistas nem precisa realizar recrutamento interno. A contratação é flexível, rápida e sob medida, com acompanhamento técnico da Generactive durante toda a prestação do serviço.
+                    </p>
+                </div>
+            </details>
+
+            <details class="gen-glass group rounded-[2.5rem] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                    <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                          data-pt="4. A alocação pode ser remota?" 
+                          data-en="4. Can allocation be remote?" 
+                          data-es="4. ¿La alocación puede ser remota?">
+                        4. A alocação pode ser remota ou precisa ser presencial?
+                    </span>
+                    <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                        <i class="fas fa-plus text-[12px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                    </div>
+                </summary>
+                <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                    <p data-pt="Pode ser dos dois jeitos. A maioria dos projetos é realizada de forma remota, com acompanhamento e entregas organizadas, mas também oferecemos profissionais para atuação híbrida ou presencial, conforme o perfil do cliente."
+                       data-en="It can be both ways. Most projects are carried out remotely, with organized follow-up and deliveries, but we also offer professionals for hybrid or on-site work, depending on the client's profile."
+                       data-es="Puede ser de ambas formas. La mayoría de los proyectos se realizan de forma remota, con seguimiento y entregas organizadas, pero también ofrecemos profesionales para actuación híbrida o presencial, según el perfil del cliente.">
+                        Pode ser dos dois jeitos. A maioria dos projetos é realizada de forma remota, com acompanhamento e entregas organizadas, mas também oferecemos profissionais para atuação híbrida ou presencial, conforme o perfil do cliente.
+                    </p>
+                </div>
+            </details>
+
+            <details class="gen-glass group rounded-[2.5rem] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                    <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                          data-pt="5. Posso escalar a equipe?" 
+                          data-en="5. Can I scale the team?" 
+                          data-es="5. ¿Puedo escalar el equipo?">
+                        5. Posso aumentar ou reduzir minha equipe conforme a necessidade?
+                    </span>
+                    <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                        <i class="fas fa-plus text-[12px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                    </div>
+                </summary>
+                <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                    <p data-pt="Sim. A alocação é flexível e escalável, permitindo que você aumente ou diminua o time conforme o ritmo do projeto ou a sazonalidade da operação. É ideal para empresas que precisam de agilidade e controle de custos."
+                       data-en="Yes. Allocation is flexible and scalable, allowing you to increase or decrease the team according to the project pace or operation seasonality. It is ideal for companies that need agility and cost control."
+                       data-es="Sí. La alocación es flexible y escalable, lo que le permite aumentar o disminuir el equipo según el ritmo del proyecto o la estacionalidad de la operación. Es ideal para empresas que necesitan agilidad y control de costes.">
+                        Sim. A alocação é flexível e escalável, permitindo que você aumente ou diminua o time conforme o ritmo do projeto ou a sazonalidade da operação. É ideal para empresas que precisam de agilidade e controle de custos.
+                    </p>
+                </div>
+            </details>
+
+            <details class="gen-glass group rounded-[2.5rem] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                    <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                          data-pt="6. Como é feito o acompanhamento?" 
+                          data-en="6. How is the monitoring done?" 
+                          data-es="6. ¿Cómo se realiza el seguimiento?">
+                        6. A Generactive acompanha o desempenho dos profissionais alocados?
+                    </span>
+                    <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                        <i class="fas fa-plus text-[12px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                    </div>
+                </summary>
+                <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                    <p data-pt="Sim. Fazemos a gestão compartilhada com seu time interno, acompanhando performance, produtividade e adaptação. Se for necessário substituir ou ajustar algum perfil, fazemos isso com rapidez e sem burocracia."
+                       data-en="Yes. We perform shared management with your internal team, monitoring performance, productivity, and adaptation. If it is necessary to replace or adjust any profile, we do so quickly and without bureaucracy."
+                       data-es="Sí. Realizamos una gestión compartida con su equipo interno, monitoreando el desempeño, la productividad y la adaptación. Si es necesario reemplazar o ajustar algún perfil, lo hacemos con rapidez y sin burocracia.">
+                        Sim. Fazemos a gestão compartilhada com seu time interno, acompanhando performance, produtividade e adaptação. Se for necessário substituir ou ajustar algum perfil, fazemos isso com rapidez e sem burocracia.
+                    </p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Estilização Extra para o FAQ Generactive */
+    .gen-glass {
+        background: rgba(255, 255, 255, 0.01);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    details[open] {
+        background: rgba(0, 242, 255, 0.03);
+        border-color: rgba(0, 242, 255, 0.4);
+    }
+
+    details summary::-webkit-details-marker { display: none; }
+    
+    /* Transição do ícone Plus para X (Close) */
+    details[open] summary i {
+        transform: rotate(45deg);
+        color: #fff;
+    }
+</style>
+
+<footer class="py-12 px-6 border-t border-white/5 bg-[#050505] relative z-10">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+        
+        <div class="flex flex-col items-start gap-6">
+            <a href="index.html" class="transition-transform hover:scale-105">
+                <img src="LogoGen.png" alt="Generactive Innovate" class="h-10 w-auto object-contain">
+            </a>
+            <p class="text-white font-bold text-lg leading-tight max-w-[280px]" 
+               data-pt="Simplificamos a Cloud para transformar negócios." 
+               data-en="We simplify the Cloud to transform businesses." 
+               data-es="Simplificamos la Cloud para transformar negocios.">
+                Simplificamos a Cloud para transformar negócios.
+            </p>
+            <div class="flex gap-4">
+                <a href="https://www.facebook.com/share/14ctzUPM4QC/?mibextid=wwXIfr" class="text-[#3b5998] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-facebook-square"></i></a>
+                <a href="https://www.linkedin.com/company/generactiveinnovate" class="text-[#0077b5] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/generactive.innovate?igsh=YXNxanZ0MHB6N3Vl" class="text-[#e1306c] hover:text-cyan-400 transition-all text-2xl"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-5 text-gray-400 text-sm">
+            <p class="font-bold text-white text-base"
+   data-pt="R. Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP"
+   data-en="36 Gustavo Ambrust St — Nova Campinas, Campinas/SP - Brazil"
+   data-es="Calle Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP">
+    R. Gustavo Ambrust, 36 — Nova Campinas, Campinas/SP, 13092-106
+</p>
+            <div class="flex flex-col gap-1 font-medium">
+                <p>+55 (19) 9 9500-0067</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <i class="fas fa-envelope text-white text-lg"></i>
+                <a href="mailto:contato@generactive.com.br" class="hover:text-cyan-400 transition-colors font-medium">contato@generactive.com.br</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <i class="fas fa-clock text-white text-lg"></i>
+                <span class="font-medium" 
+                      data-pt="Seg. a Sex. das 9:00 às 18:00" 
+                      data-en="Mon. to Fri. from 9:00 AM to 6:00 PM" 
+                      data-es="Lun. a Vie. de 9:00 a 18:00">
+                    Seg. a Sex. das 9:00 às 18:00
+                </span>
+            </div>
+        </div>
+
+        <div class="flex flex-col items-start md:items-end gap-2 text-gray-400 text-[13px] font-medium">
+            <a href="sobre-nos.html" class="hover:text-white transition-colors" 
+               data-pt="Sobre nós" data-en="About us" data-es="Sobre nosotros">Sobre nós</a>
+            
+               <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                <button onclick="toggleFooterMenu('footer-servicos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                    <span data-pt="Soluções Cloud" data-en="Cloud Solutions" data-es="Soluciones Cloud">Soluções Cloud</span>
+                    <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-servicos"></i>
+                </button>
+                
+                <div id="footer-servicos" class="footer-submenu flex flex-col items-start md:items-end overflow-hidden max-h-0 transition-all duration-500 opacity-0 w-full">
+                    <div class="flex flex-col items-start md:items-end py-1 gap-1">
+                        <a href="cloud-publica.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</a>
+                        <a href="cloud-privada.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</a>
+                        <a href="cloud-hibrida.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</a>
+                        <a href="cloud-backup.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Cloud Backup">Cloud Backup</a>
+                        <a href="migracao-nuvem.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</a>
+                        <a href="gerenciamento-cloud.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                <button onclick="toggleFooterMenu('footer-nossos-servicos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                    <span data-pt="Segurança e Governança" data-en="Security & Governance" data-es="Seguridad y Gobernanza">Segurança e Governança</span>
+                    <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-nossos-servicos"></i>
+                </button>
+                
+                <div id="footer-nossos-servicos" class="footer-submenu flex flex-col items-start md:items-end overflow-hidden max-h-0 transition-all duration-500 opacity-0 w-full">
+                    <div class="flex flex-col items-start md:items-end py-1 gap-1">
+                        <a href="seguranca-e-governanca-de-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap">
+                            <span data-pt="Segurança e Governança" data-en="Security & Governance" data-es="Seguridad y Gobernanza">Segurança e Governança</span>
+                        </a>
+
+                        <a href="ciberseguranca-corporativa.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                           data-pt="Cibersegurança" data-en="Cybersecurity" data-es="Ciberseguridad">
+                           Cibersegurança
+                        </a>
+                        
+                        <a href="gestao-de-riscos-em-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                           data-pt="Gestão de Riscos" data-en="Risk Management" data-es="Gestión de Riesgos">
+                           Gestão de Riscos
+                        </a>
+                        
+                        <a href="compliance-e-governanca-de-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                           data-pt="Compliance e Governança" data-en="Compliance & Gov" data-es="Cumplimiento y Gob">
+                           Compliance e Governança
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                <button onclick="toggleFooterMenu('footer-produtos')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                    <span data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</span>
+                    <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-produtos"></i>
+                </button>
+                <div id="footer-produtos" class="footer-submenu flex flex-col items-start md:items-end gap-1 overflow-hidden max-h-0 transition-all duration-500 opacity-0">
+                    <a href="automacao-inteligente-com-ia.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</a>
+                    <a href="agentes-inteligentes.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Agentes Inteligentes" data-en="AI Agents" data-es="Agentes Inteligentes">Agentes Inteligentes</a>
+                    <a href="machine-learning.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Machine Learning" data-en="Machine Learning" data-es="Machine Learning">Machine Learning</a>
+                    <a href="integracao-de-dispositivo-com-iot.html" class="text-[11px] py-1 hover:text-cyan-400" data-pt="Integração IoT" data-en="IoT Integration" data-es="Integración IoT">Integração IoT</a>
+                </div>
+            </div>
+
+            <div class="w-full md:w-auto flex flex-col items-start md:items-end group">
+                <button onclick="toggleFooterMenu('footer-solucoes')" class="hover:text-white transition-colors flex items-center gap-2 outline-none">
+                    <span data-pt="Soluções Customizadas" data-en="Custom Solutions" data-es="Soluciones Personalizadas">Soluções Customizadas</span>
+                    <i class="fas fa-chevron-down text-[8px] transition-transform duration-300" id="icon-footer-solucoes"></i>
+                </button>
+                <div id="footer-solucoes" class="footer-submenu flex flex-col items-start md:items-end gap-1 overflow-hidden max-h-0 transition-all duration-500 opacity-0">
+                    <a href="solucoes-customizadas.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                        data-pt="Soluções Customizadas" data-en="Custom Solutions" data-es="Soluciones Personalizadas">Sistemas Personalizados</a>
+                    
+                    <a href="sistemas-personalizados.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                       data-pt="Sistemas Personalizados" data-en="Custom Systems" data-es="Sistemas Personalizados">Sistemas Personalizados</a>
+                    
+                    <a href="plataforma-sob-demanda.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                       data-pt="Plataformas Sob Medida" data-en="Tailored Platforms" data-es="Plataformas a Medida">Plataformas Sob Medida</a>
+                    
+                    <a href="consultora-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                       data-pt="Consultoria em TI" data-en="IT Consultancy" data-es="Consultoría de TI">Consultoria em TI</a>
+                    
+                    <a href="profissionais-ti.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" 
+                       data-pt="Alocação de Talentos" data-en="Staff Augmentation" data-es="Asignación de Talentos">Alocação de Talentos</a>
+                </div>
+            </div>
+
+            <a href="politica-privacidade.html" class="hover:text-white transition-colors" data-pt="Políticas de Privacidade" data-en="Privacy Policy" data-es="Política de Privacidad">Políticas de Privacidade</a>
+            <a href="termos-uso.html" class="hover:text-white transition-colors" data-pt="Termos de Uso" data-en="Terms of Use" data-es="Términos de Uso">Termos de Uso</a>
+            <a href="contato.html" class="hover:text-white transition-colors" data-pt="Contato" data-en="Contact" data-es="Contacto">Contato</a>
+            <a href="#faq" class="hover:text-white transition-colors" data-pt="FAQ" data-en="FAQ" data-es="FAQ">FAQ</a>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 text-center">
+        <p class="text-[9px] text-gray-700 font-black uppercase tracking-[0.4em]"
+           data-pt="© 2026 Generactive Innovate • Innovate at Scale"
+           data-en="© 2026 Generactive Innovate • Innovate at Scale"
+           data-es="© 2026 Generactive Innovate • Innovar a Escala">
+            © 2026 Generactive Innovate • Innovate at Scale
+        </p>
+    </div>
+</footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        function changeLanguage(lang) {
+            const langLabel = document.getElementById('lang-label');
+        if (langLabel) langLabel.innerText = lang.toUpperCase();
+            document.querySelectorAll('[data-pt]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.innerText = text;
+            });
+        }
+    </script>
+
+<script>
+    function toggleFooterMenu(menuId) {
+        const menu = document.getElementById(menuId);
+        const icon = document.getElementById('icon-' + menuId);
+        
+        // Se o menu já estiver aberto, fecha. Se não, abre.
+        if (menu.style.maxHeight === "0px" || menu.style.maxHeight === "") {
+            menu.style.maxHeight = "200px"; // Altura suficiente para os links
+            menu.style.opacity = "1";
+            menu.style.marginTop = "5px";
+            menu.style.marginBottom = "10px";
+            icon.style.transform = "rotate(180deg)";
+        } else {
+            menu.style.maxHeight = "0px";
+            menu.style.opacity = "0";
+            menu.style.marginTop = "0px";
+            menu.style.marginBottom = "0px";
+            icon.style.transform = "rotate(0deg)";
+        }
+    }
+    </script>
+
+<script>
+function toggleMainMenu(event) {
+    if(event) event.stopPropagation();
+    const dropdown = document.getElementById('main-nav-dropdown');
+    dropdown.classList.toggle('active');
+}
+
+// Fecha o menu ao clicar fora dele
+document.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('main-nav-dropdown');
+    const kebab = document.querySelector('.kebab-btn');
+    if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('active');
+    }
+});
+</script>
+</body>
+</html>

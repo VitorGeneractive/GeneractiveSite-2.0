@@ -1,111 +1,92 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="scroll-smooth">
+<html lang="pt-br">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V02327JYWK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V02327JYWK');
+    </script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-P937FVXV');
+        </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato | Generactive Innovate</title>
+    <title>Consultoria em TI | Generactive Innovate</title>
     <link rel="icon" type="image/png" href="LogoGuiaGen.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #02040a; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
-
-        /* --- BACKGROUND DINÂMICO --- */
-        .contact-bg {
-            position: fixed; inset: 0; z-index: -1;
-            background: radial-gradient(circle at 10% 10%, rgba(34, 211, 238, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #000; 
+            color: #f3f4f6; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
-        /* --- GLASS PANEL --- */
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.3);
-            backdrop-filter: blur(25px);
+        /* Efeito de Vidro Generactive */
+        .gen-glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- CORREÇÃO DE ESPAÇAMENTO TOP --- */
-        nav { height: 80px; }
-        main { padding-top: 100px; } 
-
-        /* --- INPUTS ESTILIZADOS --- */
-        .tech-input {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.85rem 1.25rem;
-            border-radius: 1rem;
-            color: white;
-            font-size: 0.8rem;
-            transition: all 0.3s;
-        }
-        .tech-input:focus {
-            outline: none;
-            border-color: #22d3ee;
-            background: rgba(34, 211, 238, 0.05);
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+        .gen-glass:hover {
+            background: rgba(0, 242, 255, 0.03);
+            border-color: #00f2ff;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.1);
         }
 
-        /* --- BOTÃO GLOW --- */
-        .btn-send {
-            background: #22d3ee;
-            color: #000;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            padding: 1rem;
-            border-radius: 1rem;
-            width: 100%;
-            transition: all 0.4s;
-            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
-            font-size: 0.75rem;
-        }
-        .btn-send:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(34, 211, 238, 0.4);
-            background: #fff;
+        /* Tipografia de Impacto */
+        .text-glow {
+            text-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
         }
 
-        .lang-dropdown { display: none; }
-        .group:hover .lang-dropdown { display: block; }
-
-        @media (max-width: 768px) {
-            main { padding-top: 80px; }
+        .outline-text {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+            color: transparent;
         }
-        
-    /* Estilização do Select e Opções */
-    .tech-input {
-        width: 100%;
-        background-color: #02040a; /* Cor de fundo idêntica ao site */
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 0.85rem 1.25rem;
-        border-radius: 1rem;
-        color: white;
-        font-size: 0.8rem;
-        transition: all 0.3s;
-        appearance: none; /* Remove a seta padrão para customização futura */
-    }
 
-    /* Garante que a lista que abre (dropdown) também seja escura */
-    .tech-input option {
-        background-color: #02040a; 
-        color: white;
-    }
+        /* Botão Magnético */
+        .btn-gen {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
 
-    .tech-input:focus {
-        outline: none;
-        border-color: #22d3ee;
-        background-color: #050a14; /* Um leve realce no foco */
-        box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
-    }
+        .btn-gen::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
 
-    .kebab-btn {
+        .btn-gen:hover::before {
+            left: 100%;
+        }
+
+        /* FAQ Estilo Accordion */
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary i { transform: rotate(180deg); color: #00f2ff; }
+
+        .kebab-btn {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -217,14 +198,14 @@
     margin-top: 5px;
 }
 .footer-menu-group.active i.fa-chevron-down { transform: rotate(180deg); color: #00f2ff; }
-
     </style>
 </head>
 <body>
 
-    <div class="contact-bg"></div>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P937FVXV"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-0 active">
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-3 active">
         <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
             
             <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1 relative z-50">
@@ -454,110 +435,288 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 pb-20">
-        <div class="grid lg:grid-cols-2 gap-10 md:gap-20 items-start">
-            
-            <div data-aos="fade-right" class="lg:pt-4">
-                <h1 class="text-6xl md:text-8xl font-extrabold italic uppercase tracking-tighter leading-none mb-8"
-                    data-pt="CONECTE-SE" data-en="CONNECT" data-es="CONÉCTATE">
-                    CONECTE-<span class="text-cyan-400">SE</span>
+    <header class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        <div class="absolute w-[600px] h-[600px] bg-cyan-500/10 blur-[120px] rounded-full -top-20 -right-20"></div>
+        
+        <div class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="w-12 h-[2px] bg-cyan-500"></span>
+                    <p class="text-cyan-400 font-mono text-xs tracking-[0.4em] uppercase">Intelligence Advisory</p>
+                </div>
+                <h1 class="text-5xl md:text-[90px] font-black italic uppercase leading-[0.85] tracking-tighter mb-10">
+                    <span data-pt="Consultoria" data-en="IT" data-es="Consultoría">Consultoria</span> <br>
+                    <span class="outline-text">em TI</span>
                 </h1>
-                <p class="text-gray-400 text-lg mb-12 max-w-md leading-relaxed"
-                   data-pt="Pronto para o próximo salto tecnológico? Nossa equipe de especialistas está a um clique de distância."
-                   data-en="Ready for the next technological leap? Our expert team is just a click away."
-                   data-es="¿Listo para el próximo salto tecnológico? Nuestro equipo de expertos está a un clic de distancia.">
-                    Pronto para o próximo salto tecnológico? Nossa equipe de especialistas está a um clique de distância.
+                <p class="text-gray-400 text-lg md:text-2xl font-light leading-relaxed mb-12 max-w-xl"
+                   data-pt="Tecnologia inteligente para decisões seguras. Alinhe sua TI com os objetivos estratégicos do seu negócio."
+                   data-en="Smart technology for secure decisions. Align your IT with your business strategic goals."
+                   data-es="Tecnología inteligente para decisiones seguras. Alinee su TI con los objetivos estratégicos de su negocio.">
+                   Tecnologia inteligente para decisões seguras. Alinhe sua TI com os objetivos estratégicos do seu negócio.
                 </p>
-
-                <div class="space-y-4">
-                    <a href="https://wa.me/5519995000067" class="glass-panel p-5 rounded-2xl flex items-center gap-5 hover:border-cyan-500/50 group transition-all">
-                        <div class="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 text-lg group-hover:bg-cyan-500 group-hover:text-black transition-all">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div>
-                            <p class="text-[9px] text-gray-500 uppercase font-black tracking-widest">WhatsApp Fast Track</p>
-                            <p class="text-sm font-bold text-white">+55 (19) 99500-0067</p>
-                        </div>
-                    </a>
-
-                    <a href="mailto:contato@generactive.com.br" class="glass-panel p-5 rounded-2xl flex items-center gap-5 hover:border-blue-500/50 group transition-all">
-                        <div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400 text-lg group-hover:bg-blue-500 group-hover:text-black transition-all">
-                            <i class="far fa-envelope"></i>
-                        </div>
-                        <div>
-                            <p class="text-[9px] text-gray-500 uppercase font-black tracking-widest">Email Corporativo</p>
-                            <p class="text-sm font-bold text-white">contato@generactive.com.br</p>
-                        </div>
-                    </a>
+                <a href="https://wa.me/5519995000067" class="btn-gen bg-cyan-500 text-black font-black px-12 py-6 rounded-2xl inline-block uppercase text-xs tracking-widest hover:scale-105 transition-transform">
+                    <span data-pt="Agendar Consultoria" data-en="Book Advisory" data-es="Agendar Consultoría">Agendar Consultoria</span>
+                </a>
+            </div>
+            <div class="relative hidden lg:block" data-aos="fade-left">
+                <div class="gen-glass p-12 rounded-[3.5rem] border-l-4 border-l-cyan-500">
+                    <h3 class="text-4xl font-black italic mb-6" data-pt="Sua TI está pronta?" data-en="Is your IT ready?">Sua TI está pronta?</h3>
+                    <p class="text-gray-500 leading-relaxed text-lg" 
+   data-pt="Atuamos com uma visão 360º, avaliando riscos, performance e compliance para proteger seu futuro digital." 
+   data-en="We operate with a 360º vision, assessing risks, performance, and compliance to protect your digital future." 
+   data-es="Actuamos con una visión 360º, evaluando riesgos, rendimiento y cumplimiento para proteger su futuro digital.">
+    Atuamos com uma visão 360º, avaliando riscos, performance e compliance para proteger seu futuro digital.
+</p>
                 </div>
             </div>
-
-            <div data-aos="fade-left">
-                <div class="glass-panel p-8 md:p-10 rounded-[2.5rem] border-t-4 border-cyan-500 shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 font-mono text-[8px] tracking-widest uppercase">Contact_Module_v2.0</div>
-                    
-                    <!--
-                        Antes, tinha um Formspree com e-mail no link então eu tirei.
-                        Agora o JS (la embaixo no codigo) pega o clique no botão e manda tudo pela API do Web3Forms. Resultado: pagina nao recarrega, botao fica verde ou vermelho.
-                    -->
-                    <form id="contact-form" class="space-y-5">
-    
-                        <div>
-                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                   data-pt="Nome Completo" data-en="Full Name" data-es="Nombre Completo">Nome Completo</label>
-                            <input type="text" name="nome" required class="tech-input" 
-                                   data-pt="Ex: João Silva" data-en="Ex: John Doe" data-es="Ej: Juan Silva" placeholder="Ex: João Silva">
-                        </div>
-                    
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                       data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</label>
-                                <input type="text" name="empresa" class="tech-input" 
-                                       data-pt="Nome da sua empresa" data-en="Your company name" data-es="Nombre de su empresa" placeholder="Nome da sua empresa">
-                            </div>
-                            <div>
-                                <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                       data-pt="E-mail Corporativo" data-en="Business Email" data-es="Email Corporativo">E-mail Corporativo</label>
-                                <input type="email" name="email" required class="tech-input" 
-                                       placeholder="contato@empresa.com">
-                            </div>
-                        </div>
-                    
-                        <div>
-                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                   data-pt="Assunto" data-en="Subject" data-es="Asunto">Assunto</label>
-                            <select name="assunto" class="tech-input cursor-pointer bg-[#02040a]">
-                                <option data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</option>
-                                <option data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</option>
-                                <option data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</option>
-                                <option data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Respaldo Cloud">Cloud Backup</option>
-                                <option data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</option>
-                                <option data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</option>
-                                <option data-pt="Outros Assuntos" data-en="Other Matters" data-es="Otros Asuntos">Outros Assuntos</option>
-                            </select>
-                        </div>
-                    
-                        <div>
-                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                   data-pt="Mensagem" data-en="Message" data-es="Mensaje">Mensagem</label>
-                            <textarea name="mensagem" required class="tech-input h-32 resize-none" 
-                                      data-pt="Como podemos ajudar o seu negócio?" 
-                                      data-en="How can we help your business?" 
-                                      data-es="¿Cómo podemos ayudar a su negocio?" 
-                                      placeholder="Como podemos ajudar o seu negócio?"></textarea>
-                        </div>
-                    
-                        <button type="submit" class="btn-send w-full py-4 bg-cyan-500 text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-xl hover:bg-white transition-all shadow-lg shadow-cyan-500/20"
-                                data-pt="Enviar Mensagem" data-en="Send Message" data-es="Enviar Mensaje">
-                            Enviar Mensagem
-                        </button>
-                    </form>
-                </div>
-            </div>
-
         </div>
-    </main>
+    </header>
+
+    <section class="py-32 px-6 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto relative z-10">
+            
+            <div class="mb-20" data-aos="fade-right">
+                <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-4">
+                    <span data-pt="Benefícios" data-en="Benefits" data-es="Beneficios">Benefícios</span> <br>
+                    <span class="text-cyan-500" data-pt="Estratégicos" data-en="Strategic" data-es="Estratégicos">Estratégicos</span>
+                </h2>
+                <p class="text-gray-500 font-mono text-[10px] tracking-[0.4em] uppercase">/ excellence in consulting</p>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="gen-glass p-10 rounded-[3rem] group" data-aos="fade-up">
+                    <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500">
+                        <i class="fas fa-microscope text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-4 text-white" 
+                        data-pt="Diagnóstico 360º" data-en="360º Diagnosis" data-es="Diagnóstico 360º">Diagnóstico 360º</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" 
+                       data-pt="Realizamos um diagnóstico profundo da sua infraestrutura e processos atuais para identificar vulnerabilidades, gargalos e oportunidades de melhoria técnica." 
+                       data-en="We perform a deep diagnosis of your current infrastructure and processes to identify vulnerabilities, bottlenecks, and technical improvement opportunities." 
+                       data-es="Realizamos un diagnóstico profundo de su infraestructura y procesos actuales para identificar vulnerabilidades, cuellos de botella y oportunidades de mejora técnica.">
+                        Realizamos um diagnóstico profundo da sua infraestrutura e processos atuais para identificar vulnerabilidades, gargalos e oportunidades de melhoria técnica.
+                    </p>
+                </div>
+    
+                <div class="gen-glass p-10 rounded-[3rem] group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500">
+                        <i class="fas fa-rocket text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-4 text-white" 
+                        data-pt="Transformação Digital" data-en="Digital Transformation" data-es="Transformación Digital">Transformação Digital</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" 
+                       data-pt="Apoio estratégico para modernizar seu negócio, implementando tecnologias que aumentam a agilidade, produtividade e competitividade no mercado digital." 
+                       data-en="Strategic support to modernize your business, implementing technologies that increase agility, productivity, and competitiveness in the digital market." 
+                       data-es="Apoyo estratégico para modernizar su negocio, implementando tecnologías que aumentan la agilidad, productividad y competitividad en el mercado digital.">
+                        Apoio estratégico para modernizar seu negócio, implementando tecnologias que aumentam a agilidade, produtividade e competitividade no mercado digital.
+                    </p>
+                </div>
+    
+                <div class="gen-glass p-10 rounded-[3rem] group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500">
+                        <i class="fas fa-chess-knight text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-4 text-white" 
+                        data-pt="Planejamento TI" data-en="IT Planning" data-es="Planificación TI">Planejamento TI</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" 
+                       data-pt="Planejamento estratégico de tecnologia alinhado aos objetivos da sua empresa, garantindo que a infraestrutura suporte o crescimento escalável." 
+                       data-en="Strategic technology planning aligned with your company goals, ensuring that infrastructure supports scalable growth." 
+                       data-es="Planificación estratégica de tecnología alineada con los objetivos de su empresa, asegurando que la infraestructura soporte el crecimiento escalable.">
+                        Planejamento estratégico de tecnologia alinhado aos objetivos da sua empresa, garantindo que a infraestrutura suporte o crescimento escalável.
+                    </p>
+                </div>
+    
+                <div class="gen-glass p-10 rounded-[3rem] group" data-aos="fade-up">
+                    <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500">
+                        <i class="fas fa-user-shield text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-4 text-white" 
+                        data-pt="Segurança & LGPD" data-en="Security & GDPR" data-es="Seguridad y LGPD">Segurança & LGPD</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" 
+                       data-pt="Foco total em segurança da informação e adequação à LGPD, criando políticas de proteção de dados e governança para minimizar riscos legais." 
+                       data-en="Full focus on information security and GDPR compliance, creating data protection policies and governance to minimize legal risks." 
+                       data-es="Enfoque total en seguridad de la información y cumplimiento de LGPD, creando políticas de protección de datos y gobernanza para minimizar riesgos legales.">
+                        Foco total em segurança da informação e adequação à LGPD, criando políticas de proteção de dados e governança para minimizar riscos legais.
+                    </p>
+                </div>
+    
+                <div class="gen-glass p-10 rounded-[3rem] group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-8 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-500">
+                        <i class="fas fa-hand-holding-usd text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold uppercase mb-4 text-white" 
+                        data-pt="Eficiência Financeira" data-en="Financial Efficiency" data-es="Eficiencia Financiera">Eficiência Financeira</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed" 
+                       data-pt="Redução de custos operacionais através de decisões assertivas e otimização de recursos, garantindo que cada investimento em TI traga retorno real." 
+                       data-en="Reduction of operational costs through assertive decisions and resource optimization, ensuring that every IT investment brings real return." 
+                       data-es="Reducción de costos operativos mediante decisiones asertivas y optimización de recursos, asegurando que cada inversión en TI traiga un retorno real.">
+                        Redução de custos operacionais através de decisões assertivas e otimização de recursos, garantindo que cada investimento em TI traga retorno real.
+                    </p>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 bg-[#050505]">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-black uppercase italic text-center mb-16 tracking-tighter" data-aos="fade-up">
+                <span data-pt="Como" data-en="How it" data-es="Cómo">Como</span> <span class="text-cyan-500" data-pt="Funciona" data-en="Works" data-es="Funciona">Funciona</span>
+            </h2>
+            <div class="gen-glass p-12 md:p-20 rounded-[4rem] text-center" data-aos="zoom-in">
+                <p class="text-xl md:text-3xl font-light text-gray-300 leading-relaxed mb-8" 
+                   data-pt="Iniciamos com análise do cenário atual, levantamento de necessidades e definição de plano de ação com acompanhamento técnico especializado."
+                   data-en="We begin with an analysis of the current scenario, needs assessment, and action plan definition with specialized technical support."
+                   data-es="Iniciamos con un análisis del escenario actual, levantamiento de necesidades y definición de un plan de acción con seguimiento técnico especializado.">
+                    Iniciamos com análise do cenário atual, levantamento de necessidades, definição de plano de ação e acompanhamento técnico. A consultoria pode ser pontual ou recorrente.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-40 px-6 text-center border-t border-white/5">
+        <h2 class="text-4xl md:text-8xl font-black uppercase italic tracking-tighter mb-12" data-aos="fade-up">
+            <span data-pt="Sua TI merece" data-en="Your IT deserves" data-es="Su TI merece">Sua TI merece</span> <br>
+            <span class="text-cyan-500" data-pt="Decisões Seguras" data-en="Safe Decisions" data-es="Decisiones Seguras">Decisões Seguras</span>
+        </h2>
+        <a href="https://wa.me/5519995000067" class="btn-gen bg-white text-black font-black px-16 py-6 rounded-full inline-block uppercase text-xs tracking-widest hover:scale-110">
+            <span data-pt="Falar com um Consultor" data-en="Talk to a Consultant" data-es="Hablar con un Consultor">Falar com um Consultor</span>
+        </a>
+    </footer>
+
+    <section class="py-32 px-6 bg-[#020202] relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-cyan-500/5 blur-[120px] pointer-events-none"></div>
+    
+        <div class="max-w-4xl mx-auto relative z-10">
+            
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-4" 
+                    data-pt="FAQ Consultoria" data-en="Consulting FAQ" data-es="FAQ Consultoría">
+                    FAQ Consultoria
+                </h2>
+                <p class="text-cyan-500 font-mono text-xs tracking-[0.4em] uppercase">
+                    / Strategic Intelligence
+                </p>
+            </div>
+    
+            <div class="space-y-4">
+                <details class="gen-glass rounded-[2rem] overflow-hidden group" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="1. O que é uma consultoria em TI?" 
+                              data-en="1. What is IT consulting?" 
+                              data-es="1. ¿Qué es la consultoría de TI?">
+                            1. O que é uma consultoria em TI?
+                        </span>
+                        <i class="fas fa-chevron-down text-cyan-500 transition-transform duration-500"></i>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="É um serviço especializado que ajuda sua empresa a tomar decisões mais seguras e estratégicas na área de tecnologia. A consultoria atua no diagnóstico técnico, planejamento de infraestrutura, segurança da informação, compliance e apoio em transformação digital."
+                           data-en="It is a specialized service that helps your company make safer and more strategic technology decisions. The consultancy works on technical diagnosis, infrastructure planning, information security, compliance, and digital transformation support."
+                           data-es="Es un servicio especializado que ayuda a su empresa a tomar decisiones tecnológicas más seguras y estratégicas. La consultoría actúa en diagnóstico técnico, planificación de infraestructura, seguridad de la información, cumplimiento y apoyo en la transformación digital.">
+                            É um serviço especializado que ajuda sua empresa a tomar decisões mais seguras e estratégicas na área de tecnologia. A consultoria atua no diagnóstico técnico, planejamento de infraestrutura, segurança da informação, compliance e apoio em transformação digital.
+                        </p>
+                    </div>
+                </details>
+    
+                <details class="gen-glass rounded-[2rem] overflow-hidden group" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="2. Quando contratar uma consultoria?" 
+                              data-en="2. When to hire consultancy?" 
+                              data-es="2. ¿Cuándo contratar consultoría?">
+                            2. Em que momento minha empresa deve contratar uma consultoria de TI?
+                        </span>
+                        <i class="fas fa-chevron-down text-cyan-500 transition-transform duration-500"></i>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="Quando há dúvidas sobre segurança, infraestrutura, crescimento tecnológico, conformidade com leis (como a LGPD), ou quando a TI precisa ser mais estratégica. Também é indicada em momentos de expansão, migração ou reestruturação tecnológica."
+                           data-en="When there are doubts about security, infrastructure, technological growth, compliance (such as GDPR), or when IT needs to be more strategic. It is also indicated during expansion, migration, or technological restructuring."
+                           data-es="Cuando existan dudas sobre seguridad, infraestructura, crecimiento tecnológico, cumplimiento legal (como LGPD), o cuando la TI necesite ser más estratégica. También está indicada en momentos de expansión, migración o reestructuración tecnológica.">
+                            Quando há dúvidas sobre segurança, infraestrutura, crescimento tecnológico, conformidade com leis (como a LGPD), ou quando a TI precisa ser mais estratégica e alinhada aos objetivos de negócio. Também é indicada em momentos de expansão, migração ou reestruturação tecnológica.
+                        </p>
+                    </div>
+                </details>
+    
+                <details class="gen-glass rounded-[2rem] overflow-hidden group" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="3. Indicada apenas para grandes empresas?" 
+                              data-en="3. Only for large companies?" 
+                              data-es="3. ¿Solo para grandes empresas?">
+                            3. A consultoria é indicada apenas para grandes empresas?
+                        </span>
+                        <i class="fas fa-chevron-down text-cyan-500 transition-transform duration-500"></i>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="Não. Empresas de todos os portes se beneficiam da consultoria. Negócios em crescimento, startups e empresas em transição digital têm muito a ganhar com um plano técnico bem estruturado."
+                           data-en="No. Companies of all sizes benefit from consulting. Growing businesses, startups, and companies in digital transition have a lot to gain from a well-structured technical plan."
+                           data-es="No. Empresas de todos los tamaños se benefician de la consultoría. Los negocios en crecimiento, las startups y las empresas en transición digital tienen mucho que ganar con un plan técnico bien estructurado.">
+                            Não. Empresas de todos os portes se beneficiam da consultoria. Negócios em crescimento, startups e empresas em transição digital têm muito a ganhar com um plano técnico bem estruturado.
+                        </p>
+                    </div>
+                </details>
+    
+                <details class="gen-glass rounded-[2rem] overflow-hidden group" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="4. A Generactive também executa?" 
+                              data-en="4. Does Generactive also execute?" 
+                              data-es="4. ¿Generactive también ejecuta?">
+                            4. A Generactive apenas diagnostica ou também executa as recomendações?
+                        </span>
+                        <i class="fas fa-chevron-down text-cyan-500 transition-transform duration-500"></i>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="Fazemos as duas coisas. Podemos atuar apenas com o diagnóstico estratégico, mas também oferecemos a execução técnica, acompanhamento de projetos, implementação de soluções e suporte contínuo."
+                           data-en="We do both. We can act only with strategic diagnosis, but we also offer technical execution, project monitoring, solution implementation, and continuous support."
+                           data-es="Hacemos ambas cosas. Podemos actuar únicamente con el diagnóstico estratégico, pero también ofrecemos ejecución técnica, seguimiento de proyectos, implementación de soluciones y soporte continuo.">
+                            Fazemos as duas coisas. Podemos atuar apenas com o diagnóstico estratégico, mas também oferecemos a execução técnica, acompanhamento de projetos, implementação de soluções e suporte contínuo.
+                        </p>
+                    </div>
+                </details>
+    
+                <details class="gen-glass rounded-[2rem] overflow-hidden group" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="5. Cobre LGPD e Segurança?" 
+                              data-en="5. Covers GDPR and Security?" 
+                              data-es="5. ¿Cubre LGPD y Seguridad?">
+                            5. A consultoria cobre temas como LGPD e segurança da informação?
+                        </span>
+                        <i class="fas fa-chevron-down text-cyan-500 transition-transform duration-500"></i>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="Sim. Uma das frentes mais procuradas é justamente a adequação à LGPD, análise de riscos, criação de políticas de segurança e governança de dados. Atuamos com foco em conformidade e proteção."
+                           data-en="Yes. One of the most sought-after areas is precisely GDPR compliance, risk analysis, creation of security policies, and data governance. We work with a focus on compliance and protection."
+                           data-es="Sí. Uno de los frentes más solicitados es precisamente la adecuación a la LGPD, el análisis de riesgos, la creación de políticas de seguridad y la gobernanza de datos. Actuamos con enfoque en cumplimiento y protección.">
+                            Sim. Uma das frentes mais procuradas da consultoria é justamente a adequação à LGPD, análise de riscos, criação de políticas de segurança e governança de dados. Atuamos com foco em conformidade e proteção.
+                        </p>
+                    </div>
+                </details>
+    
+                <details class="gen-glass rounded-[2rem] overflow-hidden group" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="6. Consultoria recorrente?" 
+                              data-en="6. Recurring consultancy?" 
+                              data-es="6. ¿Consultoría recurrente?">
+                            6. É possível contratar a consultoria de forma recorrente?
+                        </span>
+                        <i class="fas fa-chevron-down text-cyan-500 transition-transform duration-500"></i>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="Sim. Oferecemos tanto o modelo de consultoria pontual (por projeto) quanto recorrente (com acompanhamento mensal ou trimestral). O formato depende da sua estrutura e necessidade de suporte."
+                           data-en="Yes. We offer both the one-off consultancy model (per project) and recurring (with monthly or quarterly monitoring). The format depends on your structure and support needs."
+                           data-es="Sí. Ofrecemos tanto el modelo de consultoría puntual (por proyecto) como recurrente (con seguimiento mensual o trimestral). El formato depende de su estructura y necesidad de soporte.">
+                            Sim. Oferecemos tanto o modelo de consultoria pontual (por projeto) quanto recorrente (com acompanhamento mensal ou trimestral). O formato depende da complexidade da sua estrutura de TI e da necessidade de suporte contínuo.
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
 
     <footer class="py-12 px-6 border-t border-white/5 bg-[#050505] relative z-10">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
@@ -709,169 +868,72 @@
         </div>
     </footer>
 
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        /*
-         ALTERACAO: Essas funcoes de menu (footer, kebab, submenu) estavam TODAS REPETIDAS
-         no final do arquivo, e ainda com tag <script> dentro de outra <script> (estava banguçado então eu tentei arrumar).
-         Juntei tudo aqui embaixo, mesmo tudo junto ele vai funcionar normal.
-        */   
-        function toggleFooterMenu(menuId) {
-            const menu = document.getElementById(menuId);
-            const icon = document.getElementById('icon-' + menuId);
-            if (menu.style.maxHeight === '200px') {
-                menu.style.maxHeight = '0px';
-                menu.style.opacity = '0';
-                menu.style.marginTop = '0px';
-                menu.style.marginBottom = '0px';
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                menu.style.maxHeight = '200px';
-                menu.style.opacity = '1';
-                menu.style.marginTop = '5px';
-                menu.style.marginBottom = '10px';
-                icon.style.transform = 'rotate(180deg)';
-            }
-        }
-
-        /*
-         ADICIONADO: toggleMainMenu() — essa funcao NAO existia no codigo antigo.
-         Os itens do menu kebab ja chamavam ela (onclick="toggleMainMenu(event)") mas a funcao
-         nao estava definida em lugar nenhum, entao o menu principal nao abria no celular.
-         Abre e fecha o dropdown principal (kebab menu) ao clicar nos 3 pontinhos.
-        */
-        function toggleMainMenu(event) {
-            if (event) event.stopPropagation();
-            const dropdown = document.getElementById('main-nav-dropdown');
-            dropdown.classList.toggle('active');
-        }
-
-        /*
-         ADICIONADO: toggleSubmenu() — essa funcao NAO existia no codigo antigo.
-         Os itens do menu ja chamavam ela (onclick="toggleSubmenu(this, event)") mas a funcao
-         nao estava definida em lugar nenhum, entao o submenu nao abria no celular.
-         No celular, ao clicar no item "pai" (ex: "Solucoes Cloud") abre os links debaixo.
-         No PC, o proprio CSS com hover ja funciona.
-        */
-        function toggleSubmenu(el, event) {
-            if (event) event.stopPropagation();
-            if (window.innerWidth > 768) return;
-            const parent = el.closest('.has-submenu');
-            const submenu = parent.querySelector('.submenu-content');
-            if (submenu.style.display === 'block') {
-                submenu.style.display = 'none';
-            } else {
-                submenu.style.display = 'block';
-            }
-        }
-
-        /*
-         ALTERACAO/MELHORIA: Event listener de clique fora do menu.
-         No codigo antigo existia, mas sem verificar se os elementos existem primeiro.
-         Adicionado 'kebab && dropdown' pra evitar erro no console se algum elemento
-         nao for encontrado na pagina.
-        */
-        document.addEventListener('click', function(e) {
-            const dropdown = document.getElementById('main-nav-dropdown');
-            const kebab = document.querySelector('.kebab-btn');
-            if (kebab && dropdown && !kebab.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });
-
         function changeLanguage(lang) {
-            document.getElementById('lang-label').innerText = lang.toUpperCase();
-            const elements = document.querySelectorAll('[data-pt]');
-            elements.forEach(function(el) {
-                var translation = el.getAttribute('data-' + lang);
-                if (translation) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = translation;
-                    } else {
-                        el.innerText = translation;
-                    }
-                }
+            const langLabel = document.getElementById('lang-label');
+            if (langLabel) langLabel.innerText = lang.toUpperCase();
+            document.querySelectorAll('[data-pt]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.innerText = text;
             });
             localStorage.setItem('generactive_lang', lang);
         }
 
-        /*
-         ADICIONADO: Lembrar o idioma escolhido pelo usuario.
-         No codigo antigo, toda vez que a pagina recarregava voltava para PT.
-         Agora guarda no localStorage e ja deixa selecionado o idioma da ultima visita.
-        */
-        var savedLang = localStorage.getItem('generactive_lang');
-        if (savedLang) changeLanguage(savedLang);
-
-        /*
-         ALTERACAO/SUBSTITUICAO: Antes usava Formspree (action no <form>).
-         Agora usa a API do Web3Forms com fetch() — pagina nao recarrega e da feedback visual.
-         
-         O que vai acontecer aqui: envio do formulario pela API do Web3Forms
-         
-          Passo a passo do que acontece quando o usuario clica em "Enviar Mensagem":
-          1. e.preventDefault() -> trava o form de recarregar a pagina (ninguem gosta disso).
-          2. Botao fica desabilitado e mostra "Enviando..." pra nao ter duplo clique.
-          3. fetch() manda um POST pro https://api.web3forms.com/submit com os dados do form
-             (usando a access_key que ee gerei para o teste: '06dc64a4-90d8-4561-8013-0217150c2fab' Você pode alterar depois).
-          4. A API devolve um JSON dizendo se Foi ou Não.
-          5. Foi? Botao fica VERDE e escreve "Mensagem Enviada!" + limpa o form.
-          6. Não foi? (Sem conexão, API fora do ar, etc) Botao fica VERMELHO e avisa o erro.
-          7. Depois de 4 segundos, o botao volta ao normal (texto e cor original).
-         */
-        document.addEventListener('DOMContentLoaded', function() {
-            var form = document.getElementById('contact-form');
-            if (!form) return;
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                var btn = form.querySelector('button[type="submit"]');
-                var originalText = btn.innerText;
-                btn.innerText = 'Enviando...';
-                btn.disabled = true;
-                btn.style.cursor = 'wait';
-
-                try {
-                    var res = await fetch('https://api.web3forms.com/submit', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            access_key: '06dc64a4-90d8-4561-8013-0217150c2fab',
-                            subject: 'Novo contato de ' + (form.nome.value || '') + ' - Generactive',
-                            from_name: form.nome.value || '',
-                            name: form.nome.value || '',
-                            email: form.email.value || '',
-                            company: form.empresa.value || '',
-                            message: 'Assunto: ' + (form.assunto.value || '') + '\n\nMensagem:\n' + (form.mensagem.value || '')
-                        })
-                    });
-
-                    var data = await res.json();
-                    if (data.success) {
-                        btn.innerText = 'Mensagem Enviada!';
-                        btn.style.background = '#10b981';
-                        form.reset();
-                    } else {
-                        throw new Error(data.message || 'Erro desconhecido');
-                    }
-                } catch (err) {
-                    btn.innerText = 'Erro ao enviar. Tente novamente.';
-                    btn.style.background = '#ef4444';
-                    console.error(err);
-                } finally {
-                    setTimeout(function() {
-                        btn.innerText = originalText;
-                        btn.disabled = false;
-                        btn.style.background = '';
-                        btn.style.cursor = '';
-                    }, 4000);
-                }
-            });
+        window.addEventListener('DOMContentLoaded', () => {
+            const saved = localStorage.getItem('generactive_lang') || 'pt';
+            changeLanguage(saved);
         });
+    </script>
+
+<script>
+    function toggleMainMenu(event) {
+        if(event) event.stopPropagation();
+        const dropdown = document.getElementById('main-nav-dropdown');
+        dropdown.classList.toggle('active');
+    }
+    
+    // Fecha o menu ao clicar fora dele
+    document.addEventListener('click', function(e) {
+        const dropdown = document.getElementById('main-nav-dropdown');
+        const kebab = document.querySelector('.kebab-btn');
+        if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+        }
+    });
+    </script>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: false });
+    const glow = document.getElementById('glow');
+    window.addEventListener('mousemove', (e) => {
+        glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
+    });
+</script>
+
+<script>
+    function toggleFooterMenu(menuId) {
+        const menu = document.getElementById(menuId);
+        const icon = document.getElementById('icon-' + menuId);
+        
+        // Se o menu já estiver aberto, fecha. Se não, abre.
+        if (menu.style.maxHeight === "0px" || menu.style.maxHeight === "") {
+            menu.style.maxHeight = "200px"; // Altura suficiente para os links
+            menu.style.opacity = "1";
+            menu.style.marginTop = "5px";
+            menu.style.marginBottom = "10px";
+            icon.style.transform = "rotate(180deg)";
+        } else {
+            menu.style.maxHeight = "0px";
+            menu.style.opacity = "0";
+            menu.style.marginTop = "0px";
+            menu.style.marginBottom = "0px";
+            icon.style.transform = "rotate(0deg)";
+        }
+    }
     </script>
 </body>
 </html>

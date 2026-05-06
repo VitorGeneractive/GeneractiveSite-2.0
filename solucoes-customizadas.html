@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-V02327JYWK"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,10 +16,77 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-P937FVXV');
         </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluções Customizadas | Generactive Innovate</title>
+    <link rel="icon" type="image/png" href="LogoGuiaGen.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-<link rel="icon" type="image/png" href="LogoGuiaGen.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;800&display=swap');
+        
+        :root { --c-cyan: #00f2ff; --bg: #030712; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: #fff; overflow-x: hidden; }
 
-.kebab-btn {
+        /* Transição de Máscara (Clip-Path) */
+        .reveal-mask {
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+        .reveal-mask.active { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+
+        /* Card Geométrico com Efeito de Vidro */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Linha de Progresso que segue o Scroll */
+        .scroll-line {
+            position: fixed; top: 0; left: 0; width: 4px; height: 0%;
+            background: linear-gradient(to bottom, var(--c-cyan), #0066ff);
+            z-index: 100; transition: height 0.1s linear;
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+            color: transparent;
+            transition: all 0.5s ease;
+        }
+        .text-outline:hover { -webkit-text-stroke: 1px var(--c-cyan); }
+
+        /* Cursor Customizado Reativo */
+        .custom-cursor {
+            width: 20px; height: 20px; background: var(--c-cyan);
+            border-radius: 50%; position: fixed; pointer-events: none;
+            z-index: 999; mix-blend-mode: difference; transition: transform 0.2s;
+        }
+
+            @keyframes scan {
+                0% { top: 0; }
+                100% { top: 100%; }
+            }
+            .animate-scan {
+                animation: scan 2s linear infinite;
+            }
+            .perspective-1000 {
+                perspective: 1000px;
+            }
+            .rotate-y-12 {
+                transform: rotateY(12deg);
+            }
+            .-rotate-y-12 {
+                transform: rotateY(-12deg);
+            }
+            
+            .kebab-btn {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -128,9 +198,14 @@
     margin-top: 5px;
 }
 .footer-menu-group.active i.fa-chevron-down { transform: rotate(180deg); color: #00f2ff; }
+    </style>
+</head>
+<body>
 
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P937FVXV"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <div class="scroll-line" id="progressBar"></div>
 
     <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-3 active">
         <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
@@ -362,6 +437,368 @@
         </div>
     </nav>
 
+    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(0,242,255,0.05),_transparent_70%)]"></div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="reveal-mask" id="heroMask">
+                <!-- Título Superior (Categorização) -->
+                <h3 class="text-cyan-400 font-black text-xs uppercase tracking-[1em] mb-8" 
+                    data-pt="Engenharia de Software" 
+                    data-en="Software Engineering" 
+                    data-es="Ingeniería de Software">
+                    Engenharia de Software
+                </h3>
+        
+                <!-- Título Principal (Hero) -->
+                <h1 class="text-6xl md:text-[140px] font-black uppercase italic leading-[0.8] mb-12 tracking-tighter">
+                    <span data-pt="Full" data-en="Full" data-es="Full">Full</span> 
+                    <span class="text-outline" data-pt="Stack" data-en="Stack" data-es="Stack">Stack</span><br>
+                    <span data-pt="Custom" data-en="Custom" data-es="Personalizado">Custom</span>
+                </h1>
+            </div>
+        
+            <!-- Descritivo -->
+            <p class="text-gray-500 text-lg md:text-2xl max-w-2xl mx-auto font-light leading-relaxed opacity-0 transition-opacity duration-1000 delay-500" id="heroDesc"
+                data-pt="Sistemas, plataformas e operações digitais desenhadas exclusivamente para a sua marca."
+                data-en="Systems, platforms, and digital operations exclusively designed for your brand."
+                data-es="Sistemas, plataformas y operaciones digitales diseñados exclusivamente para su marca.">
+                Sistemas, plataformas e operações digitais desenhadas exclusivamente para a sua marca.
+            </p>
+        </div>
+    </section>
+
+    <section class="relative py-40 px-6 overflow-hidden bg-black">
+    
+        <div class="absolute inset-0 opacity-10 pointer-events-none" 
+             style="background-image: linear-gradient(#00f2ff 1px, transparent 1px), linear-gradient(90deg, #00f2ff 1px, transparent 1px); background-size: 60px 60px;">
+        </div>
+    
+        <div class="max-w-7xl mx-auto relative z-10">
+            
+            <div class="mb-32">
+                <h3 class="text-cyan-400 font-black text-xs uppercase tracking-[0.8em] mb-8 flex items-center gap-4" data-aos="fade-right">
+                    <span class="w-12 h-px bg-cyan-400"></span>
+                    <span data-pt="Custom Solutions" data-en="Custom Solutions" data-es="Soluciones Personalizadas">Custom Solutions</span>
+                </h3>
+                
+                <h1 class="text-5xl md:text-[110px] font-black uppercase italic text-white leading-[0.85] tracking-tighter mb-12" data-aos="zoom-out-up">
+                    <span data-pt="Tecnologia" data-en="Technology" data-es="Tecnología">Tecnologia</span><br>
+                    <span class="text-transparent" style="-webkit-text-stroke: 1px rgba(255,255,255,0.4);"
+                          data-pt="sob Medida" data-en="Tailored" data-es="a Medida">sob Medida</span>
+                </h1>
+    
+                <div class="grid lg:grid-cols-2 gap-12 items-start" data-aos="fade-up">
+                    <p class="text-xl md:text-3xl font-light text-gray-300 leading-tight"
+                       data-pt="Da arquitetura à execução, criamos sistemas, plataformas e operações digitais alinhadas com o seu negócio."
+                       data-en="From architecture to execution, we create systems, platforms, and digital operations aligned with your business."
+                       data-es="Desde la arquitectura hasta la ejecución, creamos sistemas, plataformas y operaciones digitales alineadas con su negocio.">
+                        Da arquitetura à execução, criamos sistemas, plataformas e operações digitais alinhadas com o seu negócio.
+                    </p>
+                    <div class="space-y-6">
+                        <p class="text-gray-500 text-lg leading-relaxed font-light"
+                           data-pt="Na Generactive, cada projeto é único. Oferecemos soluções construídas a partir da realidade da sua operação e dos seus objetivos."
+                           data-en="At Generactive, each project is unique. We offer solutions built from the reality of your operation and your objectives."
+                           data-es="En Generactive, cada proyecto es único. Ofrecemos soluciones construidas a partir de la realidad de su operación y sus objetivos.">
+                            Na Generactive, cada projeto é único — assim como os desafios de cada empresa. Por isso, oferecemos soluções tecnológicas sob medida, construídas a partir da realidade do seu negócio.
+                        </p>
+                        <p class="text-gray-500 text-lg leading-relaxed font-light"
+                           data-pt="Entregamos sistemas, consultoria especializada e times de TI altamente qualificados."
+                           data-en="We deliver systems, specialized consultancy, and highly qualified IT teams."
+                           data-es="Entregamos sistemas, consultoría especializada y equipos de TI altamente calificados.">
+                            Com uma abordagem consultiva, ágil e estratégica, entregamos sistemas, plataformas e times de TI altamente qualificados.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-black overflow-hidden">
+    
+        <div class="max-w-7xl mx-auto px-6 space-y-40">
+    
+            <a href="sistemas-personalizados.html" class="block group perspective-1000 decoration-none">
+                <div class="grid lg:grid-cols-2 gap-16 items-center p-8 rounded-[3rem] transition-all duration-700 group-hover:bg-white/[0.02]" data-aos="fade-up">
+                    
+                    <div class="relative group-hover:rotate-y-12 transition-transform duration-1000">
+                        <div class="absolute -inset-10 bg-cyan-500/15 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                        
+                        <div class="relative aspect-video bg-black border border-white/10 rounded-[2.5rem] flex items-center justify-center overflow-hidden">
+                            <div class="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity" 
+                                 style="background-image: linear-gradient(rgba(0, 242, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+                            
+                            <i class="fas fa-microchip text-8xl text-cyan-500/20 transition-all duration-700 group-hover:scale-125 group-hover:text-cyan-400 group-hover:rotate-45"></i>
+                            
+                            <div class="absolute top-6 left-6 flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 px-4 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-all">
+                                <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+                                <span class="text-[8px] font-black text-cyan-400 uppercase tracking-[0.2em]">High-Performance Core</span>
+                            </div>
+            
+                            <div class="absolute bottom-6 right-6 w-12 h-12 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <i class="fas fa-code text-white group-hover:scale-110 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="relative z-10">
+                        <span class="text-cyan-500 font-mono text-xs mb-8 block tracking-[0.3em] origin-left group-hover:scale-110 transition-transform">/ MODULE_01: SYSTEMS</span>
+                        
+                        <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8 leading-[0.9] transition-all duration-700 group-hover:text-cyan-400"
+                            data-pt="Sistemas Personalizados" 
+                            data-en="Custom Systems" 
+                            data-es="Sistemas Personalizados">
+                            Sistemas Personalizados
+                        </h2>
+                
+                        <p class="text-gray-400 text-lg font-light mb-6 leading-relaxed group-hover:text-gray-200 transition-colors"
+                           data-pt="Soluções que resolvem seu problema, não os da média do mercado."
+                           data-en="Solutions that solve your problem, not the market average."
+                           data-es="Soluciones que resuelven su problema, no los del promedio del mercado.">
+                            Soluções que resolvem seu problema, não os da média do mercado. Desenvolvemos sistemas sob demanda com foco total em você.
+                        </p>
+            
+                        <p class="text-gray-500 text-base font-light mb-10 transition-all duration-700 group-hover:text-gray-400"
+                           data-pt="Sistemas com foco em performance, escalabilidade e segurança para otimizar processos internos ou integrar setores."
+                           data-en="Systems focused on performance, scalability, and security to optimize internal processes or integrate sectors.">
+                           Foco em performance, escalabilidade, segurança e UX. Seja para otimizar processos internos, integrar setores ou criar novas soluções digitais.
+                        </p>
+                
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-5 border border-white/5 bg-white/[0.02] rounded-2xl transition-all duration-500 group-hover:border-cyan-500/40 group-hover:bg-cyan-500/5 group">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <i class="fas fa-server text-cyan-500 text-sm"></i>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">Module Active</span>
+                                </div>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors"
+                                   data-pt="Backend robusto & Frontend intuitivo" data-en="Robust Backend & Intuitive Frontend">
+                                    Backend robusto, frontend intuitivo
+                                </p>
+                            </div>
+                
+                            <div class="p-5 border border-white/5 bg-white/[0.02] rounded-2xl transition-all duration-500 group-hover:border-cyan-500/40 group-hover:bg-cyan-500/5 group">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <i class="fas fa-link text-cyan-500 text-sm"></i>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity">Connected</span>
+                                </div>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors"
+                                   data-pt="Integração APIs, ERPs, CRMs" data-en="API, ERP, CRM Integration">
+                                    Integração com APIs, ERPs, CRMs
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="plataforma-sob-demanda.html" class="block group perspective-1000 decoration-none">
+                <div class="grid lg:grid-cols-2 gap-16 items-center p-8 rounded-[3rem] transition-all duration-700 group-hover:bg-white/[0.02]" data-aos="fade-up">
+                    
+                    <div class="order-2 lg:order-1 relative z-10">
+                        <span class="text-blue-500 font-mono text-xs mb-8 block tracking-[0.3em] origin-left group-hover:scale-110 transition-transform">/ MODULE_02: PLATFORMS</span>
+                        
+                        <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8 leading-[0.9] transition-all duration-700 group-hover:text-blue-400 group-hover:translate-x-3"
+                            data-pt="Plataformas Sob Medida" 
+                            data-en="Tailored Platforms" 
+                            data-es="Plataformas a Medida">
+                            Plataformas Sob Medida
+                        </h2>
+                
+                        <p class="text-gray-400 text-lg font-light mb-6 leading-relaxed group-hover:text-gray-200 transition-colors"
+                           data-pt="Portais, e-commerces e ambientes digitais preparados para crescer junto com seu negócio."
+                           data-en="Portals, e-commerces, and digital environments prepared to grow with your business."
+                           data-es="Portales, e-commerces y entornos digitales preparados para crecer junto con su negocio.">
+                            Portais, e-commerces e ambientes digitais preparados para crescer junto com seu negócio.
+                        </p>
+                
+                        <p class="text-gray-500 text-base font-light leading-relaxed mb-10 transition-all duration-700 group-hover:text-gray-400"
+                           data-pt="Criamos plataformas web e mobile que combinam tecnologia com estratégia digital. Pensadas para escalar, converter e entregar experiência."
+                           data-en="We create web and mobile platforms that combine technology with digital strategy. Designed to scale, convert, and deliver experience."
+                           data-es="Creamos plataformas web y móviles que combinan tecnología con estrategia digital. Diseñadas para escalar, convertir y ofrecer experiencia.">
+                            Criamos plataformas web e mobile que combinam tecnologia com estratégia digital. Pensadas para escalar, converter e entregar experiência, sempre com foco em resultados.
+                        </p>
+                
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 border border-white/5 bg-white/[0.02] rounded-xl transition-all duration-500 group-hover:border-blue-500/50 group-hover:bg-blue-500/5">
+                                <i class="fas fa-search-dollar text-blue-500 mb-2 block animate-pulse"></i>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors"
+                                   data-pt="Arquitetura SEO & UX" data-en="SEO & UX Architecture" data-es="Arquitectura SEO y UX">
+                                    Arquitetura otimizada para SEO e UX
+                                </p>
+                            </div>
+                
+                            <div class="p-4 border border-white/5 bg-white/[0.02] rounded-xl transition-all duration-500 group-hover:border-blue-500/50 group-hover:bg-blue-500/5">
+                                <i class="fas fa-cubes text-blue-500 mb-2 block animate-pulse"></i>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors"
+                                   data-pt="Sistemas Modulares" data-en="Modular Systems" data-es="Sistemas Modulares">
+                                    Sistemas modulares com funcionalidades exclusivas
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="order-1 lg:order-2 relative group-hover:rotate-y-12 transition-transform duration-1000">
+                        <div class="absolute -inset-10 bg-blue-500/20 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                        
+                        <div class="relative aspect-video bg-black border border-white/10 rounded-[2.5rem] flex items-center justify-center overflow-hidden">
+                            <div class="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity" style="background-image: radial-gradient(var(--brand-cyan) 1px, transparent 1px); background-size: 20px 20px;"></div>
+                            
+                            <i class="fas fa-laptop-code text-8xl text-blue-500/20 transition-all duration-700 group-hover:scale-150 group-hover:text-blue-500 group-hover:rotate-12"></i>
+                            
+                            <div class="absolute bottom-6 left-6 bg-blue-500 text-black font-black text-[8px] uppercase tracking-widest px-4 py-2 rounded-full transform -translate-x-10 group-hover:translate-x-0 transition-transform duration-700">
+                                Digital Experience
+                            </div>
+            
+                            <div class="absolute top-6 right-6 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <i class="fas fa-arrow-right text-white group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+    
+            <a href="consultora-ti.html" class="block group perspective-1000 decoration-none">
+                <div class="grid lg:grid-cols-2 gap-16 items-center p-8 rounded-[3rem] transition-all duration-700 group-hover:bg-white/[0.02]" data-aos="fade-up">
+                    
+                    <div class="relative group-hover:-rotate-y-12 transition-transform duration-1000">
+                        <div class="absolute -inset-10 bg-purple-500/15 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                        
+                        <div class="relative aspect-video bg-black border border-white/10 rounded-[2.5rem] flex items-center justify-center overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-[2px] bg-purple-500 shadow-[0_0_20px_#a855f7] opacity-0 group-hover:opacity-100 group-hover:animate-scan z-20"></div>
+                            
+                            <div class="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity" 
+                                 style="background-image: radial-gradient(#a855f7 1px, transparent 1px); background-size: 30px 30px;"></div>
+                            
+                            <i class="fas fa-chess-knight text-8xl text-purple-500/20 transition-all duration-700 group-hover:scale-125 group-hover:text-purple-400 group-hover:-rotate-12"></i>
+                            
+                            <div class="absolute bottom-6 right-6 bg-purple-600 text-white font-black text-[8px] uppercase tracking-widest px-4 py-2 rounded-full transform translate-y-10 group-hover:translate-y-0 transition-transform duration-700">
+                                Strategic Mindset
+                            </div>
+            
+                            <div class="absolute top-6 left-6 w-12 h-12 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                                <i class="fas fa-arrow-left text-white group-hover:-translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="relative z-10">
+                        <span class="text-purple-500 font-mono text-xs mb-8 block tracking-[0.3em] origin-left group-hover:scale-110 transition-transform">/ MODULE_03: CONSULTANCY</span>
+                        
+                        <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8 leading-[0.9] transition-all duration-700 group-hover:text-purple-400"
+                            data-pt="Consultoria em TI" 
+                            data-en="IT Consultancy" 
+                            data-es="Consultoría de TI">
+                            Consultoria em TI
+                        </h2>
+                
+                        <p class="text-gray-400 text-lg font-light mb-10 leading-relaxed group-hover:text-gray-200 transition-colors"
+                           data-pt="Estratégia, inovação e visão técnica para decisões mais seguras. Ajudamos sua empresa a tomar decisões certas na hora de investir, migrar ou modernizar."
+                           data-en="Strategy, innovation, and technical vision for safer decisions. We help your company make the right decisions when investing, migrating, or modernizing."
+                           data-es="Estrategia, innovación y visión técnica para decisiones más seguras. Ayudamos a su empresa a tomar las decisiones correctas a la hora de invertir, migrar o modernizar.">
+                            Estratégia, inovação e visão técnica para decisões mais seguras. Ajudamos sua empresa a tomar decisões certas na hora de investir, migrar ou modernizar.
+                        </p>
+                
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 border border-white/5 bg-white/[0.02] rounded-xl transition-all duration-500 group-hover:bg-purple-600 group">
+                                <i class="fas fa-shield-alt text-purple-500 mb-2 block group-hover:text-white transition-colors"></i>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors"
+                                   data-pt="Diagnóstico Técnico" data-en="Technical Diagnosis" data-es="Diagnóstico Técnico">
+                                    Diagnóstico Técnico
+                                </p>
+                            </div>
+                
+                            <div class="p-4 border border-white/5 bg-white/[0.02] rounded-xl transition-all duration-500 group-hover:bg-purple-600 group">
+                                <i class="fas fa-map-signs text-purple-500 mb-2 block group-hover:text-white transition-colors"></i>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors"
+                                   data-pt="LGPD & Compliance" data-en="GDPR & Compliance" data-es="LGPD y Cumplimiento">
+                                    LGPD & Compliance
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+    
+            <a href="profissionais-ti.html" class="block group perspective-1000 decoration-none">
+                <div class="grid lg:grid-cols-2 gap-16 items-center p-8 rounded-[3rem] transition-all duration-700 group-hover:bg-white/[0.02]" data-aos="fade-up">
+                    
+                    <div class="relative z-10">
+                        <span class="text-green-500 font-mono text-xs mb-8 block tracking-[0.3em] origin-left group-hover:scale-110 transition-transform">/ MODULE_04: TALENT</span>
+                        
+                        <h2 class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter mb-8 leading-[0.9] transition-all duration-700 group-hover:text-green-400 group-hover:-translate-y-1"
+                            data-pt="Alocação de Profissionais" 
+                            data-en="Staff Augmentation" 
+                            data-es="Asignación de Profesionales">
+                            Alocação de Profissionais
+                        </h2>
+                
+                        <p class="text-gray-400 text-lg font-light mb-10 leading-relaxed group-hover:text-gray-200 transition-colors"
+                           data-pt="Os talentos certos para o seu projeto, quando e como você precisa. Disponibilizamos especialistas sob demanda para atuação dedicada ou compartilhada."
+                           data-en="The right talents for your project, when and how you need them. We provide on-demand specialists for dedicated or shared performance."
+                           data-es="Los talentos adecuados para su proyecto, cuando y como los necesite. Brindamos especialistas bajo demanda para desempeño dedicado o compartido.">
+                            Os talentos certos para o seu projeto, quando e como você precisa. Disponibilizamos especialistas sob demanda para atuação dedicada ou compartilhada.
+                        </p>
+                
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="relative p-[1px] rounded-xl overflow-hidden bg-white/5 transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-green-500 group-hover:to-emerald-800">
+                                <div class="relative bg-black rounded-[11px] p-4 h-full">
+                                    <i class="fas fa-users-cog text-green-500 mb-2 block group-hover:scale-110 transition-transform"></i>
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors"
+                                       data-pt="Squads Ágeis" data-en="Agile Squads" data-es="Squads Ágiles">
+                                        Squads Ágeis
+                                    </p>
+                                </div>
+                            </div>
+                
+                            <div class="relative p-[1px] rounded-xl overflow-hidden bg-white/5 transition-all duration-500 group-hover:bg-gradient-to-r group-hover:from-green-500 group-hover:to-emerald-800">
+                                <div class="relative bg-black rounded-[11px] p-4 h-full">
+                                    <i class="fas fa-chart-pie text-green-500 mb-2 block group-hover:scale-110 transition-transform"></i>
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors"
+                                       data-pt="Redução de Custos" data-en="Cost Reduction" data-es="Reducción de Costos">
+                                        Redução de Custos
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="relative group-hover:rotate-y-12 transition-transform duration-1000">
+                        <div class="absolute -inset-10 bg-green-500/15 blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+                        
+                        <div class="relative aspect-video bg-black border border-white/10 rounded-[2.5rem] flex items-center justify-center overflow-hidden">
+                            <div class="absolute inset-0 opacity-20 group-hover:scale-150 transition-transform duration-[3s]" 
+                                 style="background-image: radial-gradient(#10b981 0.5px, transparent 0.5px); background-size: 20px 20px;"></div>
+                            
+                            <i class="fas fa-user-astronaut text-8xl text-green-500/20 transition-all duration-1000 group-hover:scale-110 group-hover:text-green-400 group-hover:-translate-y-6"></i>
+                            
+                            <div class="absolute top-6 right-6 flex items-center gap-2 bg-green-500/10 border border-green-500/20 px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-all">
+                                <span class="w-1.5 h-1.5 bg-green-500 rounded-full animate-ping"></span>
+                                <span class="text-[8px] font-black text-green-500 uppercase tracking-widest">Active Talent Pool</span>
+                            </div>
+            
+                            <div class="absolute bottom-6 right-6 w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-500">
+                                <i class="fas fa-plus text-white group-hover:rotate-90 transition-transform"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="py-60 px-6 bg-white text-black relative overflow-hidden">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <h2 class="text-5xl md:text-[120px] font-black uppercase italic leading-none tracking-tighter mb-16"
+                data-pt="Pronto para o Próximo Nível?" data-en="Ready for the Next Level?">
+                Pronto para o <br> Próximo Nível?
+            </h2>
+            <a href="https://wa.me/5519995000067" class="group relative inline-flex items-center gap-8 overflow-hidden border-2 border-black px-16 py-6 rounded-full transition-all hover:bg-black hover:text-white">
+                <span class="relative z-10 text-xs font-black uppercase tracking-[0.4em]">Iniciar Projeto</span>
+                <i class="fas fa-arrow-right relative z-10 group-hover:translate-x-3 transition-transform"></i>
+            </a>
+        </div>
+    </section>
+
     <footer class="py-12 px-6 border-t border-white/5 bg-[#050505] relative z-10">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             
@@ -581,66 +1018,54 @@
     }
     </script>
 
-<script>
-function toggleMainMenu(event) {
-    if(event) event.stopPropagation();
-    const dropdown = document.getElementById('main-nav-dropdown');
-    dropdown.classList.toggle('active');
-}
 
-// Fecha o menu ao clicar fora dele
-document.addEventListener('click', function(e) {
-    const dropdown = document.getElementById('main-nav-dropdown');
-    const kebab = document.querySelector('.kebab-btn');
-    if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.classList.remove('active');
-    }
-});
-</script>
+    <script>
+        // 1. Cursor Customizado
+        const cursor = document.getElementById('cursor');
+        window.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
 
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-    AOS.init({ duration: 800, once: false });
-    const glow = document.getElementById('glow');
-    window.addEventListener('mousemove', (e) => {
-        glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
-    });
-</script>
+        // 2. Reveal Mask ao Carregar
+        window.addEventListener('load', () => {
+            document.getElementById('heroMask').classList.add('active');
+            document.getElementById('heroDesc').style.opacity = '1';
+        });
 
-<script>
-// Função para trocar o idioma
-function changeLanguage(lang) {
-    // 1. Atualiza o selo visual no botão
-    const langLabel = document.getElementById('lang-label');
-    if (langLabel) langLabel.innerText = lang.toUpperCase();
+        // 3. Barra de Progresso Circular/Vertical
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.height = scrolled + '%';
+        });
 
-    // 2. Traduz todos os elementos com o atributo data-pt
-    const elements = document.querySelectorAll('[data-pt]');
-    elements.forEach(el => {
-        const translation = el.getAttribute(`data-${lang}`);
-        if (translation) {
-            // Se for um link de WhatsApp, podemos manter os ícones, mas aqui traduzimos o texto
-            el.innerText = translation;
+        // 4. GSAP Parallax sutil nos Cards
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.glass-card').forEach(card => {
+            gsap.to(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: 1
+                },
+                y: -50,
+                opacity: 1
+            });
+        });
+
+        // Lógica de Idioma
+        function changeLanguage(lang) {
+            const langLabel = document.getElementById('lang-label');
+            if (langLabel) langLabel.innerText = lang.toUpperCase();
+            document.querySelectorAll('[data-pt]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.innerText = text;
+            });
+            localStorage.setItem('generactive_lang', lang);
         }
-    });
-
-    // 3. Salva a escolha para quando ele mudar de página
-    localStorage.setItem('generactive_lang', lang);
-}
-
-// Ao carregar a página, verifica se já existe um idioma salvo
-window.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('generactive_lang') || 'pt';
-    changeLanguage(savedLang);
-});
-</script>
-
-<Header></Header>
-<a href="automacao-inteligente-com-ia.html" class="nav-drop-item">
-    <i class="fas fa-cogs text-[10px]"></i> 
-    <span data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</span>
-</a>
-
-<Footer></Footer>
-
-<a href="automacao-inteligente-com-ia.html" class="text-[11px] py-1 hover:text-cyan-400 whitespace-nowrap" data-pt="Automação Inteligente com IA" data-en="Intelligent AI Automation" data-es="Automatización Inteligente con IA">Automação Inteligente com IA</a>
+    </script>
+</body>
+</html>
