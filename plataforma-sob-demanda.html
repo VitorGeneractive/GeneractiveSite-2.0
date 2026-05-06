@@ -1,111 +1,75 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="scroll-smooth">
+<html lang="pt-br">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V02327JYWK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-V02327JYWK');
+    </script>
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-P937FVXV');
+        </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato | Generactive Innovate</title>
+    <title>Plataformas Digitais Sob Medida | Generactive Innovate</title>
     <link rel="icon" type="image/png" href="LogoGuiaGen.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #02040a; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
-
-        /* --- BACKGROUND DINÂMICO --- */
-        .contact-bg {
-            position: fixed; inset: 0; z-index: -1;
-            background: radial-gradient(circle at 10% 10%, rgba(34, 211, 238, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #000; 
+            color: #f3f4f6; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+            line-height: 1.6;
         }
 
-        /* --- GLASS PANEL --- */
+        /* Efeito de Vidro Flutuante */
         .glass-panel {
-            background: rgba(15, 23, 42, 0.3);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        /* --- CORREÇÃO DE ESPAÇAMENTO TOP --- */
-        nav { height: 80px; }
-        main { padding-top: 100px; } 
-
-        /* --- INPUTS ESTILIZADOS --- */
-        .tech-input {
-            width: 100%;
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.85rem 1.25rem;
-            border-radius: 1rem;
-            color: white;
-            font-size: 0.8rem;
-            transition: all 0.3s;
-        }
-        .tech-input:focus {
-            outline: none;
-            border-color: #22d3ee;
-            background: rgba(34, 211, 238, 0.05);
-            box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- BOTÃO GLOW --- */
-        .btn-send {
-            background: #22d3ee;
-            color: #000;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            padding: 1rem;
-            border-radius: 1rem;
-            width: 100%;
-            transition: all 0.4s;
-            box-shadow: 0 10px 30px rgba(34, 211, 238, 0.2);
-            font-size: 0.75rem;
-        }
-        .btn-send:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(34, 211, 238, 0.4);
-            background: #fff;
+        .glass-panel:hover {
+            border-color: #00f2ff;
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 242, 255, 0.1);
         }
 
-        .lang-dropdown { display: none; }
-        .group:hover .lang-dropdown { display: block; }
-
-        @media (max-width: 768px) {
-            main { padding-top: 80px; }
+        /* Título Animado */
+        .hero-title {
+            background: linear-gradient(to right, #fff, #00f2ff, #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
         }
-        
-    /* Estilização do Select e Opções */
-    .tech-input {
-        width: 100%;
-        background-color: #02040a; /* Cor de fundo idêntica ao site */
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 0.85rem 1.25rem;
-        border-radius: 1rem;
-        color: white;
-        font-size: 0.8rem;
-        transition: all 0.3s;
-        appearance: none; /* Remove a seta padrão para customização futura */
-    }
 
-    /* Garante que a lista que abre (dropdown) também seja escura */
-    .tech-input option {
-        background-color: #02040a; 
-        color: white;
-    }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
 
-    .tech-input:focus {
-        outline: none;
-        border-color: #22d3ee;
-        background-color: #050a14; /* Um leve realce no foco */
-        box-shadow: 0 0 20px rgba(34, 211, 238, 0.1);
-    }
+        /* Accordion Custom */
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary i { transform: rotate(180deg); color: #00f2ff; }
 
-    .kebab-btn {
+        .kebab-btn {
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -217,14 +181,11 @@
     margin-top: 5px;
 }
 .footer-menu-group.active i.fa-chevron-down { transform: rotate(180deg); color: #00f2ff; }
-
     </style>
 </head>
 <body>
 
-    <div class="contact-bg"></div>
-
-    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-0 active">
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-3 active">
         <div class="max-w-7xl mx-auto flex justify-between items-center h-16 md:h-20">
             
             <a href="index.html" class="flex items-center gap-3 md:gap-4 group transition-transform hover:scale-105 active:scale-95 py-1 relative z-50">
@@ -454,111 +415,356 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 pb-20">
-        <div class="grid lg:grid-cols-2 gap-10 md:gap-20 items-start">
-            
-            <div data-aos="fade-right" class="lg:pt-4">
-                <h1 class="text-6xl md:text-8xl font-extrabold italic uppercase tracking-tighter leading-none mb-8"
-                    data-pt="CONECTE-SE" data-en="CONNECT" data-es="CONÉCTATE">
-                    CONECTE-<span class="text-cyan-400">SE</span>
-                </h1>
-                <p class="text-gray-400 text-lg mb-12 max-w-md leading-relaxed"
-                   data-pt="Pronto para o próximo salto tecnológico? Nossa equipe de especialistas está a um clique de distância."
-                   data-en="Ready for the next technological leap? Our expert team is just a click away."
-                   data-es="¿Listo para el próximo salto tecnológico? Nuestro equipo de expertos está a un clic de distancia.">
-                    Pronto para o próximo salto tecnológico? Nossa equipe de especialistas está a um clique de distância.
-                </p>
-
-                <div class="space-y-4">
-                    <a href="https://wa.me/5519995000067" class="glass-panel p-5 rounded-2xl flex items-center gap-5 hover:border-cyan-500/50 group transition-all">
-                        <div class="w-10 h-10 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 text-lg group-hover:bg-cyan-500 group-hover:text-black transition-all">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div>
-                            <p class="text-[9px] text-gray-500 uppercase font-black tracking-widest">WhatsApp Fast Track</p>
-                            <p class="text-sm font-bold text-white">+55 (19) 99500-0067</p>
-                        </div>
-                    </a>
-
-                    <a href="mailto:contato@generactive.com.br" class="glass-panel p-5 rounded-2xl flex items-center gap-5 hover:border-blue-500/50 group transition-all">
-                        <div class="w-10 h-10 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400 text-lg group-hover:bg-blue-500 group-hover:text-black transition-all">
-                            <i class="far fa-envelope"></i>
-                        </div>
-                        <div>
-                            <p class="text-[9px] text-gray-500 uppercase font-black tracking-widest">Email Corporativo</p>
-                            <p class="text-sm font-bold text-white">contato@generactive.com.br</p>
-                        </div>
-                    </a>
-                </div>
+    <header class="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-6 border-b border-white/5 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 blur-[150px] animate-pulse"></div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <h1 class="text-4xl md:text-7xl font-black mb-8 leading-tight hero-title" data-aos="zoom-in"
+                data-pt="Plataformas Digitais Sob Medida" 
+                data-en="Tailored Digital Platforms" 
+                data-es="Plataformas Digitales a Medida">
+                Plataformas Digitais Sob Medida
+            </h1>
+            <p class="text-gray-400 text-lg md:text-2xl max-w-3xl mx-auto mb-12 font-light" data-aos="fade-up">
+                <span data-pt="Construímos plataformas digitais que combinam performance, experiência e resultados reais." 
+                      data-en="We build digital platforms that combine performance, experience, and real results." 
+                      data-es="Construimos plataformas digitales que combinan rendimiento, experiencia y resultados reales.">
+                    Construímos plataformas digitais que combinam performance, experiência e resultados reais.
+                </span>
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6" data-aos="fade-up" data-aos-delay="200">
+                <a href="https://wa.me/5519995000067" class="bg-cyan-500 text-black font-black px-12 py-5 rounded-2xl hover:bg-cyan-400 transition shadow-lg shadow-cyan-500/20 uppercase text-xs tracking-widest">
+                    <span data-pt="Solicite sua proposta" data-en="Request your proposal" data-es="Solicite su propuesta">Solicite sua proposta</span>
+                </a>
             </div>
-
-            <div data-aos="fade-left">
-                <div class="glass-panel p-8 md:p-10 rounded-[2.5rem] border-t-4 border-cyan-500 shadow-2xl relative overflow-hidden">
-                    <div class="absolute top-0 right-0 p-4 opacity-10 font-mono text-[8px] tracking-widest uppercase">Contact_Module_v2.0</div>
-                    
-                    <!--
-                        Antes, tinha um Formspree com e-mail no link então eu tirei.
-                        Agora o JS (la embaixo no codigo) pega o clique no botão e manda tudo pela API do Web3Forms. Resultado: pagina nao recarrega, botao fica verde ou vermelho.
-                    -->
-                    <form id="contact-form" class="space-y-5">
-    
-                        <div>
-                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                   data-pt="Nome Completo" data-en="Full Name" data-es="Nombre Completo">Nome Completo</label>
-                            <input type="text" name="nome" required class="tech-input" 
-                                   data-pt="Ex: João Silva" data-en="Ex: John Doe" data-es="Ej: Juan Silva" placeholder="Ex: João Silva">
-                        </div>
-                    
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                       data-pt="Empresa" data-en="Company" data-es="Empresa">Empresa</label>
-                                <input type="text" name="empresa" class="tech-input" 
-                                       data-pt="Nome da sua empresa" data-en="Your company name" data-es="Nombre de su empresa" placeholder="Nome da sua empresa">
-                            </div>
-                            <div>
-                                <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                       data-pt="E-mail Corporativo" data-en="Business Email" data-es="Email Corporativo">E-mail Corporativo</label>
-                                <input type="email" name="email" required class="tech-input" 
-                                       placeholder="contato@empresa.com">
-                            </div>
-                        </div>
-                    
-                        <div>
-                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                   data-pt="Assunto" data-en="Subject" data-es="Asunto">Assunto</label>
-                            <select name="assunto" class="tech-input cursor-pointer bg-[#02040a]">
-                                <option data-pt="Cloud Pública" data-en="Public Cloud" data-es="Nube Pública">Cloud Pública</option>
-                                <option data-pt="Cloud Privada" data-en="Private Cloud" data-es="Nube Privada">Cloud Privada</option>
-                                <option data-pt="Cloud Híbrida" data-en="Hybrid Cloud" data-es="Nube Híbrida">Cloud Híbrida</option>
-                                <option data-pt="Cloud Backup" data-en="Cloud Backup" data-es="Respaldo Cloud">Cloud Backup</option>
-                                <option data-pt="Cloud Migration" data-en="Cloud Migration" data-es="Migración Cloud">Cloud Migration</option>
-                                <option data-pt="Cloud Management" data-en="Cloud Management" data-es="Gestión Cloud">Cloud Management</option>
-                                <option data-pt="Outros Assuntos" data-en="Other Matters" data-es="Otros Asuntos">Outros Assuntos</option>
-                            </select>
-                        </div>
-                    
-                        <div>
-                            <label class="text-[9px] font-black uppercase tracking-widest text-gray-500 mb-2 block" 
-                                   data-pt="Mensagem" data-en="Message" data-es="Mensaje">Mensagem</label>
-                            <textarea name="mensagem" required class="tech-input h-32 resize-none" 
-                                      data-pt="Como podemos ajudar o seu negócio?" 
-                                      data-en="How can we help your business?" 
-                                      data-es="¿Cómo podemos ayudar a su negocio?" 
-                                      placeholder="Como podemos ajudar o seu negócio?"></textarea>
-                        </div>
-                    
-                        <button type="submit" class="btn-send w-full py-4 bg-cyan-500 text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-xl hover:bg-white transition-all shadow-lg shadow-cyan-500/20"
-                                data-pt="Enviar Mensagem" data-en="Send Message" data-es="Enviar Mensaje">
-                            Enviar Mensagem
-                        </button>
-                    </form>
-                </div>
-            </div>
-
         </div>
-    </main>
+    </header>
 
+    <section class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl md:text-5xl font-black uppercase italic tracking-tighter mb-8">
+                        <span data-pt="Sua presença digital" data-en="Your digital presence" data-es="Su presencia digital">Sua presença digital</span> <br>
+                        <span class="text-cyan-500" data-pt="merece o melhor" data-en="deserves the best" data-es="merece lo mejor">merece o melhor</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-6" data-pt="Sua presença digital merece mais do que um site padrão. Desenvolvemos plataformas personalizadas, como portais corporativos, marketplaces, intranets e lojas virtuais, com foco em conversão, segurança, escalabilidade e SEO.">
+                        Sua presença digital merece mais do que um site padrão. Desenvolvemos plataformas personalizadas, como portais corporativos, marketplaces, intranets e lojas virtuais, com foco em conversão, segurança, escalabilidade e SEO.
+                    </p>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <div class="glass-panel p-10 rounded-[3rem] border-l-4 border-l-cyan-500">
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <i class="fas fa-check text-cyan-500 mt-1"></i>
+                                <span class="text-gray-300" data-pt="Portais Corporativos" data-en="Corporate Portals">Portais Corporativos</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <i class="fas fa-check text-cyan-500 mt-1"></i>
+                                <span class="text-gray-300" data-pt="Marketplaces" data-en="Marketplaces">Marketplaces</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <i class="fas fa-check text-cyan-500 mt-1"></i>
+                                <span class="text-gray-300" data-pt="Intranets" data-en="Intranets">Intranets</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <i class="fas fa-check text-cyan-500 mt-1"></i>
+                                <span class="text-gray-300" data-pt="E-commerce Personalizado" data-en="Custom E-commerce">E-commerce Personalizado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 relative overflow-hidden bg-black" id="beneficios-premium">
+    
+        <div class="absolute inset-0 opacity-20 pointer-events-none">
+            <div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+        </div>
+    
+        <div class="max-w-7xl mx-auto relative z-10">
+            
+            <div class="mb-24 md:mb-32 text-left">
+                <h2 class="text-5xl md:text-[120px] font-black uppercase italic leading-[0.8] tracking-tighter" data-aos="fade-right">
+                    <span data-pt="Benefícios" data-en="Benefits" data-es="Beneficios">Benefícios</span><br>
+                    <span class="text-transparent" style="-webkit-text-stroke: 1px #00f2ff" data-pt="Estratégicos" data-en="Strategic" data-es="Estratégicos">Estratégicos</span>
+                </h2>
+                <div class="h-1 w-20 bg-cyan-500 mt-8" data-aos="width" data-aos-duration="1500"></div>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:h-[900px]">
+                
+                <div class="md:col-span-12 lg:col-span-5 lg:row-span-2 group relative overflow-hidden rounded-[2.5rem] bg-zinc-950 border border-white/5 p-8 md:p-12 transition-all duration-700 hover:border-cyan-500/50" data-aos="fade-up">
+                    <div class="flex flex-col justify-between h-full">
+                        <div>
+                            <div class="text-cyan-500 text-4xl mb-8 group-hover:rotate-[360deg] transition-transform duration-1000">
+                                <i class="fas fa-search-dollar"></i>
+                            </div>
+                            <h3 class="text-2xl md:text-4xl font-bold uppercase italic italic mb-6 leading-tight" data-pt="Arquitetura SEO de Elite" data-en="Elite SEO Architecture">Arquitetura SEO de Elite</h3>
+                            <p class="text-gray-500 text-lg leading-relaxed group-hover:text-gray-300 transition-colors" 
+                               data-pt="Sua plataforma nasce pronta para o topo. Estrutura técnica otimizada para indexação massiva e performance real no Google."
+                               data-en="Your platform is born ready for the top. Technical structure optimized for massive indexing and real Google performance.">
+                               Sua plataforma nasce pronta para o topo. Estrutura técnica otimizada para indexação massiva e performance real no Google.
+                            </p>
+                        </div>
+                        <span class="text-white/5 font-black text-8xl self-end mt-8">01</span>
+                    </div>
+                </div>
+    
+                <div class="md:col-span-12 lg:col-span-7 lg:row-span-1 group relative overflow-hidden rounded-[2.5rem] bg-zinc-900/50 border border-white/5 p-8 md:p-10 transition-all duration-700 hover:bg-zinc-900" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex flex-col md:flex-row gap-8 items-center h-full">
+                        <div class="w-20 h-20 shrink-0 bg-cyan-500/10 rounded-full flex items-center justify-center text-cyan-400 border border-cyan-500/20 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-mobile-alt text-3xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold uppercase italic italic mb-2 text-white" data-pt="Design Ultra-Responsivo" data-en="Ultra-Responsive Design">Design Ultra-Responsivo</h3>
+                            <p class="text-gray-500 text-sm md:text-base leading-relaxed" data-pt="Experiência imersiva e impecável em qualquer tela. Do smartphone ao monitor ultrawide, sua marca brilha com perfeição técnica." data-en="Immersive experience on any screen. From smartphone to ultrawide, your brand shines with technical perfection.">Experiência imersiva e impecável em qualquer tela. Do smartphone ao monitor ultrawide, sua marca brilha com perfeição técnica.</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="md:col-span-12 lg:col-span-3 lg:row-span-1 group relative overflow-hidden rounded-[2.5rem] bg-white text-black p-8 transition-all duration-700" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex flex-col justify-center h-full">
+                        <h4 class="font-mono text-[10px] tracking-widest mb-4 opacity-50 uppercase">/ Core_Features</h4>
+                        <h3 class="text-2xl font-black uppercase leading-none mb-4" data-pt="Recursos Exclusivos" data-en="Exclusive Features">Recursos Exclusivos</h3>
+                        <p class="text-xs leading-relaxed" data-pt="Integração total com seus sistemas internos." data-en="Full integration with internal systems.">Integração total com seus sistemas internos via APIs robustas.</p>
+                    </div>
+                </div>
+    
+                <div class="md:col-span-12 lg:col-span-4 lg:row-span-1 group relative overflow-hidden rounded-[2.5rem] bg-zinc-950 border border-white/5 p-8 transition-all duration-700 hover:border-cyan-500/50" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex flex-col justify-between h-full">
+                        <div class="flex justify-between items-start">
+                            <i class="fas fa-bolt text-cyan-500 text-2xl group-hover:animate-bounce"></i>
+                            <span class="font-mono text-[10px] text-gray-600">v.04</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold uppercase italic italic mb-2" data-pt="Performance & Gestão" data-en="Performance & Admin">Performance & Gestão</h3>
+                            <p class="text-gray-500 text-xs leading-relaxed" data-pt="Velocidade bruta e administração intuitiva." data-en="Raw speed and intuitive administration.">Velocidade bruta e administração intuitiva para controle total da operação.</p>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        /* Transições diferenciadas */
+        [data-aos="fade-up"] {
+            transform: translateY(60px) scale(0.9);
+            opacity: 0;
+            transition-property: transform, opacity;
+        }
+        
+        [data-aos="fade-up"].aos-animate {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+    
+        /* Efeito de luz que corre na borda no hover (Desktop) */
+        @media (min-width: 1024px) {
+            .rounded-\[2\.5rem\]::after {
+                content: '';
+                position: absolute;
+                top: 0; left: -100%;
+                width: 50%; height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(0, 242, 255, 0.1), transparent);
+                transition: 0.5s;
+                pointer-events: none;
+            }
+            .rounded-\[2\.5rem\]:hover::after {
+                left: 100%;
+                transition: 0.8s;
+            }
+        }
+    
+        /* Ajuste de Grid Mobile */
+        @media (max-width: 1023px) {
+            #beneficios-premium h3 { font-size: 1.5rem; }
+        }
+    </style>
+
+    <section class="py-32 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-16 tracking-tighter" data-aos="fade-up">
+                <span data-pt="Como" data-en="How it" data-es="Cómo">Como</span> <span class="text-cyan-500" data-pt="Funciona" data-en="Works" data-es="Funciona">Funciona</span>
+            </h2>
+            <div class="glass-panel p-12 rounded-[3rem] text-left" data-aos="fade-up">
+                <p class="text-gray-400 text-xl font-light leading-relaxed mb-8" data-pt="Começamos com briefing detalhado, definimos as funcionalidades com você, prototipamos a interface e seguimos com desenvolvimento iterativo. Entregamos uma plataforma pronta para evoluir com seu negócio.">
+                    Começamos com briefing detalhado, definimos as funcionalidades com você, prototipamos a interface e seguimos com desenvolvimento iterativo. Entregamos uma plataforma pronta para evoluir com seu negócio.
+                </p>
+                <div class="h-px bg-white/10 w-full mb-8"></div>
+                <div class="flex items-center gap-4 text-cyan-400 font-bold uppercase tracking-widest text-xs">
+                    <span class="w-10 h-px bg-cyan-400"></span>
+                    <span data-pt="Resultados Reais" data-en="Real Results">Resultados Reais</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 px-6 text-center border-t border-white/5">
+        <h2 class="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-12" data-aos="fade-up">
+            <span data-pt="Precisa de uma plataforma" data-en="Need a tailored" data-es="¿Necesita una plataforma">Precisa de uma plataforma</span> <br>
+            <span class="text-cyan-500" data-pt="feita do seu jeito?" data-en="made your way?" data-es="hecha a su manera?">feita do seu jeito?</span>
+        </h2>
+        <a href="https://wa.me/5519995000067" class="inline-block bg-white text-black font-black px-16 py-6 rounded-full hover:scale-110 transition-transform uppercase italic tracking-widest text-sm">
+            <span data-pt="Solicite sua proposta" data-en="Request Proposal">Solicite sua proposta</span>
+        </a>
+    </section>
+
+    <section class="py-32 px-6 bg-[#030303] relative overflow-hidden">
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+    
+        <div class="max-w-4xl mx-auto relative z-10">
+            
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-4" 
+                    data-pt="Dúvidas Frequentes" data-en="Frequently Asked Questions" data-es="Preguntas Frecuentes">
+                    Dúvidas Frequentes
+                </h2>
+                <div class="flex items-center justify-center gap-3">
+                    <span class="h-px w-8 bg-cyan-500/30"></span>
+                    <p class="text-cyan-500 font-mono text-[10px] tracking-[0.4em] uppercase" 
+                       data-pt="Plataformas Sob Medida" data-en="Custom Platforms" data-es="Plataformas a Medida">
+                       Plataformas Sob Medida
+                    </p>
+                    <span class="h-px w-8 bg-cyan-500/30"></span>
+                </div>
+            </div>
+    
+            <div class="space-y-4">
+                <details class="faq-card group rounded-[2.5rem] bg-white/[0.02] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="1. O que são plataformas digitais sob medida?" 
+                              data-en="1. What are custom digital platforms?" 
+                              data-es="1. ¿Qué son las plataformas digitales a medida?">
+                            1. O que são plataformas digitais sob medida?
+                        </span>
+                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                            <i class="fas fa-plus text-[10px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="São ambientes web personalizados — como portais, e-commerces, marketplaces ou sistemas internos — desenvolvidos do zero para atender às necessidades específicas da sua empresa, com design, funcionalidades e integrações exclusivas."
+                           data-en="They are personalized web environments—such as portals, e-commerces, marketplaces, or internal systems—developed from scratch to meet the specific needs of your company, with exclusive design, features, and integrations."
+                           data-es="Son entornos web personalizados — como portales, e-commerces, marketplaces o sistemas internos — desarrollados desde cero para satisfacer las necesidades específicas de su empresa, con diseño, funcionalidades e integraciones exclusivas.">
+                            São ambientes web personalizados — como portais, e-commerces, marketplaces ou sistemas internos — desenvolvidos do zero para atender às necessidades específicas da sua empresa, com design, funcionalidades e integrações exclusivas.
+                        </p>
+                    </div>
+                </details>
+    
+                <details class="faq-card group rounded-[2.5rem] bg-white/[0.02] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="2. Quais são as vantagens em relação a usar plataformas prontas?" 
+                              data-en="2. What are the advantages over using ready-made platforms?" 
+                              data-es="2. ¿Cuáles son las ventajas frente al uso de plataformas listas?">
+                            2. Quais são as vantagens em relação a usar plataformas prontas?
+                        </span>
+                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                            <i class="fas fa-plus text-[10px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="Com uma plataforma sob medida, você tem controle total sobre o código, funcionalidades e desempenho. Além disso, não fica limitado por plugins, temas ou estruturas genéricas. A escalabilidade, segurança e flexibilidade são muito maiores."
+                           data-en="With a custom platform, you have full control over code, features, and performance. Furthermore, you are not limited by plugins, themes, or generic structures. Scalability, security, and flexibility are much higher."
+                           data-es="Con una plataforma a medida, tienes control total sobre el código, las funcionalidades y el rendimiento. Además, no estás limitado por plugins, temas o estructuras genéricas. La escalabilidad, seguridad y flexibilidad son mucho mayores.">
+                            Com uma plataforma sob medida, você tem controle total sobre o código, funcionalidades e desempenho. Além disso, não fica limitado por plugins, temas ou estruturas genéricas. A escalabilidade, segurança e flexibilidade são muito maiores.
+                        </p>
+                    </div>
+                </details>
+    
+                <details class="faq-card group rounded-[2.5rem] bg-white/[0.02] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="3. A plataforma será responsiva e otimizada para SEO?" 
+                              data-en="3. Will the platform be responsive and SEO optimized?" 
+                              data-es="3. ¿La plataforma será responsiva y optimizada para SEO?">
+                            3. A plataforma será responsiva e otimizada para SEO?
+                        </span>
+                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                            <i class="fas fa-plus text-[10px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="Sim. Todas as plataformas desenvolvidas pela Generactive são pensadas para funcionar perfeitamente em todos os dispositivos e já são entregues com boas práticas de SEO on-page, performance e indexação correta."
+                           data-en="Yes. All platforms developed by Generactive are designed to work perfectly on all devices and are delivered with on-page SEO best practices, performance, and correct indexing."
+                           data-es="Sí. Todas las plataformas desarrolladas por Generactive están diseñadas para funcionar perfectamente en todos los dispositivos y se entregan con buenas prácticas de SEO on-page, rendimiento e indexación correcta.">
+                            Sim. Todas as plataformas desenvolvidas pela Generactive são pensadas para funcionar perfeitamente em todos os dispositivos e já são entregues com boas práticas de SEO on-page, como estrutura de headings, performance e indexação correta.
+                        </p>
+                    </div>
+                </details>
+    
+                <details class="faq-card group rounded-[2.5rem] bg-white/[0.02] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="5. Pode ser integrada a outros sistemas?" 
+                              data-en="5. Can it be integrated with other systems?" 
+                              es="5. ¿Puede integrarse con otros sistemas?">
+                            5. A plataforma pode ser integrada a outros sistemas da empresa?
+                        </span>
+                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                            <i class="fas fa-plus text-[10px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="Sim. Integramos com ERPs, CRMs, gateways de pagamento, sistemas de logística, plataformas de marketing e outras ferramentas já utilizadas pelo seu negócio."
+                           data-en="Yes. We integrate with ERPs, CRMs, payment gateways, logistics systems, marketing platforms, and other tools already used by your business."
+                           data-es="Sí. Integramos con ERP, CRM, pasarelas de pago, sistemas de logística, plataformas de marketing y otras herramientas ya utilizadas por su negocio.">
+                            Sim. Integramos com ERPs, CRMs, gateways de pagamento, sistemas de logística, plataformas de marketing e outras ferramentas já utilizadas pelo seu negócio. Tudo é mapeado no início do projeto.
+                        </p>
+                    </div>
+                </details>
+    
+                <details class="faq-card group rounded-[2.5rem] bg-white/[0.02] border border-white/5 overflow-hidden transition-all duration-500 hover:border-cyan-500/30" data-aos="fade-up">
+                    <summary class="p-8 flex justify-between items-center cursor-pointer list-none outline-none">
+                        <span class="font-bold text-lg md:text-xl pr-6 leading-tight group-hover:text-cyan-400 transition-colors" 
+                              data-pt="6. Vocês oferecem suporte e manutenção?" 
+                              data-en="6. Do you offer support and maintenance?" 
+                              data-es="6. ¿Ofrecen soporte y mantenimiento?">
+                            6. Vocês oferecem suporte e manutenção após a entrega?
+                        </span>
+                        <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center group-hover:border-cyan-500 transition-colors">
+                            <i class="fas fa-plus text-[10px] text-cyan-500 transition-transform duration-500 group-open:rotate-45"></i>
+                        </div>
+                    </summary>
+                    <div class="px-8 pb-8 text-gray-400 font-light leading-relaxed">
+                        <p data-pt="Sim. Oferecemos planos de suporte técnico, manutenção corretiva e evolutiva. A Generactive acompanha o crescimento do seu negócio e garante que a plataforma evolua junto."
+                           data-en="Yes. We offer technical support, corrective, and evolutionary maintenance plans. Generactive follows your business growth and ensures the platform evolves with it."
+                           data-es="Sí. Ofrecemos planes de soporte técnico, mantenimiento correctivo y evolutivo. Generactive acompaña el crecimiento de su negocio y garantiza que la plataforma evolucione con él.">
+                            Sim. Após a entrega, você pode contratar planos de suporte técnico, manutenção corretiva e evolutiva, além de melhorias contínuas. A Generactive acompanha o crescimento do seu negócio e garante que a plataforma evolua junto.
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <style>
+        /* Transição de abertura suave */
+        .faq-card[open] {
+            background: rgba(0, 242, 255, 0.03);
+            border-color: rgba(0, 242, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Efeito do ícone de Plus para X */
+        details[open] summary i {
+            transform: rotate(45deg);
+            color: #fff;
+        }
+        
+        /* Custom Scrollbar se necessário no FAQ */
+        .faq-card div::-webkit-scrollbar {
+            width: 4px;
+        }
+    </style>
+    
     <footer class="py-12 px-6 border-t border-white/5 bg-[#050505] relative z-10">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             
@@ -709,169 +915,57 @@
         </div>
     </footer>
 
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        /*
-         ALTERACAO: Essas funcoes de menu (footer, kebab, submenu) estavam TODAS REPETIDAS
-         no final do arquivo, e ainda com tag <script> dentro de outra <script> (estava banguçado então eu tentei arrumar).
-         Juntei tudo aqui embaixo, mesmo tudo junto ele vai funcionar normal.
-        */   
-        function toggleFooterMenu(menuId) {
-            const menu = document.getElementById(menuId);
-            const icon = document.getElementById('icon-' + menuId);
-            if (menu.style.maxHeight === '200px') {
-                menu.style.maxHeight = '0px';
-                menu.style.opacity = '0';
-                menu.style.marginTop = '0px';
-                menu.style.marginBottom = '0px';
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                menu.style.maxHeight = '200px';
-                menu.style.opacity = '1';
-                menu.style.marginTop = '5px';
-                menu.style.marginBottom = '10px';
-                icon.style.transform = 'rotate(180deg)';
-            }
-        }
-
-        /*
-         ADICIONADO: toggleMainMenu() — essa funcao NAO existia no codigo antigo.
-         Os itens do menu kebab ja chamavam ela (onclick="toggleMainMenu(event)") mas a funcao
-         nao estava definida em lugar nenhum, entao o menu principal nao abria no celular.
-         Abre e fecha o dropdown principal (kebab menu) ao clicar nos 3 pontinhos.
-        */
-        function toggleMainMenu(event) {
-            if (event) event.stopPropagation();
-            const dropdown = document.getElementById('main-nav-dropdown');
-            dropdown.classList.toggle('active');
-        }
-
-        /*
-         ADICIONADO: toggleSubmenu() — essa funcao NAO existia no codigo antigo.
-         Os itens do menu ja chamavam ela (onclick="toggleSubmenu(this, event)") mas a funcao
-         nao estava definida em lugar nenhum, entao o submenu nao abria no celular.
-         No celular, ao clicar no item "pai" (ex: "Solucoes Cloud") abre os links debaixo.
-         No PC, o proprio CSS com hover ja funciona.
-        */
-        function toggleSubmenu(el, event) {
-            if (event) event.stopPropagation();
-            if (window.innerWidth > 768) return;
-            const parent = el.closest('.has-submenu');
-            const submenu = parent.querySelector('.submenu-content');
-            if (submenu.style.display === 'block') {
-                submenu.style.display = 'none';
-            } else {
-                submenu.style.display = 'block';
-            }
-        }
-
-        /*
-         ALTERACAO/MELHORIA: Event listener de clique fora do menu.
-         No codigo antigo existia, mas sem verificar se os elementos existem primeiro.
-         Adicionado 'kebab && dropdown' pra evitar erro no console se algum elemento
-         nao for encontrado na pagina.
-        */
-        document.addEventListener('click', function(e) {
-            const dropdown = document.getElementById('main-nav-dropdown');
-            const kebab = document.querySelector('.kebab-btn');
-            if (kebab && dropdown && !kebab.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });
-
         function changeLanguage(lang) {
-            document.getElementById('lang-label').innerText = lang.toUpperCase();
-            const elements = document.querySelectorAll('[data-pt]');
-            elements.forEach(function(el) {
-                var translation = el.getAttribute('data-' + lang);
-                if (translation) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.placeholder = translation;
-                    } else {
-                        el.innerText = translation;
-                    }
-                }
+            const langLabel = document.getElementById('lang-label');
+        if (langLabel) langLabel.innerText = lang.toUpperCase();
+            document.querySelectorAll('[data-pt]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.innerText = text;
             });
-            localStorage.setItem('generactive_lang', lang);
         }
-
-        /*
-         ADICIONADO: Lembrar o idioma escolhido pelo usuario.
-         No codigo antigo, toda vez que a pagina recarregava voltava para PT.
-         Agora guarda no localStorage e ja deixa selecionado o idioma da ultima visita.
-        */
-        var savedLang = localStorage.getItem('generactive_lang');
-        if (savedLang) changeLanguage(savedLang);
-
-        /*
-         ALTERACAO/SUBSTITUICAO: Antes usava Formspree (action no <form>).
-         Agora usa a API do Web3Forms com fetch() — pagina nao recarrega e da feedback visual.
-         
-         O que vai acontecer aqui: envio do formulario pela API do Web3Forms
-         
-          Passo a passo do que acontece quando o usuario clica em "Enviar Mensagem":
-          1. e.preventDefault() -> trava o form de recarregar a pagina (ninguem gosta disso).
-          2. Botao fica desabilitado e mostra "Enviando..." pra nao ter duplo clique.
-          3. fetch() manda um POST pro https://api.web3forms.com/submit com os dados do form
-             (usando a access_key que ee gerei para o teste: '06dc64a4-90d8-4561-8013-0217150c2fab' Você pode alterar depois).
-          4. A API devolve um JSON dizendo se Foi ou Não.
-          5. Foi? Botao fica VERDE e escreve "Mensagem Enviada!" + limpa o form.
-          6. Não foi? (Sem conexão, API fora do ar, etc) Botao fica VERMELHO e avisa o erro.
-          7. Depois de 4 segundos, o botao volta ao normal (texto e cor original).
-         */
-        document.addEventListener('DOMContentLoaded', function() {
-            var form = document.getElementById('contact-form');
-            if (!form) return;
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                var btn = form.querySelector('button[type="submit"]');
-                var originalText = btn.innerText;
-                btn.innerText = 'Enviando...';
-                btn.disabled = true;
-                btn.style.cursor = 'wait';
-
-                try {
-                    var res = await fetch('https://api.web3forms.com/submit', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            access_key: '06dc64a4-90d8-4561-8013-0217150c2fab',
-                            subject: 'Novo contato de ' + (form.nome.value || '') + ' - Generactive',
-                            from_name: form.nome.value || '',
-                            name: form.nome.value || '',
-                            email: form.email.value || '',
-                            company: form.empresa.value || '',
-                            message: 'Assunto: ' + (form.assunto.value || '') + '\n\nMensagem:\n' + (form.mensagem.value || '')
-                        })
-                    });
-
-                    var data = await res.json();
-                    if (data.success) {
-                        btn.innerText = 'Mensagem Enviada!';
-                        btn.style.background = '#10b981';
-                        form.reset();
-                    } else {
-                        throw new Error(data.message || 'Erro desconhecido');
-                    }
-                } catch (err) {
-                    btn.innerText = 'Erro ao enviar. Tente novamente.';
-                    btn.style.background = '#ef4444';
-                    console.error(err);
-                } finally {
-                    setTimeout(function() {
-                        btn.innerText = originalText;
-                        btn.disabled = false;
-                        btn.style.background = '';
-                        btn.style.cursor = '';
-                    }, 4000);
-                }
-            });
-        });
     </script>
+
+<script>
+    function toggleFooterMenu(menuId) {
+        const menu = document.getElementById(menuId);
+        const icon = document.getElementById('icon-' + menuId);
+        
+        // Se o menu já estiver aberto, fecha. Se não, abre.
+        if (menu.style.maxHeight === "0px" || menu.style.maxHeight === "") {
+            menu.style.maxHeight = "200px"; // Altura suficiente para os links
+            menu.style.opacity = "1";
+            menu.style.marginTop = "5px";
+            menu.style.marginBottom = "10px";
+            icon.style.transform = "rotate(180deg)";
+        } else {
+            menu.style.maxHeight = "0px";
+            menu.style.opacity = "0";
+            menu.style.marginTop = "0px";
+            menu.style.marginBottom = "0px";
+            icon.style.transform = "rotate(0deg)";
+        }
+    }
+    </script>
+
+<script>
+function toggleMainMenu(event) {
+    if(event) event.stopPropagation();
+    const dropdown = document.getElementById('main-nav-dropdown');
+    dropdown.classList.toggle('active');
+}
+
+// Fecha o menu ao clicar fora dele
+document.addEventListener('click', function(e) {
+    const dropdown = document.getElementById('main-nav-dropdown');
+    const kebab = document.querySelector('.kebab-btn');
+    if (!kebab.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('active');
+    }
+});
+</script>
 </body>
 </html>
