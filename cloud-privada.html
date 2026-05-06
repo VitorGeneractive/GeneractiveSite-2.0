@@ -184,11 +184,12 @@
             
             <div class="flex items-center gap-4 md:gap-6">
                 
-                <div class="relative group"> 
-                    <button class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
+                <div class="relative group" id="lang-selector"> 
+                    <button onclick="toggleLangMenu()" class="flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-[10px] font-bold hover:border-cyan-400 transition">
                         <i class="fas fa-globe text-cyan-400"></i> <span id="lang-label">PT</span>
                     </button>
-                    <div class="lang-dropdown absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden group-hover:block">
+                    <!-- Removido o group-hover:block do HTML para controlar via JS/CSS melhorado -->
+                    <div id="lang-dropdown" class="absolute right-0 mt-2 w-32 bg-gray-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 hidden">
                         <button onclick="changeLanguage('pt')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">PORTUGUÊS</button>
                         <button onclick="changeLanguage('en')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ENGLISH</button>
                         <button onclick="changeLanguage('es')" class="w-full px-4 py-2 text-left text-[10px] font-bold hover:bg-cyan-500 hover:text-black transition text-white">ESPAÑOL</button>
@@ -971,20 +972,41 @@
         });
     </script>
 <script>
-    function changeLanguage(lang) {
-        document.getElementById('lang-label').innerText = lang.toUpperCase();
-        const elements = document.querySelectorAll('[data-pt]');
-        elements.forEach(el => {
-            const text = el.getAttribute(`data-${lang}`);
-            if (text) el.innerText = text;
-        });
-        localStorage.setItem('generactive_lang', lang);
+    function toggleLangMenu() {
+    const dropdown = document.getElementById('lang-dropdown');
+    dropdown.classList.toggle('hidden');
+}
+
+// Fecha o menu se o usuário clicar fora dele
+window.onclick = function(event) {
+    if (!event.target.closest('#lang-selector')) {
+        const dropdown = document.getElementById('lang-dropdown');
+        if (!dropdown.classList.contains('hidden')) {
+            dropdown.classList.add('hidden');
+        }
     }
+}
+
+// Atualize sua função de mudar idioma para atualizar o label e fechar o menu
+function changeLanguage(lang) {
+    // Sua lógica de tradução atual (que já configuramos nos atributos data-pt, etc)
+    console.log("Mudando para:", lang);
     
-    window.onload = () => {
-        const savedLang = localStorage.getItem('generactive_lang') || 'pt';
-        changeLanguage(savedLang);
-    };
+    // Atualiza o texto do botão principal
+    document.getElementById('lang-label').innerText = lang.toUpperCase();
+    
+    // Salva a preferência
+    localStorage.setItem('generactive_lang', lang);
+    document.documentElement.lang = lang;
+
+    // Executa a tradução dos elementos
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        el.innerText = el.getAttribute('data-' + lang);
+    });
+
+    // Fecha o menu após a escolha
+    document.getElementById('lang-dropdown').classList.add('hidden');
+}
     </script>
 
 </body>
