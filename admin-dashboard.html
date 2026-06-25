@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - CMS Generactive</title>
+    <link rel="icon" type="image/png" href="LogoGuiaGen.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        :root { --brand-cyan: #00f2ff; --brand-blue: #0066ff; --bg-dark: #030712; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: #f3f4f6; }
+        .bg-grid { background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%); }
+        .glow-cursor { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0, 242, 255, 0.07) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0; transform: translate(-50%, -50%); }
+        .mag-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+        .mag-card:hover { border-color: var(--brand-cyan); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0, 242, 255, 0.1); }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-hidden">
+    <div class="glow-cursor" id="glow"></div>
+    <div class="fixed inset-0 bg-grid z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="LogoGeneractive.png" alt="Generactive" class="h-16 object-contain">
+                <div>
+                    <h1 class="text-lg font-black">CMS Generactive</h1>
+                    <p class="text-xs text-gray-400">Painel Administrativo</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="index.html" target="_blank" class="text-gray-400 hover:text-cyan-400 transition text-sm">
+                    <i class="fas fa-external-link-alt mr-2"></i>Ver Site
+                </a>
+                <button onclick="logout()" class="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-2 rounded-lg text-xs font-bold hover:bg-red-500 hover:text-black transition">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Sair
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="relative z-10 pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12">
+                <h2 class="text-3xl font-black mb-4">Selecione uma Página para Editar</h2>
+                <p class="text-gray-400">Escolha a página que deseja modificar o conteúdo</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="pagesGrid">
+                <!-- Pages will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efeito de cursor brilhante que segue o movimento do mouse
+        // Cria um efeito visual de brilho que acompanha o cursor pela página
+        document.addEventListener('mousemove', (e) => {
+            const glow = document.getElementById('glow');
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Verifica se o usuário está autenticado
+        // Verifica no localStorage se existe uma sessão de login válida
+        // Se não estiver autenticado, redireciona para a página de login
+        function checkAuth() {
+            if (localStorage.getItem('cms_logged_in') !== 'true') {
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+            return true;
+        }
+
+        // Função de logout (encerrar sessão)
+        // Remove os dados de sessão do localStorage e redireciona para a página de login
+        function logout() {
+            localStorage.removeItem('cms_logged_in');
+            localStorage.removeItem('cms_login_time');
+            window.location.href = 'admin-login.html';
+        }
+
+        // Lista de páginas disponíveis para edição
+        // Cada objeto representa uma página do site que pode ser editada através do CMS
+        const pages = [
+            { id: 'index', name: 'Página Inicial', file: 'index.html', icon: 'fa-home', description: 'Página principal com carousel e seções principais' },
+            { id: 'sobre-nos', name: 'Sobre Nós', file: 'sobre-nos.html', icon: 'fa-users', description: 'Informações sobre a empresa' },
+            { id: 'contato', name: 'Contato', file: 'contato.html', icon: 'fa-envelope', description: 'Formulário de contato' },
+            { id: 'cloud-publica', name: 'Cloud Pública', file: 'cloud-publica.html', icon: 'fa-cloud', description: 'Serviços de cloud pública' },
+            { id: 'cloud-privada', name: 'Cloud Privada', file: 'cloud-privada.html', icon: 'fa-lock', description: 'Serviços de cloud privada' },
+            { id: 'cloud-hibrida', name: 'Cloud Híbrida', file: 'cloud-hibrida.html', icon: 'fa-network-wired', description: 'Serviços de cloud híbrida' },
+            { id: 'automacao-inteligente', name: 'Automação IA', file: 'automacao-inteligente-com-ia.html', icon: 'fa-cogs', description: 'Automação inteligente com IA' },
+            { id: 'agentes-inteligentes', name: 'Agentes Inteligentes', file: 'agentes-inteligentes.html', icon: 'fa-robot', description: 'Soluções com agentes de IA' },
+            { id: 'machine-learning', name: 'Machine Learning', file: 'machine-learning.html', icon: 'fa-brain', description: 'Serviços de ML' },
+            { id: 'seguranca', name: 'Segurança TI', file: 'seguranca-e-governanca-de-ti.html', icon: 'fa-shield-alt', description: 'Segurança e governança' },
+            { id: 'ciberseguranca', name: 'Cibersegurança', file: 'cibersegurança-corporativa.html', icon: 'fa-user-shield', description: 'Proteção corporativa' },
+            { id: 'solucoes-customizadas', name: 'Soluções Customizadas', file: 'solucoes-customizadas.html', icon: 'fa-cubes', description: 'Soluções sob medida' }
+        ];
+
+        // Renderiza os cards das páginas disponíveis para edição
+        // Cria elementos HTML para cada página da lista, exibindo nome, descrição e ícone
+        // Cada card é clicável e redireciona para o editor da respectiva página
+        function renderPages() {
+            const grid = document.getElementById('pagesGrid');
+            grid.innerHTML = pages.map(page => `
+                <div class="mag-card p-8 rounded-2xl cursor-pointer" onclick="editPage('${page.id}')">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 bg-cyan-500/10 rounded-xl flex items-center justify-center text-cyan-400 text-xl">
+                            <i class="fas ${page.icon}"></i>
+                        </div>
+                        <span class="text-[10px] font-black tracking-wider text-cyan-500 border border-cyan-500/30 px-3 py-1 rounded-full uppercase">
+                            Editar
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-black mb-2">${page.name}</h3>
+                    <p class="text-gray-400 text-sm mb-4">${page.description}</p>
+                    <div class="pt-4 border-t border-white/5">
+                        <span class="text-xs text-gray-500 font-mono">${page.file}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Função para editar uma página específica
+        // Redireciona para o editor da página selecionada, passando o ID da página como parâmetro na URL
+        function editPage(pageId) {
+            window.location.href = `admin-editor.html?page=${pageId}`;
+        }
+
+        // Inicialização do dashboard
+        // Verifica se o usuário está autenticado e, se estiver, renderiza a lista de páginas
+        if (checkAuth()) {
+            renderPages();
+        }
+    </script>
+</body>
+</html>

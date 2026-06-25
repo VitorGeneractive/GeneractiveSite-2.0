@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor - CMS Generactive</title>
+    <link rel="icon" type="image/png" href="LogoGuiaGen.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        :root { --brand-cyan: #00f2ff; --brand-blue: #0066ff; --bg-dark: #030712; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: #f3f4f6; }
+        .bg-grid { background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%); }
+        .glow-cursor { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0, 242, 255, 0.07) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0; transform: translate(-50%, -50%); }
+        .mag-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+        .mag-card:hover { border-color: var(--brand-cyan); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0, 242, 255, 0.1); }
+        .editor-field { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 16px; transition: all 0.3s; margin-bottom: 16px; }
+        .editor-field:focus-within { border-color: var(--brand-cyan); box-shadow: 0 0 20px rgba(0, 242, 255, 0.1); }
+        .editor-field label { display: block; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; color: #9ca3af; margin-bottom: 8px; }
+        .editor-field input, .editor-field textarea { width: 100%; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 10px 12px; color: white; font-family: inherit; transition: all 0.3s; }
+        .editor-field input:focus, .editor-field textarea:focus { outline: none; border-color: var(--brand-cyan); }
+        .editor-field input.small { padding: 6px 10px; font-size: 13px; }
+        .editor-field textarea { min-height: 100px; resize: vertical; }
+        .editor-field textarea.large { min-height: 150px; }
+        .image-preview { width: 100%; height: 200px; background: rgba(0, 0, 0, 0.3); border: 2px dashed rgba(255, 255, 255, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; cursor: pointer; transition: all 0.3s; }
+        .image-preview:hover { border-color: var(--brand-cyan); }
+        .image-preview img { width: 100%; height: 100%; object-fit: cover; }
+        .image-preview .placeholder { text-align: center; color: #6b7280; }
+        .lang-btn, .section-btn { padding: 8px 16px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #9ca3af; font-weight: 600; font-size: 12px; transition: all 0.3s; cursor: pointer; }
+        .lang-btn.active, .section-btn.active { background: var(--brand-cyan); color: black; border-color: var(--brand-cyan); }
+        .lang-btn:hover:not(.active), .section-btn:hover:not(.active) { background: rgba(255, 255, 255, 0.1); color: white; border-color: rgba(255, 255, 255, 0.2); }
+        .preview-panel { position: fixed; left: 0; top: 80px; width: 100%; height: calc(100vh - 100px); background: #0a0a0a; z-index: 40; overflow: hidden; }
+        .preview-panel iframe { width: 100%; height: 100%; border: none; overflow-y: auto; overflow-x: hidden; }
+        .editor-panel { position: fixed; right: -450px; top: 80px; width: 450px; height: calc(100vh - 100px); background: #0a0a0a; border-left: 1px solid rgba(255, 255, 255, 0.1); transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1), width 0.3s ease; z-index: 50; display: flex; flex-direction: column; }
+        .editor-panel.open { right: 0; }
+        .editor-panel.large { width: 700px; }
+        .editor-panel.minimized { width: 50px; overflow: hidden; }
+        .editor-panel.minimized .editor-header, .editor-panel.minimized .editor-content { display: none; }
+        .editor-header { flex-shrink: 0; }
+        .editor-content { flex: 1; overflow-y: auto; overflow-x: hidden; }
+        .editor-toggle { position: fixed; right: 20px; top: 100px; z-index: 60; background: rgba(0, 242, 255, 0.1); border: 1px solid rgba(0, 242, 255, 0.3); color: #00f2ff; padding: 12px 16px; border-radius: 12px; cursor: pointer; transition: all 0.3s; font-weight: 600; }
+        .editor-toggle:hover { background: rgba(0, 242, 255, 0.2); }
+        .editor-toggle.active { background: #00f2ff; color: black; }
+        .minimize-btn { position: absolute; left: 10px; top: 10px; z-index: 10; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #9ca3af; padding: 8px 12px; border-radius: 8px; cursor: pointer; transition: all 0.3s; font-size: 14px; }
+        .minimize-btn:hover { background: rgba(255, 255, 255, 0.2); color: white; }
+    </style>
+</head>
+<body class="min-h-screen relative">
+    <div class="glow-cursor" id="glow"></div>
+    <div class="fixed inset-0 bg-grid z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 border-b border-white/5 bg-dark/90 backdrop-blur-md px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <button onclick="goBack()" class="text-gray-400 hover:text-cyan-400 transition">
+                    <i class="fas fa-arrow-left mr-2"></i>Voltar
+                </button>
+                <div class="h-6 w-px bg-white/10"></div>
+                <div>
+                    <h1 class="text-lg font-black" id="pageTitle">Editor</h1>
+                    <p class="text-xs text-gray-400" id="pageSubtitle">Editando conteúdo</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="toggleEditor()" id="editorToggle" class="bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 px-4 py-2 rounded-lg font-bold text-xs hover:bg-cyan-500 hover:text-black transition">
+                    <i class="fas fa-cog mr-2"></i>Configurações
+                </button>
+                <a href="index.html" target="_blank" class="text-gray-400 hover:text-cyan-400 transition text-sm">
+                    <i class="fas fa-external-link-alt mr-2"></i>Ver Site
+                </a>
+                <button onclick="saveChanges()" class="bg-cyan-500 text-black px-6 py-2 rounded-lg font-bold text-xs hover:bg-cyan-400 transition uppercase tracking-wider">
+                    <i class="fas fa-save mr-2"></i>Salvar Alterações
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Preview Panel (sempre visível na esquerda) -->
+    <div class="preview-panel" id="previewPanel">
+        <iframe id="previewFrame" src="index.html" sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals"></iframe>
+    </div>
+
+    <!-- Editor Panel (abre/fecha na direita) -->
+    <div class="editor-panel" id="editorPanel">
+        <button class="minimize-btn" onclick="toggleMinimize()" id="minimizeBtn">
+            <i class="fas fa-chevron-right" id="minimizeIcon"></i>
+        </button>
+        <div class="editor-header p-4 border-b border-white/10 flex justify-between items-center bg-black/50">
+            <span class="text-sm font-bold text-cyan-400 ml-12"><i class="fas fa-cog mr-2"></i>Configurações</span>
+            <div class="flex gap-2">
+                <button onclick="toggleEditorSize()" id="sizeToggleBtn" class="text-gray-400 hover:text-cyan-400 transition text-xs">
+                    <i class="fas fa-expand-alt mr-1"></i>Expandir
+                </button>
+            </div>
+        </div>
+        <div class="editor-content p-6 overflow-y-auto">
+            <!-- Language Tabs -->
+            <div class="flex gap-2 mb-8">
+                <button onclick="switchLang('pt')" class="lang-btn ${currentLang === 'pt' ? 'active' : ''}">Português</button>
+                <button onclick="switchLang('en')" class="lang-btn ${currentLang === 'en' ? 'active' : ''}">English</button>
+                <button onclick="switchLang('es')" class="lang-btn ${currentLang === 'es' ? 'active' : ''}">Español</button>
+            </div>
+
+            <!-- Section Navigation -->
+            <div class="flex flex-wrap gap-2 mb-8">
+                <span class="text-xs font-bold uppercase text-gray-400 self-center mr-2">Seções:</span>
+                <div id="sectionNav" class="flex flex-wrap gap-2">
+                    <!-- Section buttons will be loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Current Section Indicator -->
+            <div id="sectionIndicator" class="mb-6 p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/30 hidden">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-info-circle text-cyan-400"></i>
+                    <span class="text-sm text-cyan-400 font-semibold" id="sectionIndicatorText">Editando: Hero / Carousel</span>
+                </div>
+            </div>
+
+            <!-- Editor Sections -->
+            <div id="editorSections" class="space-y-6">
+                <!-- Sections will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-green-500 text-black px-6 py-3 rounded-xl font-bold shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <i class="fas fa-check-circle mr-2"></i>
+        <span id="toastMessage">Alterações salvas com sucesso!</span>
+    </div>
+
+    <script>
+        // Efeito de cursor brilhante que segue o movimento do mouse
+        // Cria um efeito visual de brilho que acompanha o cursor pela página
+        document.addEventListener('mousemove', (e) => {
+            const glow = document.getElementById('glow');
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Variáveis de estado do editor
+        // currentPage: ID da página atualmente sendo editada
+        // currentLang: Idioma atual de edição (pt, en, es)
+        // currentSection: Seção atual de edição (hero, marquee, cloud_services, etc)
+        // contentData: Objeto que armazena todo o conteúdo editado do CMS
+        let currentPage = null;
+        let currentLang = 'pt';
+        let currentSection = 'hero';
+        let contentData = {};
+
+        // Configurações das páginas editáveis
+        // Define quais campos podem ser editados para cada página do site
+        // Organizado por seções do site para facilitar a navegação
+        const pageConfigs = {
+            'index': {
+                name: 'Página Inicial',
+                file: 'index.html',
+                sections: {
+                    'hero': {
+                        name: 'Hero / Carousel',
+                        icon: 'fa-home',
+                        fields: [
+                            {
+                                id: 'hero_title',
+                                label: 'Título Principal',
+                                type: 'text',
+                                default: 'Conectando o Físico ao Digital'
+                            },
+                            {
+                                id: 'hero_desc',
+                                label: 'Descrição Principal',
+                                type: 'textarea',
+                                default: 'Integramos equipamentos, sensores e dispositivos para transformar sua operação em dados inteligentes.'
+                            },
+                            {
+                                id: 'hero_cta',
+                                label: 'Texto do Botão CTA',
+                                type: 'text',
+                                default: 'Solicite uma avaliação'
+                            }
+                        ]
+                    },
+                    'marquee': {
+                        name: 'Marquee (Texto em movimento)',
+                        icon: 'fa-forward',
+                        fields: [
+                            {
+                                id: 'marquee_text_1',
+                                label: 'Texto 1',
+                                type: 'text',
+                                default: 'Automação Inteligente com IA'
+                            },
+                            {
+                                id: 'marquee_text_2',
+                                label: 'Texto 2',
+                                type: 'text',
+                                default: 'Cloud Services'
+                            },
+                            {
+                                id: 'marquee_text_3',
+                                label: 'Texto 3',
+                                type: 'text',
+                                default: 'Cibersegurança Avançada'
+                            },
+                            {
+                                id: 'marquee_text_4',
+                                label: 'Texto 4',
+                                type: 'text',
+                                default: 'Internet das Coisas (IoT)'
+                            },
+                            {
+                                id: 'marquee_text_5',
+                                label: 'Texto 5',
+                                type: 'text',
+                                default: 'Agentes Inteligentes'
+                            },
+                            {
+                                id: 'marquee_text_6',
+                                label: 'Texto 6',
+                                type: 'text',
+                                default: 'Telemetria e Monitoramento'
+                            },
+                            {
+                                id: 'marquee_text_7',
+                                label: 'Texto 7',
+                                type: 'text',
+                                default: 'Gestão de Ativos e Sensores'
+                            },
+                            {
+                                id: 'marquee_text_8',
+                                label: 'Texto 8',
+                                type: 'text',
+                                default: 'Dados Inteligentes & Analytics'
+                            },
+                            {
+                                id: 'marquee_text_9',
+                                label: 'Texto 9',
+                                type: 'text',
+                                default: 'Integração de Sistemas Avançados'
+                            }
+                        ]
+                    },
+                    'cloud_services': {
+                        name: 'Cloud Services',
+                        icon: 'fa-cloud',
+                        fields: [
+                            {
+                                id: 'section1_title',
+                                label: 'Título',
+                                type: 'text',
+                                default: 'Cloud Services: o motor da sua infraestrutura digital'
+                            },
+                            {
+                                id: 'section1_desc',
+                                label: 'Descrição',
+                                type: 'textarea',
+                                default: 'Recursos computacionais sob demanda — servidores, armazenamento e redes — sem a necessidade de investir em infraestrutura física própria. Mais agilidade, segurança e resiliência.'
+                            },
+                            {
+                                id: 'section1_quote',
+                                label: 'Citação',
+                                type: 'textarea',
+                                default: 'A nuvem permite escalar em minutos para atender picos de demanda. Com a Generactive, sua infraestrutura digital passa a ser um diferencial competitivo.'
+                            }
+                        ]
+                    },
+                    'models': {
+                        name: 'Modelos de Cloud',
+                        icon: 'fa-layer-group',
+                        fields: [
+                            {
+                                id: 'section2_title',
+                                label: 'Título',
+                                type: 'text',
+                                default: 'Modelos de Cloud Services'
+                            }
+                        ]
+                    },
+                    'backup': {
+                        name: 'Backup e Gestão',
+                        icon: 'fa-database',
+                        fields: [
+                            {
+                                id: 'section3_title',
+                                label: 'Título',
+                                type: 'text',
+                                default: 'Backup, Migração e Gestão Inteligente'
+                            }
+                        ]
+                    },
+                    'leaders': {
+                        name: 'Líderes Globais',
+                        icon: 'fa-users',
+                        fields: [
+                            {
+                                id: 'leaders_title',
+                                label: 'Título',
+                                type: 'text',
+                                default: 'Por que líderes globais escolhem a Generactive?'
+                            },
+                            {
+                                id: 'leaders_desc',
+                                label: 'Descrição',
+                                type: 'textarea',
+                                default: 'Unimos inovação tecnológica e expertise em arquitetura de nuvem para entregar soluções sob medida. Atuamos com ambientes multicloud, integrando AWS, Azure e Google Cloud para garantir flexibilidade, segurança e alta performance.'
+                            },
+                            {
+                                id: 'partners_text',
+                                label: 'Texto Certified Partners',
+                                type: 'text',
+                                default: 'Certified Partners'
+                            },
+                            {
+                                id: 'uptime_text',
+                                label: 'Texto Uptime',
+                                type: 'text',
+                                default: 'Uptime_Stream: 99.998%'
+                            },
+                            {
+                                id: 'quote_text',
+                                label: 'Citação',
+                                type: 'textarea',
+                                default: 'Alta disponibilidade, suporte 24/7, compliance e soluções multicloud desenhadas para suportar operações de missão crítica em escala global.'
+                            }
+                        ]
+                    },
+                    'stats': {
+                        name: 'Estatísticas',
+                        icon: 'fa-chart-bar',
+                        fields: [
+                            {
+                                id: 'stat1_title',
+                                label: 'Estatística 1 - Título',
+                                type: 'text',
+                                default: '+99,9%'
+                            },
+                            {
+                                id: 'stat1_label',
+                                label: 'Estatística 1 - Label',
+                                type: 'text',
+                                default: 'Uptime Garantido'
+                            },
+                            {
+                                id: 'stat1_desc',
+                                label: 'Estatística 1 - Descrição',
+                                type: 'textarea',
+                                default: 'Disponibilidade contínua para sua operação global.'
+                            },
+                            {
+                                id: 'stat2_title',
+                                label: 'Estatística 2 - Título',
+                                type: 'text',
+                                default: '24/7'
+                            },
+                            {
+                                id: 'stat2_label',
+                                label: 'Estatística 2 - Label',
+                                type: 'text',
+                                default: 'Suporte Expert'
+                            },
+                            {
+                                id: 'stat2_desc',
+                                label: 'Estatística 2 - Descrição',
+                                type: 'textarea',
+                                default: 'Equipe especializada sempre à disposição para agir.'
+                            },
+                            {
+                                id: 'stat3_title',
+                                label: 'Estatística 3 - Título',
+                                type: 'text',
+                                default: 'Total'
+                            },
+                            {
+                                id: 'stat3_label',
+                                label: 'Estatística 3 - Label',
+                                type: 'text',
+                                default: 'Compliance'
+                            },
+                            {
+                                id: 'stat3_desc',
+                                label: 'Estatística 3 - Descrição',
+                                type: 'textarea',
+                                default: 'ISO/IEC 27001, LGPD e GDPR aplicados nativamente.'
+                            },
+                            {
+                                id: 'stat4_title',
+                                label: 'Estatística 4 - Título',
+                                type: 'text',
+                                default: 'Preditivo'
+                            },
+                            {
+                                id: 'stat4_label',
+                                label: 'Estatística 4 - Label',
+                                type: 'text',
+                                default: 'Gestão Inteligente'
+                            },
+                            {
+                                id: 'stat4_desc',
+                                label: 'Estatística 4 - Descrição',
+                                type: 'textarea',
+                                default: 'Monitoramento inteligente com alertas proativos.'
+                            },
+                            {
+                                id: 'stat5_title',
+                                label: 'Estatística 5 - Título',
+                                type: 'text',
+                                default: 'Experts'
+                            },
+                            {
+                                id: 'stat5_label',
+                                label: 'Estatística 5 - Label',
+                                type: 'text',
+                                default: 'Certificação Cloud'
+                            },
+                            {
+                                id: 'stat5_desc',
+                                label: 'Estatística 5 - Descrição',
+                                type: 'textarea',
+                                default: 'Equipe certificada nas principais plataformas cloud.'
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        // Índice do slide atualmente visível no editor de slides
+        // Controla qual slide está sendo exibido quando há múltiplos slides
+        let currentSlideIndex = 0;
+
+        // Slides padrão do carousel
+        // Define os slides originais do site que podem ser editados ou resetados
+        // Cada slide tem: id, imagem, título e descrição nos 3 idiomas (pt, en, es) e link
+        const defaultSlides = [
+            {
+                id: 'slide1',
+                image: 'IoT.png',
+                title_pt: 'Conectando o Físico ao Digital',
+                title_en: 'Connecting the Physical to the Digital',
+                title_es: 'Conectando lo Físico con lo Digital',
+                desc_pt: 'Integramos equipamentos, sensores e dispositivos para transformar sua operação em dados inteligentes.',
+                desc_en: 'We integrate equipment, sensors, and devices to transform your operation into intelligent data.',
+                desc_es: 'Integramos equipos, sensores y dispositivos para transformar su operação en dados inteligentes.',
+                link: 'automacao-inteligente-com-ia.html'
+            },
+            {
+                id: 'slide2',
+                image: 'Parceiros2.0.png',
+                title_pt: 'Conectados aos Líderes Globais de Tecnologia',
+                title_en: 'Connected to Global Technology Leaders',
+                title_es: 'Conectados a los Líderes Globales de Tecnología',
+                desc_pt: 'Integramos sua estrutura às maiores plataformas de nuvem e inteligência do mercado para garantir uma operação ágil, escalável e totalmente segura.',
+                desc_en: 'We integrate your structure with the market\'s leading cloud and intelligence platforms to ensure an agile, scalable, and fully secure operation.',
+                desc_es: 'Integramos su estructura con las principales plataformas de nube e inteligencia del mercado para garantir una operação ágil, escalable y totalmente segura.',
+                link: '#modelos'
+            },
+            {
+                id: 'slide3',
+                image: 'IA-generativa.png',
+                title_pt: 'Cibersegurança Avançada',
+                title_en: 'Advanced Cybersecurity',
+                title_es: 'Ciberseguridad Avanzada',
+                desc_pt: 'Proteja seus dados e sua operação com protocolos de segurança de última geração e monitoramento contínuo.',
+                desc_en: 'Protect your data and operation with next-gen security protocols and continuous monitoring.',
+                desc_es: 'Proteja sus dados y su operação con protocolos de segurança de última geração.',
+                link: 'agentes-inteligentes.html'
+            }
+        ];
+
+        // Obtém o ID da página a ser editada a partir da URL
+        // Lê o parâmetro 'page' da URL e retorna o valor, ou 'index' como padrão
+        function getPageFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('page') || 'index';
+        }
+
+        // Verifica se o usuário está autenticado
+        // Verifica no localStorage se existe uma sessão de login válida
+        // Se não estiver autenticado, redireciona para a página de login
+        function checkAuth() {
+            if (localStorage.getItem('cms_logged_in') !== 'true') {
+                window.location.href = 'admin-login.html';
+                return false;
+            }
+            return true;
+        }
+
+        // Volta para o dashboard
+        // Redireciona o usuário para a página de seleção de páginas
+        function goBack() {
+            window.location.href = 'admin-dashboard.html';
+        }
+
+        // Altera o idioma de edição
+        // Muda o idioma atual e re-renderiza o editor para mostrar os campos no novo idioma
+        function switchLang(lang) {
+            currentLang = lang;
+            renderEditor();
+        }
+
+        // Altera a seção de edição
+        // Muda a seção atual e re-renderiza o editor para mostrar os campos da seção selecionada
+        function switchSection(section) {
+            currentSection = section;
+            renderEditor();
+        }
+
+        // Carrega o conteúdo editado do localStorage
+        // Lê os dados salvos anteriormente e popula o objeto contentData
+        // Se não houver dados salvos, contentData permanece vazio
+        function loadContent() {
+            const stored = localStorage.getItem('cms_content');
+            if (stored) {
+                contentData = JSON.parse(stored);
+            }
+        }
+
+        // Salva o conteúdo editado no localStorage
+        // Converte o objeto contentData para JSON e armazena no navegador
+        // Os dados persistem mesmo após fechar o navegador
+        function saveContent() {
+            localStorage.setItem('cms_content', JSON.stringify(contentData));
+        }
+
+        // Renderiza as seções do editor
+        // Gera dinamicamente os campos de edição baseados na configuração da página atual
+        // Organiza por seções do site para facilitar a navegação
+        function renderEditor() {
+            const config = pageConfigs[currentPage];
+            if (!config) {
+                // Exibe mensagem se a página não estiver configurada
+                document.getElementById('editorSections').innerHTML = `
+                    <div class="mag-card p-8 rounded-2xl text-center">
+                        <i class="fas fa-exclamation-triangle text-4xl text-yellow-400 mb-4"></i>
+                        <h3 class="text-xl font-black mb-2">Página não configurada</h3>
+                        <p class="text-gray-400">Esta página ainda não tem configuração de edição.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Atualiza o título e subtítulo da página
+            document.getElementById('pageTitle').textContent = config.name;
+            document.getElementById('pageSubtitle').textContent = config.file;
+
+            // Renderiza os botões de navegação de seções
+            const sectionNav = document.getElementById('sectionNav');
+            sectionNav.innerHTML = Object.entries(config.sections).map(([sectionId, section]) => `
+                <button onclick="switchSection('${sectionId}')" 
+                        class="section-btn px-4 py-2 rounded-lg text-xs font-bold transition ${currentSection === sectionId ? 'bg-cyan-500 text-black' : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'}">
+                    <i class="fas ${section.icon} mr-2"></i>${section.name}
+                </button>
+            `).join('');
+
+            // Atualiza o indicador de seção atual
+            const sectionIndicator = document.getElementById('sectionIndicator');
+            const sectionIndicatorText = document.getElementById('sectionIndicatorText');
+            const currentSectionConfig = config.sections[currentSection];
+            
+            if (currentSectionConfig) {
+                sectionIndicator.classList.remove('hidden');
+                sectionIndicatorText.textContent = `Editando: ${currentSectionConfig.name}`;
+            } else {
+                sectionIndicator.classList.add('hidden');
+            }
+
+            // Gera os campos da seção atual
+            const sectionConfig = config.sections[currentSection];
+            if (!sectionConfig) {
+                document.getElementById('editorSections').innerHTML = '';
+                return;
+            }
+
+            // Agrupa campos relacionados em grids
+            // Para seções como marquee, mantém campos separados (um abaixo do outro)
+            const groupedFields = [];
+            let currentGroup = [];
+            
+            sectionConfig.fields.forEach((field, index) => {
+                const fieldId = `${field.id}_${currentLang}`;
+                const currentValue = contentData[currentPage]?.[fieldId] || field.default;
+                const isEdited = contentData[currentPage]?.[fieldId] !== undefined;
+
+                // Se for seção marquee, não agrupa campos - cada campo fica separado
+                if (currentSection === 'marquee') {
+                    // Gera campo de texto simples
+                    if (field.type === 'text') {
+                        groupedFields.push([{
+                            html: `
+                                <div class="editor-field">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <label class="mb-0 text-xs font-bold uppercase text-gray-400">${field.label}</label>
+                                        ${isEdited ? `<button onclick="resetField('${field.id}')" class="text-xs text-cyan-400 hover:text-cyan-300">
+                                            <i class="fas fa-undo mr-1"></i>Reset
+                                        </button>` : ''}
+                                    </div>
+                                    <input type="text" id="${fieldId}" value="${currentValue}"
+                                           class="small" onchange="updateField('${field.id}', this.value)">
+                                </div>
+                            `,
+                            type: 'text'
+                        }]);
+                    } else if (field.type === 'textarea') {
+                        groupedFields.push([{
+                            html: `
+                                <div class="editor-field">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <label class="mb-0 text-xs font-bold uppercase text-gray-400">${field.label}</label>
+                                        ${isEdited ? `<button onclick="resetField('${field.id}')" class="text-xs text-cyan-400 hover:text-cyan-300">
+                                            <i class="fas fa-undo mr-1"></i>Reset
+                                        </button>` : ''}
+                                    </div>
+                                    <textarea id="${fieldId}" class="large" onchange="updateField('${field.id}', this.value)">${currentValue}</textarea>
+                                </div>
+                            `,
+                            type: 'textarea'
+                        }]);
+                    } else if (field.type === 'image') {
+                        const isBase64 = currentValue && currentValue.startsWith('data:image');
+                        groupedFields.push([{
+                            html: `
+                                <div class="editor-field">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <label class="mb-0 text-xs font-bold uppercase text-gray-400">${field.label}</label>
+                                        ${isEdited ? `<button onclick="resetField('${field.id}')" class="text-xs text-cyan-400 hover:text-cyan-300">
+                                            <i class="fas fa-undo mr-1"></i>Reset
+                                        </button>` : ''}
+                                    </div>
+                                    <input type="file" id="${fieldId}_input" accept="image/*" class="hidden" onchange="handleImageUpload('${field.id}', this)">
+                                    <div class="image-preview h-32" onclick="document.getElementById('${fieldId}_input').click()">
+                                        ${isBase64 ? `<img src="${currentValue}" alt="Preview">` :
+                                          `<div class="placeholder">
+                                               <i class="fas fa-cloud-upload-alt text-2xl mb-2"></i>
+                                               <p class="text-xs font-bold">Clique para upload</p>
+                                               <p class="text-xs mt-1">${currentValue || 'Nenhuma imagem selecionada'}</p>
+                                           </div>`}
+                                    </div>
+                                </div>
+                            `,
+                            type: 'image'
+                        }]);
+                    }
+                } else {
+                    // Para outras seções, agrupa campos relacionados em grids
+                    // Gera campo de texto simples
+                    if (field.type === 'text') {
+                        currentGroup.push({
+                            html: `
+                                <div class="editor-field">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <label class="mb-0 text-xs font-bold uppercase text-gray-400">${field.label}</label>
+                                        ${isEdited ? `<button onclick="resetField('${field.id}')" class="text-xs text-cyan-400 hover:text-cyan-300">
+                                            <i class="fas fa-undo mr-1"></i>Reset
+                                        </button>` : ''}
+                                    </div>
+                                    <input type="text" id="${fieldId}" value="${currentValue}"
+                                           class="small" onchange="updateField('${field.id}', this.value)">
+                                </div>
+                            `,
+                            type: 'text'
+                        });
+                    } else if (field.type === 'textarea') {
+                        // Adiciona grupo atual se tiver campos
+                        if (currentGroup.length > 0) {
+                            groupedFields.push(currentGroup);
+                            currentGroup = [];
+                        }
+                        // Textarea fica em grid separado
+                        groupedFields.push([{
+                            html: `
+                                <div class="editor-field">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <label class="mb-0 text-xs font-bold uppercase text-gray-400">${field.label}</label>
+                                        ${isEdited ? `<button onclick="resetField('${field.id}')" class="text-xs text-cyan-400 hover:text-cyan-300">
+                                            <i class="fas fa-undo mr-1"></i>Reset
+                                        </button>` : ''}
+                                    </div>
+                                    <textarea id="${fieldId}" class="large" onchange="updateField('${field.id}', this.value)">${currentValue}</textarea>
+                                </div>
+                            `,
+                            type: 'textarea'
+                        }]);
+                    } else if (field.type === 'image') {
+                        // Adiciona grupo atual se tiver campos
+                        if (currentGroup.length > 0) {
+                            groupedFields.push(currentGroup);
+                            currentGroup = [];
+                        }
+                        // Imagem fica separada
+                        const isBase64 = currentValue && currentValue.startsWith('data:image');
+                        groupedFields.push([{
+                            html: `
+                                <div class="editor-field">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <label class="mb-0 text-xs font-bold uppercase text-gray-400">${field.label}</label>
+                                        ${isEdited ? `<button onclick="resetField('${field.id}')" class="text-xs text-cyan-400 hover:text-cyan-300">
+                                            <i class="fas fa-undo mr-1"></i>Reset
+                                        </button>` : ''}
+                                    </div>
+                                    <input type="file" id="${fieldId}_input" accept="image/*" class="hidden" onchange="handleImageUpload('${field.id}', this)">
+                                    <div class="image-preview h-32" onclick="document.getElementById('${fieldId}_input').click()">
+                                        ${isBase64 ? `<img src="${currentValue}" alt="Preview">` :
+                                          `<div class="placeholder">
+                                               <i class="fas fa-cloud-upload-alt text-2xl mb-2"></i>
+                                               <p class="text-xs font-bold">Clique para upload</p>
+                                               <p class="text-xs mt-1">${currentValue || 'Nenhuma imagem selecionada'}</p>
+                                           </div>`}
+                                    </div>
+                                </div>
+                            `,
+                            type: 'image'
+                        }]);
+                    }
+                }
+            });
+
+            // Adiciona último grupo se tiver campos (apenas para seções não-marquee)
+            if (currentSection !== 'marquee' && currentGroup.length > 0) {
+                groupedFields.push(currentGroup);
+            }
+
+            // Gera HTML dos campos agrupados
+            // Se o grupo tiver apenas 1 campo, renderiza direto
+            // Se tiver 2 campos, usa grid de 2 colunas (lado a lado)
+            // Se tiver mais de 2 campos, usa grid com número de colunas igual ao tamanho do grupo
+            const fieldsHtml = groupedFields.map(group => {
+                if (group.length === 1) {
+                    return group[0].html;
+                } else if (group.length === 2) {
+                    return `
+                        <div class="grid grid-cols-2 gap-4">
+                            ${group.map(f => f.html).join('')}
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="grid grid-cols-${group.length} gap-4">
+                            ${group.map(f => f.html).join('')}
+                        </div>
+                    `;
+                }
+            }).join('');
+
+            // Adiciona gerenciador de slides do carousel para a seção hero
+            // Apenas mostra quando estiver editando a seção hero da página index
+            // Permite adicionar, remover e editar slides do carousel
+            let slidesHtml = '';
+            if (currentSection === 'hero' && currentPage === 'index') {
+                const customSlides = contentData['index']?.['custom_slides'] || defaultSlides;
+                const slidesEdited = contentData['index']?.['custom_slides'] !== undefined;
+
+                // Gera HTML para gerenciamento de slides
+                // Inclui botões para resetar aos slides padrão e adicionar novos slides
+                slidesHtml = `
+                    <div class="mag-card p-8 rounded-2xl mt-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-black"><i class="fas fa-images mr-2 text-cyan-400"></i>Slides do Carousel</h3>
+                            <div class="flex gap-2">
+                                ${slidesEdited ? `<button onclick="resetSlides()" class="text-xs text-cyan-400 hover:text-cyan-300 px-3 py-2 rounded-lg border border-cyan-500/30">
+                                    <i class="fas fa-undo mr-1"></i>Reset Padrão
+                                </button>` : ''}
+                                <button onclick="addSlide()" class="text-xs bg-cyan-500 text-black px-3 py-2 rounded-lg font-bold hover:bg-cyan-400">
+                                    <i class="fas fa-plus mr-1"></i>Adicionar Slide
+                                </button>
+                            </div>
+                        </div>
+                        <div id="slidesContainer" class="space-y-6">
+                            ${customSlides.map((slide, index) => renderSlideEditor(slide, index, customSlides.length, currentSlideIndex)).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Combina os campos com o gerenciador de slides (se aplicável)
+            // Insere o HTML gerado no elemento editorSections do DOM
+            document.getElementById('editorSections').innerHTML = fieldsHtml + slidesHtml;
+        }
+
+        // Atualiza o valor de um campo de edição
+        // Armazena o novo valor no objeto contentData com o ID do campo e idioma
+        // O ID do campo é composto pelo ID base + sufixo do idioma (ex: hero_title_pt)
+        function updateField(sectionId, value) {
+            const fieldId = `${sectionId}_${currentLang}`;
+            if (!contentData[currentPage]) {
+                contentData[currentPage] = {};
+            }
+            contentData[currentPage][fieldId] = value;
+        }
+
+        // Reseta um campo para o valor original (padrão)
+        // Remove o valor editado do contentData, fazendo com que o valor padrão seja usado
+        // Re-renderiza o editor para mostrar o valor padrão atualizado
+        function resetField(sectionId) {
+            const config = pageConfigs[currentPage];
+            const section = config.sections.find(s => s.id === sectionId);
+            if (section) {
+                const fieldId = `${sectionId}_${currentLang}`;
+                if (contentData[currentPage]) {
+                    delete contentData[currentPage][fieldId];
+                }
+                renderEditor(); // Re-renderiza para mostrar o valor padrão
+            }
+        }
+
+        // Renderiza o editor de um slide individual do carousel
+        // Gera o HTML para editar um slide específico com imagem, link, título e descrição
+        // Inclui controles de navegação (primeiro, anterior, próximo, último) e seleção de idioma
+        // Apenas o slide atual (currentIndex) é visível, os outros ficam ocultos
+        function renderSlideEditor(slide, index, totalSlides, currentIndex) {
+            const isBase64 = slide.image.startsWith('data:image');
+            const isVisible = index === currentIndex;
+            return `
+                <div class="bg-white/5 border border-white/10 rounded-xl p-6 ${isVisible ? '' : 'hidden'}" data-slide-index="${index}">
+                    <div class="flex justify-between items-center mb-4">
+                        <div class="flex items-center gap-3">
+                            <h4 class="font-bold text-cyan-400">Slide ${index + 1} de ${totalSlides}</h4>
+                            <div class="flex gap-1">
+                                <button onclick="navigateSlide('first')" class="text-gray-400 hover:text-cyan-400 transition px-2 py-1 rounded border border-white/10 hover:border-cyan-400 text-xs" title="Ir para o início">
+                                    <i class="fas fa-angle-double-left"></i>
+                                </button>
+                                <button onclick="navigateSlide('prev')" class="text-gray-400 hover:text-cyan-400 transition px-2 py-1 rounded border border-white/10 hover:border-cyan-400 text-xs" title="Voltar um">
+                                    <i class="fas fa-angle-left"></i>
+                                </button>
+                                <button onclick="navigateSlide('next')" class="text-gray-400 hover:text-cyan-400 transition px-2 py-1 rounded border border-white/10 hover:border-cyan-400 text-xs" title="Avançar um">
+                                    <i class="fas fa-angle-right"></i>
+                                </button>
+                                <button onclick="navigateSlide('last')" class="text-gray-400 hover:text-cyan-400 transition px-2 py-1 rounded border border-white/10 hover:border-cyan-400 text-xs" title="Ir para o final">
+                                    <i class="fas fa-angle-double-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="switchLang('pt')" class="text-xs px-2 py-1 rounded border border-white/10 hover:border-cyan-400 transition ${currentLang === 'pt' ? 'bg-cyan-500 text-black border-cyan-500' : 'text-gray-400 hover:text-cyan-400'}">PT</button>
+                            <button onclick="switchLang('en')" class="text-xs px-2 py-1 rounded border border-white/10 hover:border-cyan-400 transition ${currentLang === 'en' ? 'bg-cyan-500 text-black border-cyan-500' : 'text-gray-400 hover:text-cyan-400'}">EN</button>
+                            <button onclick="switchLang('es')" class="text-xs px-2 py-1 rounded border border-white/10 hover:border-cyan-400 transition ${currentLang === 'es' ? 'bg-cyan-500 text-black border-cyan-500' : 'text-gray-400 hover:text-cyan-400'}">ES</button>
+                            <button onclick="removeSlide(${index})" class="text-xs text-red-400 hover:text-red-300 px-2 py-1">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-gray-400 mb-2">Imagem</label>
+                            <input type="file" id="slide_${index}_image_input" accept="image/*" class="hidden" onchange="updateSlideImage(${index}, this)">
+                            <div class="image-preview h-32" onclick="document.getElementById('slide_${index}_image_input').click()">
+                                ${isBase64 ? `<img src="${slide.image}" alt="Preview">` :
+                                  `<div class="placeholder">
+                                       <i class="fas fa-cloud-upload-alt text-2xl mb-2"></i>
+                                       <p class="text-xs font-bold">Clique para upload</p>
+                                       <p class="text-xs mt-1">${slide.image}</p>
+                                   </div>`}
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Título (${currentLang.toUpperCase()})</label>
+                                <input type="text" value="${slide[`title_${currentLang}`] || ''}" onchange="updateSlideField(${index}, 'title_${currentLang}', this.value)"
+                                       class="w-full bg-black/30 border border-white/10 rounded-lg px-3 py-2 text-white text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase text-gray-400 mb-1">Link</label>
+                                <input type="text" value="${slide.link || ''}" onchange="updateSlideField(${index}, 'link', this.value)"
+                                       class="w-full bg-black/30 border border-white/10 rounded-lg px-3 py-2 text-white text-sm">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <label class="block text-xs font-bold uppercase text-gray-400 mb-2">Descrição (${currentLang.toUpperCase()})</label>
+                        <textarea onchange="updateSlideField(${index}, 'desc_${currentLang}', this.value)"
+                               class="w-full bg-black/30 border border-white/10 rounded-lg px-3 py-2 text-white text-sm h-32">${slide[`desc_${currentLang}`] || ''}</textarea>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Adiciona um novo slide ao carousel
+        // Cria um slide vazio com campos para todos os idiomas (pt, en, es)
+        // Se ainda não houver slides personalizados, copia os slides padrão primeiro para evitar perder dados
+        // O novo slide recebe um ID único baseado no timestamp atual
+        function addSlide() {
+            if (!contentData[currentPage]) {
+                contentData[currentPage] = {};
+            }
+            if (!contentData[currentPage]['custom_slides']) {
+                contentData[currentPage]['custom_slides'] = JSON.parse(JSON.stringify(defaultSlides));
+            }
+            contentData[currentPage]['custom_slides'].push({
+                id: 'slide_' + Date.now(), // ID único baseado no timestamp
+                image: '',
+                title_pt: '',
+                title_en: '',
+                title_es: '',
+                desc_pt: '',
+                desc_en: '',
+                desc_es: '',
+                link: ''
+            });
+            renderEditor(); // Re-renderiza para mostrar o novo slide
+        }
+
+        // Remove um slide do carousel
+        // Só permite remover se houver mais de 2 slides (mínimo obrigatório para o carousel funcionar)
+        // Ajusta o índice atual se necessário para evitar erro de índice fora do range
+        function removeSlide(index) {
+            const customSlides = contentData[currentPage]?.['custom_slides'];
+            if (customSlides && customSlides.length > 2) {
+                customSlides.splice(index, 1);
+                // Ajusta índice atual se necessário para evitar erro de índice fora do range
+                if (currentSlideIndex >= customSlides.length) {
+                    currentSlideIndex = customSlides.length - 1;
+                }
+                renderEditor();
+            } else {
+                showToast('Mínimo de 2 slides obrigatório!');
+            }
+        }
+
+        // Navega entre os slides do carousel
+        // Suporta navegação para primeiro, último, anterior e próximo slide
+        // Usa navegação circular (do último volta para o primeiro e vice-versa)
+        // Atualiza a visibilidade dos slides para mostrar apenas o slide atual
+        function navigateSlide(direction) {
+            const customSlides = contentData[currentPage]?.['custom_slides'];
+            if (!customSlides) return;
+
+            if (direction === 'first') {
+                currentSlideIndex = 0;
+            } else if (direction === 'last') {
+                currentSlideIndex = customSlides.length - 1;
+            } else if (direction === 'next') {
+                currentSlideIndex = (currentSlideIndex + 1) % customSlides.length;
+            } else if (direction === 'prev') {
+                currentSlideIndex = (currentSlideIndex - 1 + customSlides.length) % customSlides.length;
+            }
+
+            // Atualiza visibilidade dos slides (mostra apenas o slide atual)
+            const slideElements = document.querySelectorAll('#slidesContainer > div');
+            slideElements.forEach((el, index) => {
+                if (index === currentSlideIndex) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+        }
+
+        // Atualiza um campo específico de um slide
+        // Pode atualizar título, descrição ou link em qualquer idioma (pt, en, es)
+        // Se ainda não houver slides personalizados, copia os slides padrão primeiro
+        function updateSlideField(index, field, value) {
+            if (!contentData[currentPage]) {
+                contentData[currentPage] = {};
+            }
+            if (!contentData[currentPage]['custom_slides']) {
+                contentData[currentPage]['custom_slides'] = JSON.parse(JSON.stringify(defaultSlides));
+            }
+            contentData[currentPage]['custom_slides'][index][field] = value;
+        }
+
+        // Atualiza a imagem de um slide
+        // Converte o arquivo de imagem para base64 e armazena no slide
+        // Usa FileReader API para ler o arquivo e converter para string base64
+        // Isso permite armazenar a imagem diretamente no localStorage sem precisar de servidor
+        function updateSlideImage(index, input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                if (!contentData[currentPage]) {
+                    contentData[currentPage] = {};
+                }
+                if (!contentData[currentPage]['custom_slides']) {
+                    contentData[currentPage]['custom_slides'] = JSON.parse(JSON.stringify(defaultSlides));
+                }
+                contentData[currentPage]['custom_slides'][index].image = e.target.result; // Armazena imagem em base64
+                renderEditor(); // Re-renderiza para mostrar a nova imagem
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Reseta todos os slides para os slides padrão originais
+        // Remove a configuração de slides personalizados, voltando aos slides originais do site
+        // Útil quando o usuário quer desfazer todas as alterações feitas nos slides
+        function resetSlides() {
+            if (contentData[currentPage]) {
+                delete contentData[currentPage]['custom_slides'];
+            }
+            renderEditor(); // Re-renderiza para mostrar os slides padrão
+        }
+
+        // Processa upload de imagem para campos de imagem do site (não slides)
+        // Converte o arquivo para base64 e armazena no campo especificado
+        // Usa FileReader API para ler o arquivo e converter para string base64
+        function handleImageUpload(sectionId, input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fieldId = `${sectionId}_${currentLang}`;
+                if (!contentData[currentPage]) {
+                    contentData[currentPage] = {};
+                }
+                contentData[currentPage][fieldId] = e.target.result; // Armazena imagem em base64
+                renderEditor(); // Re-renderiza para mostrar a nova imagem
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Salva todas as alterações feitas no editor
+        // Persiste os dados no localStorage, recarrega o preview e exibe notificação
+        // Esta função é chamada quando o usuário clica no botão "Salvar Alterações"
+        function saveChanges() {
+            saveContent(); // Salva no localStorage
+            reloadPreview(); // Recarrega o iframe de preview
+            showToast('Alterações salvas com sucesso!'); // Exibe notificação
+        }
+
+        // Alterna a visibilidade do painel de editor de configurações
+        // Abre/fecha o painel lateral que contém os campos de edição
+        // Atualiza o botão de toggle e a largura do preview
+        function toggleEditor() {
+            const panel = document.getElementById('editorPanel');
+            const btn = document.getElementById('editorToggle');
+            panel.classList.toggle('open');
+            btn.classList.toggle('active');
+            updatePreviewWidth();
+        }
+
+        // Alterna o tamanho do painel de editor entre normal e expandido
+        // Alterna entre tamanho normal (450px) e expandido (700px)
+        // Atualiza o texto do botão para refletir a ação disponível (Expandir/Reduzir)
+        function toggleEditorSize() {
+            const panel = document.getElementById('editorPanel');
+            const btn = document.getElementById('sizeToggleBtn');
+            panel.classList.toggle('large');
+            if (panel.classList.contains('large')) {
+                btn.innerHTML = '<i class="fas fa-compress-alt mr-1"></i>Reduzir';
+            } else {
+                btn.innerHTML = '<i class="fas fa-expand-alt mr-1"></i>Expandir';
+            }
+            updatePreviewWidth();
+        }
+
+        // Minimiza ou expande o painel de editor
+        // Quando minimizado, o painel reduz para apenas o botão de minimize (50px)
+        // Quando expandido, volta ao tamanho normal
+        // O ícone do botão muda de direção para indicar a ação disponível
+        function toggleMinimize() {
+            const panel = document.getElementById('editorPanel');
+            const icon = document.getElementById('minimizeIcon');
+            panel.classList.toggle('minimized');
+            if (panel.classList.contains('minimized')) {
+                icon.classList.remove('fa-chevron-right');
+                icon.classList.add('fa-chevron-left');
+            } else {
+                icon.classList.remove('fa-chevron-left');
+                icon.classList.add('fa-chevron-right');
+            }
+            updatePreviewWidth();
+        }
+
+        // Atualiza a largura do preview baseado no tamanho do editor
+        // O preview acompanha o editor até certo ponto (50% da tela)
+        // Quando o editor passa de 50% da tela, o preview fica por cima (z-index menor)
+        // Isso garante que o preview não fique muito pequeno quando o editor é expandido
+        function updatePreviewWidth() {
+            const editorPanel = document.getElementById('editorPanel');
+            const previewPanel = document.getElementById('previewPanel');
+            const editorWidth = editorPanel.offsetWidth;
+            const windowWidth = window.innerWidth;
+            const maxEditorWidth = windowWidth * 0.5; // 50% da tela
+
+            if (editorPanel.classList.contains('open') && !editorPanel.classList.contains('minimized')) {
+                if (editorWidth > maxEditorWidth) {
+                    // Editor muito grande, preview fica por cima
+                    previewPanel.style.zIndex = '30';
+                    previewPanel.style.width = '100%';
+                } else {
+                    // Preview acompanha o editor
+                    previewPanel.style.zIndex = '40';
+                    previewPanel.style.width = `calc(100% - ${editorWidth}px)`;
+                }
+            } else {
+                // Editor fechado ou minimizado, preview ocupa tudo
+                previewPanel.style.zIndex = '40';
+                previewPanel.style.width = '100%';
+            }
+        }
+
+        // Recarrega o iframe de preview
+        // Força o recarregamento da página no preview para mostrar as alterações salvas
+        // Isso é necessário porque o iframe não atualiza automaticamente quando o localStorage muda
+        function reloadPreview() {
+            const frame = document.getElementById('previewFrame');
+            if (frame) {
+                frame.src = frame.src; // Recarrega definindo o mesmo src
+            }
+        }
+
+        // Mostra uma notificação toast (mensagem flutuante)
+        // Exibe uma mensagem temporária no canto inferior direito da tela
+        // A mensagem desaparece automaticamente após 3 segundos
+        // Usada para confirmar ações como salvar alterações
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0'); // Mostra a notificação
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0'); // Esconde após 3 segundos
+            }, 3000);
+        }
+
+        // Inicialização do editor
+        // Verifica autenticação, carrega a página da URL, carrega conteúdo e renderiza o editor
+        // Abre o editor automaticamente após 500ms para melhor experiência do usuário
+        // Só executa se o usuário estiver autenticado (checkAuth retorna true)
+        if (checkAuth()) {
+            currentPage = getPageFromUrl(); // Obtém a página da URL
+            loadContent(); // Carrega conteúdo salvo do localStorage
+            renderEditor(); // Renderiza o editor com os campos editáveis
+            // Abre editor automaticamente ao carregar para facilitar o uso
+            setTimeout(() => toggleEditor(), 500);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CMS Generactive</title>
+    <link rel="icon" type="image/png" href="LogoGuiaGen.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        :root { --brand-cyan: #00f2ff; --brand-blue: #0066ff; --bg-dark: #030712; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-dark); color: #f3f4f6; }
+        .bg-grid { background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at 50% 50%, black, transparent 80%); }
+        .glow-cursor { position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0, 242, 255, 0.07) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: 0; transform: translate(-50%, -50%); }
+        .mag-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+        .mag-card:hover { border-color: var(--brand-cyan); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(0, 242, 255, 0.1); }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div class="glow-cursor" id="glow"></div>
+    <div class="fixed inset-0 bg-grid z-0"></div>
+
+    <div class="relative z-10 w-full max-w-md px-6">
+        <div class="mag-card p-10 rounded-3xl">
+            <div class="text-center mb-8">
+                <img src="LogoGeneractive.png" alt="Generactive" class="h-20 mx-auto mb-6 object-contain">
+                <h1 class="text-2xl font-black mb-2">CMS Generactive</h1>
+                <p class="text-gray-400 text-sm">Área Administrativa</p>
+            </div>
+
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Usuário</label>
+                    <div class="relative">
+                        <i class="fas fa-user absolute left-4 top-1/2 -translate-y-1/2 text-cyan-400"></i>
+                        <input type="text" id="username" required
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-12 py-3 text-white placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition"
+                            placeholder="Digite seu usuário">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Senha</label>
+                    <div class="relative">
+                        <i class="fas fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-cyan-400"></i>
+                        <input type="password" id="password" required
+                            class="w-full bg-white/5 border border-white/10 rounded-xl px-12 py-3 text-white placeholder-gray-500 focus:border-cyan-400 focus:outline-none transition"
+                            placeholder="Digite sua senha">
+                    </div>
+                </div>
+
+                <div id="errorMessage" class="hidden text-red-400 text-sm text-center"></div>
+
+                <button type="submit"
+                    class="w-full bg-cyan-500 text-black font-black px-6 py-3 rounded-xl hover:bg-cyan-400 transition uppercase text-xs tracking-widest shadow-xl shadow-cyan-500/20">
+                    Entrar
+                </button>
+            </form>
+
+            <div class="mt-8 pt-6 border-t border-white/5">
+                <p class="text-center text-gray-500 text-xs">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    Credenciais temporárias: admin / admin123
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efeito de cursor brilhante que segue o movimento do mouse
+        // Cria um efeito visual de brilho que acompanha o cursor pela página
+        document.addEventListener('mousemove', (e) => {
+            const glow = document.getElementById('glow');
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Manipulador do formulário de login
+        // Intercepta o envio do formulário para validar as credenciais
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede o recarregamento da página
+            
+            // Obtém os valores dos campos de usuário e senha
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Credenciais temporárias para teste (devem ser substituídas em produção)
+            if (username === 'admin' && password === 'admin123') {
+                // Armazena a sessão de login no localStorage
+                localStorage.setItem('cms_logged_in', 'true');
+                localStorage.setItem('cms_login_time', Date.now()); // Marca o horário do login
+                
+                // Redireciona para o dashboard administrativo
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                // Exibe mensagem de erro se as credenciais estiverem incorretas
+                errorMessage.textContent = 'Usuário ou senha incorretos';
+                errorMessage.classList.remove('hidden');
+            }
+        });
+
+        // Verifica se o usuário já está logado ao carregar a página
+        // Evita que o usuário precise fazer login novamente se a sessão ainda estiver válida
+        if (localStorage.getItem('cms_logged_in') === 'true') {
+            const loginTime = parseInt(localStorage.getItem('cms_login_time'));
+            const sessionDuration = 24 * 60 * 60 * 1000; // Duração da sessão: 24 horas em milissegundos
+            
+            // Verifica se a sessão ainda está válida (menos de 24 horas)
+            if (Date.now() - loginTime < sessionDuration) {
+                // Redireciona para o dashboard se a sessão ainda estiver válida
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                // Remove a sessão expirada e força um novo login
+                localStorage.removeItem('cms_logged_in');
+                localStorage.removeItem('cms_login_time');
+            }
+        }
+    </script>
+</body>
+</html>
