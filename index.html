@@ -1409,6 +1409,12 @@ function changeLanguage(lang) {
     // Fecha o menu após a escolha
     document.getElementById('lang-dropdown').classList.add('hidden');
 }
+
+// Torna a função changeLanguage assíncrona
+const originalChangeLanguageSync = changeLanguage;
+changeLanguage = async function(lang) {
+    originalChangeLanguageSync(lang);
+};
 </script>
 
 <!-- CMS Content Loader -->
@@ -1452,48 +1458,37 @@ function changeLanguage(lang) {
         }
     ];
 
-    // Carrega conteúdo do CMS do localStorage
+    // Carrega conteúdo do CMS do servidor via API PHP
     // Lê os dados salvos pelo editor e aplica ao site
     // Esta função é chamada ao carregar a página e ao mudar de idioma
-    function loadCMSContent() {
-        const cmsContent = localStorage.getItem('cms_content');
-        if (!cmsContent) return; // Se não houver conteúdo salvo, não faz nada
+    async function loadCMSContent() {
+        try {
+            const response = await fetch('load_content.php');
+            const result = await response.json();
+            
+            if (!result.success || !result.data) return;
+            
+            const content = result.data;
+            const pageContent = content['index'];
+            if (!pageContent) return; // Se não houver conteúdo da página index, não faz nada
 
-        const content = JSON.parse(cmsContent);
-        const pageContent = content['index'];
-        if (!pageContent) return; // Se não houver conteúdo da página index, não faz nada
+            const currentLang = localStorage.getItem('generactive_lang') || 'pt';
 
-        const currentLang = localStorage.getItem('generactive_lang') || 'pt';
-
-        // Carrega slides personalizados se disponíveis
-        // Se o usuário editou os slides no CMS, usa os slides personalizados
-        const customSlides = pageContent['custom_slides'];
-        if (customSlides) {
-            loadCustomSlides(customSlides, currentLang);
-        }
-
-        // Atualiza título do hero (seção principal)
-        // Substitui o título original pelo título editado no CMS, se existir
-        const heroTitle = document.getElementById('hero-title');
-        if (heroTitle && pageContent[`hero_title_${currentLang}`]) {
-            heroTitle.innerText = pageContent[`hero_title_${currentLang}`];
-        }
-
-        // Atualiza descrição do hero (seção principal)
-        // Substitui a descrição original pela descrição editada no CMS, se existir
-        const heroDesc = document.getElementById('hero-desc');
-        if (heroDesc && pageContent[`hero_desc_${currentLang}`]) {
-            heroDesc.innerText = pageContent[`hero_desc_${currentLang}`];
-        }
-
-        // Atualiza texto do botão CTA (Call to Action)
-        // Substitui o texto do botão pelo texto editado no CMS, se existir
-        const ctaButtons = document.querySelectorAll('a[href="https://wa.me/5519995000067"] span');
-        ctaButtons.forEach(btn => {
-            if (pageContent[`hero_cta_${currentLang}`]) {
-                btn.innerText = pageContent[`hero_cta_${currentLang}`];
+            // Carrega slides personalizados se disponíveis
+            // Se o usuário editou os slides no CMS, usa os slides personalizados
+            const customSlides = pageContent['custom_slides'];
+            if (customSlides) {
+                loadCustomSlides(customSlides, currentLang);
             }
-        });
+
+            // Atualiza texto do botão CTA (Call to Action)
+            // Substitui o texto do botão pelo texto editado no CMS, se existir
+            const ctaButtons = document.querySelectorAll('a[href="https://wa.me/5519995000067"] span');
+            ctaButtons.forEach(btn => {
+                if (pageContent[`hero_cta_${currentLang}`]) {
+                    btn.innerText = pageContent[`hero_cta_${currentLang}`];
+                }
+            });
 
         // Atualiza títulos e descrições das seções do site
         // Cada seção é atualizada com o conteúdo editado no CMS, se existir
@@ -1663,6 +1658,9 @@ function changeLanguage(lang) {
                 statDesc.innerText = pageContent[`stat${i}_desc_${currentLang}`];
             }
         }
+        } catch (error) {
+            console.error('Erro ao carregar conteúdo do CMS:', error);
+        }
     }
 
     // Carrega slides personalizados no carousel
@@ -1794,14 +1792,18 @@ function changeLanguage(lang) {
 
     // Carrega o conteúdo do CMS quando a página estiver pronta
     // Isso garante que as alterações feitas no editor sejam aplicadas ao carregar o site
-    window.addEventListener('DOMContentLoaded', loadCMSContent);
+    window.addEventListener('DOMContentLoaded', async () => {
+        await loadCMSContent();
+    });
 
     // Recarrega o conteúdo do CMS quando o idioma é alterado
     // Isso garante que as alterações sejam aplicadas no idioma correto
     const originalChangeLanguage = changeLanguage;
-    changeLanguage = function(lang) {
+    changeLanguage = async function(lang) {
         originalChangeLanguage(lang); // Executa a função original de mudança de idioma
-        setTimeout(loadCMSContent, 100); // Recarrega o conteúdo do CMS após 100ms
+        setTimeout(async () => {
+            await loadCMSContent();
+        }, 100); // Recarrega o conteúdo do CMS após 100ms
     };
 </script>
 

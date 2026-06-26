@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -70,7 +70,7 @@
                 <a href="index.html" target="_blank" class="text-gray-400 hover:text-cyan-400 transition text-sm">
                     <i class="fas fa-external-link-alt mr-2"></i>Ver Site
                 </a>
-                <button onclick="saveChanges()" class="bg-cyan-500 text-black px-6 py-2 rounded-lg font-bold text-xs hover:bg-cyan-400 transition uppercase tracking-wider">
+                <button onclick="saveChanges().catch(err => console.error(err))" class="bg-cyan-500 text-black px-6 py-2 rounded-lg font-bold text-xs hover:bg-cyan-400 transition uppercase tracking-wider">
                     <i class="fas fa-save mr-2"></i>Salvar Alterações
                 </button>
             </div>
@@ -163,18 +163,6 @@
                         name: 'Hero / Carousel',
                         icon: 'fa-home',
                         fields: [
-                            {
-                                id: 'hero_title',
-                                label: 'Título Principal',
-                                type: 'text',
-                                default: 'Conectando o Físico ao Digital'
-                            },
-                            {
-                                id: 'hero_desc',
-                                label: 'Descrição Principal',
-                                type: 'textarea',
-                                default: 'Integramos equipamentos, sensores e dispositivos para transformar sua operação em dados inteligentes.'
-                            },
                             {
                                 id: 'hero_cta',
                                 label: 'Texto do Botão CTA',
@@ -508,21 +496,47 @@
             renderEditor();
         }
 
-        // Carrega o conteúdo editado do localStorage
-        // Lê os dados salvos anteriormente e popula o objeto contentData
-        // Se não houver dados salvos, contentData permanece vazio
-        function loadContent() {
-            const stored = localStorage.getItem('cms_content');
-            if (stored) {
-                contentData = JSON.parse(stored);
+        // Carrega o conteúdo editado do servidor via API PHP
+        // Lê os dados do arquivo JSON no servidor em vez de usar localStorage
+        // Isso permite que as alterações persistam mesmo em servidores sem localStorage
+        async function loadContent() {
+            try {
+                console.log('Carregando dados do servidor...');
+                const response = await fetch('load_content.php');
+                console.log('Resposta do servidor:', response);
+                const result = await response.json();
+                console.log('Dados carregados:', result);
+                if (result.success && result.data) {
+                    contentData = result.data;
+                    console.log('contentData atualizado:', contentData);
+                }
+            } catch (error) {
+                console.error('Erro ao carregar:', error);
             }
         }
 
-        // Salva o conteúdo editado no localStorage
-        // Converte o objeto contentData para JSON e armazena no navegador
-        // Os dados persistem mesmo após fechar o navegador
-        function saveContent() {
-            localStorage.setItem('cms_content', JSON.stringify(contentData));
+        // Salva o conteúdo editado no servidor via API PHP
+        // Envia os dados para o arquivo JSON no servidor em vez de usar localStorage
+        // Isso permite que as alterações persistam mesmo em servidores sem localStorage
+        async function saveContent() {
+            try {
+                console.log('Salvando dados:', contentData);
+                const response = await fetch('save_content.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(contentData)
+                });
+                console.log('Resposta do servidor:', response);
+                const result = await response.json();
+                console.log('Resultado:', result);
+                if (!result.success) {
+                    console.error('Erro ao salvar:', result.error);
+                }
+            } catch (error) {
+                console.error('Erro ao salvar:', error);
+            }
         }
 
         // Renderiza as seções do editor
@@ -776,6 +790,7 @@
 
             // Combina os campos com o gerenciador de slides (se aplicável)
             // Insere o HTML gerado no elemento editorSections do DOM
+            // O container de slides fica abaixo dos campos da seção hero
             document.getElementById('editorSections').innerHTML = fieldsHtml + slidesHtml;
         }
 
@@ -1012,12 +1027,17 @@
         }
 
         // Salva todas as alterações feitas no editor
-        // Persiste os dados no localStorage, recarrega o preview e exibe notificação
+        // Persiste os dados no servidor via API PHP, recarrega o preview e exibe notificação
         // Esta função é chamada quando o usuário clica no botão "Salvar Alterações"
-        function saveChanges() {
-            saveContent(); // Salva no localStorage
-            reloadPreview(); // Recarrega o iframe de preview
-            showToast('Alterações salvas com sucesso!'); // Exibe notificação
+        async function saveChanges() {
+            try {
+                await saveContent(); // Salva no servidor
+                reloadPreview(); // Recarrega o iframe de preview
+                showToast('Alterações salvas com sucesso!'); // Exibe notificação
+            } catch (error) {
+                console.error('Erro ao salvar alterações:', error);
+                showToast('Erro ao salvar alterações. Verifique o console.');
+            }
         }
 
         // Alterna a visibilidade do painel de editor de configurações
@@ -1120,13 +1140,18 @@
         // Verifica autenticação, carrega a página da URL, carrega conteúdo e renderiza o editor
         // Abre o editor automaticamente após 500ms para melhor experiência do usuário
         // Só executa se o usuário estiver autenticado (checkAuth retorna true)
-        if (checkAuth()) {
-            currentPage = getPageFromUrl(); // Obtém a página da URL
-            loadContent(); // Carrega conteúdo salvo do localStorage
-            renderEditor(); // Renderiza o editor com os campos editáveis
-            // Abre editor automaticamente ao carregar para facilitar o uso
-            setTimeout(() => toggleEditor(), 500);
+        async function initEditor() {
+            if (checkAuth()) {
+                currentPage = getPageFromUrl(); // Obtém a página da URL
+                await loadContent(); // Carrega conteúdo salvo do servidor
+                renderEditor(); // Renderiza o editor com os campos editáveis
+                // Abre editor automaticamente ao carregar para facilitar o uso
+                setTimeout(() => toggleEditor(), 500);
+            }
         }
+        
+        // Inicia o editor
+        initEditor();
     </script>
 </body>
 </html>
